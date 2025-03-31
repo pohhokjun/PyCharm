@@ -16,8 +16,7 @@ try:
         'DISPLAY_MAPPINGS': {
             # 字段显示名称映射
             'FIELD_NAMES': {
-                'member_id': '会员ID',
-                'member_name': '会员账号'
+                'member_name': 'member_name'
             },
             # 字段值映射
             'FIELD_VALUES': {

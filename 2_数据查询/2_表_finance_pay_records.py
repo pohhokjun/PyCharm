@@ -4,39 +4,14 @@ try:
     # 配置项集中管理
     CONFIG = {
         'TABLE_NAME': 'finance_pay_records',
-        'TIME_FIELDS': [''],
+        'CUSTOM_TIME_FIELDS': ['updated_at'],  # 自定义时间字段
         'SELECT_FIELDS': [
-            'site_id',
-            'member_grade',
-            'pay_seq',
-            'category',
-            'pay_type',
-            'flow_ratio',
-            'pay_status',
-            'client_type',
-            'pay_result',
-            'remark',
-            'order_status',
-            'finance_remark',
-            'data_route',
-            'pay_operator',
-            'protocol',
-            'credit_rating',
-            'credit_level',
-            'reminder',
-            'request_source',
-            'is_first_deposit',
-            'device_no_success_count',
-            'client_ip_success_count',
-            'client_type_x'
+            'site_id'
         ],
         'DISPLAY_MAPPINGS': {
-            # 字段显示名称映射
             'FIELD_NAMES': {
-                'member_id': '会员ID',
-                'member_name': '会员账号'
+                'member_name': 'member_name'
             },
-            # 字段值映射
             'FIELD_VALUES': {
                 'lock_status': {
                     1: '启用',
@@ -65,16 +40,23 @@ try:
         all_columns = [col['Field'] for col in columns_info]
         column_types = {col['Field']: col['Type'] for col in columns_info}
 
+        # 自动检测时间字段
+        auto_time_columns = [col for col, col_type in column_types.items()
+                             if 'datetime' in col_type or 'timestamp' in col_type]
+
+        # 合并自动检测和自定义时间字段
+        time_columns = list(set(auto_time_columns + CONFIG['CUSTOM_TIME_FIELDS']))
+
         # 检测时间字段并查询 Min/Max
-        time_columns = [col for col, col_type in column_types.items()
-                        if 'datetime' in col_type or 'timestamp' in col_type or
-                        (col_type.startswith('text') and col in CONFIG['TIME_FIELDS'])]
         if time_columns:
             print("\n时间字段的 Min 和 Max 值:")
             for col in time_columns:
-                cursor.execute(f"SELECT MIN({col}), MAX({col}) FROM {CONFIG['TABLE_NAME']}")
-                min_max = cursor.fetchone()
-                print(f"{col}: Min = {min_max[f'MIN({col})']}, Max = {min_max[f'MAX({col})']}")
+                if col in all_columns: # 确保字段存在于表中
+                    cursor.execute(f"SELECT MIN({col}), MAX({col}) FROM {CONFIG['TABLE_NAME']}")
+                    min_max = cursor.fetchone()
+                    print(f"{col}: Min = {min_max[f'MIN({col})']}, Max = {min_max[f'MAX({col})']}")
+                else:
+                    print(f"{col}: 字段不存在于表中")
             # 添加总行数
             cursor.execute(f"SELECT COUNT(*) as total_rows FROM {CONFIG['TABLE_NAME']}")
             total_rows = cursor.fetchone()['total_rows']

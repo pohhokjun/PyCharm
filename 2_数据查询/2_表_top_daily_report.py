@@ -4,20 +4,14 @@ try:
     # 配置项集中管理
     CONFIG = {
         'TABLE_NAME': 'top_daily_report',
+        'CUSTOM_TIME_FIELDS': ['update_at'],  # 自定义时间字段
         'SELECT_FIELDS': [
-            'site_id',
-            'sys_type',
-            'first_recharge_register_ratio',
-            'net_bet_amount_ratio',
-            'promotion_dividend',
+            'site_id'
         ],
         'DISPLAY_MAPPINGS': {
-            # 字段显示名称映射
             'FIELD_NAMES': {
-                'member_id': '会员ID',
-                'member_name': '会员账号'
+                'member_name': 'member_name'
             },
-            # 字段值映射
             'FIELD_VALUES': {
                 'lock_status': {
                     1: '启用',
@@ -46,19 +40,23 @@ try:
         all_columns = [col['Field'] for col in columns_info]
         column_types = {col['Field']: col['Type'] for col in columns_info}
 
-        # 自动识别时间字段
-        time_columns = [
-            col['Field'] for col in columns_info
-            if 'datetime' in col['Type'] or 'timestamp' in col['Type']
-        ]
+        # 自动检测时间字段
+        auto_time_columns = [col for col, col_type in column_types.items()
+                             if 'datetime' in col_type or 'timestamp' in col_type]
+
+        # 合并自动检测和自定义时间字段
+        time_columns = list(set(auto_time_columns + CONFIG['CUSTOM_TIME_FIELDS']))
 
         # 检测时间字段并查询 Min/Max
         if time_columns:
             print("\n时间字段的 Min 和 Max 值:")
             for col in time_columns:
-                cursor.execute(f"SELECT MIN({col}) AS min_val, MAX({col}) AS max_val FROM {CONFIG['TABLE_NAME']}")
-                min_max = cursor.fetchone()
-                print(f"{col}: Min = {min_max['min_val']}, Max = {min_max['max_val']}")
+                if col in all_columns: # 确保字段存在于表中
+                    cursor.execute(f"SELECT MIN({col}), MAX({col}) FROM {CONFIG['TABLE_NAME']}")
+                    min_max = cursor.fetchone()
+                    print(f"{col}: Min = {min_max[f'MIN({col})']}, Max = {min_max[f'MAX({col})']}")
+                else:
+                    print(f"{col}: 字段不存在于表中")
             # 添加总行数
             cursor.execute(f"SELECT COUNT(*) as total_rows FROM {CONFIG['TABLE_NAME']}")
             total_rows = cursor.fetchone()['total_rows']
@@ -85,10 +83,11 @@ try:
             ]
 
             # 计算每列最大宽度
-            col_widths = {col: max(len(display_columns[i]), len(str(column_types[col])))
-                          for i, col in enumerate(all_columns)}
+            col_widths = {col: max(len(display_columns[i]), len(column_types[col]))
+                         for i, col in enumerate(all_columns)}
             for row in distinct_results:
                 for col in CONFIG['SELECT_FIELDS']:
+                    # 应用值映射
                     value = row[col]
                     if col in CONFIG['DISPLAY_MAPPINGS']['FIELD_VALUES'] and value is not None:
                         value = CONFIG['DISPLAY_MAPPINGS']['FIELD_VALUES'][col].get(value, value)
@@ -105,13 +104,13 @@ try:
             # 打印数据表格
             print("\n数据表格:")
             # 打印字段类型行
-            type_row = " | ".join(f"{str(column_types[col]):<{col_widths[col]}}" for col in all_columns)
+            type_row = " | ".join(f"{column_types[col]:<{col_widths[col]}}" for col in all_columns)
             print(type_row)
             # 打印字段名称行（使用显示名称）
             header = " | ".join(f"{display_columns[i]:<{col_widths[col]}}"
                               for i, col in enumerate(all_columns))
             print(header)
-            print("-" * sum(col_widths.values()))
+            print("-" * (len(header) + 2))
 
             for row in distinct_results:
                 row_data = " | ".join(

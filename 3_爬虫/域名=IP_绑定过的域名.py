@@ -1,4 +1,5 @@
 import socket
+import subprocess
 import logging
 import time
 import pandas as pd
@@ -9,6 +10,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from bs4 import BeautifulSoup
+from openpyxl import load_workbook
 
 # 记录运行开始时间
 start_time = time.strftime('%Y-%m-%d %H:%M')
@@ -19,39 +21,24 @@ logging.basicConfig(
     filename='ip_domain_query.log',
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s',
-    encoding='utf-8'
+    encoding='utf-8',
+    filemode='w'
 )
 
-# 域名输入
+# **批量输入域名**
 DOMAIN_INPUT = """
-https://www.lngqjt.com/
-https://www.185hcq.com/
-https://www.hty888888.com/
-https://www.58mingjiekeji.com/
-http://www.dlyrl.com/
-https://www.beitejinmen.com/
-https://www.hiiav.net/
-https://m.clean1995.com/
-https://m.jingaohua.com/
-http://www.sunyeon.cn/
-https://m.js-ac.com/
-https://www.hcxev.com/
-https://www.mtkry.com/
-https://www.lf-lt.com/
+www.cdxnck.com
+www.zhjuli.com
 """
 domains = [d.strip() for d in DOMAIN_INPUT.split('\n') if d.strip()]
-
-# **去掉 http:// 和 https://**
-domains = [d.replace("http://", "").replace("https://", "").strip("/") for d in domains]
 
 # 生成 Excel 文件名
 excel_filename = f"IP查询_{time.strftime('%Y%m%d_%H%M')}.xlsx"
 
 
-# 设置浏览器驱动
+# **设置浏览器驱动**
 def setup_driver():
     chrome_options = Options()
-    chrome_options.add_argument("--disable-blink-features=AutomationControlled")
     chrome_options.add_argument("--headless")
     chrome_options.add_argument("--disable-gpu")
     chrome_options.add_argument("--no-sandbox")
@@ -60,7 +47,7 @@ def setup_driver():
     chrome_options.add_argument(
         "--user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/134.0.0.0 Safari/537.36")
 
-    service = Service()  # 使用默认 ChromeDriver
+    service = Service()
     driver = webdriver.Chrome(service=service, options=chrome_options)
     return driver
 
@@ -69,18 +56,45 @@ def setup_driver():
 driver = setup_driver()
 
 
-# 解析域名IP
+# **通过 Ping 获取 IP**
+def get_ip_by_ping(domain):
+    try:
+        result = subprocess.run(
+            ["ping", domain, "-n", "1"], capture_output=True, text=True, encoding='gbk'
+        )
+        for line in result.stdout.split("\n"):
+            if "[" in line and "]" in line:
+                ip = line.split("[")[1].split("]")[0]
+                return ip
+    except Exception as e:
+        logging.error(f"Ping 获取 IP 失败 {domain}: {e}")
+    return None
+
+
+# **解析域名IP（优先 Ping 获取 IP，扩展前后 5 个）**
 def resolve_domain_ip(domain):
+    ip = None
     try:
         ip = socket.gethostbyname(domain)
-        logging.info(f"{domain} -> {ip}")
-        return ip
-    except socket.gaierror as e:
-        logging.error(f"IP解析失败 {domain}: {e}")
-        return "解析失败"
+    except socket.gaierror:
+        logging.warning(f"{domain} 无法解析，尝试 Ping 获取 IP")
+        ip = get_ip_by_ping(domain)
+
+    if ip:
+        base_parts = ip.split('.')
+        if len(base_parts) == 4:
+            base_prefix = ".".join(base_parts[:3])
+            base_num = int(base_parts[3])
+            expanded_ips = [f"{base_prefix}.{i}" for i in range(base_num - 5, base_num + 6) if 0 <= i <= 255]
+        else:
+            expanded_ips = [ip]
+        logging.info(f"{domain} -> {expanded_ips}")
+        return expanded_ips
+    else:
+        return ["解析失败"]
 
 
-# 查询IP绑定的域名
+# **查询 IP 绑定的域名**
 def query_ip_domains(ip):
     if ip == "解析失败":
         return ["无法查询: IP解析失败"]
@@ -92,7 +106,7 @@ def query_ip_domains(ip):
         driver.get(url)
         WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, "body")))
 
-        # 等待数据加载（最多 15 秒）
+        time.sleep(2)
         try:
             WebDriverWait(driver, 15).until(EC.presence_of_element_located((By.CSS_SELECTOR, "span.date + a")))
         except Exception:
@@ -102,7 +116,6 @@ def query_ip_domains(ip):
         html = driver.page_source
         soup = BeautifulSoup(html, 'html.parser')
 
-        # **精准提取绑定域名**
         bound_domains = [entry.text.strip() for entry in soup.select("span.date + a")]
 
         logging.info(f"{ip} 绑定的域名: {bound_domains}")
@@ -110,36 +123,49 @@ def query_ip_domains(ip):
 
     except Exception as e:
         logging.error(f"查询失败 {ip}: {e}")
-        return [f"查询失败: {e}"]
+        return ["查询失败"]
+
+
+# **保存到 Excel**
+def save_to_excel(data, filename):
+    try:
+        df = pd.DataFrame(data)
+        df = df.explode('绑定域名')  # 绑定域名一行一个
+
+        try:
+            with pd.ExcelWriter(filename, engine="openpyxl", mode="a", if_sheet_exists="overlay") as writer:
+                df.to_excel(writer, index=False, header=False, startrow=writer.sheets['Sheet1'].max_row)
+        except FileNotFoundError:
+            df.to_excel(filename, index=False, engine="openpyxl")
+
+    except Exception as e:
+        logging.error(f"保存 Excel 失败: {e}")
 
 
 # **主程序**
 results = []
 for i, domain in enumerate(domains, start=1):
     logging.info(f"开始处理: {domain}")
-    ip = resolve_domain_ip(domain)
-    bound_domains = query_ip_domains(ip) if ip != "解析失败" else ["无法查询: IP解析失败"]
+    ips = resolve_domain_ip(domain)
 
-    result = {
-        "域名": domain,
-        "IP": ip,
-        "绑定域名": ", ".join(bound_domains)
-    }
-    results.append(result)
+    for ip in ips:
+        bound_domains = query_ip_domains(ip) if ip != "解析失败" else ["无法查询: IP解析失败"]
 
-    # **每完成 5 个，就 print 并保存 Excel**
-    if i % 5 == 0 or i == len(domains):
-        print(f"已完成 {i}/{len(domains)}")
+        result = {
+            "域名": domain,
+            "IP": ip,
+            "绑定域名": bound_domains
+        }
+        results.append(result)
 
-        # **打印当前 5 个的结果**
-        for res in results[-5:]:  # 只打印最新 5 个
-            print(f"{res['域名']}:")
-            print(f"  IP: {res['IP']}")
-            print(f"  绑定域名: {res['绑定域名']}")
+        # **打印当前结果**
+        print(f"已完成 {i}/{len(domains)}, IP: {ip}")
+        print(f"  域名: {domain}")
+        print(f"  IP: {ip}")
+        print(f"  绑定域名: {', '.join(bound_domains)}")
 
-        # **追加写入 Excel**
-        df = pd.DataFrame(results)
-        df.to_excel(excel_filename, index=False, engine='openpyxl')
+        # **立即保存到 Excel**
+        save_to_excel([result], excel_filename)
         print(f"已保存 Excel: {excel_filename}")
 
 # **关闭全局 driver**
