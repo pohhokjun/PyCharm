@@ -1,0 +1,12 @@
+git config --global user.name "Poh Hok Jun"
+git config --global user.email "pohhokjun@gmail.com"
+git clone https://github.com/pohhokjun/PyCharm.git .
+git branch
+
+git add .
+git commit -m "描述"
+git push origin main --force
+git status
+
+git pull
+git status

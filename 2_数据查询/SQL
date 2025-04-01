@@ -1,0 +1,25 @@
+SELECT
+    DATE(created_at) AS created_date,
+    member_id, member_username, id, created_at,
+    SUM(order_amount) AS total_order_amount,
+    SUM(paid_amount) AS total_paid_amount,
+    CASE
+        WHEN pay_type = 1006 THEN '好博-MPay支付-MPay代收'
+        ELSE pay_type
+    END AS '支付方式',
+    pay_channel, order_status
+FROM finance_pay_records
+
+WHERE member_id IN (
+    SELECT member_id
+    FROM finance_pay_records
+    GROUP BY member_id
+    HAVING SUM(order_amount) > 0
+        AND DATE(created_at) >= '2024-05-29'
+)
+AND created_at > '2024-05-1 20:00:00'
+AND created_at < '2024-12-29 00:10:00'
+
+GROUP BY created_date, member_id, member_username, id, created_at, pay_channel, order_status
+ORDER BY created_at ASC, total_order_amount ASC
+LIMIT 20 OFFSET 0;
