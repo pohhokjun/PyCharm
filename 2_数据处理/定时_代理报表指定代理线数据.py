@@ -7,7 +7,7 @@ import pandas as pd
 import datetime
 import time
 
-folder_path = 'C:/Users/USER/Desktop/定时注单导出/长风代理定时数据/'
+folder_path = 'C:\Henvita\1_定时注单导出\代理定时数据'
 
 def export_data_from_database():
     connection = pymysql.connect(

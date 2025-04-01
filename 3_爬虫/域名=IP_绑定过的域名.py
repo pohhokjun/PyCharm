@@ -27,8 +27,7 @@ logging.basicConfig(
 
 # **批量输入域名**
 DOMAIN_INPUT = """
-www.cdxnck.com
-www.zhjuli.com
+wmihealth.com
 """
 domains = [d.strip() for d in DOMAIN_INPUT.split('\n') if d.strip()]
 
@@ -71,7 +70,7 @@ def get_ip_by_ping(domain):
     return None
 
 
-# **解析域名IP（优先 Ping 获取 IP，扩展前后 5 个）**
+# **解析域名IP（优先 Ping 获取 IP，扩展前后 50 个）**
 def resolve_domain_ip(domain):
     ip = None
     try:
@@ -85,7 +84,7 @@ def resolve_domain_ip(domain):
         if len(base_parts) == 4:
             base_prefix = ".".join(base_parts[:3])
             base_num = int(base_parts[3])
-            expanded_ips = [f"{base_prefix}.{i}" for i in range(base_num - 5, base_num + 6) if 0 <= i <= 255]
+            expanded_ips = [f"{base_prefix}.{i}" for i in range(base_num - 50, base_num + 51) if 0 <= i <= 255]
         else:
             expanded_ips = [ip]
         logging.info(f"{domain} -> {expanded_ips}")

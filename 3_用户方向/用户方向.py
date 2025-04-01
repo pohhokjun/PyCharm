@@ -19,8 +19,8 @@ import os
 # 域名列表
 domains = """
 https://m.micro-maker.com/
-https://m.doyo.cn/
 http://www.aierxingz.com/
+https://www.bet365.com/
 https://1xbetind.in/
 https://www.bet365.com/
 https://www.ruimeidachuju.com/
