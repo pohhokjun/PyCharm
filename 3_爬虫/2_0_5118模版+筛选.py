@@ -9,6 +9,7 @@ import whois
 import datetime
 from tqdm import tqdm
 from openpyxl import load_workbook
+from multiprocessing import Pool
 
 
 def detect_encoding(byte_data):
@@ -83,26 +84,18 @@ def get_domain_last_updated(url):
         domain = url.split("//")[-1].split("/")[0]
         domain_info = whois.whois(domain)
         if isinstance(domain_info.updated_date, list):
-            return domain_info.updated_date[0].strftime('%Y-%m-%d %H:%M') if domain_info.updated_date else "无更新时间"
-        return domain_info.updated_date.strftime('%Y-%m-%d %H:%M') if domain_info.updated_date else "无更新时间"
+            return domain_info.updated_date[0].strftime('%Y-%m-%d %H:%M') if domain_info.updated_date else None
+        return domain_info.updated_date.strftime('%Y-%m-%d %H:%M') if domain_info.updated_date else None
     except Exception as e:
-        return f"查询失败: {e}"
+        return None
 
 
-def excel_out_oversize(df, file_name):
-    """每处理5个域名保存一次Excel，后续以追加写入方式"""
-    subsets = [df.iloc[i:i + 5] for i in range(0, len(df), 5)]
-
-    # 首次写入，创建文件
-    with pd.ExcelWriter(file_name, engine='xlsxwriter') as writer:
-        subsets[0].to_excel(writer, sheet_name='Sheet1', index=False)
-        print(f"已保存数据到 Excel 文件: {file_name}")
-
-    # 追加写入后续数据
-    for i, subset in enumerate(subsets[1:], start=2):
-        with pd.ExcelWriter(file_name, engine='openpyxl', mode='a', if_sheet_exists='overlay') as writer:
-            subset.to_excel(writer, sheet_name='Sheet1', startrow=(i - 1) * 5 + 1, index=False, header=False)
-            print(f"已保存数据到 Excel 文件: {file_name}")
+def process_row(row):
+    """处理单行数据"""
+    row_data = row.to_frame().T
+    row_data['响应式检测'] = check_responsive(row['网站名称'])
+    row_data['域名更新时间'] = get_domain_last_updated(row['网站名称'])
+    return row_data
 
 
 if __name__ == '__main__':
@@ -129,26 +122,15 @@ if __name__ == '__main__':
         data = pd.concat([data1, data2, data3], ignore_index=True)
         data['网站名称'] = data['网站名称'].apply(lambda x: left_trip(x, 'm.') if isinstance(x, str) else x)
 
-        # 添加响应式检测和域名更新时间列，每5个保存一次
-        processed_data = pd.DataFrame()
-        for index, row in tqdm(data.iterrows(), total=data.shape[0], desc="处理进度"):
-            row_data = row.to_frame().T
-            row_data['响应式检测'] = check_responsive(row['网站名称'])
-            row_data['域名更新时间'] = get_domain_last_updated(row['网站名称'])
-            processed_data = pd.concat([processed_data, row_data], ignore_index=True)
-            print(f"已处理域名：{row['网站名称']}")
+        # 使用 multiprocessing 处理数据
+        with Pool() as pool:
+            results = list(tqdm(pool.imap(process_row, [row for _, row in data.iterrows()]), total=len(data), desc="处理进度"))
+        processed_data = pd.concat(results, ignore_index=True)
 
-            # 每5个保存一次
-            if (index + 1) % 5 == 0 or (index + 1) == len(data):
-                if index + 1 == 5:  # 首次保存
-                    with pd.ExcelWriter(output_path, engine='xlsxwriter') as writer:
-                        processed_data.to_excel(writer, sheet_name='Sheet1', index=False)
-                        print(f"已保存数据到 Excel 文件: {output_path}")
-                else:  # 追加写入
-                    with pd.ExcelWriter(output_path, engine='openpyxl', mode='a', if_sheet_exists='overlay') as writer:
-                        processed_data.tail(5 if len(processed_data) >= 5 else len(processed_data)).to_excel(
-                            writer, sheet_name='Sheet1', startrow=(index // 5) * 5 + 1, index=False, header=False)
-                        print(f"已保存数据到 Excel 文件: {output_path}")
+        # 保存数据到 Excel
+        with pd.ExcelWriter(output_path, engine='xlsxwriter') as writer:
+            processed_data.to_excel(writer, sheet_name='Sheet1', index=False)
+        print(f"已保存数据到 Excel 文件: {output_path}")
 
         # 打印结果
         print(processed_data)
