@@ -125,6 +125,31 @@ def query_ip_domains(ip):
         return ["查询失败"]
 
 
+# **抓取页面的 title、keywords 和 description**
+def get_meta_info(domain):
+    try:
+        url = f"http://{domain}"
+        logging.info(f"获取页面信息: {url}")
+
+        driver.get(url)
+        WebDriverWait(driver, 10).until(EC.presence_of_element_located((By.TAG_NAME, "head")))
+
+        html = driver.page_source
+        soup = BeautifulSoup(html, 'html.parser')
+
+        title = soup.title.string.strip() if soup.title else "无标题"
+        keywords = soup.find('meta', attrs={'name': 'keywords'})
+        keywords = keywords['content'].strip() if keywords else "无关键词"
+        description = soup.find('meta', attrs={'name': 'description'})
+        description = description['content'].strip() if description else "无描述"
+
+        logging.info(f"{domain} - title: {title}, keywords: {keywords}, description: {description}")
+        return title, keywords, description
+    except Exception as e:
+        logging.error(f"抓取 {domain} 信息失败: {e}")
+        return "抓取失败", "抓取失败", "抓取失败"
+
+
 # **保存到 Excel**
 def save_to_excel(data, filename):
     try:
@@ -150,22 +175,32 @@ for i, domain in enumerate(domains, start=1):
     for ip in ips:
         bound_domains = query_ip_domains(ip) if ip != "解析失败" else ["无法查询: IP解析失败"]
 
-        result = {
-            "域名": domain,
-            "IP": ip,
-            "绑定域名": bound_domains
-        }
-        results.append(result)
+        for bound_domain in bound_domains:
+            # 获取绑定域名的 title、keywords 和 description 信息
+            title, keywords, description = get_meta_info(bound_domain)
 
-        # **打印当前结果**
-        print(f"已完成 {i}/{len(domains)}, IP: {ip}")
-        print(f"  域名: {domain}")
-        print(f"  IP: {ip}")
-        print(f"  绑定域名: {', '.join(bound_domains)}")
+            result = {
+                "域名": domain,
+                "IP": ip,
+                "绑定域名": bound_domain,
+                "Title": title,
+                "Keywords": keywords,
+                "Description": description
+            }
+            results.append(result)
 
-        # **立即保存到 Excel**
-        save_to_excel([result], excel_filename)
-        print(f"已保存 Excel: {excel_filename}")
+            # **打印当前结果**
+            print(f"已完成 {i}/{len(domains)}, IP: {ip}")
+            print(f"  域名: {domain}")
+            print(f"  IP: {ip}")
+            print(f"  绑定域名: {bound_domain}")
+            print(f"  Title: {title}")
+            print(f"  Keywords: {keywords}")
+            print(f"  Description: {description}")
+
+            # **立即保存到 Excel**
+            save_to_excel([result], excel_filename)
+            print(f"已保存 Excel: {excel_filename}")
 
 # **关闭全局 driver**
 driver.quit()

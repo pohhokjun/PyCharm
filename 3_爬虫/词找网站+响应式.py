@@ -25,7 +25,7 @@ schools = """
 
 # 获取当前时间（精确到分钟），格式化 Excel 文件名
 current_time = datetime.now().strftime("%Y%m%d_%H%M")
-excel_filename = f"学校官网_{current_time}.xlsx"
+excel_filename = f"词找网站+响应式_{current_time}.xlsx"
 
 # 配置 Selenium
 chrome_options = Options()
@@ -37,7 +37,7 @@ chrome_options.add_argument("--no-sandbox")
 service = Service(ChromeDriverManager().install())
 driver = webdriver.Chrome(service=service, options=chrome_options)
 
-# 存储学校官网结果
+# 存储官网结果
 data_list = []
 
 
@@ -132,4 +132,4 @@ df["响应式检测"] = df["官网"].apply(check_responsive)
 
 # 保存到 Excel
 df.to_excel(excel_filename, index=False)
-print(f"已更新 {excel_filename}，包含学校官网和响应式检测结果。")
+print(f"已更新 {excel_filename}，包含官网和响应式检测结果。")
