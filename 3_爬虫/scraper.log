@@ -1,0 +1,64 @@
+2025-04-03 17:35:04,938 - INFO - 初始化浏览器（禁用 JavaScript）...
+2025-04-03 17:35:16,945 - INFO - patching driver executable C:\Users\Administrator\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2025-04-03 17:35:18,903 - ERROR - 浏览器相关错误: Message: session not created: cannot connect to chrome at 127.0.0.1:49750
+from session not created: This version of ChromeDriver only supports Chrome version 135
+Current browser version is 134.0.6998.179
+Stacktrace:
+	GetHandleVerifier [0x00905413+60691]
+	GetHandleVerifier [0x00905454+60756]
+	(No symbol) [0x00730693]
+	(No symbol) [0x00769E1B]
+	(No symbol) [0x00768E39]
+	(No symbol) [0x0075F5AF]
+	(No symbol) [0x0075F3E6]
+	(No symbol) [0x007A8DE1]
+	(No symbol) [0x007A87AA]
+	(No symbol) [0x0079CE56]
+	(No symbol) [0x0076C5F3]
+	(No symbol) [0x0076D444]
+	GetHandleVerifier [0x00B4BBC3+2446531]
+	GetHandleVerifier [0x00B47198+2427544]
+	GetHandleVerifier [0x00B62D5E+2541150]
+	GetHandleVerifier [0x0091C3C5+154821]
+	GetHandleVerifier [0x00922BED+181485]
+	GetHandleVerifier [0x0090CC48+91464]
+	GetHandleVerifier [0x0090CDF0+91888]
+	GetHandleVerifier [0x008F7980+4736]
+	BaseThreadInitThunk [0x76DFFCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x77CB80CE+286]
+	RtlGetAppContainerNamedObjectPath [0x77CB809E+238]
+
+2025-04-03 17:35:18,903 - WARNING - 禁用 JavaScript 的浏览器未成功初始化，跳过关闭
+2025-04-03 17:35:18,904 - WARNING - 启用 JavaScript 的浏览器未成功初始化，跳过关闭
+2025-04-03 17:35:55,813 - INFO - 初始化浏览器（禁用 JavaScript）...
+2025-04-03 17:36:02,038 - INFO - patching driver executable C:\Users\Administrator\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2025-04-03 17:36:03,535 - ERROR - 浏览器相关错误: Message: session not created: cannot connect to chrome at 127.0.0.1:49889
+from session not created: This version of ChromeDriver only supports Chrome version 135
+Current browser version is 134.0.6998.179
+Stacktrace:
+	GetHandleVerifier [0x003F5413+60691]
+	GetHandleVerifier [0x003F5454+60756]
+	(No symbol) [0x00220693]
+	(No symbol) [0x00259E1B]
+	(No symbol) [0x00258E39]
+	(No symbol) [0x0024F5AF]
+	(No symbol) [0x0024F3E6]
+	(No symbol) [0x00298DE1]
+	(No symbol) [0x002987AA]
+	(No symbol) [0x0028CE56]
+	(No symbol) [0x0025C5F3]
+	(No symbol) [0x0025D444]
+	GetHandleVerifier [0x0063BBC3+2446531]
+	GetHandleVerifier [0x00637198+2427544]
+	GetHandleVerifier [0x00652D5E+2541150]
+	GetHandleVerifier [0x0040C3C5+154821]
+	GetHandleVerifier [0x00412BED+181485]
+	GetHandleVerifier [0x003FCC48+91464]
+	GetHandleVerifier [0x003FCDF0+91888]
+	GetHandleVerifier [0x003E7980+4736]
+	BaseThreadInitThunk [0x76DFFCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x77CB80CE+286]
+	RtlGetAppContainerNamedObjectPath [0x77CB809E+238]
+
+2025-04-03 17:36:03,536 - WARNING - 禁用 JavaScript 的浏览器未成功初始化，跳过关闭
+2025-04-03 17:36:03,536 - WARNING - 启用 JavaScript 的浏览器未成功初始化，跳过关闭

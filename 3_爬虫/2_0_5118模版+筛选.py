@@ -10,6 +10,8 @@ import datetime
 from tqdm import tqdm
 from openpyxl import load_workbook
 from multiprocessing import Pool
+from pytrends.request import TrendReq
+from openpyxl.utils import get_column_letter
 
 
 def detect_encoding(byte_data):
@@ -84,10 +86,21 @@ def get_domain_last_updated(url):
         domain = url.split("//")[-1].split("/")[0]
         domain_info = whois.whois(domain)
         if isinstance(domain_info.updated_date, list):
-            return domain_info.updated_date[0].strftime('%Y-%m-%d %H:%M') if domain_info.updated_date else None
-        return domain_info.updated_date.strftime('%Y-%m-%d %H:%M') if domain_info.updated_date else None
+            return domain_info.updated_date[0] if domain_info.updated_date else None
+        return domain_info.updated_date if domain_info.updated_date else None
     except Exception as e:
         return None
+
+
+def get_brand_terms(website_name):
+    """获取网站名称的品牌词数据，基于域名推断"""
+    try:
+        # 从网站名称中提取核心品牌词（假设是域名部分）
+        domain = website_name.split("//")[-1].split("/")[0] if "//" in website_name else website_name
+        brand = domain.split('.')[0].replace('www', '').strip()  # 移除 'www' 和多余字符
+        return brand if brand else "未识别品牌词"
+    except Exception as e:
+        return f"品牌词提取失败: {e}"
 
 
 def process_row(row):
@@ -95,13 +108,34 @@ def process_row(row):
     row_data = row.to_frame().T
     row_data['响应式检测'] = check_responsive(row['网站名称'])
     row_data['域名更新时间'] = get_domain_last_updated(row['网站名称'])
+    row_data['品牌词数据'] = get_brand_terms(row['网站名称'])
     return row_data
+
+
+def save_to_excel(df, output_path, append=False):
+    """保存或追加数据到 Excel，冻结首行并设置筛选"""
+    if append and os.path.exists(output_path):
+        book = load_workbook(output_path)
+        writer = pd.ExcelWriter(output_path, engine='openpyxl', mode='a', if_sheet_exists='overlay')
+        df.to_excel(writer, sheet_name='Sheet1', startrow=book['Sheet1'].max_row, index=False, header=False)
+        writer.close()
+    else:
+        with pd.ExcelWriter(output_path, engine='openpyxl') as writer:
+            df.to_excel(writer, sheet_name='Sheet1', index=False)
+            ws = writer.sheets['Sheet1']
+            ws.freeze_panes = 'A2'  # 冻结首行
+            ws.auto_filter.ref = ws.dimensions  # 设置筛选
+            # 设置“域名更新时间”列为日期格式
+            col_idx = df.columns.get_loc('域名更新时间') + 1
+            col_letter = get_column_letter(col_idx)
+            for row in range(2, ws.max_row + 1):
+                ws[f'{col_letter}{row}'].number_format = 'YYYY-MM-DD'
 
 
 if __name__ == '__main__':
     folder_path = r"C:\Henvita\域名包"  # 你的 ZIP 文件所在路径
-    script_name = os.path.splitext(os.path.basename(__file__))[0]  # 获取脚本名称
-    output_path = f"{script_name}_{datetime.datetime.now().strftime('%Y-%m-%d %H%M')}.xlsx"  # Excel 文件名
+    script_name = os.path.splitext(os.path.basename(__file__))[0]
+    output_path = f"{script_name}_{datetime.datetime.now().strftime('%Y-%m-%d_%H.%M')}.xlsx"
 
     start_time = datetime.datetime.now()
     print(f"运行开始时间: {start_time.strftime('%Y-%m-%d %H:%M')}")
@@ -122,18 +156,19 @@ if __name__ == '__main__':
         data = pd.concat([data1, data2, data3], ignore_index=True)
         data['网站名称'] = data['网站名称'].apply(lambda x: left_trip(x, 'm.') if isinstance(x, str) else x)
 
-        # 使用 multiprocessing 处理数据
-        with Pool() as pool:
-            results = list(tqdm(pool.imap(process_row, [row for _, row in data.iterrows()]), total=len(data), desc="处理进度"))
-        processed_data = pd.concat(results, ignore_index=True)
+        # 分批处理并保存
+        processed_data = pd.DataFrame()
+        total_rows = len(data)
+        for i, row in enumerate(tqdm(data.iterrows(), total=total_rows, desc="处理进度")):
+            result = process_row(row[1])
+            processed_data = pd.concat([processed_data, result], ignore_index=True)
 
-        # 保存数据到 Excel
-        with pd.ExcelWriter(output_path, engine='xlsxwriter') as writer:
-            processed_data.to_excel(writer, sheet_name='Sheet1', index=False)
-        print(f"已保存数据到 Excel 文件: {output_path}")
-
-        # 打印结果
-        print(processed_data)
+            # 每处理5个或最后一行时打印并保存
+            if (i + 1) % 5 == 0 or i == total_rows - 1:
+                print(f"\n已处理 {i + 1}/{total_rows} 条数据:")
+                print(processed_data.tail(5 if i + 1 >= 5 else i + 1))
+                save_to_excel(processed_data, output_path, append=(i + 1) > 5)
+                processed_data = pd.DataFrame()  # 清空已保存的数据
 
     end_time = datetime.datetime.now()
     print(f"运行结束时间: {end_time.strftime('%Y-%m-%d %H:%M')}")

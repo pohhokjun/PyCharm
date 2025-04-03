@@ -3,18 +3,14 @@ import time
 import random
 from fake_useragent import UserAgent
 from bs4 import BeautifulSoup
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.keys import Keys
-from selenium.common.exceptions import TimeoutException, WebDriverException
-import undetected_chromedriver as uc
+from playwright.async_api import async_playwright
 import pandas as pd
 from tabulate import tabulate
 from datetime import datetime
 import tldextract
 import re
 import os
+import asyncio
 
 # 域名列表
 domains = """
@@ -29,7 +25,6 @@ https://www.ruimeidachuju.com/
 # 关键词列表
 keywords = """
 菠菜导航
-博彩sports入口
 博彩sports平台
 """
 
@@ -48,32 +43,18 @@ logger = logging.getLogger(__name__)
 ua = UserAgent()
 
 
-# 设置 Chrome 选项
-def get_chrome_options():
-    options = uc.ChromeOptions()
-    options.add_argument("--no-sandbox")
-    options.add_argument("--disable-dev-shm-usage")
-    options.add_argument("--disable-blink-features=AutomationControlled")
-    options.add_argument(f"user-agent={ua.random}")
-    options.add_argument("--disable-gpu")
-    options.add_argument("--window-size=1920,1080")
-    options.add_argument("--disable-extensions")
-    return options
-
-
 # 获取域名数据
-def get_domain_data(driver, domain):
+async def get_domain_data(page, domain):
     try:
         # 确保域名格式正确
         if not domain.startswith(('http://', 'https://')):
             url = f"https://{domain}"
         else:
             url = domain.rstrip('/')  # 仅移除末尾斜杠
-        driver.get(url)
-        wait = WebDriverWait(driver, 15)
-        wait.until(EC.presence_of_element_located((By.TAG_NAME, "body")))
-        time.sleep(random.uniform(1, 3))
-        soup = BeautifulSoup(driver.page_source, "html.parser")
+        await page.goto(url, timeout=15000)
+        await page.wait_for_selector("body", timeout=15000)
+        await asyncio.sleep(random.uniform(1, 3))
+        soup = BeautifulSoup(await page.content(), "html.parser")
         page_text = soup.get_text()
         content_length = len(page_text)
         link_count = min(len(re.findall(r'http[s]?://', page_text)), 50)
@@ -85,34 +66,30 @@ def get_domain_data(driver, domain):
 
 
 # 获取关键词搜索结果数据
-def get_keyword_data(driver, keyword, max_retries=3):
+async def get_keyword_data(page, keyword, max_retries=3):
     for attempt in range(max_retries):
         try:
-            driver.get("https://m.baidu.com/")
-            wait = WebDriverWait(driver, 15)
-            time.sleep(random.uniform(2, 5))
+            await page.goto("https://m.baidu.com/", timeout=15000)
+            await asyncio.sleep(random.uniform(2, 5))
 
-            current_url = driver.current_url
+            current_url = page.url
             if "passport" in current_url or "login" in current_url.lower():
                 logger.warning(f"第 {attempt + 1} 次尝试：检测到登录页面 {current_url}，重试...")
-                driver.delete_all_cookies()
-                time.sleep(random.uniform(3, 6))
+                await page.context.clear_cookies()
+                await asyncio.sleep(random.uniform(3, 6))
                 continue
 
-            driver.execute_script("window.scrollTo(0, 200);")
-            time.sleep(random.uniform(0.5, 1.5))
+            await page.evaluate("window.scrollTo(0, 200);")
+            await asyncio.sleep(random.uniform(0.5, 1.5))
 
-            search_box = wait.until(EC.presence_of_element_located((By.ID, "index-kw")))
-            search_box.clear()
-            for char in keyword:
-                search_box.send_keys(char)
-                time.sleep(random.uniform(0.1, 0.3))
-            search_box.send_keys(Keys.ENTER)
+            await page.fill("#index-kw", keyword)
+            await asyncio.sleep(random.uniform(0.1, 0.3) * len(keyword))
+            await page.press("#index-kw", "Enter")
 
-            wait.until(EC.presence_of_element_located((By.TAG_NAME, "body")))
-            driver.execute_script("window.scrollTo(0, document.body.scrollHeight);")
-            time.sleep(random.uniform(2, 4))
-            soup = BeautifulSoup(driver.page_source, "html.parser")
+            await page.wait_for_selector("body", timeout=15000)
+            await page.evaluate("window.scrollTo(0, document.body.scrollHeight);")
+            await asyncio.sleep(random.uniform(2, 4))
+            soup = BeautifulSoup(await page.content(), "html.parser")
 
             # 增强相关关键词解析鲁棒性
             related_keywords = []
@@ -143,9 +120,9 @@ def get_keyword_data(driver, keyword, max_retries=3):
                     extracted = tldextract.extract(link["href"])
                     domain = f"{extracted.domain}.{extracted.suffix}"
                     unique_domains.add(domain)
-                    driver.get(link["href"])
-                    wait.until(EC.presence_of_element_located((By.TAG_NAME, "body")))
-                    link_soup = BeautifulSoup(driver.page_source, "html.parser")
+                    await page.goto(link["href"], timeout=15000)
+                    await page.wait_for_selector("body", timeout=15000)
+                    link_soup = BeautifulSoup(await page.content(), "html.parser")
                     page_text = link_soup.get_text()
                     content_length = len(page_text)
                     total_content_length += content_length
@@ -164,12 +141,9 @@ def get_keyword_data(driver, keyword, max_retries=3):
             return total_content_length, total_link_count, known_domains_count, related_keywords, len(
                 unique_domains), first_content_length, first_link_count, top_10_links
 
-        except TimeoutException:
-            logger.error(f"关键词 {keyword} 第 {attempt + 1} 次尝试超时，重试...")
-            time.sleep(random.uniform(3, 6))
         except Exception as e:
             logger.error(f"关键词 {keyword} 第 {attempt + 1} 次尝试失败: {e}")
-            time.sleep(random.uniform(3, 6))
+            await asyncio.sleep(random.uniform(3, 6))
 
     logger.error(f"关键词 {keyword} 重试 {max_retries} 次后仍失败，跳过")
     return 0, 0, 0, [], 0, 0, 0, []
@@ -182,9 +156,9 @@ def calculate_uci(cf, lf, df, uf):
 
 
 # 处理关键词
-def process_keyword(driver, keyword):
-    total_content_length, total_link_count, known_domains_count, related_keywords, ucs, first_content_length, first_link_count, top_10_links = get_keyword_data(
-        driver, keyword)
+async def process_keyword(page, keyword):
+    total_content_length, total_link_count, known_domains_count, related_keywords, ucs, first_content_length, first_link_count, top_10_links = await get_keyword_data(
+        page, keyword)
     avg_content_length = total_content_length / 10 if total_content_length else 0
     avg_link_count = total_link_count / 10 if total_link_count else 0
 
@@ -211,8 +185,8 @@ def process_keyword(driver, keyword):
 
 
 # 处理域名
-def process_domain(driver, domain):
-    content_length, link_count = get_domain_data(driver, domain)
+async def process_domain(page, domain):
+    content_length, link_count = await get_domain_data(page, domain)
 
     cf = (content_length / 10000) * 100
     cf = min(100, cf)
@@ -227,7 +201,6 @@ def process_domain(driver, domain):
     return {
         "域名": domain,
         "UCI": uci,
-        "排名第一的网址": domain if domain.startswith(('http://', 'https://')) else f"https://{domain}"
     }
 
 
@@ -238,9 +211,17 @@ def save_to_excel(filename, keyword_results, domain_results, append=True):
             # 首次写入，创建新文件
             with pd.ExcelWriter(filename, engine='openpyxl') as writer:
                 if keyword_results:
-                    pd.DataFrame(keyword_results).to_excel(writer, sheet_name='Sheet1', index=False)
+                    df_keywords = pd.DataFrame(keyword_results)
+                    df_keywords.to_excel(writer, sheet_name='Sheet1', index=False)
+                    worksheet = writer.sheets['Sheet1']
+                    worksheet.freeze_panes = 'A2'  # 冻结首行
+                    worksheet.auto_filter.ref = "A1:" + chr(64 + len(df_keywords.columns)) + str(len(df_keywords) + 1)  # 设置筛选器
                 if domain_results:
-                    pd.DataFrame(domain_results).to_excel(writer, sheet_name='Sheet2', index=False)
+                    df_domains = pd.DataFrame(domain_results)
+                    df_domains.to_excel(writer, sheet_name='Sheet2', index=False)
+                    worksheet = writer.sheets['Sheet2']
+                    worksheet.freeze_panes = 'A2'  # 冻结首行
+                    worksheet.auto_filter.ref = "A1:" + chr(64 + len(df_domains.columns)) + str(len(df_domains) + 1)  # 设置筛选器
         else:
             # 追加写入
             with pd.ExcelWriter(filename, engine='openpyxl', mode='a', if_sheet_exists='overlay') as writer:
@@ -251,6 +232,10 @@ def save_to_excel(filename, keyword_results, domain_results, append=True):
                     updated_keywords = pd.concat([existing_keywords, df_keywords]).drop_duplicates(subset=['关键词'],
                                                                                                    keep='last')
                     updated_keywords.to_excel(writer, sheet_name='Sheet1', index=False)
+                    worksheet = writer.sheets['Sheet1']
+                    worksheet.freeze_panes = 'A2'  # 冻结首行
+                    worksheet.auto_filter.ref = "A1:" + chr(64 + len(updated_keywords.columns)) + str(
+                        len(updated_keywords) + 1)  # 设置筛选器
                 if domain_results:
                     existing_domains = pd.read_excel(filename, sheet_name='Sheet2') if 'Sheet2' in pd.ExcelFile(
                         filename).sheet_names else pd.DataFrame()
@@ -258,82 +243,85 @@ def save_to_excel(filename, keyword_results, domain_results, append=True):
                     updated_domains = pd.concat([existing_domains, df_domains]).drop_duplicates(subset=['域名'],
                                                                                                 keep='last')
                     updated_domains.to_excel(writer, sheet_name='Sheet2', index=False)
+                    worksheet = writer.sheets['Sheet2']
+                    worksheet.freeze_panes = 'A2'  # 冻结首行
+                    worksheet.auto_filter.ref = "A1:" + chr(64 + len(updated_domains.columns)) + str(
+                        len(updated_domains) + 1)  # 设置筛选器
         logger.info(f"结果已保存/追加到 {filename}")
     except Exception as e:
         logger.error(f"保存 Excel 失败: {e}")
 
 
 # 主程序
-def main():
-    logger.info("程序启动")
-    driver = None
+async def main():
+    start_time = datetime.now().strftime("%Y-%m-%d %H:%M")
+    logger.info(f"程序启动 - {start_time}")
+    keyword_results = []
+    domain_results = []
+    batch_size = 5
 
     try:
-        driver = uc.Chrome(options=get_chrome_options())
-        logger.info("浏览器初始化完成")
+        async with async_playwright() as p:
+            browser = await p.chromium.launch()
+            context = await browser.new_context(user_agent=ua.random)
+            page = await context.new_page()
 
-        # 仅移除末尾斜杠，保留协议
-        domain_list = [line.strip().rstrip('/') for line in domains.splitlines() if line.strip()]
-        keyword_list = [line.strip() for line in keywords.splitlines() if line.strip()]
+            # 仅移除末尾斜杠，保留协议
+            domain_list = [line.strip().rstrip('/') for line in domains.splitlines() if line.strip()]
+            keyword_list = [line.strip() for line in keywords.splitlines() if line.strip()]
 
-        if not domain_list or not keyword_list:
-            logger.error("域名或关键词列表为空，程序退出")
-            return
+            if not domain_list or not keyword_list:
+                logger.error("域名或关键词列表为空，程序退出")
+                return
 
-        current_time = datetime.now().strftime("%Y%m%d_%H%M")
-        filename = f"combined_uci_{current_time}.xlsx"
+            current_time = datetime.now().strftime("%Y%m%d_%H%M")
+            filename = f"combined_uci_{current_time}.xlsx"
 
-        keyword_results = []
-        domain_results = []
-        batch_size = 5
+            # 处理关键词
+            for i, keyword in enumerate(keyword_list):
+                logger.info(f"正在处理关键词 {keyword}")
+                result = await process_keyword(page, keyword)
+                keyword_results.append(result)
 
-        # 处理关键词
-        for i, keyword in enumerate(keyword_list):
-            logger.info(f"正在处理关键词 {keyword}")
-            result = process_keyword(driver, keyword)
-            keyword_results.append(result)
+                if (i + 1) % batch_size == 0 or (i + 1) == len(keyword_list):
+                    save_to_excel(filename, keyword_results, [], append=(i >= batch_size))
+                    keyword_results = []
+                    logger.info(f"已处理 {i + 1} 个关键词，保存批次")
+                await asyncio.sleep(random.uniform(3, 6))
 
-            if (i + 1) % batch_size == 0 or (i + 1) == len(keyword_list):
-                save_to_excel(filename, keyword_results, [], append=(i >= batch_size))
-                keyword_results = []
-                logger.info(f"已处理 {i + 1} 个关键词，保存批次")
-            time.sleep(random.uniform(3, 6))
+            # 处理域名
+            for i, domain in enumerate(domain_list):
+                logger.info(f"正在处理域名 {domain}")
+                result = await process_domain(page, domain)
+                domain_results.append(result)
 
-        # 处理域名
-        for i, domain in enumerate(domain_list):
-            logger.info(f"正在处理域名 {domain}")
-            result = process_domain(driver, domain)
-            domain_results.append(result)
+                if (i + 1) % batch_size == 0 or (i + 1) == len(domain_list):
+                    save_to_excel(filename, [], domain_results, append=True)
+                    domain_results = []
+                    logger.info(f"已处理 {i + 1} 个域名，保存批次")
+                await asyncio.sleep(random.uniform(3, 6))
 
-            if (i + 1) % batch_size == 0 or (i + 1) == len(domain_list):
-                save_to_excel(filename, [], domain_results, append=True)
-                domain_results = []
-                logger.info(f"已处理 {i + 1} 个域名，保存批次")
-            time.sleep(random.uniform(3, 6))
+            # 打印最终结果
+            if os.path.exists(filename):
+                print("\n关键词 UCI (Sheet1):")
+                df_keywords = pd.read_excel(filename, sheet_name='Sheet1')
+                print(tabulate(df_keywords, headers="keys", tablefmt="grid", showindex=False))
+                print("\n域名 UCI (Sheet2):")
+                df_domains = pd.read_excel(filename, sheet_name='Sheet2')
+                print(tabulate(df_domains, headers="keys", tablefmt="grid", showindex=False))
 
-        # 打印最终结果
-        if os.path.exists(filename):
-            print("\n关键词 UCI (Sheet1):")
-            df_keywords = pd.read_excel(filename, sheet_name='Sheet1')
-            print(tabulate(df_keywords, headers="keys", tablefmt="grid", showindex=False))
-            print("\n域名 UCI (Sheet2):")
-            df_domains = pd.read_excel(filename, sheet_name='Sheet2')
-            print(tabulate(df_domains, headers="keys", tablefmt="grid", showindex=False))
+            await context.close()
+            await browser.close()
 
     except Exception as e:
         logger.error(f"程序运行出错: {e}")
         if keyword_results or domain_results:
             save_to_excel(filename, keyword_results, domain_results, append=True)
         raise
-    finally:
-        if driver:
-            try:
-                driver.quit()
-                time.sleep(1)  # 等待1秒确保资源释放
-                logger.info("浏览器已关闭")
-            except Exception as e:
-                logger.error(f"关闭浏览器时出错: {e}")
+
+    end_time = datetime.now().strftime("%Y-%m-%d %H:%M")
+    logger.info(f"程序结束 - {end_time}")
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())
