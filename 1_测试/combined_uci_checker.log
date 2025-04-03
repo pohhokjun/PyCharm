@@ -86,3 +86,51 @@ Call log:
 2025-04-03 19:54:56,532 - INFO - 结果已保存/追加到 combined_uci_20250403_1952.xlsx
 2025-04-03 19:54:56,532 - INFO - 已处理 6 个域名，保存批次
 2025-04-03 19:55:03,663 - INFO - 程序结束 - 2025-04-03 19:55
+2025-04-03 20:07:46,144 - INFO - 程序启动 - 2025-04-03 20:07
+2025-04-03 20:07:49,670 - INFO - 正在处理关键词 菠菜导航
+2025-04-03 20:08:15,981 - WARNING - 访问 https://m.baidu.com/?ref=www_ptl&ms=1&rsv_pq=11243693236510037216&ssid=0&amp;from=0&rsv_t=1f1fIl0asFc%2FPukIm7mbdt220bPfxf781%2BozSilyhy%2FSkWJQv5yL7w 失败: Page.goto: Timeout 15000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/?ref=www_ptl&ms=1&rsv_pq=11243693236510037216&ssid=0&amp;from=0&rsv_t=1f1fIl0asFc%2FPukIm7mbdt220bPfxf781%2BozSilyhy%2FSkWJQv5yL7w", waiting until "load"
+
+2025-04-03 20:08:15,981 - INFO - 关键词 菠菜导航 - 总内容长度: 0, 总外链数: 0, 知名域名数: 0, 独特域名数: 1, 第一名内容长度: 0, 第一名外链数: 0
+2025-04-03 20:08:21,334 - INFO - 正在处理关键词 博彩sports平台
+2025-04-03 20:08:55,928 - WARNING - 访问 https://m.baidu.com/?ref=www_ptl&ms=1&rsv_pq=11104784240719919553&from=0&amp;ssid=0&rsv_t=1a84%2BLljYYdttKWJaZueD870hO69ycKjm60C5jgINj5xCpBD3LQSvQ 失败: Page.goto: Timeout 15000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/?ref=www_ptl&ms=1&rsv_pq=11104784240719919553&from=0&amp;ssid=0&rsv_t=1a84%2BLljYYdttKWJaZueD870hO69ycKjm60C5jgINj5xCpBD3LQSvQ", waiting until "load"
+
+2025-04-03 20:09:15,657 - WARNING - 访问 https://m.baidu.com/s?word=%E5%8D%9A%E5%BD%A9sports%E5%B9%B3%E5%8F%B0&ref=www_iphone&ssid=0&from=0&bd_page_type=1&uid=0&pu=usm%400%2Csz%401320_220%2Cta%40iphone___24_133.0&sa=vs_tab 失败: Page.goto: Timeout 15000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/s?word=%E5%8D%9A%E5%BD%A9sports%E5%B9%B3%E5%8F%B0&ref=www_iphone&ssid=0&from=0&bd_page_type=1&uid=0&pu=usm%400%2Csz%401320_220%2Cta%40iphone___24_133.0&sa=vs_tab", waiting until "load"
+
+2025-04-03 20:09:30,670 - WARNING - 访问 https://m.baidu.com/from=0/bd_page_type=1/ssid=0/uid=0/pu=usm%400%2Csz%401320_220%2Cta%40iphone___24_133.0/baiduid=57347BDDEC6D5C55A4E6DFFCAF721590/w=0_10_/l=1/tc?ref=www_iphone&lid=11104784240719919553&ct=24&cst=23&pd=note&isAtom=1&is_baidu=1&tj=undefined_undefined_0_10_undefined1&wd=&eqid=9a1c1e6e677779c11000000667ee884f&w_qd=IlPT2AEptyoA_yk5wPoc6eobrwnJRb1nz5YYif7&bdver=2_1&tcplug=1&dict=-1&sec=2557&di=230bbc310ab2790d&bdenc=1&nsrc=mMQ82pJog0pERasoA4JVBIYEUI%2FlnSQuGdnt9yGrJTb6TCvzTbo%2FWYSjs5fDKsMHbobz9uQpBLZp%2BCeFhPM5aOYDUNLFioBlI8kiUzEu7S9Jok2Noh7e57hDuqRAAGRCzH45WO0rZn3AAcg%2FT45Wwi1LKyH7GU%2FLcR9fSjyJlg6ix%2FcGdgF%2FbtJjViTn7XaXC%2B0%2B4adZdsi6pbQFm0lr%2F1l4rIBZa8UP9eRoREEI5Jn2Kxg5fbxz0ZUE3AL%2FB%2Fb9uFZMtCQbuw5K2eTad%2BC%2BAjk%2B7dVMT3i3GqNxkE8oDHyFNMVU5g8cqbOexAGi%2BHbnYv8i25zqLBPelt5SHoaVL5R2FrozhFSbF7u0GCP7FHAtdt%2F5YR3sn%2F3DRLU5fCttyZulEljKOosxD%2BTbGJuCaA%3D%3D 失败: Page.goto: Timeout 15000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/from=0/bd_page_type=1/ssid=0/uid=0/pu=usm%400%2Csz%401320_220%2Cta%40iphone___24_133.0/baiduid=57347BDDEC6D5C55A4E6DFFCAF721590/w=0_10_/l=1/tc?ref=www_iphone&lid=11104784240719919553&ct=24&cst=23&pd=note&isAtom=1&is_baidu=1&tj=undefined_undefined_0_10_undefined1&wd=&eqid=9a1c1e6e677779c11000000667ee884f&w_qd=IlPT2AEptyoA_yk5wPoc6eobrwnJRb1nz5YYif7&bdver=2_1&tcplug=1&dict=-1&sec=2557&di=230bbc310ab2790d&bdenc=1&nsrc=mMQ82pJog0pERasoA4JVBIYEUI%2FlnSQuGdnt9yGrJTb6TCvzTbo%2FWYSjs5fDKsMHbobz9uQpBLZp%2BCeFhPM5aOYDUNLFioBlI8kiUzEu7S9Jok2Noh7e57hDuqRAAGRCzH45WO0rZn3AAcg%2FT45Wwi1LKyH7GU%2FLcR9fSjyJlg6ix%2FcGdgF%2FbtJjViTn7XaXC%2B0%2B4adZdsi6pbQFm0lr%2F1l4rIBZa8UP9eRoREEI5Jn2Kxg5fbxz0ZUE3AL%2FB%2Fb9uFZMtCQbuw5K2eTad%2BC%2BAjk%2B7dVMT3i3GqNxkE8oDHyFNMVU5g8cqbOexAGi%2BHbnYv8i25zqLBPelt5SHoaVL5R2FrozhFSbF7u0GCP7FHAtdt%2F5YR3sn%2F3DRLU5fCttyZulEljKOosxD%2BTbGJuCaA%3D%3D", waiting until "load"
+
+2025-04-03 20:09:34,926 - INFO - 关键词 博彩sports平台 - 总内容长度: 3817, 总外链数: 0, 知名域名数: 7, 独特域名数: 1, 第一名内容长度: 262, 第一名外链数: 0
+2025-04-03 20:09:35,151 - INFO - 结果已保存/追加到 combined_uci_20250403_2007.xlsx
+2025-04-03 20:09:35,151 - INFO - 已处理 2 个关键词，保存批次
+2025-04-03 20:09:38,597 - INFO - 正在处理域名 https://m.micro-maker.com
+2025-04-03 20:09:52,427 - INFO - 域名 https://m.micro-maker.com - 内容长度: 183662, 外链数: 0
+2025-04-03 20:09:52,427 - INFO - 域名 https://m.micro-maker.com - CF: 100, LF: 0.0, DF: 0, UF: 50, UCI: 45.0
+2025-04-03 20:09:56,920 - INFO - 正在处理域名 http://www.aierxingz.com
+2025-04-03 20:10:09,875 - INFO - 域名 http://www.aierxingz.com - 内容长度: 40, 外链数: 0
+2025-04-03 20:10:09,875 - INFO - 域名 http://www.aierxingz.com - CF: 0.4, LF: 0.0, DF: 0, UF: 50, UCI: 5.16
+2025-04-03 20:10:14,996 - INFO - 正在处理域名 https://www.bet365.com
+2025-04-03 20:10:17,880 - INFO - 域名 https://www.bet365.com - 内容长度: 810, 外链数: 0
+2025-04-03 20:10:17,880 - INFO - 域名 https://www.bet365.com - CF: 8.1, LF: 0.0, DF: 0, UF: 50, UCI: 8.24
+2025-04-03 20:10:23,094 - INFO - 正在处理域名 https://1xbetind.in
+2025-04-03 20:10:28,955 - INFO - 域名 https://1xbetind.in - 内容长度: 148, 外链数: 0
+2025-04-03 20:10:28,955 - INFO - 域名 https://1xbetind.in - CF: 1.48, LF: 0.0, DF: 0, UF: 50, UCI: 5.59
+2025-04-03 20:10:33,967 - INFO - 正在处理域名 https://www.bet365.com
+2025-04-03 20:10:37,415 - INFO - 域名 https://www.bet365.com - 内容长度: 810, 外链数: 0
+2025-04-03 20:10:37,415 - INFO - 域名 https://www.bet365.com - CF: 8.1, LF: 0.0, DF: 0, UF: 50, UCI: 8.24
+2025-04-03 20:10:37,449 - INFO - 结果已保存/追加到 combined_uci_20250403_2007.xlsx
+2025-04-03 20:10:37,450 - INFO - 已处理 5 个域名，保存批次
+2025-04-03 20:10:42,638 - INFO - 正在处理域名 https://www.ruimeidachuju.com
+2025-04-03 20:10:45,600 - INFO - 域名 https://www.ruimeidachuju.com - 内容长度: 4538, 外链数: 0
+2025-04-03 20:10:45,601 - INFO - 域名 https://www.ruimeidachuju.com - CF: 45.379999999999995, LF: 0.0, DF: 0, UF: 50, UCI: 23.15
+2025-04-03 20:10:45,623 - INFO - 结果已保存/追加到 combined_uci_20250403_2007.xlsx
+2025-04-03 20:10:45,623 - INFO - 已处理 6 个域名，保存批次
+2025-04-03 20:10:50,833 - INFO - 程序结束 - 2025-04-03 20:10
+2025-04-03 20:12:36,527 - INFO - 程序启动 - 2025-04-03 20:12
+2025-04-03 20:12:38,936 - INFO - 正在处理关键词 菠菜导航

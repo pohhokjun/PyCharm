@@ -1,0 +1,61 @@
+2025-04-03 20:16:20,585 - INFO - 程序启动
+2025-04-03 20:16:23,091 - INFO - patching driver executable C:\Users\Administrator\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2025-04-03 20:16:24,915 - ERROR - 程序运行出错: Message: session not created: cannot connect to chrome at 127.0.0.1:63046
+from session not created: This version of ChromeDriver only supports Chrome version 135
+Current browser version is 134.0.6998.179
+Stacktrace:
+	GetHandleVerifier [0x00345413+60691]
+	GetHandleVerifier [0x00345454+60756]
+	(No symbol) [0x00170693]
+	(No symbol) [0x001A9E1B]
+	(No symbol) [0x001A8E39]
+	(No symbol) [0x0019F5AF]
+	(No symbol) [0x0019F3E6]
+	(No symbol) [0x001E8DE1]
+	(No symbol) [0x001E87AA]
+	(No symbol) [0x001DCE56]
+	(No symbol) [0x001AC5F3]
+	(No symbol) [0x001AD444]
+	GetHandleVerifier [0x0058BBC3+2446531]
+	GetHandleVerifier [0x00587198+2427544]
+	GetHandleVerifier [0x005A2D5E+2541150]
+	GetHandleVerifier [0x0035C3C5+154821]
+	GetHandleVerifier [0x00362BED+181485]
+	GetHandleVerifier [0x0034CC48+91464]
+	GetHandleVerifier [0x0034CDF0+91888]
+	GetHandleVerifier [0x00337980+4736]
+	BaseThreadInitThunk [0x76DFFCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x77CB80CE+286]
+	RtlGetAppContainerNamedObjectPath [0x77CB809E+238]
+	(No symbol) [0x00000000]
+
+2025-04-03 20:17:13,681 - INFO - 程序启动
+2025-04-03 20:17:15,447 - INFO - patching driver executable C:\Users\Administrator\appdata\roaming\undetected_chromedriver\undetected_chromedriver.exe
+2025-04-03 20:17:16,945 - ERROR - 程序运行出错: Message: session not created: cannot connect to chrome at 127.0.0.1:63085
+from session not created: This version of ChromeDriver only supports Chrome version 135
+Current browser version is 134.0.6998.179
+Stacktrace:
+	GetHandleVerifier [0x00915413+60691]
+	GetHandleVerifier [0x00915454+60756]
+	(No symbol) [0x00740693]
+	(No symbol) [0x00779E1B]
+	(No symbol) [0x00778E39]
+	(No symbol) [0x0076F5AF]
+	(No symbol) [0x0076F3E6]
+	(No symbol) [0x007B8DE1]
+	(No symbol) [0x007B87AA]
+	(No symbol) [0x007ACE56]
+	(No symbol) [0x0077C5F3]
+	(No symbol) [0x0077D444]
+	GetHandleVerifier [0x00B5BBC3+2446531]
+	GetHandleVerifier [0x00B57198+2427544]
+	GetHandleVerifier [0x00B72D5E+2541150]
+	GetHandleVerifier [0x0092C3C5+154821]
+	GetHandleVerifier [0x00932BED+181485]
+	GetHandleVerifier [0x0091CC48+91464]
+	GetHandleVerifier [0x0091CDF0+91888]
+	GetHandleVerifier [0x00907980+4736]
+	BaseThreadInitThunk [0x76DFFCC9+25]
+	RtlGetAppContainerNamedObjectPath [0x77CB80CE+286]
+	RtlGetAppContainerNamedObjectPath [0x77CB809E+238]
+
