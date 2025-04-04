@@ -1,136 +1,653 @@
-2025-04-03 19:46:16,614 - INFO - 程序启动 - 2025-04-03 19:46
-2025-04-03 19:46:19,247 - INFO - 正在处理关键词 菠菜导航
-2025-04-03 19:46:36,276 - INFO - 搜索 菠菜导航 后的页面标题: 菠菜导航 - 百度
-2025-04-03 19:46:41,413 - WARNING - 链接 https://wappass.baidu.com/passport/?login&tpl=wimn&subpro=wimn&sms=1&regtype=1&u=https%3A%2F%2Fmbd.baidu.com%2Fwebpage%3Faction%3Dicard%26type%3Dsubscribe%26channel%3Dwise_home 重定向到登录页面 https://wappass.baidu.com/passport/?login&tpl=wimn&subpro=wimn&sms=1&regtype=1&u=https%3A%2F%2Fmbd.baidu.com%2Fwebpage%3Faction%3Dicard%26type%3Dsubscribe%26channel%3Dwise_home#/insert_account，跳过
-2025-04-03 19:46:42,870 - WARNING - 链接 https://wappass.baidu.com/passport/?login&tpl=wimn&subpro=wimn&sms=1&regtype=1&u=http%3A%2F%2Fmysearch.pae.baidu.com%2Fpage%2Ffav%3Faction%3Dr 重定向到登录页面 https://wappass.baidu.com/passport/?login&tpl=wimn&subpro=wimn&sms=1&regtype=1&u=http%3A%2F%2Fmysearch.pae.baidu.com%2Fpage%2Ffav%3Faction%3Dr#/insert_account，跳过
-2025-04-03 19:46:48,867 - WARNING - 链接 https://wappass.baidu.com/passport/?login&tpl=wise&subpro=wiseresult&u=https%3A%2F%2Fm.baidu.com%2Fs%3Fword%3D%25E8%258F%25A0%25E8%258F%259C%25E5%25AF%25BC%25E8%2588%25AA%26ts%3D0%26t_kt%3D0%26ie%3Dutf-8%26rsv_iqid%3D10041252946060248685%26rsv_t%3D11cdV0WC7pTpvtt4BQ9%25252FS3456P86jjC2e6AFtfPwnADfYk5VfDWfgQ%26sa%3Dib%26rsv_pq%3D10041252946060248685%26rsv_sug4%3D1743684388867%26inputT%3D1743684388875 重定向到登录页面 https://wappass.baidu.com/passport/?login&tpl=wise&subpro=wiseresult&u=https%3A%2F%2Fm.baidu.com%2Fs%3Fword%3D%25E8%258F%25A0%25E8%258F%259C%25E5%25AF%25BC%25E8%2588%25AA%26ts%3D0%26t_kt%3D0%26ie%3Dutf-8%26rsv_iqid%3D10041252946060248685%26rsv_t%3D11cdV0WC7pTpvtt4BQ9%25252FS3456P86jjC2e6AFtfPwnADfYk5VfDWfgQ%26sa%3Dib%26rsv_pq%3D10041252946060248685%26rsv_sug4%3D1743684388867%26inputT%3D1743684388875#/insert_account，跳过
-2025-04-03 19:46:49,915 - WARNING - 链接 https://wappass.baidu.com/passport/?login&tpl=wise&subpro=wiseresult&u=https%3A%2F%2Fm.baidu.com%2Fs%3Fword%3D%25E8%258F%25A0%25E8%258F%259C%25E5%25AF%25BC%25E8%2588%25AA%26ts%3D0%26t_kt%3D0%26ie%3Dutf-8%26rsv_iqid%3D10041252946060248685%26rsv_t%3D11cdV0WC7pTpvtt4BQ9%25252FS3456P86jjC2e6AFtfPwnADfYk5VfDWfgQ%26sa%3Dib%26rsv_pq%3D10041252946060248685%26rsv_sug4%3D1743684388867%26inputT%3D1743684388875 重定向到登录页面 https://wappass.baidu.com/passport/?login&tpl=wise&subpro=wiseresult&u=https%3A%2F%2Fm.baidu.com%2Fs%3Fword%3D%25E8%258F%25A0%25E8%258F%259C%25E5%25AF%25BC%25E8%2588%25AA%26ts%3D0%26t_kt%3D0%26ie%3Dutf-8%26rsv_iqid%3D10041252946060248685%26rsv_t%3D11cdV0WC7pTpvtt4BQ9%25252FS3456P86jjC2e6AFtfPwnADfYk5VfDWfgQ%26sa%3Dib%26rsv_pq%3D10041252946060248685%26rsv_sug4%3D1743684388867%26inputT%3D1743684388875#/insert_account，跳过
-2025-04-03 19:47:05,108 - INFO - 关键词 菠菜导航 - 总内容长度: 14691, 总外链数: 2, 知名域名数: 6, 独特域名数: 1, 第一名内容长度: 0, 第一名外链数: 0
-2025-04-03 19:47:05,108 - INFO - 关键词 菠菜导航 - CF: 11.752799999999999, LF: 0.32, DF: 48.0, UF: 10.0, UCI: 15.4
-2025-04-03 19:47:10,930 - INFO - 正在处理关键词 博彩sports平台
-2025-04-03 19:47:14,979 - ERROR - 关键词 博彩sports平台 第 1 次尝试失败: Page.evaluate: Execution context was destroyed, most likely because of a navigation
-2025-04-03 19:47:27,896 - INFO - 搜索 博彩sports平台 后的页面标题: 博彩sports平台 - 百度
-2025-04-03 19:47:29,580 - WARNING - 链接 https://wappass.baidu.com/passport/?login&tpl=wimn&subpro=wimn&sms=1&regtype=1&u=https%3A%2F%2Fmbd.baidu.com%2Fwebpage%3Faction%3Dicard%26type%3Dsubscribe%26channel%3Dwise_home 重定向到登录页面 https://wappass.baidu.com/passport/?login&tpl=wimn&subpro=wimn&sms=1&regtype=1&u=https%3A%2F%2Fmbd.baidu.com%2Fwebpage%3Faction%3Dicard%26type%3Dsubscribe%26channel%3Dwise_home#/insert_account，跳过
-2025-04-03 19:47:31,107 - WARNING - 链接 https://wappass.baidu.com/passport/?login&tpl=wimn&subpro=wimn&sms=1&regtype=1&u=http%3A%2F%2Fmysearch.pae.baidu.com%2Fpage%2Ffav%3Faction%3Dr 重定向到登录页面 https://wappass.baidu.com/passport/?login&tpl=wimn&subpro=wimn&sms=1&regtype=1&u=http%3A%2F%2Fmysearch.pae.baidu.com%2Fpage%2Ffav%3Faction%3Dr#/insert_account，跳过
-2025-04-03 19:47:34,430 - WARNING - 链接 https://wappass.baidu.com/passport/?login&tpl=wise&subpro=wiseresult&u=https%3A%2F%2Fm.baidu.com%2Fs%3Fword%3D%25E5%258D%259A%25E5%25BD%25A9sports%25E5%25B9%25B3%25E5%258F%25B0%26ts%3D0%26t_kt%3D0%26ie%3Dutf-8%26rsv_iqid%3D10455629894975586805%26rsv_t%3D66b7%25252FbUOpOaIu5%25252Bzt%25252Bido7E5Y6QSAM4jDLTSAGM93eMUuen4qd%25252F1tg%26sa%3Dib%26rsv_pq%3D10455629894975586805%26rsv_sug4%3D1743684443722%26inputT%3D1743684443728 重定向到登录页面 https://wappass.baidu.com/passport/?login&tpl=wise&subpro=wiseresult&u=https%3A%2F%2Fm.baidu.com%2Fs%3Fword%3D%25E5%258D%259A%25E5%25BD%25A9sports%25E5%25B9%25B3%25E5%258F%25B0%26ts%3D0%26t_kt%3D0%26ie%3Dutf-8%26rsv_iqid%3D10455629894975586805%26rsv_t%3D66b7%25252FbUOpOaIu5%25252Bzt%25252Bido7E5Y6QSAM4jDLTSAGM93eMUuen4qd%25252F1tg%26sa%3Dib%26rsv_pq%3D10455629894975586805%26rsv_sug4%3D1743684443722%26inputT%3D1743684443728#/insert_account，跳过
-2025-04-03 19:47:35,444 - WARNING - 链接 https://wappass.baidu.com/passport/?login&tpl=wise&subpro=wiseresult&u=https%3A%2F%2Fm.baidu.com%2Fs%3Fword%3D%25E5%258D%259A%25E5%25BD%25A9sports%25E5%25B9%25B3%25E5%258F%25B0%26ts%3D0%26t_kt%3D0%26ie%3Dutf-8%26rsv_iqid%3D10455629894975586805%26rsv_t%3D66b7%25252FbUOpOaIu5%25252Bzt%25252Bido7E5Y6QSAM4jDLTSAGM93eMUuen4qd%25252F1tg%26sa%3Dib%26rsv_pq%3D10455629894975586805%26rsv_sug4%3D1743684443722%26inputT%3D1743684443728 重定向到登录页面 https://wappass.baidu.com/passport/?login&tpl=wise&subpro=wiseresult&u=https%3A%2F%2Fm.baidu.com%2Fs%3Fword%3D%25E5%258D%259A%25E5%25BD%25A9sports%25E5%25B9%25B3%25E5%258F%25B0%26ts%3D0%26t_kt%3D0%26ie%3Dutf-8%26rsv_iqid%3D10455629894975586805%26rsv_t%3D66b7%25252FbUOpOaIu5%25252Bzt%25252Bido7E5Y6QSAM4jDLTSAGM93eMUuen4qd%25252F1tg%26sa%3Dib%26rsv_pq%3D10455629894975586805%26rsv_sug4%3D1743684443722%26inputT%3D1743684443728#/insert_account，跳过
-2025-04-03 19:47:46,381 - INFO - 关键词 博彩sports平台 - 总内容长度: 16551, 总外链数: 1, 知名域名数: 6, 独特域名数: 1, 第一名内容长度: 0, 第一名外链数: 0
-2025-04-03 19:47:46,382 - INFO - 关键词 博彩sports平台 - CF: 13.2408, LF: 0.16, DF: 48.0, UF: 10.0, UCI: 15.94
-2025-04-03 19:47:46,595 - INFO - 结果已保存/追加到 combined_uci_20250403_1946.xlsx
-2025-04-03 19:47:46,595 - INFO - 已处理 2 个关键词，保存批次
-2025-04-03 19:47:50,766 - INFO - 正在处理域名 https://m.micro-maker.com
-2025-04-03 19:48:05,771 - WARNING - 访问域名 https://m.micro-maker.com 失败: Page.goto: Timeout 15000ms exceeded.
+2025-04-04 11:04:19,371 - INFO - 程序启动 - 2025-04-04 11:04
+2025-04-04 11:05:03,754 - INFO - 结果保存至 combined_uci_20250404_1104.xlsx
+2025-04-04 11:05:27,276 - INFO - 结果保存至 combined_uci_20250404_1104.xlsx
+2025-04-04 11:05:27,779 - INFO - 程序结束 - 2025-04-04 11:05
+2025-04-04 11:06:45,264 - INFO - 程序启动 - 2025-04-04 11:06
+2025-04-04 11:06:47,427 - INFO - 正在处理关键词 菠菜导航
+2025-04-04 11:06:51,319 - INFO - 程序启动 - 2025-04-04 11:06
+2025-04-04 11:06:53,649 - INFO - 正在处理关键词 菠菜导航
+2025-04-04 11:07:14,630 - INFO - 关键词 菠菜导航 - 总内容长度: 4208, 总外链数: 0, 知名域名数: 10, 独特域名数: 1, 第一名内容长度: 145, 第一名外链数: 0
+2025-04-04 11:07:14,631 - INFO - 关键词 菠菜导航 - CF: 3.6564, LF: 0.0, DF: 80.0, UF: 10.0, UCI: 18.46
+2025-04-04 11:07:14,631 - INFO - 正在处理关键词 博彩sports平台
+2025-04-04 11:07:19,101 - INFO - 关键词 菠菜导航 - 总内容长度: 4188, 总外链数: 0, 知名域名数: 10, 独特域名数: 1, 第一名内容长度: 145, 第一名外链数: 0
+2025-04-04 11:07:19,101 - INFO - 关键词 菠菜导航 - CF: 3.6404, LF: 0.0, DF: 80.0, UF: 10.0, UCI: 18.46
+2025-04-04 11:07:19,101 - INFO - 正在处理关键词 博彩sports平台
+2025-04-04 11:07:36,402 - INFO - 关键词 博彩sports平台 - 总内容长度: 15369, 总外链数: 1, 知名域名数: 10, 独特域名数: 1, 第一名内容长度: 251, 第一名外链数: 0
+2025-04-04 11:07:36,402 - INFO - 关键词 博彩sports平台 - CF: 12.797200000000002, LF: 0.16, DF: 80.0, UF: 10.0, UCI: 22.17
+2025-04-04 11:07:36,596 - INFO - 结果已保存/追加到 combined_uci_20250404_1106.xlsx
+2025-04-04 11:07:36,596 - INFO - 已处理 2 个关键词，保存批次
+2025-04-04 11:07:39,671 - INFO - 关键词 博彩sports平台 - 总内容长度: 15347, 总外链数: 1, 知名域名数: 10, 独特域名数: 1, 第一名内容长度: 251, 第一名外链数: 0
+2025-04-04 11:07:39,672 - INFO - 关键词 博彩sports平台 - CF: 12.7796, LF: 0.16, DF: 80.0, UF: 10.0, UCI: 22.16
+2025-04-04 11:07:39,826 - INFO - 结果已保存/追加到 combined_uci_20250404_1106.xlsx
+2025-04-04 11:07:39,826 - INFO - 已处理 2 个关键词，保存批次
+2025-04-04 11:07:40,669 - INFO - 正在处理域名 https://m.micro-maker.com
+2025-04-04 11:07:45,216 - INFO - 正在处理域名 https://m.micro-maker.com
+2025-04-04 11:07:46,773 - INFO - 域名 https://m.micro-maker.com - 内容长度: 185126, 外链数: 0
+2025-04-04 11:07:46,773 - INFO - 域名 https://m.micro-maker.com - CF: 100, LF: 0.0, DF: 0, UF: 50, UCI: 45.0
+2025-04-04 11:07:46,773 - INFO - 正在处理域名 http://www.aierxingz.com
+2025-04-04 11:07:51,119 - INFO - 域名 https://m.micro-maker.com - 内容长度: 185126, 外链数: 0
+2025-04-04 11:07:51,119 - INFO - 域名 https://m.micro-maker.com - CF: 100, LF: 0.0, DF: 0, UF: 50, UCI: 45.0
+2025-04-04 11:07:51,119 - INFO - 正在处理域名 http://www.aierxingz.com
+2025-04-04 11:07:53,821 - INFO - 域名 http://www.aierxingz.com - 内容长度: 493, 外链数: 0
+2025-04-04 11:07:53,822 - INFO - 域名 http://www.aierxingz.com - CF: 4.93, LF: 0.0, DF: 0, UF: 50, UCI: 6.97
+2025-04-04 11:07:53,822 - INFO - 正在处理域名 https://www.bet365.com
+2025-04-04 11:07:56,746 - INFO - 域名 https://www.bet365.com - 内容长度: 810, 外链数: 0
+2025-04-04 11:07:56,746 - INFO - 域名 https://www.bet365.com - CF: 8.1, LF: 0.0, DF: 0, UF: 50, UCI: 8.24
+2025-04-04 11:07:56,746 - INFO - 正在处理域名 https://1xbetind.in
+2025-04-04 11:07:57,145 - INFO - 域名 http://www.aierxingz.com - 内容长度: 493, 外链数: 0
+2025-04-04 11:07:57,145 - INFO - 域名 http://www.aierxingz.com - CF: 4.93, LF: 0.0, DF: 0, UF: 50, UCI: 6.97
+2025-04-04 11:07:57,146 - INFO - 正在处理域名 https://www.bet365.com
+2025-04-04 11:08:03,758 - INFO - 域名 https://1xbetind.in - 内容长度: 97, 外链数: 0
+2025-04-04 11:08:03,758 - INFO - 域名 https://1xbetind.in - CF: 0.97, LF: 0.0, DF: 0, UF: 50, UCI: 5.39
+2025-04-04 11:08:03,758 - INFO - 正在处理域名 https://www.bet365.com
+2025-04-04 11:08:07,566 - INFO - 域名 https://www.bet365.com - 内容长度: 810, 外链数: 0
+2025-04-04 11:08:07,566 - INFO - 域名 https://www.bet365.com - CF: 8.1, LF: 0.0, DF: 0, UF: 50, UCI: 8.24
+2025-04-04 11:08:07,581 - INFO - 结果已保存/追加到 combined_uci_20250404_1106.xlsx
+2025-04-04 11:08:07,581 - INFO - 已处理 5 个域名，保存批次
+2025-04-04 11:08:12,764 - INFO - 正在处理域名 https://www.ruimeidachuju.com
+2025-04-04 11:08:16,959 - INFO - 域名 https://www.ruimeidachuju.com - 内容长度: 4539, 外链数: 0
+2025-04-04 11:08:16,959 - INFO - 域名 https://www.ruimeidachuju.com - CF: 45.39, LF: 0.0, DF: 0, UF: 50, UCI: 23.16
+2025-04-04 11:08:16,989 - INFO - 结果已保存/追加到 combined_uci_20250404_1106.xlsx
+2025-04-04 11:08:16,989 - INFO - 已处理 6 个域名，保存批次
+2025-04-04 11:08:19,782 - INFO - 程序启动 - 2025-04-04 11:08
+2025-04-04 11:08:21,332 - INFO - 程序结束 - 2025-04-04 11:08
+2025-04-04 11:08:41,094 - WARNING - 访问 https://m.baidu.com/from=0/bd_page_type=1/ssid=0/uid=0/pu=usm%400%2Csz%401320_220%2Cta%40iphone___24_134.0/baiduid=1DB383A1EA056B955E015C62B730604D/w=0_10_/l=1/tc?ref=www_iphone&lid=11837393631499006730&ct=24&cst=2&pd=video&isAtom=1&is_baidu=1&tj=undefined_undefined_0_10_undefined1&wd=&eqid=a446deca67f8330a1000000667ef5b3d&w_qd=IlPT2AEptyoA_ykxwwApxByxAFdPime&bdver=2_1&tcplug=1&dict=-1&sec=2572&di=51640cd0ba898f4c&bdenc=1&nsrc=mMQ82pJog0pERasoA4JVBOTJxK9PWSjxtBhmnVx4hYeVMACQ6vMJJHn0TKgHLBAJl%2FOhbVnovRhmWIluqr9iQMg9I5ZagXpeQIg1NVr8USbYUUwo04uBZr%2FQrCFzqAF80i1XITU6%2FAX7xKxU4WaU%2BvCjj999Ykcn3OktwKUWu1xc3Xyfa4ab1oeEBh7NLZrt3NBzHligCAXn%2FQImU91B%2BRY1WnGRAhyfDR7iJQSEKLNvCCwANWodaLbN71%2BaumtozbXhI58%2FZIaTmJjjIE1rkHtVdQvT5I36EQ02OeKVDiPfuF4CSHha%2B%2BwYcb31o6V%2F 失败
+2025-04-04 11:08:41,101 - WARNING - 访问 https://m.baidu.com/from=0/bd_page_type=1/ssid=0/uid=0/pu=usm%400%2Csz%401320_220%2Cta%40iphone___24_134.0/baiduid=1DB383A1EA056B955E015C62B730604D/w=0_10_/l=1/tc?ref=www_iphone&lid=11837393631499006730&ct=24&cst=5&pd=image_content&isAtom=1&is_baidu=1&tj=undefined_undefined_0_10_undefined1&wd=&eqid=a446deca67f8330a1000000667ef5b3d&w_qd=IlPT2AEptyoA_ykxwwApxByxAFdPime&bdver=2_1&tcplug=1&dict=-1&sec=2572&di=bf3322beb96f20f8&bdenc=1&nsrc=mMQ82pJog0pERasoA4JVBOTJxK9PWSjxtBhmnVx4hYeVMACQ6vMJJHn0TKgHLBAJy5in2e0gkg3g4fLxZx8jeq5Oru5Oj3aCg3HDrDAxIGwmTDS0iKH4NQ1F3X4ojN4WsIEMRKm2eqVquahqmzB3lBC8tgvKMX4TeUleouQV3fi9mSVM5shc6FctI7bzfokV%2BaglRRJ9ESspHLEnMIYV065XnqWgE%2FtsoF%2B8lpwUNS2iwL1AXctVL9aV6%2Fy26GQ1oqXvRqw3UzECHVJtlyeI598Ko37PCdzjbwUHKcRT3Pi6CikN70Mh%2FQXMsjPHFiOR4CACIF0lyJBL9qGo3Oc9QQ%3D%3D 失败
+2025-04-04 11:08:41,104 - WARNING - 访问 https://m.baidu.com/from=0/bd_page_type=1/ssid=0/uid=0/pu=usm%400%2Csz%401320_220%2Cta%40iphone___24_134.0/baiduid=1DB383A1EA056B955E015C62B730604D/w=0_10_/l=1/tc?ref=www_iphone&lid=11837393631499006730&ct=24&cst=4&pd=wenda_tab&isAtom=1&is_baidu=1&tj=undefined_undefined_0_10_undefined1&wd=&eqid=a446deca67f8330a1000000667ef5b3d&w_qd=IlPT2AEptyoA_ykxwwApxByxAFdPime&bdver=2_1&tcplug=1&dict=-1&sec=2572&di=dd4d1ca3277b8166&bdenc=1&nsrc=mMQ82pJog0pERasoA4JVBOTJxK9PWSjxtBhmnVx4hYeVMACQ6vMJJHn0TKgHLBAJWOpAraYKg5%2B%2BoWn%2BXgDLXap3Qv5qiV4uF1menVCO2D1b9s2NmNiKLNbdOdj%2BjBBFDd8dWcNS%2FGgisjJLyuMP3qBKHkfbcDo13CldBDFf%2BYmLtyoEYahDw9svJ3f5tYWWgAZ1GwWzW4oV44HSH5l8%2B0MdVK5rmTu7RvWiKtpBEEKRUCMauoCGlcqJLeFRKwv7rPTI9YxcHHeQnY4P9DN%2FkxnWFh%2F0ml6INeXQIo2RJWk%3D 失败
+2025-04-04 11:08:41,106 - ERROR - 关键词 博彩sports平台 第 1 次失败: Page.goto: Target page, context or browser has been closed
+2025-04-04 11:09:51,201 - INFO - 程序启动 - 2025-04-04 11:09
+2025-04-04 11:10:30,567 - INFO - 结果保存至 combined_uci_20250404_1109.xlsx
+2025-04-04 11:10:53,525 - INFO - 结果保存至 combined_uci_20250404_1109.xlsx
+2025-04-04 11:10:56,734 - INFO - 结果保存至 combined_uci_20250404_1109.xlsx
+2025-04-04 11:10:57,343 - INFO - 程序结束 - 2025-04-04 11:10
+2025-04-04 11:12:37,378 - INFO - 程序启动 - 2025-04-04 11:12
+2025-04-04 11:14:40,417 - INFO - 结果保存至 combined_uci_20250404_1112.xlsx
+2025-04-04 11:15:00,541 - INFO - 结果保存至 combined_uci_20250404_1112.xlsx
+2025-04-04 11:15:28,286 - INFO - 结果保存至 combined_uci_20250404_1112.xlsx
+2025-04-04 11:15:31,773 - INFO - 结果保存至 combined_uci_20250404_1112.xlsx
+2025-04-04 11:15:32,246 - INFO - 程序结束 - 2025-04-04 11:15
+2025-04-04 11:19:09,938 - INFO - 程序启动 - 2025-04-04 11:19
+2025-04-04 11:20:47,633 - INFO - 结果保存至 combined_uci_20250404_1119.xlsx
+2025-04-04 11:21:05,850 - INFO - 结果保存至 combined_uci_20250404_1119.xlsx
+2025-04-04 11:21:35,265 - INFO - 结果保存至 combined_uci_20250404_1119.xlsx
+2025-04-04 11:21:38,585 - INFO - 结果保存至 combined_uci_20250404_1119.xlsx
+2025-04-04 11:21:39,067 - INFO - 程序结束 - 2025-04-04 11:21
+2025-04-04 11:25:25,466 - INFO - 程序启动 - 2025-04-04 11:25
+2025-04-04 11:27:12,188 - INFO - 程序启动 - 2025-04-04 11:27
+2025-04-04 11:27:52,527 - ERROR - 关键词 菠菜导航 第 1 次失败: Page.click: Timeout 30000ms exceeded.
 Call log:
-  - navigating to "https://m.micro-maker.com/", waiting until "load"
+  - waiting for locator("#index-kw")
+  -     - locator resolved to <input data-sa="" name="word" data-sug="1" type="search" id="index-kw" maxlength="64" autocorrect="off" autocomplete="off" placeholder="输入关键词" class="se-input adjust-input"/>
+  -   - attempting click action
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -     - waiting 20ms
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -       - waiting 100ms
+  -     5 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -       - waiting 500ms
+  -     - waiting for" https://m.baidu.com/s?word=%E7%99%BE%E5%BA%A6%E7%83%AD%E6%90%9C&tn&from=1020854c&sa=tre_dl_gh_logo_wj&rfrom=1023197w&rchannel=1023206g" navigation to finish...
+  -     - navigated to "https://m.baidu.com/s?word=%E7%99%BE%E5%BA%A6%E7%83%AD%E6%90%9C&tn&from=1020854c&sa=tre_dl_gh_logo_wj&rfrom=1023197w&rchannel=1023206g"
+  -     - waiting for element to be visible, enabled and stable
+  -   - element was detached from the DOM, retrying
+  -     - locator resolved to <input data-sa="" name="word" data-sug="1" type="search" id="index-kw" maxlength="64" autocorrect="off" autocomplete="off" placeholder="输入关键词" class="se-input adjust-input"/>
+  -   - attempting click action
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -     - waiting 20ms
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -       - waiting 100ms
+  -     45 × waiting for element to be visible, enabled and stable
+  -        - element is visible, enabled and stable
+  -        - scrolling into view if needed
+  -        - done scrolling
+  -        - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -      - retrying click action
+  -        - waiting 500ms
 
-2025-04-03 19:48:05,771 - INFO - 域名 https://m.micro-maker.com - CF: 0.0, LF: 0.0, DF: 0, UF: 50, UCI: 5.0
-2025-04-03 19:48:09,539 - INFO - 正在处理域名 http://www.aierxingz.com
-2025-04-03 19:48:18,644 - INFO - 域名 http://www.aierxingz.com - 内容长度: 493, 外链数: 0
-2025-04-03 19:48:18,645 - INFO - 域名 http://www.aierxingz.com - CF: 4.93, LF: 0.0, DF: 0, UF: 50, UCI: 6.97
-2025-04-03 19:48:23,677 - INFO - 正在处理域名 https://www.bet365.com
-2025-04-03 19:48:26,420 - INFO - 域名 https://www.bet365.com - 内容长度: 810, 外链数: 0
-2025-04-03 19:48:26,420 - INFO - 域名 https://www.bet365.com - CF: 8.1, LF: 0.0, DF: 0, UF: 50, UCI: 8.24
-2025-04-03 19:48:30,177 - INFO - 正在处理域名 https://1xbetind.in
-2025-04-03 19:48:44,510 - INFO - 域名 https://1xbetind.in - 内容长度: 97, 外链数: 0
-2025-04-03 19:48:44,510 - INFO - 域名 https://1xbetind.in - CF: 0.97, LF: 0.0, DF: 0, UF: 50, UCI: 5.39
-2025-04-03 19:48:49,317 - INFO - 正在处理域名 https://www.bet365.com
-2025-04-03 19:48:51,332 - INFO - 域名 https://www.bet365.com - 内容长度: 810, 外链数: 0
-2025-04-03 19:48:51,332 - INFO - 域名 https://www.bet365.com - CF: 8.1, LF: 0.0, DF: 0, UF: 50, UCI: 8.24
-2025-04-03 19:48:51,360 - INFO - 结果已保存/追加到 combined_uci_20250403_1946.xlsx
-2025-04-03 19:48:51,361 - INFO - 已处理 5 个域名，保存批次
-2025-04-03 19:48:57,098 - INFO - 正在处理域名 https://www.ruimeidachuju.com
-2025-04-03 19:49:00,795 - INFO - 域名 https://www.ruimeidachuju.com - 内容长度: 4538, 外链数: 0
-2025-04-03 19:49:00,795 - INFO - 域名 https://www.ruimeidachuju.com - CF: 45.379999999999995, LF: 0.0, DF: 0, UF: 50, UCI: 23.15
-2025-04-03 19:49:00,812 - INFO - 结果已保存/追加到 combined_uci_20250403_1946.xlsx
-2025-04-03 19:49:00,813 - INFO - 已处理 6 个域名，保存批次
-2025-04-03 19:49:06,537 - INFO - 程序结束 - 2025-04-03 19:49
-2025-04-03 19:52:19,600 - INFO - 程序启动 - 2025-04-03 19:52
-2025-04-03 19:52:21,663 - INFO - 正在处理关键词 菠菜导航
-2025-04-03 19:52:38,742 - INFO - 搜索 菠菜导航 后的页面标题: 菠菜导航 - 百度
-2025-04-03 19:52:42,180 - WARNING - 链接 https://wappass.baidu.com/passport/?login&tpl=wimn&subpro=wimn&sms=1&regtype=1&u=https%3A%2F%2Fmbd.baidu.com%2Fwebpage%3Faction%3Dicard%26type%3Dsubscribe%26channel%3Dwise_home 重定向到登录页面 https://wappass.baidu.com/passport/?login&tpl=wimn&subpro=wimn&sms=1&regtype=1&u=https%3A%2F%2Fmbd.baidu.com%2Fwebpage%3Faction%3Dicard%26type%3Dsubscribe%26channel%3Dwise_home#/insert_account，跳过
-2025-04-03 19:52:42,961 - WARNING - 链接 https://wappass.baidu.com/passport/?login&tpl=wimn&subpro=wimn&sms=1&regtype=1&u=http%3A%2F%2Fmysearch.pae.baidu.com%2Fpage%2Ffav%3Faction%3Dr 重定向到登录页面 https://wappass.baidu.com/passport/?login&tpl=wimn&subpro=wimn&sms=1&regtype=1&u=http%3A%2F%2Fmysearch.pae.baidu.com%2Fpage%2Ffav%3Faction%3Dr#/insert_account，跳过
-2025-04-03 19:52:49,296 - WARNING - 链接 https://wappass.baidu.com/passport/?login&tpl=wise&subpro=wiseresult&u=https%3A%2F%2Fm.baidu.com%2Fs%3Fword%3D%25E8%258F%25A0%25E8%258F%259C%25E5%25AF%25BC%25E8%2588%25AA%26ts%3D0%26t_kt%3D0%26ie%3Dutf-8%26rsv_iqid%3D11769888965224094589%26rsv_t%3Df597P3qO9XeK7Yl0tqGhhrW4bHK3Wl6oeodN2TCzROwrCxsclFIMuA%26sa%3Dib_d%26rsv_pq%3D11769888965224094589%26rsv_sug4%3D1743684748726%26inputT%3D1743684748735%26rqid%3D11769888965224094589%26rfrom%3D1024439e%26rchannel%3D1024439k 重定向到登录页面 https://wappass.baidu.com/passport/?login&tpl=wise&subpro=wiseresult&u=https%3A%2F%2Fm.baidu.com%2Fs%3Fword%3D%25E8%258F%25A0%25E8%258F%259C%25E5%25AF%25BC%25E8%2588%25AA%26ts%3D0%26t_kt%3D0%26ie%3Dutf-8%26rsv_iqid%3D11769888965224094589%26rsv_t%3Df597P3qO9XeK7Yl0tqGhhrW4bHK3Wl6oeodN2TCzROwrCxsclFIMuA%26sa%3Dib_d%26rsv_pq%3D11769888965224094589%26rsv_sug4%3D1743684748726%26inputT%3D1743684748735%26rqid%3D11769888965224094589%26rfrom%3D1024439e%26rchannel%3D1024439k#/insert_account，跳过
-2025-04-03 19:52:51,358 - WARNING - 链接 https://wappass.baidu.com/passport/?login&tpl=wise&subpro=wiseresult&u=https%3A%2F%2Fm.baidu.com%2Fs%3Fword%3D%25E8%258F%25A0%25E8%258F%259C%25E5%25AF%25BC%25E8%2588%25AA%26ts%3D0%26t_kt%3D0%26ie%3Dutf-8%26rsv_iqid%3D11769888965224094589%26rsv_t%3Df597P3qO9XeK7Yl0tqGhhrW4bHK3Wl6oeodN2TCzROwrCxsclFIMuA%26sa%3Dib_d%26rsv_pq%3D11769888965224094589%26rsv_sug4%3D1743684748726%26inputT%3D1743684748735%26rqid%3D11769888965224094589%26rfrom%3D1024439e%26rchannel%3D1024439k 重定向到登录页面 https://wappass.baidu.com/passport/?login&tpl=wise&subpro=wiseresult&u=https%3A%2F%2Fm.baidu.com%2Fs%3Fword%3D%25E8%258F%25A0%25E8%258F%259C%25E5%25AF%25BC%25E8%2588%25AA%26ts%3D0%26t_kt%3D0%26ie%3Dutf-8%26rsv_iqid%3D11769888965224094589%26rsv_t%3Df597P3qO9XeK7Yl0tqGhhrW4bHK3Wl6oeodN2TCzROwrCxsclFIMuA%26sa%3Dib_d%26rsv_pq%3D11769888965224094589%26rsv_sug4%3D1743684748726%26inputT%3D1743684748735%26rqid%3D11769888965224094589%26rfrom%3D1024439e%26rchannel%3D1024439k#/insert_account，跳过
-2025-04-03 19:53:06,040 - INFO - 关键词 菠菜导航 - 总内容长度: 14422, 总外链数: 2, 知名域名数: 6, 独特域名数: 1, 第一名内容长度: 0, 第一名外链数: 0
-2025-04-03 19:53:06,040 - INFO - 关键词 菠菜导航 - CF: 11.537600000000001, LF: 0.32, DF: 48.0, UF: 10.0, UCI: 15.31
-2025-04-03 19:53:11,578 - INFO - 正在处理关键词 博彩sports平台
-2025-04-03 19:53:23,149 - INFO - 搜索 博彩sports平台 后的页面标题: 博彩sports平台 - 百度
-2025-04-03 19:53:24,490 - WARNING - 链接 https://wappass.baidu.com/passport/?login&tpl=wimn&subpro=wimn&sms=1&regtype=1&u=https%3A%2F%2Fmbd.baidu.com%2Fwebpage%3Faction%3Dicard%26type%3Dsubscribe%26channel%3Dwise_home 重定向到登录页面 https://wappass.baidu.com/passport/?login&tpl=wimn&subpro=wimn&sms=1&regtype=1&u=https%3A%2F%2Fmbd.baidu.com%2Fwebpage%3Faction%3Dicard%26type%3Dsubscribe%26channel%3Dwise_home#/insert_account，跳过
-2025-04-03 19:53:25,970 - WARNING - 链接 https://wappass.baidu.com/passport/?login&tpl=wimn&subpro=wimn&sms=1&regtype=1&u=http%3A%2F%2Fmysearch.pae.baidu.com%2Fpage%2Ffav%3Faction%3Dr 重定向到登录页面 https://wappass.baidu.com/passport/?login&tpl=wimn&subpro=wimn&sms=1&regtype=1&u=http%3A%2F%2Fmysearch.pae.baidu.com%2Fpage%2Ffav%3Faction%3Dr#/insert_account，跳过
-2025-04-03 19:53:29,565 - WARNING - 链接 https://wappass.baidu.com/passport/?login&tpl=wise&subpro=wiseresult&u=https%3A%2F%2Fm.baidu.com%2Fs%3Fword%3D%25E5%258D%259A%25E5%25BD%25A9sports%25E5%25B9%25B3%25E5%258F%25B0%26ts%3D0%26t_kt%3D0%26ie%3Dutf-8%26rsv_iqid%3D10715910695338796510%26rsv_t%3D9994JlNSV5ZhNjhzCPYslaPHu9dme0K3LH3UqfGqdoKWUFN5pHOrzw%26sa%3Dib%26rsv_pq%3D10715910695338796510%26rsv_sug4%3D1743684797830%26inputT%3D1743684797836 重定向到登录页面 https://wappass.baidu.com/passport/?login&tpl=wise&subpro=wiseresult&u=https%3A%2F%2Fm.baidu.com%2Fs%3Fword%3D%25E5%258D%259A%25E5%25BD%25A9sports%25E5%25B9%25B3%25E5%258F%25B0%26ts%3D0%26t_kt%3D0%26ie%3Dutf-8%26rsv_iqid%3D10715910695338796510%26rsv_t%3D9994JlNSV5ZhNjhzCPYslaPHu9dme0K3LH3UqfGqdoKWUFN5pHOrzw%26sa%3Dib%26rsv_pq%3D10715910695338796510%26rsv_sug4%3D1743684797830%26inputT%3D1743684797836#/insert_account，跳过
-2025-04-03 19:53:30,553 - WARNING - 链接 https://wappass.baidu.com/passport/?login&tpl=wise&subpro=wiseresult&u=https%3A%2F%2Fm.baidu.com%2Fs%3Fword%3D%25E5%258D%259A%25E5%25BD%25A9sports%25E5%25B9%25B3%25E5%258F%25B0%26ts%3D0%26t_kt%3D0%26ie%3Dutf-8%26rsv_iqid%3D10715910695338796510%26rsv_t%3D9994JlNSV5ZhNjhzCPYslaPHu9dme0K3LH3UqfGqdoKWUFN5pHOrzw%26sa%3Dib%26rsv_pq%3D10715910695338796510%26rsv_sug4%3D1743684797830%26inputT%3D1743684797836 重定向到登录页面 https://wappass.baidu.com/passport/?login&tpl=wise&subpro=wiseresult&u=https%3A%2F%2Fm.baidu.com%2Fs%3Fword%3D%25E5%258D%259A%25E5%25BD%25A9sports%25E5%25B9%25B3%25E5%258F%25B0%26ts%3D0%26t_kt%3D0%26ie%3Dutf-8%26rsv_iqid%3D10715910695338796510%26rsv_t%3D9994JlNSV5ZhNjhzCPYslaPHu9dme0K3LH3UqfGqdoKWUFN5pHOrzw%26sa%3Dib%26rsv_pq%3D10715910695338796510%26rsv_sug4%3D1743684797830%26inputT%3D1743684797836#/insert_account，跳过
-2025-04-03 19:53:45,508 - INFO - 关键词 博彩sports平台 - 总内容长度: 16622, 总外链数: 1, 知名域名数: 6, 独特域名数: 1, 第一名内容长度: 0, 第一名外链数: 0
-2025-04-03 19:53:45,508 - INFO - 关键词 博彩sports平台 - CF: 13.297600000000001, LF: 0.16, DF: 48.0, UF: 10.0, UCI: 15.97
-2025-04-03 19:53:45,726 - INFO - 结果已保存/追加到 combined_uci_20250403_1952.xlsx
-2025-04-03 19:53:45,726 - INFO - 已处理 2 个关键词，保存批次
-2025-04-03 19:53:50,593 - INFO - 正在处理域名 https://m.micro-maker.com
-2025-04-03 19:54:06,747 - INFO - 域名 https://m.micro-maker.com - 内容长度: 183990, 外链数: 0
-2025-04-03 19:54:06,747 - INFO - 域名 https://m.micro-maker.com - CF: 100, LF: 0.0, DF: 0, UF: 50, UCI: 45.0
-2025-04-03 19:54:10,887 - INFO - 正在处理域名 http://www.aierxingz.com
-2025-04-03 19:54:18,805 - INFO - 域名 http://www.aierxingz.com - 内容长度: 40, 外链数: 0
-2025-04-03 19:54:18,805 - INFO - 域名 http://www.aierxingz.com - CF: 0.4, LF: 0.0, DF: 0, UF: 50, UCI: 5.16
-2025-04-03 19:54:23,651 - INFO - 正在处理域名 https://www.bet365.com
-2025-04-03 19:54:27,696 - INFO - 域名 https://www.bet365.com - 内容长度: 810, 外链数: 0
-2025-04-03 19:54:27,696 - INFO - 域名 https://www.bet365.com - CF: 8.1, LF: 0.0, DF: 0, UF: 50, UCI: 8.24
-2025-04-03 19:54:31,580 - INFO - 正在处理域名 https://1xbetind.in
-2025-04-03 19:54:40,525 - INFO - 域名 https://1xbetind.in - 内容长度: 148, 外链数: 0
-2025-04-03 19:54:40,526 - INFO - 域名 https://1xbetind.in - CF: 1.48, LF: 0.0, DF: 0, UF: 50, UCI: 5.59
-2025-04-03 19:54:46,057 - INFO - 正在处理域名 https://www.bet365.com
-2025-04-03 19:54:49,568 - INFO - 域名 https://www.bet365.com - 内容长度: 810, 外链数: 0
-2025-04-03 19:54:49,568 - INFO - 域名 https://www.bet365.com - CF: 8.1, LF: 0.0, DF: 0, UF: 50, UCI: 8.24
-2025-04-03 19:54:49,599 - INFO - 结果已保存/追加到 combined_uci_20250403_1952.xlsx
-2025-04-03 19:54:49,600 - INFO - 已处理 5 个域名，保存批次
-2025-04-03 19:54:52,628 - INFO - 正在处理域名 https://www.ruimeidachuju.com
-2025-04-03 19:54:56,510 - INFO - 域名 https://www.ruimeidachuju.com - 内容长度: 4538, 外链数: 0
-2025-04-03 19:54:56,510 - INFO - 域名 https://www.ruimeidachuju.com - CF: 45.379999999999995, LF: 0.0, DF: 0, UF: 50, UCI: 23.15
-2025-04-03 19:54:56,532 - INFO - 结果已保存/追加到 combined_uci_20250403_1952.xlsx
-2025-04-03 19:54:56,532 - INFO - 已处理 6 个域名，保存批次
-2025-04-03 19:55:03,663 - INFO - 程序结束 - 2025-04-03 19:55
-2025-04-03 20:07:46,144 - INFO - 程序启动 - 2025-04-03 20:07
-2025-04-03 20:07:49,670 - INFO - 正在处理关键词 菠菜导航
-2025-04-03 20:08:15,981 - WARNING - 访问 https://m.baidu.com/?ref=www_ptl&ms=1&rsv_pq=11243693236510037216&ssid=0&amp;from=0&rsv_t=1f1fIl0asFc%2FPukIm7mbdt220bPfxf781%2BozSilyhy%2FSkWJQv5yL7w 失败: Page.goto: Timeout 15000ms exceeded.
+2025-04-04 11:28:32,098 - ERROR - 关键词 菠菜导航 第 2 次失败: Page.click: Target page, context or browser has been closed
 Call log:
-  - navigating to "https://m.baidu.com/?ref=www_ptl&ms=1&rsv_pq=11243693236510037216&ssid=0&amp;from=0&rsv_t=1f1fIl0asFc%2FPukIm7mbdt220bPfxf781%2BozSilyhy%2FSkWJQv5yL7w", waiting until "load"
+  - waiting for locator("#index-kw")
+  -     - locator resolved to <input data-sa="" name="word" data-sug="1" type="search" id="index-kw" maxlength="64" autocorrect="off" autocomplete="off" placeholder="输入关键词" class="se-input adjust-input"/>
+  -   - attempting click action
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -     - waiting 20ms
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -       - waiting 100ms
+  -     55 × waiting for element to be visible, enabled and stable
+  -        - element is visible, enabled and stable
+  -        - scrolling into view if needed
+  -        - done scrolling
+  -        - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -      - retrying click action
+  -        - waiting 500ms
 
-2025-04-03 20:08:15,981 - INFO - 关键词 菠菜导航 - 总内容长度: 0, 总外链数: 0, 知名域名数: 0, 独特域名数: 1, 第一名内容长度: 0, 第一名外链数: 0
-2025-04-03 20:08:21,334 - INFO - 正在处理关键词 博彩sports平台
-2025-04-03 20:08:55,928 - WARNING - 访问 https://m.baidu.com/?ref=www_ptl&ms=1&rsv_pq=11104784240719919553&from=0&amp;ssid=0&rsv_t=1a84%2BLljYYdttKWJaZueD870hO69ycKjm60C5jgINj5xCpBD3LQSvQ 失败: Page.goto: Timeout 15000ms exceeded.
+2025-04-04 11:28:37,146 - INFO - 程序启动 - 2025-04-04 11:28
+2025-04-04 11:29:13,633 - ERROR - 关键词 菠菜导航 第 1 次失败: Page.click: Timeout 30000ms exceeded.
 Call log:
-  - navigating to "https://m.baidu.com/?ref=www_ptl&ms=1&rsv_pq=11104784240719919553&from=0&amp;ssid=0&rsv_t=1a84%2BLljYYdttKWJaZueD870hO69ycKjm60C5jgINj5xCpBD3LQSvQ", waiting until "load"
+  - waiting for locator("#index-kw")
+  -     - locator resolved to <input data-sa="" name="word" data-sug="1" type="search" id="index-kw" maxlength="64" autocorrect="off" autocomplete="off" placeholder="输入关键词" class="se-input adjust-input"/>
+  -   - attempting click action
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -     - waiting 20ms
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -       - waiting 100ms
+  -     58 × waiting for element to be visible, enabled and stable
+  -        - element is visible, enabled and stable
+  -        - scrolling into view if needed
+  -        - done scrolling
+  -        - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -      - retrying click action
+  -        - waiting 500ms
 
-2025-04-03 20:09:15,657 - WARNING - 访问 https://m.baidu.com/s?word=%E5%8D%9A%E5%BD%A9sports%E5%B9%B3%E5%8F%B0&ref=www_iphone&ssid=0&from=0&bd_page_type=1&uid=0&pu=usm%400%2Csz%401320_220%2Cta%40iphone___24_133.0&sa=vs_tab 失败: Page.goto: Timeout 15000ms exceeded.
+2025-04-04 11:29:54,808 - ERROR - 关键词 菠菜导航 第 2 次失败: Page.click: Timeout 30000ms exceeded.
 Call log:
-  - navigating to "https://m.baidu.com/s?word=%E5%8D%9A%E5%BD%A9sports%E5%B9%B3%E5%8F%B0&ref=www_iphone&ssid=0&from=0&bd_page_type=1&uid=0&pu=usm%400%2Csz%401320_220%2Cta%40iphone___24_133.0&sa=vs_tab", waiting until "load"
+  - waiting for locator("#index-kw")
+  -     - locator resolved to <input data-sa="" name="word" data-sug="1" type="search" id="index-kw" maxlength="64" autocorrect="off" autocomplete="off" placeholder="输入关键词" class="se-input adjust-input"/>
+  -   - attempting click action
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -     - waiting 20ms
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -       - waiting 100ms
+  -     57 × waiting for element to be visible, enabled and stable
+  -        - element is visible, enabled and stable
+  -        - scrolling into view if needed
+  -        - done scrolling
+  -        - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -      - retrying click action
+  -        - waiting 500ms
 
-2025-04-03 20:09:30,670 - WARNING - 访问 https://m.baidu.com/from=0/bd_page_type=1/ssid=0/uid=0/pu=usm%400%2Csz%401320_220%2Cta%40iphone___24_133.0/baiduid=57347BDDEC6D5C55A4E6DFFCAF721590/w=0_10_/l=1/tc?ref=www_iphone&lid=11104784240719919553&ct=24&cst=23&pd=note&isAtom=1&is_baidu=1&tj=undefined_undefined_0_10_undefined1&wd=&eqid=9a1c1e6e677779c11000000667ee884f&w_qd=IlPT2AEptyoA_yk5wPoc6eobrwnJRb1nz5YYif7&bdver=2_1&tcplug=1&dict=-1&sec=2557&di=230bbc310ab2790d&bdenc=1&nsrc=mMQ82pJog0pERasoA4JVBIYEUI%2FlnSQuGdnt9yGrJTb6TCvzTbo%2FWYSjs5fDKsMHbobz9uQpBLZp%2BCeFhPM5aOYDUNLFioBlI8kiUzEu7S9Jok2Noh7e57hDuqRAAGRCzH45WO0rZn3AAcg%2FT45Wwi1LKyH7GU%2FLcR9fSjyJlg6ix%2FcGdgF%2FbtJjViTn7XaXC%2B0%2B4adZdsi6pbQFm0lr%2F1l4rIBZa8UP9eRoREEI5Jn2Kxg5fbxz0ZUE3AL%2FB%2Fb9uFZMtCQbuw5K2eTad%2BC%2BAjk%2B7dVMT3i3GqNxkE8oDHyFNMVU5g8cqbOexAGi%2BHbnYv8i25zqLBPelt5SHoaVL5R2FrozhFSbF7u0GCP7FHAtdt%2F5YR3sn%2F3DRLU5fCttyZulEljKOosxD%2BTbGJuCaA%3D%3D 失败: Page.goto: Timeout 15000ms exceeded.
+2025-04-04 11:30:35,383 - ERROR - 关键词 菠菜导航 第 3 次失败: Page.click: Timeout 30000ms exceeded.
 Call log:
-  - navigating to "https://m.baidu.com/from=0/bd_page_type=1/ssid=0/uid=0/pu=usm%400%2Csz%401320_220%2Cta%40iphone___24_133.0/baiduid=57347BDDEC6D5C55A4E6DFFCAF721590/w=0_10_/l=1/tc?ref=www_iphone&lid=11104784240719919553&ct=24&cst=23&pd=note&isAtom=1&is_baidu=1&tj=undefined_undefined_0_10_undefined1&wd=&eqid=9a1c1e6e677779c11000000667ee884f&w_qd=IlPT2AEptyoA_yk5wPoc6eobrwnJRb1nz5YYif7&bdver=2_1&tcplug=1&dict=-1&sec=2557&di=230bbc310ab2790d&bdenc=1&nsrc=mMQ82pJog0pERasoA4JVBIYEUI%2FlnSQuGdnt9yGrJTb6TCvzTbo%2FWYSjs5fDKsMHbobz9uQpBLZp%2BCeFhPM5aOYDUNLFioBlI8kiUzEu7S9Jok2Noh7e57hDuqRAAGRCzH45WO0rZn3AAcg%2FT45Wwi1LKyH7GU%2FLcR9fSjyJlg6ix%2FcGdgF%2FbtJjViTn7XaXC%2B0%2B4adZdsi6pbQFm0lr%2F1l4rIBZa8UP9eRoREEI5Jn2Kxg5fbxz0ZUE3AL%2FB%2Fb9uFZMtCQbuw5K2eTad%2BC%2BAjk%2B7dVMT3i3GqNxkE8oDHyFNMVU5g8cqbOexAGi%2BHbnYv8i25zqLBPelt5SHoaVL5R2FrozhFSbF7u0GCP7FHAtdt%2F5YR3sn%2F3DRLU5fCttyZulEljKOosxD%2BTbGJuCaA%3D%3D", waiting until "load"
+  - waiting for locator("#index-kw")
+  -     - locator resolved to <input data-sa="" name="word" data-sug="1" type="search" id="index-kw" maxlength="64" autocorrect="off" autocomplete="off" placeholder="输入关键词" class="se-input adjust-input"/>
+  -   - attempting click action
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -     - waiting 20ms
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -       - waiting 100ms
+  -     57 × waiting for element to be visible, enabled and stable
+  -        - element is visible, enabled and stable
+  -        - scrolling into view if needed
+  -        - done scrolling
+  -        - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -      - retrying click action
+  -        - waiting 500ms
 
-2025-04-03 20:09:34,926 - INFO - 关键词 博彩sports平台 - 总内容长度: 3817, 总外链数: 0, 知名域名数: 7, 独特域名数: 1, 第一名内容长度: 262, 第一名外链数: 0
-2025-04-03 20:09:35,151 - INFO - 结果已保存/追加到 combined_uci_20250403_2007.xlsx
-2025-04-03 20:09:35,151 - INFO - 已处理 2 个关键词，保存批次
-2025-04-03 20:09:38,597 - INFO - 正在处理域名 https://m.micro-maker.com
-2025-04-03 20:09:52,427 - INFO - 域名 https://m.micro-maker.com - 内容长度: 183662, 外链数: 0
-2025-04-03 20:09:52,427 - INFO - 域名 https://m.micro-maker.com - CF: 100, LF: 0.0, DF: 0, UF: 50, UCI: 45.0
-2025-04-03 20:09:56,920 - INFO - 正在处理域名 http://www.aierxingz.com
-2025-04-03 20:10:09,875 - INFO - 域名 http://www.aierxingz.com - 内容长度: 40, 外链数: 0
-2025-04-03 20:10:09,875 - INFO - 域名 http://www.aierxingz.com - CF: 0.4, LF: 0.0, DF: 0, UF: 50, UCI: 5.16
-2025-04-03 20:10:14,996 - INFO - 正在处理域名 https://www.bet365.com
-2025-04-03 20:10:17,880 - INFO - 域名 https://www.bet365.com - 内容长度: 810, 外链数: 0
-2025-04-03 20:10:17,880 - INFO - 域名 https://www.bet365.com - CF: 8.1, LF: 0.0, DF: 0, UF: 50, UCI: 8.24
-2025-04-03 20:10:23,094 - INFO - 正在处理域名 https://1xbetind.in
-2025-04-03 20:10:28,955 - INFO - 域名 https://1xbetind.in - 内容长度: 148, 外链数: 0
-2025-04-03 20:10:28,955 - INFO - 域名 https://1xbetind.in - CF: 1.48, LF: 0.0, DF: 0, UF: 50, UCI: 5.59
-2025-04-03 20:10:33,967 - INFO - 正在处理域名 https://www.bet365.com
-2025-04-03 20:10:37,415 - INFO - 域名 https://www.bet365.com - 内容长度: 810, 外链数: 0
-2025-04-03 20:10:37,415 - INFO - 域名 https://www.bet365.com - CF: 8.1, LF: 0.0, DF: 0, UF: 50, UCI: 8.24
-2025-04-03 20:10:37,449 - INFO - 结果已保存/追加到 combined_uci_20250403_2007.xlsx
-2025-04-03 20:10:37,450 - INFO - 已处理 5 个域名，保存批次
-2025-04-03 20:10:42,638 - INFO - 正在处理域名 https://www.ruimeidachuju.com
-2025-04-03 20:10:45,600 - INFO - 域名 https://www.ruimeidachuju.com - 内容长度: 4538, 外链数: 0
-2025-04-03 20:10:45,601 - INFO - 域名 https://www.ruimeidachuju.com - CF: 45.379999999999995, LF: 0.0, DF: 0, UF: 50, UCI: 23.15
-2025-04-03 20:10:45,623 - INFO - 结果已保存/追加到 combined_uci_20250403_2007.xlsx
-2025-04-03 20:10:45,623 - INFO - 已处理 6 个域名，保存批次
-2025-04-03 20:10:50,833 - INFO - 程序结束 - 2025-04-03 20:10
-2025-04-03 20:12:36,527 - INFO - 程序启动 - 2025-04-03 20:12
-2025-04-03 20:12:38,936 - INFO - 正在处理关键词 菠菜导航
+2025-04-04 11:31:16,253 - ERROR - 关键词 博彩sports平台 第 1 次失败: Page.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("#index-kw")
+  -     - locator resolved to <input data-sa="" name="word" data-sug="1" type="search" id="index-kw" maxlength="64" autocorrect="off" autocomplete="off" placeholder="输入关键词" class="se-input adjust-input"/>
+  -   - attempting click action
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -     - waiting 20ms
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -       - waiting 100ms
+  -     58 × waiting for element to be visible, enabled and stable
+  -        - element is visible, enabled and stable
+  -        - scrolling into view if needed
+  -        - done scrolling
+  -        - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -      - retrying click action
+  -        - waiting 500ms
+
+2025-04-04 11:31:56,379 - ERROR - 关键词 博彩sports平台 第 2 次失败: Page.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("#index-kw")
+  -     - locator resolved to <input data-sa="" name="word" data-sug="1" type="search" id="index-kw" maxlength="64" autocorrect="off" autocomplete="off" placeholder="输入关键词" class="se-input adjust-input"/>
+  -   - attempting click action
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -     - waiting 20ms
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -       - waiting 100ms
+  -     57 × waiting for element to be visible, enabled and stable
+  -        - element is visible, enabled and stable
+  -        - scrolling into view if needed
+  -        - done scrolling
+  -        - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -      - retrying click action
+  -        - waiting 500ms
+
+2025-04-04 11:32:36,935 - ERROR - 关键词 博彩sports平台 第 3 次失败: Page.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("#index-kw")
+  -     - locator resolved to <input data-sa="" name="word" data-sug="1" type="search" id="index-kw" maxlength="64" autocorrect="off" autocomplete="off" placeholder="输入关键词" class="se-input adjust-input"/>
+  -   - attempting click action
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -     - waiting 20ms
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -       - waiting 100ms
+  -     58 × waiting for element to be visible, enabled and stable
+  -        - element is visible, enabled and stable
+  -        - scrolling into view if needed
+  -        - done scrolling
+  -        - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -      - retrying click action
+  -        - waiting 500ms
+
+2025-04-04 11:33:18,264 - ERROR - 关键词 博彩sportsapp 第 1 次失败: Page.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("#index-kw")
+  -     - locator resolved to <input data-sa="" name="word" data-sug="1" type="search" id="index-kw" maxlength="64" autocorrect="off" autocomplete="off" placeholder="输入关键词" class="se-input adjust-input"/>
+  -   - attempting click action
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -     - waiting 20ms
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -       - waiting 100ms
+  -     57 × waiting for element to be visible, enabled and stable
+  -        - element is visible, enabled and stable
+  -        - scrolling into view if needed
+  -        - done scrolling
+  -        - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -      - retrying click action
+  -        - waiting 500ms
+
+2025-04-04 11:33:56,984 - ERROR - 关键词 博彩sportsapp 第 2 次失败: Page.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("#index-kw")
+  -     - locator resolved to <input data-sa="" name="word" data-sug="1" type="search" id="index-kw" maxlength="64" autocorrect="off" autocomplete="off" placeholder="输入关键词" class="se-input adjust-input"/>
+  -   - attempting click action
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -     - waiting 20ms
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -       - waiting 100ms
+  -     57 × waiting for element to be visible, enabled and stable
+  -        - element is visible, enabled and stable
+  -        - scrolling into view if needed
+  -        - done scrolling
+  -        - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -      - retrying click action
+  -        - waiting 500ms
+
+2025-04-04 11:34:37,091 - ERROR - 关键词 博彩sportsapp 第 3 次失败: Page.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("#index-kw")
+  -     - locator resolved to <input data-sa="" name="word" data-sug="1" type="search" id="index-kw" maxlength="64" autocorrect="off" autocomplete="off" placeholder="输入关键词" class="se-input adjust-input"/>
+  -   - attempting click action
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -     - waiting 20ms
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -       - waiting 100ms
+  -     57 × waiting for element to be visible, enabled and stable
+  -        - element is visible, enabled and stable
+  -        - scrolling into view if needed
+  -        - done scrolling
+  -        - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -      - retrying click action
+  -        - waiting 500ms
+
+2025-04-04 11:35:15,692 - ERROR - 关键词 博彩sports主页 第 1 次失败: Page.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("#index-kw")
+  -     - locator resolved to <input data-sa="" name="word" data-sug="1" type="search" id="index-kw" maxlength="64" autocorrect="off" autocomplete="off" placeholder="输入关键词" class="se-input adjust-input"/>
+  -   - attempting click action
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -     - waiting 20ms
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -       - waiting 100ms
+  -     58 × waiting for element to be visible, enabled and stable
+  -        - element is visible, enabled and stable
+  -        - scrolling into view if needed
+  -        - done scrolling
+  -        - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -      - retrying click action
+  -        - waiting 500ms
+
+2025-04-04 11:35:56,842 - ERROR - 关键词 博彩sports主页 第 2 次失败: Page.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("#index-kw")
+  -     - locator resolved to <input data-sa="" name="word" data-sug="1" type="search" id="index-kw" maxlength="64" autocorrect="off" autocomplete="off" placeholder="输入关键词" class="se-input adjust-input"/>
+  -   - attempting click action
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -     - waiting 20ms
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -       - waiting 100ms
+  -     57 × waiting for element to be visible, enabled and stable
+  -        - element is visible, enabled and stable
+  -        - scrolling into view if needed
+  -        - done scrolling
+  -        - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -      - retrying click action
+  -        - waiting 500ms
+
+2025-04-04 11:36:35,587 - ERROR - 关键词 博彩sports主页 第 3 次失败: Page.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("#index-kw")
+  -     - locator resolved to <input data-sa="" name="word" data-sug="1" type="search" id="index-kw" maxlength="64" autocorrect="off" autocomplete="off" placeholder="输入关键词" class="se-input adjust-input"/>
+  -   - attempting click action
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -     - waiting 20ms
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -       - waiting 100ms
+  -     57 × waiting for element to be visible, enabled and stable
+  -        - element is visible, enabled and stable
+  -        - scrolling into view if needed
+  -        - done scrolling
+  -        - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -      - retrying click action
+  -        - waiting 500ms
+
+2025-04-04 11:37:16,529 - ERROR - 关键词 博彩sports竞猜 第 1 次失败: Page.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("#index-kw")
+  -     - locator resolved to <input data-sa="" name="word" data-sug="1" type="search" id="index-kw" maxlength="64" autocorrect="off" autocomplete="off" placeholder="输入关键词" class="se-input adjust-input"/>
+  -   - attempting click action
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -     - waiting 20ms
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -       - waiting 100ms
+  -     58 × waiting for element to be visible, enabled and stable
+  -        - element is visible, enabled and stable
+  -        - scrolling into view if needed
+  -        - done scrolling
+  -        - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -      - retrying click action
+  -        - waiting 500ms
+
+2025-04-04 11:37:57,228 - ERROR - 关键词 博彩sports竞猜 第 2 次失败: Page.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("#index-kw")
+  -     - locator resolved to <input data-sa="" name="word" data-sug="1" type="search" id="index-kw" maxlength="64" autocorrect="off" autocomplete="off" placeholder="输入关键词" class="se-input adjust-input"/>
+  -   - attempting click action
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -     - waiting 20ms
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -       - waiting 100ms
+  -     57 × waiting for element to be visible, enabled and stable
+  -        - element is visible, enabled and stable
+  -        - scrolling into view if needed
+  -        - done scrolling
+  -        - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -      - retrying click action
+  -        - waiting 500ms
+
+2025-04-04 11:38:36,968 - ERROR - 关键词 博彩sports竞猜 第 3 次失败: Page.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("#index-kw")
+  -     - locator resolved to <input data-sa="" name="word" data-sug="1" type="search" id="index-kw" maxlength="64" autocorrect="off" autocomplete="off" placeholder="输入关键词" class="se-input adjust-input"/>
+  -   - attempting click action
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -     - waiting 20ms
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -       - waiting 100ms
+  -     57 × waiting for element to be visible, enabled and stable
+  -        - element is visible, enabled and stable
+  -        - scrolling into view if needed
+  -        - done scrolling
+  -        - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -      - retrying click action
+  -        - waiting 500ms
+
+2025-04-04 11:38:42,255 - INFO - 结果保存至 combined_uci_20250404_1128.xlsx
+2025-04-04 11:39:18,543 - ERROR - 关键词 博彩sports娱乐 第 1 次失败: Page.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("#index-kw")
+  -     - locator resolved to <input data-sa="" name="word" data-sug="1" type="search" id="index-kw" maxlength="64" autocorrect="off" autocomplete="off" placeholder="输入关键词" class="se-input adjust-input"/>
+  -   - attempting click action
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -     - waiting 20ms
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -       - waiting 100ms
+  -     57 × waiting for element to be visible, enabled and stable
+  -        - element is visible, enabled and stable
+  -        - scrolling into view if needed
+  -        - done scrolling
+  -        - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -      - retrying click action
+  -        - waiting 500ms
+  -     - waiting for element to be visible, enabled and stable
+  -     - element is visible, enabled and stable
+  -     - scrolling into view if needed
+
+2025-04-04 11:39:58,490 - ERROR - 关键词 博彩sports娱乐 第 2 次失败: Page.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("#index-kw")
+  -     - locator resolved to <input data-sa="" name="word" data-sug="1" type="search" id="index-kw" maxlength="64" autocorrect="off" autocomplete="off" placeholder="输入关键词" class="se-input adjust-input"/>
+  -   - attempting click action
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -     - waiting 20ms
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -       - waiting 100ms
+  -     58 × waiting for element to be visible, enabled and stable
+  -        - element is visible, enabled and stable
+  -        - scrolling into view if needed
+  -        - done scrolling
+  -        - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -      - retrying click action
+  -        - waiting 500ms
+
+2025-04-04 11:40:37,517 - ERROR - 关键词 博彩sports娱乐 第 3 次失败: Page.click: Timeout 30000ms exceeded.
+Call log:
+  - waiting for locator("#index-kw")
+  -     - locator resolved to <input data-sa="" name="word" data-sug="1" type="search" id="index-kw" maxlength="64" autocorrect="off" autocomplete="off" placeholder="输入关键词" class="se-input adjust-input"/>
+  -   - attempting click action
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -     - waiting 20ms
+  -     2 × waiting for element to be visible, enabled and stable
+  -       - element is visible, enabled and stable
+  -       - scrolling into view if needed
+  -       - done scrolling
+  -       - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -     - retrying click action
+  -       - waiting 100ms
+  -     58 × waiting for element to be visible, enabled and stable
+  -        - element is visible, enabled and stable
+  -        - scrolling into view if needed
+  -        - done scrolling
+  -        - <label for="index-kw" class="fake-placeholder"></label> intercepts pointer events
+  -      - retrying click action
+  -        - waiting 500ms
+
+2025-04-04 11:40:43,176 - INFO - 结果保存至 combined_uci_20250404_1128.xlsx
+2025-04-04 11:41:18,184 - INFO - 结果保存至 combined_uci_20250404_1128.xlsx
+2025-04-04 11:41:23,173 - INFO - 结果保存至 combined_uci_20250404_1128.xlsx
+2025-04-04 11:41:24,328 - INFO - 程序结束 - 2025-04-04 11:41
+2025-04-04 11:42:53,879 - INFO - 程序启动 - 2025-04-04 11:42

@@ -1,0 +1,62 @@
+2025-04-04 11:45:19,810 - INFO - 程序启动 - 2025-04-04 11:45
+2025-04-04 11:45:21,907 - INFO - 处理关键词: 菠菜导航
+2025-04-04 11:45:31,752 - WARNING - 访问 https://m.baidu.com/l=1/tc?logid=9968178999532258701&from=0&ref=index_iphone&nsrc=mMQ82pJog0pERasoA4JVBP3d7Jw4Qw4k2o9G6gNVYpi0bZpZV%2FVZQOT1gaAq1PDX%2FoUpV%2Bda1N1CtoEHui4izw%3D%3D&bdver=2_1&bdenc=1&ct=10&cst=2&logFrom=navs_square 失败: name 're' is not defined
+2025-04-04 11:45:31,753 - ERROR - 关键词 菠菜导航 处理失败: cannot access local variable 'domain' where it is not associated with a value
+2025-04-04 11:45:31,753 - INFO - 处理关键词: 博彩sports平台
+2025-04-04 11:45:42,001 - WARNING - 访问 https://wappass.baidu.com/passport/?login&tpl=wimn&subpro=wimn&sms=1&regtype=1&u=https%3A%2F%2Fmbd.baidu.com%2Fwebpage%3Faction%3Dicard%26type%3Dsubscribe%26channel%3Dwise_home 失败: name 're' is not defined
+2025-04-04 11:45:42,001 - ERROR - 关键词 博彩sports平台 处理失败: cannot access local variable 'domain' where it is not associated with a value
+2025-04-04 11:45:42,001 - INFO - 处理关键词: 博彩sportsapp
+2025-04-04 11:45:47,879 - WARNING - 访问 https://wappass.baidu.com/passport/?login&tpl=wimn&subpro=wimn&sms=1&regtype=1&u=https%3A%2F%2Fmbd.baidu.com%2Fwebpage%3Faction%3Dicard%26type%3Dsubscribe%26channel%3Dwise_home 失败: name 're' is not defined
+2025-04-04 11:45:47,879 - ERROR - 关键词 博彩sportsapp 处理失败: cannot access local variable 'domain' where it is not associated with a value
+2025-04-04 11:45:47,879 - INFO - 处理关键词: 博彩sports主页
+2025-04-04 11:45:56,358 - WARNING - 访问 https://wappass.baidu.com/passport/?login&tpl=wimn&subpro=wimn&sms=1&regtype=1&u=https%3A%2F%2Fmbd.baidu.com%2Fwebpage%3Faction%3Dicard%26type%3Dsubscribe%26channel%3Dwise_home 失败: name 're' is not defined
+2025-04-04 11:45:56,358 - ERROR - 关键词 博彩sports主页 处理失败: cannot access local variable 'domain' where it is not associated with a value
+2025-04-04 11:45:56,358 - INFO - 处理关键词: 博彩sports竞猜
+2025-04-04 11:46:05,196 - WARNING - 访问 https://wappass.baidu.com/passport/?login&tpl=wimn&subpro=wimn&sms=1&regtype=1&u=https%3A%2F%2Fmbd.baidu.com%2Fwebpage%3Faction%3Dicard%26type%3Dsubscribe%26channel%3Dwise_home 失败: name 're' is not defined
+2025-04-04 11:46:05,196 - ERROR - 关键词 博彩sports竞猜 处理失败: cannot access local variable 'domain' where it is not associated with a value
+2025-04-04 11:46:05,196 - INFO - 处理关键词: 博彩sports娱乐
+2025-04-04 11:46:12,299 - WARNING - 访问 https://wappass.baidu.com/passport/?login&tpl=wimn&subpro=wimn&sms=1&regtype=1&u=https%3A%2F%2Fmbd.baidu.com%2Fwebpage%3Faction%3Dicard%26type%3Dsubscribe%26channel%3Dwise_home 失败: name 're' is not defined
+2025-04-04 11:46:12,299 - ERROR - 关键词 博彩sports娱乐 处理失败: cannot access local variable 'domain' where it is not associated with a value
+2025-04-04 11:46:12,514 - INFO - 结果保存至 keyword_uci_20250404_1145.xlsx
+2025-04-04 11:47:22,183 - INFO - 程序启动 - 2025-04-04 11:47
+2025-04-04 11:47:24,575 - INFO - 处理关键词: 菠菜导航
+2025-04-04 11:47:48,918 - INFO - 程序启动 - 2025-04-04 11:47
+2025-04-04 11:48:01,394 - ERROR - 关键词 菠菜导航 处理失败: Timeout 30000ms exceeded.
+=========================== logs ===========================
+"domcontentloaded" event fired
+============================================================
+2025-04-04 11:48:01,394 - INFO - 处理关键词: 博彩sports平台
+2025-04-04 11:48:04,789 - ERROR - 百度登录失败: Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("#TANGRAM__PSP_11__userName") to be visible
+
+2025-04-04 11:48:04,789 - INFO - 处理关键词: 菠菜导航
+2025-04-04 11:48:35,638 - ERROR - 关键词 博彩sports平台 处理失败: Timeout 30000ms exceeded.
+=========================== logs ===========================
+"domcontentloaded" event fired
+============================================================
+2025-04-04 11:48:35,638 - INFO - 处理关键词: 博彩sportsapp
+2025-04-04 11:48:41,395 - ERROR - 关键词 菠菜导航 处理失败: Timeout 30000ms exceeded.
+=========================== logs ===========================
+"domcontentloaded" event fired
+============================================================
+2025-04-04 11:48:41,396 - INFO - 处理关键词: 博彩sports平台
+2025-04-04 11:48:52,484 - INFO - 处理关键词: 博彩sports主页
+2025-04-04 11:49:07,465 - INFO - 处理关键词: 博彩sports竞猜
+2025-04-04 11:49:22,278 - WARNING - 访问 https://m.baidu.com/?ref=www_ptl&ms=1&rsv_pq=10051573579502523038&from=0&amp;ssid=0&rsv_t=7de1ez1QRkCh0%2BgVgd5jGUAX%2B39AcqMk85qRKriI6eCDAudcpPgq7Q 失败: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/?ref=www_ptl&ms=1&rsv_pq=10051573579502523038&from=0&amp;ssid=0&rsv_t=7de1ez1QRkCh0%2BgVgd5jGUAX%2B39AcqMk85qRKriI6eCDAudcpPgq7Q", waiting until "load"
+
+2025-04-04 11:49:22,696 - INFO - 处理关键词: 博彩sports娱乐
+2025-04-04 11:49:26,023 - INFO - 处理关键词: 博彩sportsapp
+2025-04-04 11:49:40,093 - INFO - 结果保存至 keyword_uci_20250404_1147.xlsx
+2025-04-04 11:49:41,527 - INFO - 程序结束 - 2025-04-04 11:49
+2025-04-04 11:49:56,026 - ERROR - 关键词 博彩sportsapp 处理失败: Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/", waiting until "load"
+
+2025-04-04 11:49:56,026 - INFO - 处理关键词: 博彩sports主页
+2025-04-04 11:50:11,183 - INFO - 处理关键词: 博彩sports竞猜
+2025-04-04 11:50:25,833 - INFO - 处理关键词: 博彩sports娱乐
+2025-04-04 11:50:39,429 - INFO - 结果保存至 keyword_uci_20250404_1148.xlsx
+2025-04-04 11:50:41,368 - INFO - 程序结束 - 2025-04-04 11:50
