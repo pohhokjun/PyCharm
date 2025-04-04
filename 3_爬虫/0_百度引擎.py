@@ -9,21 +9,17 @@ from openpyxl.styles import Alignment
 from openpyxl import load_workbook
 import os
 import tldextract
+import json
 
 # 关键词和域名列表
 KEYWORDS = '''
 918博天堂btt
-918博天堂官方app
+视频生成ai工具
 '''
 keywords = [keyword.strip() for keyword in KEYWORDS.split('\n') if keyword.strip()]
-
 domains = """
 https://m.micro-maker.com/
 http://www.aierxingz.com/
-https://www.bet365.com/
-https://1xbetind.in/
-https://m.jslpsp.com/
-https://www.ruimeidachuju.com/
 """
 domain_list = [domain.strip() for domain in domains.split('\n') if domain.strip()]
 
@@ -38,6 +34,20 @@ def extract_metadata(soup):
     description_meta = soup.find('meta', attrs={'name': 'description'})
     description_content = description_meta['content'].strip() if description_meta else ''
     return {'title': title, 'keywords': keywords_content, 'description': description_content}
+
+# 提取“大家还在搜”数据
+def extract_related_searches(soup):
+    related_div = soup.find('div', class_='c-title', string='大家还在搜')
+    if related_div and related_div.next_sibling:
+        data_tool = related_div.next_sibling.find('div', class_='sc-feedback')
+        if data_tool and 'data-tool' in data_tool.attrs:
+            try:
+                tool_data = json.loads(data_tool['data-tool'].replace("'", '"'))
+                related_words = tool_data.get('feedback', {}).get('suggest', {}).get('ext', {}).get('relation_words', '')
+                return related_words
+            except json.JSONDecodeError:
+                return ''
+    return ''
 
 # 检测内容类型
 def detect_content_type(url, soup):
@@ -55,14 +65,26 @@ async def search_keyword(page, keyword, all_results):
         await page.wait_for_selector("div.result", timeout=30000)
         html = await page.content()
         soup = BeautifulSoup(html, 'html.parser')
-        results = soup.select('div.result')[:5]
+        related_searches = extract_related_searches(soup)
+        results = soup.select('div.result')[:2]
         for result in results:
             data_log = result.get('data-log', '{}')
             link = eval(data_log.replace("'", '"')).get('mu', '无链接') if data_log else '无链接'
             title_element = result.select_one('h3') or result.select_one('a[class*="title"]')
             title_text = title_element.text.strip() if title_element else ''
             metadata, content_type = ({'title': '', 'keywords': '', 'description': ''}, '未知') if link == '无链接' else await fetch_page_data(page, link)
-            all_results.append({'搜索关键词': keyword, '内容类型': content_type, '网址': link, '页面标题': metadata['title'], '关键词': metadata['keywords'], '描述': metadata['description']})
+            # 添加UCI计算
+            uci = await calculate_page_uci(page, link)
+            all_results.append({
+                '搜索关键词': keyword,
+                '大家还在搜': related_searches,
+                '内容类型': content_type,
+                '网址': link,
+                '页面标题': metadata['title'],
+                '关键词': metadata['keywords'],
+                '描述': metadata['description'],
+                'UCI': uci # 将UCI添加到结果中
+            })
     except Exception as e:
         logging.error(f"关键词 {keyword} 搜索失败：{e}")
     print(f"完成关键词：{keyword}")
@@ -95,6 +117,20 @@ async def get_domain_data(page, domain):
 def calculate_uci(cf, lf, df, uf):
     return min(100, round(0.4 * cf + 0.3 * lf + 0.2 * df + 0.1 * uf, 2))
 
+# 计算页面UCI
+async def calculate_page_uci(page, link):
+    try:
+        content, links = await get_domain_data(page, link)
+        cf = min(100, content / 10000 * 100)
+        lf = min(100, links / 50 * 100)
+        df = 100 if tldextract.extract(link).registered_domain in ["baidu.com", "qq.com", "163.com", "sohu.com", "sina.com"] else 0
+        uf = 50
+        uci = calculate_uci(cf, lf, df, uf)
+        return uci
+    except Exception as e:
+        logging.error(f"计算页面 {link} 的UCI失败：{e}")
+        return 0
+
 # 处理域名
 async def process_domain(page, domain):
     content, links = await get_domain_data(page, domain)
@@ -120,17 +156,14 @@ async def main():
         page = await browser.new_page()
 
         # 处理关键词
-        for i, keyword in enumerate(keywords):
+        for keyword in keywords:
             await search_keyword(page, keyword, all_results)
         df = pd.DataFrame(all_results)
         df.to_excel(excel_file, index=False, sheet_name='Sheet1', engine='openpyxl')
         print(f"已处理 {len(keywords)}/{len(keywords)} 个关键词，结果已保存至 {excel_file} 的 Sheet1")
 
-        # 处理域名（在关键词任务完成后执行）
-        domain_results = []
-        for domain in domain_list:
-            result = await process_domain(page, domain)
-            domain_results.append(result)
+        # 处理域名
+        domain_results = [await process_domain(page, domain) for domain in domain_list]
         df_domains = pd.DataFrame(domain_results)
         with pd.ExcelWriter(excel_file, engine='openpyxl', mode='a', if_sheet_exists='overlay') as writer:
             df_domains.to_excel(writer, index=False, sheet_name='Sheet2')

@@ -1,5 +1,16 @@
 import pymysql
 
+# 数据库配置
+DATABASE_CONFIG = {
+    'host': '18.178.159.230',
+    'port': 3366,
+    'user': 'bigdata',
+    'password': 'uvb5SOSmLH8sCoSU',
+    'database': 'finance_1000',
+    'charset': 'utf8mb4',
+    'cursorclass': pymysql.cursors.DictCursor
+}
+
 try:
     # 配置项集中管理
     CONFIG = {
@@ -7,37 +18,35 @@ try:
         'TIME_FIELDS': ['created_at', 'updated_at'],
         'SELECT_FIELDS': [
             'site_id',
-            'member_credit_rating',
             'member_credit_level',
-            'lock_status',
-            'total_recharge',
-            'total_record'
         ],
         'DISPLAY_MAPPINGS': {
             # 字段显示名称映射
             'FIELD_NAMES': {
-                'member_name': 'member_name'
+                'member_name': '会员名称',
+                'site_id': '站点 ID',
+                'member_credit_level': '会员信用等级',
+                'created_at': '创建时间',
+                'updated_at': '更新时间'
             },
             # 字段值映射
             'FIELD_VALUES': {
                 'lock_status': {
                     1: '启用',
                     2: '禁用'
+                },
+                'member_credit_level': {
+                    1: '普通',
+                    2: '白银',
+                    3: '黄金',
+                    4: '铂金'
                 }
             }
         }
     }
 
     # 建立数据库连接
-    connection = pymysql.connect(
-        host='127.0.0.1',
-        port=3306,
-        user='root',
-        password='root',
-        database='offline_finance_1000',
-        charset='utf8mb4',
-        cursorclass=pymysql.cursors.DictCursor
-    )
+    connection = pymysql.connect(**DATABASE_CONFIG)
 
     # 使用游标执行查询
     with connection.cursor() as cursor:
@@ -64,8 +73,8 @@ try:
 
         # 使用字段列表构造查询
         query = f"""
-        SELECT DISTINCT 
-            {', '.join(CONFIG['SELECT_FIELDS'])} 
+        SELECT DISTINCT
+            {', '.join(CONFIG['SELECT_FIELDS'])}
         FROM {CONFIG['TABLE_NAME']}
         """
         cursor.execute(query)
@@ -121,11 +130,11 @@ try:
         else:
             print("\n表中没有数据或没有唯一组合")
 
-except Exception as e:
+except pymysql.Error as e:
     print(f"数据库错误: {e}")
 
 finally:
     # 关闭连接
-    if connection.open:
+    if connection and connection.open:
         connection.close()
         print("数据库连接已关闭")
