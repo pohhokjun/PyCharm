@@ -1,0 +1,27 @@
+{
+  "type": "Compass Connections",
+  "version": {
+    "$numberInt": "1"
+  },
+  "connections": [
+    {
+      "id": "c690e249-b3d7-4f9b-942a-0649c6fb05de",
+      "lastUsed": {
+        "$date": {
+          "$numberLong": "1743663496964"
+        }
+      },
+      "favorite": {
+        "name": "GD data",
+        "color": "color1"
+      },
+      "savedConnectionType": "favorite",
+      "connectionOptions": {
+        "connectionString": "mongodb://biddata:uvb5SOSmLH8sCoSU@18.178.159.230:27217/?directConnection=true&authSource=admin&authMechanism=SCRAM-SHA-256",
+        "oidc": {
+          "serializedState": "eyJvaWRjUGx1Z2luU3RhdGVWZXJzaW9uIjowLCJzdGF0ZSI6W119"
+        }
+      }
+    }
+  ]
+}

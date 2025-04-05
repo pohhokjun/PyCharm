@@ -96,31 +96,28 @@ database = 'finance_1000'
 # SQL 查询语句
 sql = """
 SELECT
-    DATE(created_at) AS created_date, -- 将created_at的时间部分截断，只保留日期，并命名为created_date
-    member_id, member_username, id, -- 字段xxx
-    created_at, -- 完整创建时间
-    SUM(order_amount) AS total_order_amount, -- 计算订单总金额，并命名为total_order_amount
-    SUM(paid_amount) AS total_paid_amount, -- 计算支付总金额，并命名为total_paid_amount
+    DATE(created_at) AS created_date,
+    member_id, member_username, id,created_at,
+    SUM(order_amount) AS total_order_amount,
+    SUM(paid_amount) AS total_paid_amount,
     CASE
-        WHEN pay_type = 1006 THEN '好博-MPay支付-MPay代收' -- 如果pay_type为1006，则显示为'好博-MPay支付-MPay代收'
-        ELSE pay_type -- 否则显示原始pay_type
-    END AS '支付方式', -- 将转换后的支付方式命名为'支付方式'
-    pay_channel, order_status -- 字段xxx
-FROM finance_pay_records -- 从finance_pay_records表查询
-
-WHERE member_id IN ( -- 筛选member_id在以下子查询结果中的记录
+        WHEN pay_type = 1006 THEN '好博-MPay支付-MPay代收'
+        ELSE pay_type
+    END AS '支付方式',
+    pay_channel, order_status
+FROM finance_pay_records
+WHERE member_id IN (
     SELECT member_id
     FROM finance_pay_records
     GROUP BY member_id
-    HAVING SUM(order_amount) > 0 -- 筛选订单总金额大于0的会员
-        AND DATE(created_at) >= '2024-05-29' -- 筛选创建日期大于等于'2024-05-29'的记录
+    HAVING SUM(order_amount) > 0
+        AND DATE(created_at) >= '2024-12-30'
 )
-AND created_at > '2024-05-1 20:00:00' -- 筛选创建时间大于'2024-05-1 20:00:00'的记录
-AND created_at < '2024-12-29 00:10:00' -- 筛选创建时间小于'2024-12-29 00:10:00'的记录
-
-GROUP BY created_date, member_id, member_username, id, created_at, pay_channel, order_status -- 按照xxx分组
-ORDER BY created_at DESC, total_order_amount ASC -- 按照创建时间降序，订单总金额升序排序
-LIMIT 20 OFFSET 0; -- 返回前20条记录，跳过0条记录
+AND created_at > '2024-01-01 00:00:00'
+AND created_at < '2025-12-31 00:00:00'
+GROUP BY created_date, member_id, member_username, id, created_at, pay_channel, order_status
+ORDER BY created_at DESC, total_order_amount ASC
+LIMIT 20 OFFSET 0;
 """
 
 # 执行查询并导出到 Excel

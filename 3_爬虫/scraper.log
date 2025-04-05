@@ -1,0 +1,1552 @@
+2025-04-05 15:25:28,604 - INFO - 运行开始时间 2025-04-05 15:25
+2025-04-05 15:26:37,875 - ERROR - 链接 https://sports.people.com.cn/n/2013/1107/c22176-23466608.html 访问失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://sports.people.com.cn/n/2013/1107/c22176-23466608.html
+Call log:
+  - navigating to "https://sports.people.com.cn/n/2013/1107/c22176-23466608.html", waiting until "load"
+
+2025-04-05 15:26:38,333 - ERROR - 域名 https://sports.people.com.cn/n/2013/1107/c22176-23466608.html 访问失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://sports.people.com.cn/n/2013/1107/c22176-23466608.html
+Call log:
+  - navigating to "https://sports.people.com.cn/n/2013/1107/c22176-23466608.html", waiting until "load"
+
+2025-04-05 15:27:26,683 - ERROR - 链接 http://www.chinadaily.com.cn/sports/node_1004405.htm 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.chinadaily.com.cn/sports/node_1004405.htm", waiting until "load"
+
+2025-04-05 15:27:36,697 - ERROR - 域名 http://www.chinadaily.com.cn/sports/node_1004405.htm 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.chinadaily.com.cn/sports/node_1004405.htm", waiting until "load"
+
+2025-04-05 15:27:37,390 - ERROR - 链接 http://tt.m.okooo.com/ 访问失败：Page.goto: net::ERR_CONNECTION_RESET at http://tt.m.okooo.com/
+Call log:
+  - navigating to "http://tt.m.okooo.com/", waiting until "load"
+
+2025-04-05 15:27:37,947 - ERROR - 域名 http://tt.m.okooo.com/ 访问失败：Page.goto: net::ERR_CONNECTION_RESET at http://tt.m.okooo.com/
+Call log:
+  - navigating to "http://tt.m.okooo.com/", waiting until "load"
+
+2025-04-05 15:27:52,421 - ERROR - 链接 http://www.chinadaily.com.cn/sports/node_1004405.htm 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.chinadaily.com.cn/sports/node_1004405.htm", waiting until "load"
+
+2025-04-05 15:28:02,428 - ERROR - 域名 http://www.chinadaily.com.cn/sports/node_1004405.htm 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.chinadaily.com.cn/sports/node_1004405.htm", waiting until "load"
+
+2025-04-05 15:29:05,091 - ERROR - 链接 https://m.163.com/dy/article/GJSQBFJ405299B1S.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.163.com/dy/article/GJSQBFJ405299B1S.html", waiting until "load"
+
+2025-04-05 15:29:32,726 - ERROR - 链接 http://www.mianzhida.com/YZW/detail/uBKYeXrY.html 访问失败：Page.goto: net::ERR_EMPTY_RESPONSE at http://www.mianzhida.com/YZW/detail/uBKYeXrY.html
+Call log:
+  - navigating to "http://www.mianzhida.com/YZW/detail/uBKYeXrY.html", waiting until "load"
+
+2025-04-05 15:29:33,210 - ERROR - 域名 http://www.mianzhida.com/YZW/detail/uBKYeXrY.html 访问失败：Page.goto: net::ERR_EMPTY_RESPONSE at http://www.mianzhida.com/YZW/detail/uBKYeXrY.html
+Call log:
+  - navigating to "http://www.mianzhida.com/YZW/detail/uBKYeXrY.html", waiting until "load"
+
+2025-04-05 15:30:15,022 - ERROR - 链接 https://m.163.com/sports/article/E714RRV600058MJK.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.163.com/sports/article/E714RRV600058MJK.html", waiting until "load"
+
+2025-04-05 15:30:25,033 - ERROR - 域名 https://m.163.com/sports/article/E714RRV600058MJK.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.163.com/sports/article/E714RRV600058MJK.html", waiting until "load"
+
+2025-04-05 15:31:44,070 - ERROR - 链接 https://m.163.com/dy/article/GI6D0PHD05198ETO.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.163.com/dy/article/GI6D0PHD05198ETO.html", waiting until "load"
+
+2025-04-05 15:31:54,084 - ERROR - 域名 https://m.163.com/dy/article/GI6D0PHD05198ETO.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.163.com/dy/article/GI6D0PHD05198ETO.html", waiting until "load"
+
+2025-04-05 15:32:31,186 - ERROR - 域名 https://m.sohu.com/a/877122383_122006510/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.sohu.com/a/877122383_122006510/", waiting until "load"
+
+2025-04-05 15:33:20,517 - ERROR - 链接 https://www.chinanews.com/m/sh/2019/10-24/8987761.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.chinanews.com/m/sh/2019/10-24/8987761.shtml", waiting until "load"
+
+2025-04-05 15:34:03,174 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 15:34:03,177 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 15:34:03,772 - ERROR - 链接 https://www.1ting.com/youxi/376620.html 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.1ting.com/youxi/376620.html
+Call log:
+  - navigating to "https://www.1ting.com/youxi/376620.html", waiting until "load"
+
+2025-04-05 15:34:04,248 - ERROR - 域名 https://www.1ting.com/youxi/376620.html 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.1ting.com/youxi/376620.html
+Call log:
+  - navigating to "https://www.1ting.com/youxi/376620.html", waiting until "load"
+
+2025-04-05 15:34:04,362 - ERROR - 关键词 博彩捕鱼首页 搜索失败：Page.goto: Navigation to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E6%8D%95%E9%B1%BC%E9%A6%96%E9%A1%B5" is interrupted by another navigation to "chrome-error://chromewebdata/"
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E6%8D%95%E9%B1%BC%E9%A6%96%E9%A1%B5", waiting until "load"
+
+2025-04-05 15:34:04,753 - ERROR - 关键词 博彩捕鱼官网 搜索失败：Page.goto: Navigation to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E6%8D%95%E9%B1%BC%E5%AE%98%E7%BD%91" is interrupted by another navigation to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E6%8D%95%E9%B1%BC%E9%A6%96%E9%A1%B5"
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E6%8D%95%E9%B1%BC%E5%AE%98%E7%BD%91", waiting until "load"
+
+2025-04-05 15:34:25,375 - ERROR - 链接 https://m.techweb.com.cn/tag/%E6%8D%95%E9%B1%BC%E8%BE%BE%E4%BA%BA/ 访问失败：Page.goto: net::ERR_CONNECTION_REFUSED at https://m.techweb.com.cn/tag/%E6%8D%95%E9%B1%BC%E8%BE%BE%E4%BA%BA/
+Call log:
+  - navigating to "https://m.techweb.com.cn/tag/%E6%8D%95%E9%B1%BC%E8%BE%BE%E4%BA%BA/", waiting until "load"
+
+2025-04-05 15:34:25,856 - ERROR - 域名 https://m.techweb.com.cn/tag/%E6%8D%95%E9%B1%BC%E8%BE%BE%E4%BA%BA/ 访问失败：Page.goto: net::ERR_CONNECTION_REFUSED at https://m.techweb.com.cn/tag/%E6%8D%95%E9%B1%BC%E8%BE%BE%E4%BA%BA/
+Call log:
+  - navigating to "https://m.techweb.com.cn/tag/%E6%8D%95%E9%B1%BC%E8%BE%BE%E4%BA%BA/", waiting until "load"
+
+2025-04-05 15:34:26,043 - ERROR - 关键词 博彩捕鱼地址 搜索失败：Page.goto: Navigation to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E6%8D%95%E9%B1%BC%E5%9C%B0%E5%9D%80" is interrupted by another navigation to "chrome-error://chromewebdata/"
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E6%8D%95%E9%B1%BC%E5%9C%B0%E5%9D%80", waiting until "load"
+
+2025-04-05 15:34:26,346 - ERROR - 关键词 博彩捕鱼综合 搜索失败：Page.goto: Navigation to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E6%8D%95%E9%B1%BC%E7%BB%BC%E5%90%88" is interrupted by another navigation to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E6%8D%95%E9%B1%BC%E5%9C%B0%E5%9D%80"
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E6%8D%95%E9%B1%BC%E7%BB%BC%E5%90%88", waiting until "load"
+
+2025-04-05 15:34:26,530 - ERROR - 关键词 博彩捕鱼唯一 搜索失败：Page.goto: Navigation to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E6%8D%95%E9%B1%BC%E5%94%AF%E4%B8%80" is interrupted by another navigation to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E6%8D%95%E9%B1%BC%E7%BB%BC%E5%90%88"
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E6%8D%95%E9%B1%BC%E5%94%AF%E4%B8%80", waiting until "load"
+
+2025-04-05 15:34:59,475 - ERROR - 链接 http://baijiahao.baidu.com/s?id=1691216014169682091&wfr=spider&for=pc 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://baijiahao.baidu.com/s?id=1691216014169682091&wfr=spider&for=pc", waiting until "load"
+
+2025-04-05 15:35:52,855 - ERROR - 域名 http://www.i-gamesart.com/ 访问失败：Page.goto: net::ERR_ABORTED at http://www.i-gamesart.com/
+Call log:
+  - navigating to "http://www.i-gamesart.com/", waiting until "load"
+
+2025-04-05 15:36:13,641 - ERROR - 链接 https://haokan.baidu.com/v?pd=wisenatural&vid=2490616470595935967 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://haokan.baidu.com/v?pd=wisenatural&vid=2490616470595935967", waiting until "load"
+
+2025-04-05 15:36:23,652 - ERROR - 域名 https://haokan.baidu.com/v?pd=wisenatural&vid=2490616470595935967 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://haokan.baidu.com/v?pd=wisenatural&vid=2490616470595935967", waiting until "load"
+
+2025-04-05 15:37:18,683 - ERROR - 关键词 博彩捕鱼返水最高 搜索失败：Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E6%8D%95%E9%B1%BC%E8%BF%94%E6%B0%B4%E6%9C%80%E9%AB%98", waiting until "load"
+
+2025-04-05 15:37:48,699 - ERROR - 关键词 博彩捕鱼安全可靠 搜索失败：Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E6%8D%95%E9%B1%BC%E5%AE%89%E5%85%A8%E5%8F%AF%E9%9D%A0", waiting until "load"
+
+2025-04-05 15:38:03,306 - ERROR - 链接 https://news.ifeng.com/c/7fa8AS0hCPw 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.ifeng.com/c/7fa8AS0hCPw", waiting until "load"
+
+2025-04-05 15:38:33,683 - ERROR - 链接 https://wap.xxsb.com/content/2024-03/02/content_244042.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://wap.xxsb.com/content/2024-03/02/content_244042.html", waiting until "load"
+
+2025-04-05 15:39:35,835 - ERROR - 链接 https://wap.xxsb.com/content/2024-03/01/content_235860.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://wap.xxsb.com/content/2024-03/01/content_235860.html", waiting until "load"
+
+2025-04-05 15:39:45,841 - ERROR - 域名 https://wap.xxsb.com/content/2024-03/01/content_235860.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://wap.xxsb.com/content/2024-03/01/content_235860.html", waiting until "load"
+
+2025-04-05 15:39:55,853 - ERROR - 链接 https://wap.xxsb.com/content/2024-03/01/content_236183.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://wap.xxsb.com/content/2024-03/01/content_236183.html", waiting until "load"
+
+2025-04-05 15:40:05,860 - ERROR - 域名 https://wap.xxsb.com/content/2024-03/01/content_236183.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://wap.xxsb.com/content/2024-03/01/content_236183.html", waiting until "load"
+
+2025-04-05 15:40:18,922 - ERROR - 链接 https://m.163.com/dy/article/HO7M9KP20514R9NP.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.163.com/dy/article/HO7M9KP20514R9NP.html", waiting until "load"
+
+2025-04-05 15:40:29,528 - ERROR - 链接 https://new.qq.com/omn/20220729/20220729A0675300.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://new.qq.com/omn/20220729/20220729A0675300.html", waiting until "load"
+
+2025-04-05 15:40:39,534 - ERROR - 域名 https://new.qq.com/omn/20220729/20220729A0675300.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://new.qq.com/omn/20220729/20220729A0675300.html", waiting until "load"
+
+2025-04-05 15:41:02,179 - ERROR - 链接 https://news.sina.cn/sh/2022-11-19/detail-imqqsmrp6745411.d.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.sina.cn/sh/2022-11-19/detail-imqqsmrp6745411.d.html", waiting until "load"
+
+2025-04-05 15:41:32,459 - ERROR - 链接 http://www.360doc.cn/article/6017453_765039113.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.360doc.cn/article/6017453_765039113.html", waiting until "load"
+
+2025-04-05 15:42:03,238 - ERROR - 链接 https://baike.baidu.com/item/%E7%BD%91%E7%BB%9C%E5%8D%9A%E5%BD%A9/10332061 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://baike.baidu.com/item/%E7%BD%91%E7%BB%9C%E5%8D%9A%E5%BD%A9/10332061", waiting until "load"
+
+2025-04-05 15:42:06,000 - ERROR - 链接 http://tt.m.okooo.com/ 访问失败：Page.goto: net::ERR_CONNECTION_RESET at http://tt.m.okooo.com/
+Call log:
+  - navigating to "http://tt.m.okooo.com/", waiting until "load"
+
+2025-04-05 15:42:06,505 - ERROR - 域名 http://tt.m.okooo.com/ 访问失败：Page.goto: net::ERR_CONNECTION_RESET at http://tt.m.okooo.com/
+Call log:
+  - navigating to "http://tt.m.okooo.com/", waiting until "load"
+
+2025-04-05 15:42:18,717 - ERROR - 链接 https://baijiahao.baidu.com/s?id=1638457280905013532&wfr=spider&for=pc 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://baijiahao.baidu.com/s?id=1638457280905013532&wfr=spider&for=pc", waiting until "load"
+
+2025-04-05 15:42:28,718 - ERROR - 域名 https://baijiahao.baidu.com/s?id=1638457280905013532&wfr=spider&for=pc 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://baijiahao.baidu.com/s?id=1638457280905013532&wfr=spider&for=pc", waiting until "load"
+
+2025-04-05 15:45:45,355 - ERROR - 链接 https://news.ifeng.com/a/20150407/43500750_0.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.ifeng.com/a/20150407/43500750_0.shtml", waiting until "load"
+
+2025-04-05 15:45:55,357 - ERROR - 域名 https://news.ifeng.com/a/20150407/43500750_0.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.ifeng.com/a/20150407/43500750_0.shtml", waiting until "load"
+
+2025-04-05 15:46:46,066 - ERROR - 关键词 博彩彩票安全可靠 搜索失败：Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E5%BD%A9%E7%A5%A8%E5%AE%89%E5%85%A8%E5%8F%AF%E9%9D%A0", waiting until "load"
+
+2025-04-05 15:47:01,039 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 15:47:01,042 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 15:47:38,431 - ERROR - 链接 https://news.sina.cn/2019-09-16/detail-iicezueu6215678.d.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.sina.cn/2019-09-16/detail-iicezueu6215678.d.html", waiting until "load"
+
+2025-04-05 15:47:48,594 - ERROR - 链接 http://tt.m.okooo.com/ 访问失败：Page.goto: net::ERR_CONNECTION_RESET at http://tt.m.okooo.com/
+Call log:
+  - navigating to "http://tt.m.okooo.com/", waiting until "load"
+
+2025-04-05 15:47:49,002 - ERROR - 域名 http://tt.m.okooo.com/ 访问失败：Page.goto: net::ERR_CONNECTION_RESET at http://tt.m.okooo.com/
+Call log:
+  - navigating to "http://tt.m.okooo.com/", waiting until "load"
+
+2025-04-05 15:48:48,250 - ERROR - 链接 http://tt.m.okooo.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://tt.m.okooo.com/", waiting until "load"
+
+2025-04-05 15:48:49,097 - ERROR - 域名 http://tt.m.okooo.com/ 访问失败：Page.goto: net::ERR_CONNECTION_RESET at http://tt.m.okooo.com/
+Call log:
+  - navigating to "http://tt.m.okooo.com/", waiting until "load"
+
+2025-04-05 15:48:49,599 - ERROR - 链接 https://baike.baidu.com/item/%E5%8D%9A%E5%BC%88%E7%BD%91/9731744 访问失败：Page.goto: Navigation to "https://baike.baidu.com/item/%E5%8D%9A%E5%BC%88%E7%BD%91/9731744" is interrupted by another navigation to "chrome-error://chromewebdata/"
+Call log:
+  - navigating to "https://baike.baidu.com/item/%E5%8D%9A%E5%BC%88%E7%BD%91/9731744", waiting until "load"
+
+2025-04-05 15:48:50,078 - ERROR - 域名 https://baike.baidu.com/item/%E5%8D%9A%E5%BC%88%E7%BD%91/9731744 访问失败：Page.goto: Navigation to "https://baike.baidu.com/item/%E5%8D%9A%E5%BC%88%E7%BD%91/9731744" is interrupted by another navigation to "https://baike.baidu.com/item/%E5%8D%9A%E5%BC%88%E7%BD%91/9731744"
+Call log:
+  - navigating to "https://baike.baidu.com/item/%E5%8D%9A%E5%BC%88%E7%BD%91/9731744", waiting until "load"
+
+2025-04-05 15:49:07,391 - ERROR - 链接 https://app.3dmgame.com/android/135392.html 访问失败：Page.goto: net::ERR_CONNECTION_RESET at https://app.3dmgame.com/android/135392.html
+Call log:
+  - navigating to "https://app.3dmgame.com/android/135392.html", waiting until "load"
+
+2025-04-05 15:49:08,808 - ERROR - 域名 https://app.3dmgame.com/android/135392.html 访问失败：Page.goto: Navigation to "https://app.3dmgame.com/android/135392.html" is interrupted by another navigation to "chrome-error://chromewebdata/"
+Call log:
+  - navigating to "https://app.3dmgame.com/android/135392.html", waiting until "load"
+
+2025-04-05 15:49:09,281 - ERROR - 链接 https://m.xiazaiba.com/html/176021.html 访问失败：Page.goto: Navigation to "https://m.xiazaiba.com/html/176021.html" is interrupted by another navigation to "https://shouyou.3dmgame.com/android/135392.html"
+Call log:
+  - navigating to "https://m.xiazaiba.com/html/176021.html", waiting until "load"
+
+2025-04-05 15:49:09,294 - ERROR - 域名 https://m.xiazaiba.com/html/176021.html 访问失败：Page.goto: Navigation to "https://m.xiazaiba.com/html/176021.html" is interrupted by another navigation to "https://m.xiazaiba.com/html/176021.html"
+Call log:
+  - navigating to "https://m.xiazaiba.com/html/176021.html", waiting until "load"
+
+2025-04-05 15:49:09,405 - ERROR - 关键词 博彩电竞官方 搜索失败：Page.goto: Navigation to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E7%94%B5%E7%AB%9E%E5%AE%98%E6%96%B9" is interrupted by another navigation to "https://m.xiazaiba.com/html/176021.html"
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E7%94%B5%E7%AB%9E%E5%AE%98%E6%96%B9", waiting until "load"
+
+2025-04-05 15:49:09,876 - ERROR - 关键词 博彩电竞首页 搜索失败：Page.goto: Navigation to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E7%94%B5%E7%AB%9E%E9%A6%96%E9%A1%B5" is interrupted by another navigation to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E7%94%B5%E7%AB%9E%E5%AE%98%E6%96%B9"
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E7%94%B5%E7%AB%9E%E9%A6%96%E9%A1%B5", waiting until "load"
+
+2025-04-05 15:49:10,264 - ERROR - 关键词 博彩电竞官网 搜索失败：Page.goto: Navigation to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E7%94%B5%E7%AB%9E%E5%AE%98%E7%BD%91" is interrupted by another navigation to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E7%94%B5%E7%AB%9E%E9%A6%96%E9%A1%B5"
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E7%94%B5%E7%AB%9E%E5%AE%98%E7%BD%91", waiting until "load"
+
+2025-04-05 15:51:23,785 - ERROR - 链接 https://www.gstv.com.cn/login 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.gstv.com.cn/login", waiting until "load"
+
+2025-04-05 15:51:33,788 - ERROR - 域名 https://www.gstv.com.cn/login 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.gstv.com.cn/login", waiting until "load"
+
+2025-04-05 15:53:05,842 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 15:53:05,845 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 15:53:15,847 - ERROR - 链接 https://zhidao.baidu.com/question/2000705943330643507.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://zhidao.baidu.com/question/2000705943330643507.html", waiting until "load"
+
+2025-04-05 15:53:25,863 - ERROR - 域名 https://zhidao.baidu.com/question/2000705943330643507.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://zhidao.baidu.com/question/2000705943330643507.html", waiting until "load"
+
+2025-04-05 15:54:28,778 - ERROR - 域名 http://mseo.chinaz.com/www.98trendydress.com 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://mseo.chinaz.com/www.98trendydress.com", waiting until "load"
+
+2025-04-05 15:55:18,472 - ERROR - 链接 http://www.360doc.cn/article/78204229_1102153121.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.360doc.cn/article/78204229_1102153121.html", waiting until "load"
+
+2025-04-05 15:55:39,530 - ERROR - 链接 https://m.sohu.com/a/877596716_122368243 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.sohu.com/a/877596716_122368243", waiting until "load"
+
+2025-04-05 15:56:40,868 - ERROR - 链接 https://emwap.eastmoney.com/quote/stock/0.834792.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://emwap.eastmoney.com/quote/stock/0.834792.html", waiting until "load"
+
+2025-04-05 15:56:50,878 - ERROR - 域名 https://emwap.eastmoney.com/quote/stock/0.834792.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://emwap.eastmoney.com/quote/stock/0.834792.html", waiting until "load"
+
+2025-04-05 15:57:00,893 - ERROR - 链接 https://quote.eastmoney.com/us/BJK.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://quote.eastmoney.com/us/BJK.html", waiting until "load"
+
+2025-04-05 16:00:30,781 - ERROR - 链接 https://wap.eastmoney.com/quote/stock/2.cesg10.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://wap.eastmoney.com/quote/stock/2.cesg10.html", waiting until "load"
+
+2025-04-05 16:01:18,968 - ERROR - 域名 http://www.rlaghpc.cn/ 访问失败：Page.goto: net::ERR_ABORTED at http://www.rlaghpc.cn/
+Call log:
+  - navigating to "http://www.rlaghpc.cn/", waiting until "load"
+
+2025-04-05 16:02:59,717 - ERROR - 域名 https://m.sohu.com/a/876251360_121976702 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.sohu.com/a/876251360_121976702", waiting until "load"
+
+2025-04-05 16:05:15,604 - ERROR - 链接 https://baijiahao.baidu.com/s?id=1817025931961664537&wfr=spider&for=pc 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://baijiahao.baidu.com/s?id=1817025931961664537&wfr=spider&for=pc", waiting until "load"
+
+2025-04-05 16:05:25,612 - ERROR - 域名 https://baijiahao.baidu.com/s?id=1817025931961664537&wfr=spider&for=pc 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://baijiahao.baidu.com/s?id=1817025931961664537&wfr=spider&for=pc", waiting until "load"
+
+2025-04-05 16:05:57,528 - ERROR - 链接 http://wan.rising.cn/webyj/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://wan.rising.cn/webyj/", waiting until "load"
+
+2025-04-05 16:06:07,530 - ERROR - 域名 http://wan.rising.cn/webyj/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://wan.rising.cn/webyj/", waiting until "load"
+
+2025-04-05 16:08:07,541 - ERROR - 域名 https://m.sohu.com/a/875970050_122006510/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.sohu.com/a/875970050_122006510/", waiting until "load"
+
+2025-04-05 16:08:39,073 - ERROR - 链接 http://m.huatu.com/2025/0114/1386299.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.huatu.com/2025/0114/1386299.html", waiting until "load"
+
+2025-04-05 16:08:49,078 - ERROR - 链接 https://m.xiazaiba.com/html/268366.html 访问失败：Page.goto: net::ERR_EMPTY_RESPONSE at https://m.xiazaiba.com/html/268366.html
+Call log:
+  - navigating to "https://m.xiazaiba.com/html/268366.html", waiting until "load"
+
+2025-04-05 16:08:49,582 - ERROR - 域名 https://m.xiazaiba.com/html/268366.html 访问失败：Page.goto: net::ERR_EMPTY_RESPONSE at https://m.xiazaiba.com/html/268366.html
+Call log:
+  - navigating to "https://m.xiazaiba.com/html/268366.html", waiting until "load"
+
+2025-04-05 16:08:49,698 - ERROR - 关键词 博彩棋牌在线 搜索失败：Page.goto: Navigation to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E6%A3%8B%E7%89%8C%E5%9C%A8%E7%BA%BF" is interrupted by another navigation to "chrome-error://chromewebdata/"
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E6%A3%8B%E7%89%8C%E5%9C%A8%E7%BA%BF", waiting until "load"
+
+2025-04-05 16:08:50,107 - ERROR - 关键词 博彩棋牌登陆 搜索失败：Page.goto: Navigation to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E6%A3%8B%E7%89%8C%E7%99%BB%E9%99%86" is interrupted by another navigation to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E6%A3%8B%E7%89%8C%E5%9C%A8%E7%BA%BF"
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E6%A3%8B%E7%89%8C%E7%99%BB%E9%99%86", waiting until "load"
+
+2025-04-05 16:08:50,223 - ERROR - 关键词 博彩棋牌线上 搜索失败：Page.goto: Navigation to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E6%A3%8B%E7%89%8C%E7%BA%BF%E4%B8%8A" is interrupted by another navigation to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E6%A3%8B%E7%89%8C%E7%99%BB%E9%99%86"
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E6%A3%8B%E7%89%8C%E7%BA%BF%E4%B8%8A", waiting until "load"
+
+2025-04-05 16:09:48,712 - ERROR - 关键词 博彩体育平台 搜索失败：Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E4%BD%93%E8%82%B2%E5%B9%B3%E5%8F%B0", waiting until "load"
+
+2025-04-05 16:10:18,722 - ERROR - 关键词 博彩体育注册 搜索失败：Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E4%BD%93%E8%82%B2%E6%B3%A8%E5%86%8C", waiting until "load"
+
+2025-04-05 16:10:48,734 - ERROR - 关键词 博彩体育网站 搜索失败：Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E4%BD%93%E8%82%B2%E7%BD%91%E7%AB%99", waiting until "load"
+
+2025-04-05 16:11:18,834 - ERROR - 关键词 博彩体育登录 搜索失败：Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E4%BD%93%E8%82%B2%E7%99%BB%E5%BD%95", waiting until "load"
+
+2025-04-05 16:12:17,190 - ERROR - 链接 http://www.hnqingyu.cn/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.hnqingyu.cn/", waiting until "load"
+
+2025-04-05 16:13:53,028 - ERROR - 链接 https://news.ifeng.com/c/7fZQhG0en8A 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.ifeng.com/c/7fZQhG0en8A", waiting until "load"
+
+2025-04-05 16:15:01,613 - ERROR - 链接 https://m.sohu.com/z/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.sohu.com/z/", waiting until "load"
+
+2025-04-05 16:16:14,872 - ERROR - 域名 https://m.sohu.com/a/878971668_122006510/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.sohu.com/a/878971668_122006510/", waiting until "load"
+
+2025-04-05 16:17:02,798 - ERROR - 链接 https://news.sina.cn/sh/2022-11-19/detail-imqqsmrp6745411.d.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.sina.cn/sh/2022-11-19/detail-imqqsmrp6745411.d.html", waiting until "load"
+
+2025-04-05 16:18:23,859 - ERROR - 链接 https://news.ifeng.com/a/20150408/43501640_0.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.ifeng.com/a/20150408/43501640_0.shtml", waiting until "load"
+
+2025-04-05 16:18:33,862 - ERROR - 域名 https://news.ifeng.com/a/20150408/43501640_0.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.ifeng.com/a/20150408/43501640_0.shtml", waiting until "load"
+
+2025-04-05 16:18:54,037 - ERROR - 链接 https://news.ifeng.com/a/20150408/43501640_0.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.ifeng.com/a/20150408/43501640_0.shtml", waiting until "load"
+
+2025-04-05 16:19:16,011 - ERROR - 链接 https://news.ifeng.com/a/20150408/43501640_0.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.ifeng.com/a/20150408/43501640_0.shtml", waiting until "load"
+
+2025-04-05 16:19:37,488 - ERROR - 链接 https://news.ifeng.com/a/20150408/43501640_0.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.ifeng.com/a/20150408/43501640_0.shtml", waiting until "load"
+
+2025-04-05 16:19:47,499 - ERROR - 域名 https://news.ifeng.com/a/20150408/43501640_0.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.ifeng.com/a/20150408/43501640_0.shtml", waiting until "load"
+
+2025-04-05 16:20:11,980 - ERROR - 链接 https://news.ifeng.com/a/20150408/43501640_0.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.ifeng.com/a/20150408/43501640_0.shtml", waiting until "load"
+
+2025-04-05 16:20:38,430 - ERROR - 链接 https://news.ifeng.com/a/20150408/43501640_0.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.ifeng.com/a/20150408/43501640_0.shtml", waiting until "load"
+
+2025-04-05 16:20:48,445 - ERROR - 域名 https://news.ifeng.com/a/20150408/43501640_0.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.ifeng.com/a/20150408/43501640_0.shtml", waiting until "load"
+
+2025-04-05 16:21:12,521 - ERROR - 域名 https://news.ifeng.com/a/20150408/43501640_0.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.ifeng.com/a/20150408/43501640_0.shtml", waiting until "load"
+
+2025-04-05 16:21:46,025 - ERROR - 域名 https://news.ifeng.com/a/20150408/43501640_0.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.ifeng.com/a/20150408/43501640_0.shtml", waiting until "load"
+
+2025-04-05 16:22:01,764 - ERROR - 链接 https://news.ifeng.com/a/20150408/43501640_0.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.ifeng.com/a/20150408/43501640_0.shtml", waiting until "load"
+
+2025-04-05 16:22:34,087 - ERROR - 链接 https://news.ifeng.com/a/20150408/43501640_0.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.ifeng.com/a/20150408/43501640_0.shtml", waiting until "load"
+
+2025-04-05 16:23:23,560 - ERROR - 链接 https://www.gstv.com.cn/login 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.gstv.com.cn/login", waiting until "load"
+
+2025-04-05 16:23:33,565 - ERROR - 域名 https://www.gstv.com.cn/login 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.gstv.com.cn/login", waiting until "load"
+
+2025-04-05 16:25:31,747 - ERROR - 关键词 博彩真人返水最高 搜索失败：Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E7%9C%9F%E4%BA%BA%E8%BF%94%E6%B0%B4%E6%9C%80%E9%AB%98", waiting until "load"
+
+2025-04-05 16:26:01,757 - ERROR - 关键词 博彩真人安全可靠 搜索失败：Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E7%9C%9F%E4%BA%BA%E5%AE%89%E5%85%A8%E5%8F%AF%E9%9D%A0", waiting until "load"
+
+2025-04-05 16:26:31,773 - ERROR - 关键词 博彩真人中国 搜索失败：Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E5%8D%9A%E5%BD%A9%E7%9C%9F%E4%BA%BA%E4%B8%AD%E5%9B%BD", waiting until "load"
+
+2025-04-05 16:28:30,001 - ERROR - 域名 https://news.ifeng.com/a/20150408/43501640_0.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.ifeng.com/a/20150408/43501640_0.shtml", waiting until "load"
+
+2025-04-05 16:28:52,135 - ERROR - 链接 http://www.chinadaily.com.cn/sports/node_1004405.htm 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.chinadaily.com.cn/sports/node_1004405.htm", waiting until "load"
+
+2025-04-05 16:29:02,138 - ERROR - 域名 http://www.chinadaily.com.cn/sports/node_1004405.htm 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.chinadaily.com.cn/sports/node_1004405.htm", waiting until "load"
+
+2025-04-05 16:29:18,467 - ERROR - 链接 https://m.sohu.com/a/876061415_121924582 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.sohu.com/a/876061415_121924582", waiting until "load"
+
+2025-04-05 16:30:20,825 - ERROR - 链接 https://sports.sina.com.cn/nba/old/index20130719am.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://sports.sina.com.cn/nba/old/index20130719am.shtml", waiting until "load"
+
+2025-04-05 16:30:30,840 - ERROR - 域名 https://sports.sina.com.cn/nba/old/index20130719am.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://sports.sina.com.cn/nba/old/index20130719am.shtml", waiting until "load"
+
+2025-04-05 16:31:31,488 - ERROR - 链接 https://m.sohu.com/n/272945337/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.sohu.com/n/272945337/", waiting until "load"
+
+2025-04-05 16:31:52,061 - ERROR - 链接 https://sports.sohu.com/20130728/index.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://sports.sohu.com/20130728/index.shtml", waiting until "load"
+
+2025-04-05 16:33:03,484 - ERROR - 关键词 赌博sports主页 搜索失败：Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E8%B5%8C%E5%8D%9Asports%E4%B8%BB%E9%A1%B5", waiting until "load"
+
+2025-04-05 16:33:33,496 - ERROR - 关键词 赌博sports竞猜 搜索失败：Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E8%B5%8C%E5%8D%9Asports%E7%AB%9E%E7%8C%9C", waiting until "load"
+
+2025-04-05 16:34:59,482 - ERROR - 链接 https://app.3dmgame.com/zt/4593_game/ 访问失败：Page.goto: net::ERR_EMPTY_RESPONSE at https://app.3dmgame.com/zt/4593_game/
+Call log:
+  - navigating to "https://app.3dmgame.com/zt/4593_game/", waiting until "load"
+
+2025-04-05 16:34:59,809 - ERROR - 域名 https://app.3dmgame.com/zt/4593_game/ 访问失败：Page.goto: net::ERR_EMPTY_RESPONSE at https://app.3dmgame.com/zt/4593_game/
+Call log:
+  - navigating to "https://app.3dmgame.com/zt/4593_game/", waiting until "load"
+
+2025-04-05 16:35:26,022 - ERROR - 链接 https://m.sohu.com/a/877122383_122006510/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.sohu.com/a/877122383_122006510/", waiting until "load"
+
+2025-04-05 16:35:58,674 - ERROR - 域名 https://news.ifeng.com/c/8R1CK32vxwb 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.ifeng.com/c/8R1CK32vxwb", waiting until "load"
+
+2025-04-05 16:36:28,606 - ERROR - 链接 http://www.chinadaily.com.cn/tech/2013-02/01/content_16194322.htm 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.chinadaily.com.cn/tech/2013-02/01/content_16194322.htm", waiting until "load"
+
+2025-04-05 16:36:36,878 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 16:36:36,880 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 16:37:12,838 - ERROR - 链接 https://www.iflyfish.cn/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.iflyfish.cn/", waiting until "load"
+
+2025-04-05 16:37:22,855 - ERROR - 域名 https://www.iflyfish.cn/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.iflyfish.cn/", waiting until "load"
+
+2025-04-05 16:37:33,887 - ERROR - 链接 https://www.iflyfish.cn/ 访问失败：Page.goto: net::ERR_CONNECTION_TIMED_OUT at https://www.iflyfish.cn/
+Call log:
+  - navigating to "https://www.iflyfish.cn/", waiting until "load"
+
+2025-04-05 16:37:43,893 - ERROR - 域名 https://www.iflyfish.cn/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.iflyfish.cn/", waiting until "load"
+
+2025-04-05 16:37:55,652 - ERROR - 链接 https://www.okbuyu.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.okbuyu.com/", waiting until "load"
+
+2025-04-05 16:38:05,659 - ERROR - 域名 https://www.okbuyu.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.okbuyu.com/", waiting until "load"
+
+2025-04-05 16:38:15,674 - ERROR - 链接 https://www.iflyfish.cn/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.iflyfish.cn/", waiting until "load"
+
+2025-04-05 16:38:25,685 - ERROR - 域名 https://www.iflyfish.cn/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.iflyfish.cn/", waiting until "load"
+
+2025-04-05 16:39:11,798 - ERROR - 链接 https://map.360.cn/site/detail/b7796e5f8021c019 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://map.360.cn/site/detail/b7796e5f8021c019", waiting until "load"
+
+2025-04-05 16:39:30,444 - ERROR - 链接 https://lvlin.baidu.com/question/1586978370417039100.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://lvlin.baidu.com/question/1586978370417039100.html", waiting until "load"
+
+2025-04-05 16:39:31,203 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 16:39:31,205 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 16:40:34,422 - ERROR - 链接 https://news.ifeng.com/c/8R1CK32vxwb 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.ifeng.com/c/8R1CK32vxwb", waiting until "load"
+
+2025-04-05 16:40:47,705 - ERROR - 链接 https://news.sina.cn/2017-09-30/detail-ifymmiwm2539712.d.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.sina.cn/2017-09-30/detail-ifymmiwm2539712.d.html", waiting until "load"
+
+2025-04-05 16:40:57,713 - ERROR - 域名 https://news.sina.cn/2017-09-30/detail-ifymmiwm2539712.d.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.sina.cn/2017-09-30/detail-ifymmiwm2539712.d.html", waiting until "load"
+
+2025-04-05 16:41:45,667 - ERROR - 链接 https://www.iflyfish.cn/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.iflyfish.cn/", waiting until "load"
+
+2025-04-05 16:41:55,671 - ERROR - 域名 https://www.iflyfish.cn/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.iflyfish.cn/", waiting until "load"
+
+2025-04-05 16:42:13,103 - ERROR - 链接 http://www.360doc.cn/article/54913442_1023675916.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.360doc.cn/article/54913442_1023675916.html", waiting until "load"
+
+2025-04-05 16:42:23,113 - ERROR - 域名 http://www.360doc.cn/article/54913442_1023675916.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.360doc.cn/article/54913442_1023675916.html", waiting until "load"
+
+2025-04-05 16:42:26,735 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 16:42:26,737 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 16:42:51,342 - ERROR - 链接 https://wap.xxsb.com/content/2024-03/01/content_231639.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://wap.xxsb.com/content/2024-03/01/content_231639.html", waiting until "load"
+
+2025-04-05 16:43:23,630 - ERROR - 链接 https://www.douyin.com/video/7343213268430851379 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.douyin.com/video/7343213268430851379", waiting until "load"
+
+2025-04-05 16:47:30,162 - ERROR - 链接 https://www.lottery.gov.cn/ksjz/xwxq/?aID=10017602&articleID=ca4fcdd8a 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.lottery.gov.cn/ksjz/xwxq/?aID=10017602&articleID=ca4fcdd8a", waiting until "load"
+
+2025-04-05 16:47:40,170 - ERROR - 域名 https://www.lottery.gov.cn/ksjz/xwxq/?aID=10017602&articleID=ca4fcdd8a 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.lottery.gov.cn/ksjz/xwxq/?aID=10017602&articleID=ca4fcdd8a", waiting until "load"
+
+2025-04-05 16:48:22,424 - ERROR - 链接 https://www.16757.com/wzml/134406.html 访问失败：Page.goto: net::ERR_ABORTED at https://www.16757.com/wzml/134406.html
+Call log:
+  - navigating to "https://www.16757.com/wzml/134406.html", waiting until "load"
+
+2025-04-05 16:48:42,766 - ERROR - 链接 https://sports.sina.com.cn/lottery 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://sports.sina.com.cn/lottery", waiting until "load"
+
+2025-04-05 16:49:09,208 - ERROR - 链接 https://map.360.cn/site/detail/7c40ef53113b7f37 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://map.360.cn/site/detail/7c40ef53113b7f37", waiting until "load"
+
+2025-04-05 16:49:47,747 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 16:49:47,749 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 16:50:49,131 - ERROR - 链接 https://cp.360.cn/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://cp.360.cn/", waiting until "load"
+
+2025-04-05 16:50:59,146 - ERROR - 域名 https://cp.360.cn/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://cp.360.cn/", waiting until "load"
+
+2025-04-05 16:51:46,644 - ERROR - 链接 https://www.chinanews.com/2001-10-25/26/133494.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.chinanews.com/2001-10-25/26/133494.html", waiting until "load"
+
+2025-04-05 16:52:32,166 - ERROR - 链接 https://baijiahao.baidu.com/s?id=1753882075133813581&wfr=spider&for=pc 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://baijiahao.baidu.com/s?id=1753882075133813581&wfr=spider&for=pc", waiting until "load"
+
+2025-04-05 16:52:50,469 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 16:52:50,472 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 16:53:53,986 - ERROR - 链接 https://baijiahao.baidu.com/s?id=1722570437220827619&wfr=spider&for=pc 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://baijiahao.baidu.com/s?id=1722570437220827619&wfr=spider&for=pc", waiting until "load"
+
+2025-04-05 16:54:03,995 - ERROR - 域名 https://baijiahao.baidu.com/s?id=1722570437220827619&wfr=spider&for=pc 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://baijiahao.baidu.com/s?id=1722570437220827619&wfr=spider&for=pc", waiting until "load"
+
+2025-04-05 16:54:14,002 - ERROR - 链接 https://baike.baidu.com/item/%E8%B5%A2%E5%AE%B6%E7%AB%9E%E6%8A%80/8745331 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://baike.baidu.com/item/%E8%B5%A2%E5%AE%B6%E7%AB%9E%E6%8A%80/8745331", waiting until "load"
+
+2025-04-05 16:54:24,044 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-05 16:54:24,488 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-05 16:54:24,604 - ERROR - 关键词 赌博电竞注册 搜索失败：Page.goto: Navigation to "https://m.baidu.com/s?wd=%E8%B5%8C%E5%8D%9A%E7%94%B5%E7%AB%9E%E6%B3%A8%E5%86%8C" is interrupted by another navigation to "chrome-error://chromewebdata/"
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E8%B5%8C%E5%8D%9A%E7%94%B5%E7%AB%9E%E6%B3%A8%E5%86%8C", waiting until "load"
+
+2025-04-05 16:54:24,720 - ERROR - 关键词 赌博电竞网站 搜索失败：Page.goto: Navigation to "https://m.baidu.com/s?wd=%E8%B5%8C%E5%8D%9A%E7%94%B5%E7%AB%9E%E7%BD%91%E7%AB%99" is interrupted by another navigation to "https://m.baidu.com/s?wd=%E8%B5%8C%E5%8D%9A%E7%94%B5%E7%AB%9E%E6%B3%A8%E5%86%8C"
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E8%B5%8C%E5%8D%9A%E7%94%B5%E7%AB%9E%E7%BD%91%E7%AB%99", waiting until "load"
+
+2025-04-05 16:55:12,814 - ERROR - 链接 http://wan.rising.cn/webyj/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://wan.rising.cn/webyj/", waiting until "load"
+
+2025-04-05 16:55:22,825 - ERROR - 域名 http://wan.rising.cn/webyj/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://wan.rising.cn/webyj/", waiting until "load"
+
+2025-04-05 16:56:22,139 - ERROR - 链接 https://map.baidu.com/mobile/webapp/search/search/qt=inf&uid=c462052c535e07dde115f957&third_party=zr 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://map.baidu.com/mobile/webapp/search/search/qt=inf&uid=c462052c535e07dde115f957&third_party=zr", waiting until "load"
+
+2025-04-05 16:56:32,151 - ERROR - 域名 https://map.baidu.com/mobile/webapp/search/search/qt=inf&uid=c462052c535e07dde115f957&third_party=zr 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://map.baidu.com/mobile/webapp/search/search/qt=inf&uid=c462052c535e07dde115f957&third_party=zr", waiting until "load"
+
+2025-04-05 16:57:25,514 - ERROR - 链接 https://news.sina.cn/2020-11-20/detail-iiznezxs2893621.d.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.sina.cn/2020-11-20/detail-iiznezxs2893621.d.html", waiting until "load"
+
+2025-04-05 16:57:42,279 - ERROR - 链接 https://wx.qq.com/x/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://wx.qq.com/x/", waiting until "load"
+
+2025-04-05 16:57:52,289 - ERROR - 域名 https://wx.qq.com/x/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://wx.qq.com/x/", waiting until "load"
+
+2025-04-05 16:57:56,808 - ERROR - 链接 http://u21.sjkola.com/ 访问失败：Page.goto: net::ERR_HTTP_RESPONSE_CODE_FAILURE at http://u21.sjkola.com/
+Call log:
+  - navigating to "http://u21.sjkola.com/", waiting until "load"
+
+2025-04-05 16:57:57,336 - ERROR - 域名 http://u21.sjkola.com/ 访问失败：Page.goto: net::ERR_HTTP_RESPONSE_CODE_FAILURE at http://u21.sjkola.com/
+Call log:
+  - navigating to "http://u21.sjkola.com/", waiting until "load"
+
+2025-04-05 16:57:57,547 - ERROR - 链接 http://dsmn1o8x.njyunluzi.com/ 访问失败：Page.goto: net::ERR_EMPTY_RESPONSE at http://dsmn1o8x.njyunluzi.com/
+Call log:
+  - navigating to "http://dsmn1o8x.njyunluzi.com/", waiting until "load"
+
+2025-04-05 16:57:57,626 - ERROR - 域名 http://dsmn1o8x.njyunluzi.com/ 访问失败：Page.goto: net::ERR_EMPTY_RESPONSE at http://dsmn1o8x.njyunluzi.com/
+Call log:
+  - navigating to "http://dsmn1o8x.njyunluzi.com/", waiting until "load"
+
+2025-04-05 16:58:47,019 - ERROR - 链接 http://finance.sina.com.cn/jjxw/2025-03-26/doc-ineqxtzs6239021.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://finance.sina.com.cn/jjxw/2025-03-26/doc-ineqxtzs6239021.shtml", waiting until "load"
+
+2025-04-05 16:59:29,578 - ERROR - 链接 https://m.163.com/dy/article/FPS9SA9F0545Q6I9.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.163.com/dy/article/FPS9SA9F0545Q6I9.html", waiting until "load"
+
+2025-04-05 16:59:39,592 - ERROR - 域名 https://m.163.com/dy/article/FPS9SA9F0545Q6I9.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.163.com/dy/article/FPS9SA9F0545Q6I9.html", waiting until "load"
+
+2025-04-05 17:00:14,128 - ERROR - 链接 https://news.sina.cn/2020-11-20/detail-iiznezxs2893621.d.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.sina.cn/2020-11-20/detail-iiznezxs2893621.d.html", waiting until "load"
+
+2025-04-05 17:00:26,155 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 17:00:26,158 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 17:01:07,153 - ERROR - 链接 http://user.175pt.com/login.aspx 访问失败：Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("body") to be visible
+  -     25 × locator resolved to hidden <body>…</body>
+
+2025-04-05 17:01:17,524 - ERROR - 域名 http://user.175pt.com/login.aspx 访问失败：Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("body") to be visible
+  -     24 × locator resolved to hidden <body>…</body>
+
+2025-04-05 17:01:55,574 - ERROR - 链接 https://new.qq.com/omn/20220928/20220928A08HN200.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://new.qq.com/omn/20220928/20220928A08HN200.html", waiting until "load"
+
+2025-04-05 17:02:10,660 - ERROR - 链接 https://www.hnedu.cn/chengde/PUtwl0/U1qs5f.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.hnedu.cn/chengde/PUtwl0/U1qs5f.html", waiting until "load"
+
+2025-04-05 17:04:45,106 - ERROR - 链接 https://lvlin.baidu.com/question/1650629115430512380.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://lvlin.baidu.com/question/1650629115430512380.html", waiting until "load"
+
+2025-04-05 17:06:13,942 - ERROR - 链接 http://dbjb.mps.gov.cn/AspGamblingNetwork.aspx 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://dbjb.mps.gov.cn/AspGamblingNetwork.aspx", waiting until "load"
+
+2025-04-05 17:06:23,945 - ERROR - 域名 http://dbjb.mps.gov.cn/AspGamblingNetwork.aspx 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://dbjb.mps.gov.cn/AspGamblingNetwork.aspx", waiting until "load"
+
+2025-04-05 17:06:44,546 - ERROR - 链接 https://www.diandian.com/phb/1039/1-1.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.diandian.com/phb/1039/1-1.html", waiting until "load"
+
+2025-04-05 17:06:54,562 - ERROR - 域名 https://www.diandian.com/phb/1039/1-1.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.diandian.com/phb/1039/1-1.html", waiting until "load"
+
+2025-04-05 17:08:29,132 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 17:08:29,134 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 17:09:47,420 - ERROR - 链接 https://sports.sina.cn/nba/other/2021-03-06/detail-ikkntiak5326423.d.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://sports.sina.cn/nba/other/2021-03-06/detail-ikkntiak5326423.d.html", waiting until "load"
+
+2025-04-05 17:10:24,861 - ERROR - 链接 https://haokan.baidu.com/v?pd=wisenatural&vid=12616149270033093689 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://haokan.baidu.com/v?pd=wisenatural&vid=12616149270033093689", waiting until "load"
+
+2025-04-05 17:10:36,175 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 17:10:36,178 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 17:11:53,354 - ERROR - 链接 https://www.hnedu.cn/X-twl/P6pl1v 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.hnedu.cn/X-twl/P6pl1v", waiting until "load"
+
+2025-04-05 17:14:13,242 - ERROR - 链接 https://news.sina.cn/sh/2022-11-19/detail-imqqsmrp6745411.d.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.sina.cn/sh/2022-11-19/detail-imqqsmrp6745411.d.html", waiting until "load"
+
+2025-04-05 17:14:38,169 - ERROR - 链接 https://wx.qq.com/x/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://wx.qq.com/x/", waiting until "load"
+
+2025-04-05 17:14:48,175 - ERROR - 域名 https://wx.qq.com/x/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://wx.qq.com/x/", waiting until "load"
+
+2025-04-05 17:14:58,191 - ERROR - 链接 http://wan.rising.cn/webyj/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://wan.rising.cn/webyj/", waiting until "load"
+
+2025-04-05 17:15:08,193 - ERROR - 域名 http://wan.rising.cn/webyj/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://wan.rising.cn/webyj/", waiting until "load"
+
+2025-04-05 17:16:11,557 - ERROR - 链接 https://haokan.baidu.com/v?pd=wisenatural&vid=6680448599519851026 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://haokan.baidu.com/v?pd=wisenatural&vid=6680448599519851026", waiting until "load"
+
+2025-04-05 17:16:21,559 - ERROR - 域名 https://haokan.baidu.com/v?pd=wisenatural&vid=6680448599519851026 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://haokan.baidu.com/v?pd=wisenatural&vid=6680448599519851026", waiting until "load"
+
+2025-04-05 17:18:29,767 - ERROR - 关键词 赌博棋牌试玩 搜索失败：Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E8%B5%8C%E5%8D%9A%E6%A3%8B%E7%89%8C%E8%AF%95%E7%8E%A9", waiting until "load"
+
+2025-04-05 17:19:06,938 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 17:19:06,940 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 17:19:40,144 - ERROR - 链接 https://sports.163.com/special/carnival2016/ 访问失败：Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("body") to be visible
+  -     25 × locator resolved to hidden <body aria-basefontsize="12">…</body>
+
+2025-04-05 17:19:51,157 - ERROR - 域名 https://sports.163.com/special/carnival2016/ 访问失败：Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("body") to be visible
+  -     25 × locator resolved to hidden <body aria-basefontsize="12">…</body>
+
+2025-04-05 17:20:08,844 - ERROR - 链接 http://www.1233333.com.cn/ 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://www.1233333.com.cn/
+Call log:
+  - navigating to "http://www.1233333.com.cn/", waiting until "load"
+
+2025-04-05 17:20:18,859 - ERROR - 域名 http://www.1233333.com.cn/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.1233333.com.cn/", waiting until "load"
+
+2025-04-05 17:20:52,684 - ERROR - 链接 https://wap.thea.cn/jiaoshi_zx_2005514.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://wap.thea.cn/jiaoshi_zx_2005514.html", waiting until "load"
+
+2025-04-05 17:21:02,691 - ERROR - 域名 https://wap.thea.cn/jiaoshi_zx_2005514.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://wap.thea.cn/jiaoshi_zx_2005514.html", waiting until "load"
+
+2025-04-05 17:21:34,015 - ERROR - 链接 https://m.onlinedown.net/tag/24789.htm 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.onlinedown.net/tag/24789.htm", waiting until "load"
+
+2025-04-05 17:21:44,027 - ERROR - 域名 https://m.onlinedown.net/tag/24789.htm 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.onlinedown.net/tag/24789.htm", waiting until "load"
+
+2025-04-05 17:23:22,171 - ERROR - 链接 https://map.360.cn/site/detail/5cd561589ca88914 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://map.360.cn/site/detail/5cd561589ca88914", waiting until "load"
+
+2025-04-05 17:23:32,180 - ERROR - 域名 https://map.360.cn/site/detail/5cd561589ca88914 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://map.360.cn/site/detail/5cd561589ca88914", waiting until "load"
+
+2025-04-05 17:24:13,021 - ERROR - 链接 https://news.sina.cn/sh/2022-11-19/detail-imqqsmrp6745411.d.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.sina.cn/sh/2022-11-19/detail-imqqsmrp6745411.d.html", waiting until "load"
+
+2025-04-05 17:24:49,472 - ERROR - 链接 https://m.163.com/dy/article/IF5M331U0553ERKG.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.163.com/dy/article/IF5M331U0553ERKG.html", waiting until "load"
+
+2025-04-05 17:24:59,487 - ERROR - 域名 https://m.163.com/dy/article/IF5M331U0553ERKG.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.163.com/dy/article/IF5M331U0553ERKG.html", waiting until "load"
+
+2025-04-05 17:26:24,036 - ERROR - 链接 https://m.163.com/sports/article/BQMNPVL400051C9U.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.163.com/sports/article/BQMNPVL400051C9U.html", waiting until "load"
+
+2025-04-05 17:29:35,485 - ERROR - 链接 https://m.163.com/dy/article/E10KBVQO05455DY2.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.163.com/dy/article/E10KBVQO05455DY2.html", waiting until "load"
+
+2025-04-05 17:29:59,127 - ERROR - 链接 http://tv.sohu.com/v/dXMvMzM4NDQ5Nzk4LzU0Mjc3MDM3NS5zaHRtbA.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://tv.sohu.com/v/dXMvMzM4NDQ5Nzk4LzU0Mjc3MDM3NS5zaHRtbA.html", waiting until "load"
+
+2025-04-05 17:30:58,607 - ERROR - 链接 http://www.360doc.cn/article/70770874_1020135912.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.360doc.cn/article/70770874_1020135912.html", waiting until "load"
+
+2025-04-05 17:31:08,612 - ERROR - 域名 http://www.360doc.cn/article/70770874_1020135912.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.360doc.cn/article/70770874_1020135912.html", waiting until "load"
+
+2025-04-05 17:32:28,756 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 17:32:28,758 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 17:35:29,841 - ERROR - 链接 https://m.163.com/dy/article/IRVQOSDB051492T3.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.163.com/dy/article/IRVQOSDB051492T3.html", waiting until "load"
+
+2025-04-05 17:35:39,849 - ERROR - 域名 https://m.163.com/dy/article/IRVQOSDB051492T3.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.163.com/dy/article/IRVQOSDB051492T3.html", waiting until "load"
+
+2025-04-05 17:35:54,443 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 17:35:54,445 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 17:36:00,211 - ERROR - 链接 https://m.ximalaya.com/sound/828420329/?20=202 访问失败：'content'
+2025-04-05 17:36:45,286 - ERROR - 域名 https://weibo.com/tv/show/1034:5137983293292586 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://weibo.com/tv/show/1034:5137983293292586", waiting until "load"
+
+2025-04-05 17:38:45,327 - ERROR - 关键词 菠菜sports下载 搜索失败：Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E8%8F%A0%E8%8F%9Csports%E4%B8%8B%E8%BD%BD", waiting until "load"
+
+2025-04-05 17:38:58,909 - ERROR - 链接 https://competitions.cgagolf.org.cn/cn/golf/player_detail.do?id=63363 访问失败：Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("body") to be visible
+  -     25 × locator resolved to hidden <body data-spy="scroll" data-target="#myScrollspy">…</body>
+
+2025-04-05 17:39:08,930 - ERROR - 域名 https://competitions.cgagolf.org.cn/cn/golf/player_detail.do?id=63363 访问失败：Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("body") to be visible
+  -     25 × locator resolved to hidden <body data-spy="scroll" data-target="#myScrollspy">…</body>
+
+2025-04-05 17:45:47,939 - ERROR - 链接 https://wap.xxsb.com/content/2024-03/01/content_241301.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://wap.xxsb.com/content/2024-03/01/content_241301.html", waiting until "load"
+
+2025-04-05 17:47:48,591 - ERROR - 链接 https://shouji.baidu.com/app/5009000614 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://shouji.baidu.com/app/5009000614", waiting until "load"
+
+2025-04-05 17:47:58,606 - ERROR - 域名 https://shouji.baidu.com/app/5009000614 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://shouji.baidu.com/app/5009000614", waiting until "load"
+
+2025-04-05 17:48:26,524 - ERROR - 链接 https://new.qq.com/rain/a/20200428A08H2600 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://new.qq.com/rain/a/20200428A08H2600", waiting until "load"
+
+2025-04-05 17:49:22,910 - ERROR - 链接 https://www.25pp.com/xiazai/7482833/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.25pp.com/xiazai/7482833/", waiting until "load"
+
+2025-04-05 17:49:32,921 - ERROR - 域名 https://www.25pp.com/xiazai/7482833/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.25pp.com/xiazai/7482833/", waiting until "load"
+
+2025-04-05 17:49:54,899 - ERROR - 链接 https://wap.xxsb.com/content/2024-02/19/content_251173.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://wap.xxsb.com/content/2024-02/19/content_251173.html", waiting until "load"
+
+2025-04-05 17:50:55,531 - ERROR - 链接 https://baijiahao.baidu.com/s?id=1826147395611574471&wfr=spider&for=pc 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://baijiahao.baidu.com/s?id=1826147395611574471&wfr=spider&for=pc", waiting until "load"
+
+2025-04-05 17:51:05,540 - ERROR - 域名 https://baijiahao.baidu.com/s?id=1826147395611574471&wfr=spider&for=pc 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://baijiahao.baidu.com/s?id=1826147395611574471&wfr=spider&for=pc", waiting until "load"
+
+2025-04-05 17:51:15,556 - ERROR - 链接 https://wap.xxsb.com/content/2024-03/01/content_233802.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://wap.xxsb.com/content/2024-03/01/content_233802.html", waiting until "load"
+
+2025-04-05 17:51:46,100 - ERROR - 链接 https://baike.baidu.com/item/%E6%8D%95%E9%B1%BC%E8%BE%BE%E4%BA%BA%E4%B9%8B%E6%B7%B1%E6%B5%B7%E7%8B%A9%E7%8C%8E/83078 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://baike.baidu.com/item/%E6%8D%95%E9%B1%BC%E8%BE%BE%E4%BA%BA%E4%B9%8B%E6%B7%B1%E6%B5%B7%E7%8B%A9%E7%8C%8E/83078", waiting until "load"
+
+2025-04-05 17:51:56,112 - ERROR - 域名 https://baike.baidu.com/item/%E6%8D%95%E9%B1%BC%E8%BE%BE%E4%BA%BA%E4%B9%8B%E6%B7%B1%E6%B5%B7%E7%8B%A9%E7%8C%8E/83078 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://baike.baidu.com/item/%E6%8D%95%E9%B1%BC%E8%BE%BE%E4%BA%BA%E4%B9%8B%E6%B7%B1%E6%B5%B7%E7%8B%A9%E7%8C%8E/83078", waiting until "load"
+
+2025-04-05 17:52:13,283 - ERROR - 链接 https://shouji.baidu.com/app/5009000614 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://shouji.baidu.com/app/5009000614", waiting until "load"
+
+2025-04-05 17:53:02,928 - ERROR - 链接 https://www.iqiyi.com/adv/w_19s68404cd.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.iqiyi.com/adv/w_19s68404cd.html", waiting until "load"
+
+2025-04-05 17:54:07,221 - ERROR - 链接 https://www.cwl.gov.cn/ztbd/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.cwl.gov.cn/ztbd/", waiting until "load"
+
+2025-04-05 17:57:21,915 - ERROR - 链接 https://m.iask.sina.com.cn/b/2938948.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.iask.sina.com.cn/b/2938948.html", waiting until "load"
+
+2025-04-05 17:57:31,923 - ERROR - 域名 https://m.iask.sina.com.cn/b/2938948.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.iask.sina.com.cn/b/2938948.html", waiting until "load"
+
+2025-04-05 17:57:46,729 - ERROR - 链接 https://www.douyin.com/topic/7345294139770308662 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.douyin.com/topic/7345294139770308662", waiting until "load"
+
+2025-04-05 17:58:03,653 - ERROR - 链接 http://www.360doc.cn/article/1267819_775207857.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.360doc.cn/article/1267819_775207857.html", waiting until "load"
+
+2025-04-05 17:58:13,667 - ERROR - 域名 http://www.360doc.cn/article/1267819_775207857.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.360doc.cn/article/1267819_775207857.html", waiting until "load"
+
+2025-04-05 17:58:40,943 - ERROR - 链接 https://baike.baidu.com/item/%E8%8F%A0%E8%8F%9C%E6%97%B6%E9%97%B4%E7%BD%91/8918389 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://baike.baidu.com/item/%E8%8F%A0%E8%8F%9C%E6%97%B6%E9%97%B4%E7%BD%91/8918389", waiting until "load"
+
+2025-04-05 17:58:50,950 - ERROR - 域名 https://baike.baidu.com/item/%E8%8F%A0%E8%8F%9C%E6%97%B6%E9%97%B4%E7%BD%91/8918389 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://baike.baidu.com/item/%E8%8F%A0%E8%8F%9C%E6%97%B6%E9%97%B4%E7%BD%91/8918389", waiting until "load"
+
+2025-04-05 17:59:30,932 - ERROR - 链接 https://baike.baidu.com/item/%E7%94%B5%E7%AB%9E%E4%BF%B1%E4%B9%90%E9%83%A8/23677130 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://baike.baidu.com/item/%E7%94%B5%E7%AB%9E%E4%BF%B1%E4%B9%90%E9%83%A8/23677130", waiting until "load"
+
+2025-04-05 17:59:40,946 - ERROR - 域名 https://baike.baidu.com/item/%E7%94%B5%E7%AB%9E%E4%BF%B1%E4%B9%90%E9%83%A8/23677130 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://baike.baidu.com/item/%E7%94%B5%E7%AB%9E%E4%BF%B1%E4%B9%90%E9%83%A8/23677130", waiting until "load"
+
+2025-04-05 18:01:20,742 - ERROR - 链接 https://view.inews.qq.com/a/20241217A0844M00 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://view.inews.qq.com/a/20241217A0844M00", waiting until "load"
+
+2025-04-05 18:01:37,495 - ERROR - 链接 http://inews.ifeng.com/55781481/news.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://inews.ifeng.com/55781481/news.shtml", waiting until "load"
+
+2025-04-05 18:01:47,503 - ERROR - 域名 http://inews.ifeng.com/55781481/news.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://inews.ifeng.com/55781481/news.shtml", waiting until "load"
+
+2025-04-05 18:02:05,477 - ERROR - 链接 http://baijiahao.baidu.com/s?id=1669294581845518929&wfr=spider&for=pc 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://baijiahao.baidu.com/s?id=1669294581845518929&wfr=spider&for=pc", waiting until "load"
+
+2025-04-05 18:06:43,452 - ERROR - 链接 http://www.lipu.gov.cn/ztjjn/shfgfggzt/202405/t20240508_2688715.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.lipu.gov.cn/ztjjn/shfgfggzt/202405/t20240508_2688715.html", waiting until "load"
+
+2025-04-05 18:06:53,466 - ERROR - 域名 http://www.lipu.gov.cn/ztjjn/shfgfggzt/202405/t20240508_2688715.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.lipu.gov.cn/ztjjn/shfgfggzt/202405/t20240508_2688715.html", waiting until "load"
+
+2025-04-05 18:07:32,076 - ERROR - 链接 https://m.juxia.com/sjwy/ruanjian-585850.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.juxia.com/sjwy/ruanjian-585850.html", waiting until "load"
+
+2025-04-05 18:07:42,081 - ERROR - 域名 https://m.juxia.com/sjwy/ruanjian-585850.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.juxia.com/sjwy/ruanjian-585850.html", waiting until "load"
+
+2025-04-05 18:07:58,156 - ERROR - 链接 http://www.360doc.cn/article/4678926_619147771.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.360doc.cn/article/4678926_619147771.html", waiting until "load"
+
+2025-04-05 18:08:17,260 - ERROR - 链接 https://new.qq.com/rain/a/20240910A060TA00 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://new.qq.com/rain/a/20240910A060TA00", waiting until "load"
+
+2025-04-05 18:08:37,984 - ERROR - 链接 https://wap.eastmoney.com/quote/stock/1.688188.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://wap.eastmoney.com/quote/stock/1.688188.html", waiting until "load"
+
+2025-04-05 18:10:26,629 - ERROR - 链接 https://m.juxia.com/sjwy/ruanjian-612018.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.juxia.com/sjwy/ruanjian-612018.html", waiting until "load"
+
+2025-04-05 18:10:36,634 - ERROR - 域名 https://m.juxia.com/sjwy/ruanjian-612018.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.juxia.com/sjwy/ruanjian-612018.html", waiting until "load"
+
+2025-04-05 18:11:49,439 - ERROR - 链接 https://m.edu.iask.sina.com.cn/jy/1yj3GBRMtn.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.edu.iask.sina.com.cn/jy/1yj3GBRMtn.html", waiting until "load"
+
+2025-04-05 18:12:05,036 - ERROR - 链接 http://ggwxj.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://ggwxj.com/", waiting until "load"
+
+2025-04-05 18:12:15,040 - ERROR - 域名 http://ggwxj.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://ggwxj.com/", waiting until "load"
+
+2025-04-05 18:12:42,102 - ERROR - 域名 https://m.baidu.com/bh/m/detail/ar_6777254854211589899 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/bh/m/detail/ar_6777254854211589899", waiting until "load"
+
+2025-04-05 18:12:53,009 - ERROR - 域名 https://m.baidu.com/bh/m/detail/ar_4483860833297398306 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/bh/m/detail/ar_4483860833297398306", waiting until "load"
+
+2025-04-05 18:13:36,432 - ERROR - 关键词 菠菜电子试玩 搜索失败：Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E8%8F%A0%E8%8F%9C%E7%94%B5%E5%AD%90%E8%AF%95%E7%8E%A9", waiting until "load"
+
+2025-04-05 18:13:49,414 - ERROR - 链接 https://jingyan.baidu.com/article/3c48dd34c211cee10be358bc.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://jingyan.baidu.com/article/3c48dd34c211cee10be358bc.html", waiting until "load"
+
+2025-04-05 18:13:53,302 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 18:13:53,305 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 18:14:34,300 - ERROR - 链接 https://localsite.baidu.com/article-detail.html?articleId=2606151&ucid=PjfkrH0kn1n&categoryLv1=%E6%95%99%E8%82%B2%E5%9F%B9%E8%AE%AD&ch=54&srcid=10004 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://localsite.baidu.com/article-detail.html?articleId=2606151&ucid=PjfkrH0kn1n&categoryLv1=%E6%95%99%E8%82%B2%E5%9F%B9%E8%AE%AD&ch=54&srcid=10004", waiting until "load"
+
+2025-04-05 18:16:36,976 - ERROR - 链接 https://mpoi.mapbar.com/wuhan/MAPAQAHOYPTNHNHPTMFNZWZ 访问失败：Page.goto: net::ERR_ABORTED at https://mpoi.mapbar.com/wuhan/MAPAQAHOYPTNHNHPTMFNZWZ
+Call log:
+  - navigating to "https://mpoi.mapbar.com/wuhan/MAPAQAHOYPTNHNHPTMFNZWZ", waiting until "load"
+
+2025-04-05 18:17:40,261 - ERROR - 链接 http://web.7k7k.com/games/yhtf/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://web.7k7k.com/games/yhtf/", waiting until "load"
+
+2025-04-05 18:17:50,267 - ERROR - 域名 http://web.7k7k.com/games/yhtf/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://web.7k7k.com/games/yhtf/", waiting until "load"
+
+2025-04-05 18:19:49,000 - ERROR - 链接 http://inews.ifeng.com/55781481/news.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://inews.ifeng.com/55781481/news.shtml", waiting until "load"
+
+2025-04-05 18:21:43,359 - ERROR - 链接 https://competitions.cgagolf.org.cn/cn/golf/player_detail.do?id=61139 访问失败：Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("body") to be visible
+  -     24 × locator resolved to hidden <body data-spy="scroll" data-target="#myScrollspy">…</body>
+
+2025-04-05 18:21:53,379 - ERROR - 域名 https://competitions.cgagolf.org.cn/cn/golf/player_detail.do?id=61139 访问失败：Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("body") to be visible
+  -     24 × locator resolved to hidden <body data-spy="scroll" data-target="#myScrollspy">…</body>
+
+2025-04-05 18:23:16,871 - ERROR - 链接 https://m.douyin.com/share/video/7395911789541690658 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.douyin.com/share/video/7395911789541690658", waiting until "load"
+
+2025-04-05 18:23:28,913 - ERROR - 链接 http://www.360doc.cn/article/16043777_441141003.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.360doc.cn/article/16043777_441141003.html", waiting until "load"
+
+2025-04-05 18:25:27,864 - ERROR - 链接 https://m.douyin.com/share/video/7395911789541690658 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.douyin.com/share/video/7395911789541690658", waiting until "load"
+
+2025-04-05 18:26:24,596 - ERROR - 链接 https://m.iask.sina.com.cn/b/14977730.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.iask.sina.com.cn/b/14977730.html", waiting until "load"
+
+2025-04-05 18:26:34,607 - ERROR - 域名 https://m.iask.sina.com.cn/b/14977730.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.iask.sina.com.cn/b/14977730.html", waiting until "load"
+
+2025-04-05 18:28:08,784 - ERROR - 链接 https://www.forzadata.cn/home/login 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.forzadata.cn/home/login", waiting until "load"
+
+2025-04-05 18:29:47,889 - ERROR - 链接 http://www.360doc.cn/article/49464420_734628069.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.360doc.cn/article/49464420_734628069.html", waiting until "load"
+
+2025-04-05 18:31:12,805 - ERROR - 链接 https://m.163.com/dy/article/IVL9ELTM0531CPV5.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.163.com/dy/article/IVL9ELTM0531CPV5.html", waiting until "load"
+
+2025-04-05 18:31:48,090 - ERROR - 链接 http://www.360doc.cn/article/47383264_809694723.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.360doc.cn/article/47383264_809694723.html", waiting until "load"
+
+2025-04-05 18:31:58,094 - ERROR - 域名 http://www.360doc.cn/article/47383264_809694723.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.360doc.cn/article/47383264_809694723.html", waiting until "load"
+
+2025-04-05 18:32:15,948 - ERROR - 链接 http://www.360doc.cn/article/50458963_922364897.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.360doc.cn/article/50458963_922364897.html", waiting until "load"
+
+2025-04-05 18:33:17,262 - ERROR - 链接 http://shijiazhuang.lvyou114.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://shijiazhuang.lvyou114.com/", waiting until "load"
+
+2025-04-05 18:33:45,887 - ERROR - 链接 http://m.2265.com/down/486490.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.2265.com/down/486490.html", waiting until "load"
+
+2025-04-05 18:33:55,898 - ERROR - 域名 http://m.2265.com/down/486490.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.2265.com/down/486490.html", waiting until "load"
+
+2025-04-05 18:34:08,790 - ERROR - 链接 http://m.danji100.com/app/166246.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.danji100.com/app/166246.html", waiting until "load"
+
+2025-04-05 18:34:18,794 - ERROR - 域名 http://m.danji100.com/app/166246.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.danji100.com/app/166246.html", waiting until "load"
+
+2025-04-05 18:34:28,799 - ERROR - 链接 http://m.2265.com/down/486490.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.2265.com/down/486490.html", waiting until "load"
+
+2025-04-05 18:34:38,803 - ERROR - 域名 http://m.2265.com/down/486490.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.2265.com/down/486490.html", waiting until "load"
+
+2025-04-05 18:36:17,070 - ERROR - 链接 https://www.gc-led.com/info/348240.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.gc-led.com/info/348240.html", waiting until "load"
+
+2025-04-05 18:36:30,364 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 18:36:30,367 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 18:37:00,782 - ERROR - 链接 http://www.sheyue1.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.sheyue1.com/", waiting until "load"
+
+2025-04-05 18:37:17,204 - ERROR - 链接 https://jingyan.baidu.com/article/a378c96004b6c4f2282830bf.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://jingyan.baidu.com/article/a378c96004b6c4f2282830bf.html", waiting until "load"
+
+2025-04-05 18:37:27,212 - ERROR - 域名 https://jingyan.baidu.com/article/a378c96004b6c4f2282830bf.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://jingyan.baidu.com/article/a378c96004b6c4f2282830bf.html", waiting until "load"
+
+2025-04-05 18:37:40,471 - ERROR - 链接 https://m.sohu.com/a/878941937_122001005/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.sohu.com/a/878941937_122001005/", waiting until "load"
+
+2025-04-05 18:37:54,607 - ERROR - 链接 http://m.2265.com/down/486490.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.2265.com/down/486490.html", waiting until "load"
+
+2025-04-05 18:38:04,613 - ERROR - 域名 http://m.2265.com/down/486490.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.2265.com/down/486490.html", waiting until "load"
+
+2025-04-05 18:38:20,950 - ERROR - 域名 http://www.wzut.edu.cn/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.wzut.edu.cn/", waiting until "load"
+
+2025-04-05 18:38:34,701 - ERROR - 域名 http://www.zjpu.edu.cn/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.zjpu.edu.cn/", waiting until "load"
+
+2025-04-05 18:38:44,720 - ERROR - 域名 http://www.jhc.edu.cn/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.jhc.edu.cn/", waiting until "load"
+
+2025-04-05 18:38:47,952 - INFO - 运行结束时间 2025-04-05 18:38
+2025-04-05 19:33:39,209 - INFO - 运行开始时间 2025-04-05 19:33
+2025-04-05 19:34:07,675 - ERROR - 链接 http://www.m.share.qixiaojing.com/wnH/detail/dGTcox.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.m.share.qixiaojing.com/wnH/detail/dGTcox.html", waiting until "load"
+
+2025-04-05 19:34:17,685 - ERROR - 域名 http://www.m.share.qixiaojing.com/wnH/detail/dGTcox.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.m.share.qixiaojing.com/wnH/detail/dGTcox.html", waiting until "load"
+
+2025-04-05 19:35:36,880 - ERROR - 链接 https://www.sport.gov.cn/cpzx/n5657/c27278232/content.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.sport.gov.cn/cpzx/n5657/c27278232/content.html", waiting until "load"
+
+2025-04-05 19:35:46,891 - ERROR - 域名 https://www.sport.gov.cn/cpzx/n5657/c27278232/content.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.sport.gov.cn/cpzx/n5657/c27278232/content.html", waiting until "load"
+
+2025-04-05 19:35:56,898 - ERROR - 链接 https://www.sport.gov.cn/cpzx/n5657/c28234998/content.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.sport.gov.cn/cpzx/n5657/c28234998/content.html", waiting until "load"
+
+2025-04-05 19:36:10,017 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-05 19:36:10,608 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-05 19:36:24,144 - ERROR - 链接 http://www.pinble.com/pb_cst.htm?t=1739598318 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.pinble.com/pb_cst.htm?t=1739598318", waiting until "load"
+
+2025-04-05 19:36:25,194 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-05 19:36:25,753 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-05 19:36:25,949 - ERROR - 关键词 十大澳门网投平台信誉排行榜 搜索失败：Page.goto: Navigation to "https://m.baidu.com/s?wd=%E5%8D%81%E5%A4%A7%E6%BE%B3%E9%97%A8%E7%BD%91%E6%8A%95%E5%B9%B3%E5%8F%B0%E4%BF%A1%E8%AA%89%E6%8E%92%E8%A1%8C%E6%A6%9C" is interrupted by another navigation to "chrome-error://chromewebdata/"
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E5%8D%81%E5%A4%A7%E6%BE%B3%E9%97%A8%E7%BD%91%E6%8A%95%E5%B9%B3%E5%8F%B0%E4%BF%A1%E8%AA%89%E6%8E%92%E8%A1%8C%E6%A6%9C", waiting until "load"
+
+2025-04-05 19:36:26,392 - ERROR - 关键词 捕鱼大咖高爆版链接入口 搜索失败：Page.goto: Navigation to "https://m.baidu.com/s?wd=%E6%8D%95%E9%B1%BC%E5%A4%A7%E5%92%96%E9%AB%98%E7%88%86%E7%89%88%E9%93%BE%E6%8E%A5%E5%85%A5%E5%8F%A3" is interrupted by another navigation to "https://m.baidu.com/s?wd=%E5%8D%81%E5%A4%A7%E6%BE%B3%E9%97%A8%E7%BD%91%E6%8A%95%E5%B9%B3%E5%8F%B0%E4%BF%A1%E8%AA%89%E6%8E%92%E8%A1%8C%E6%A6%9C"
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E6%8D%95%E9%B1%BC%E5%A4%A7%E5%92%96%E9%AB%98%E7%88%86%E7%89%88%E9%93%BE%E6%8E%A5%E5%85%A5%E5%8F%A3", waiting until "load"
+
+2025-04-05 19:36:26,588 - ERROR - 关键词 捕鱼赌钱 搜索失败：Page.goto: Navigation to "https://m.baidu.com/s?wd=%E6%8D%95%E9%B1%BC%E8%B5%8C%E9%92%B1" is interrupted by another navigation to "https://m.baidu.com/s?wd=%E6%8D%95%E9%B1%BC%E5%A4%A7%E5%92%96%E9%AB%98%E7%88%86%E7%89%88%E9%93%BE%E6%8E%A5%E5%85%A5%E5%8F%A3"
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E6%8D%95%E9%B1%BC%E8%B5%8C%E9%92%B1", waiting until "load"
+
+2025-04-05 19:37:05,551 - ERROR - 链接 https://www.people.com.cn/24hour/n/2014/0410/c25408-24865629.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.people.com.cn/24hour/n/2014/0410/c25408-24865629.html", waiting until "load"
+
+2025-04-05 19:37:15,564 - ERROR - 域名 https://www.people.com.cn/24hour/n/2014/0410/c25408-24865629.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.people.com.cn/24hour/n/2014/0410/c25408-24865629.html", waiting until "load"
+
+2025-04-05 19:38:07,676 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 19:38:07,679 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 19:38:20,125 - ERROR - 链接 https://www.lottery.gov.cn/jc/index.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.lottery.gov.cn/jc/index.html", waiting until "load"
+
+2025-04-05 19:38:30,135 - ERROR - 域名 https://www.lottery.gov.cn/jc/index.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.lottery.gov.cn/jc/index.html", waiting until "load"
+
+2025-04-05 19:39:00,935 - ERROR - 关键词 十大正规网络购彩平台 搜索失败：Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E5%8D%81%E5%A4%A7%E6%AD%A3%E8%A7%84%E7%BD%91%E7%BB%9C%E8%B4%AD%E5%BD%A9%E5%B9%B3%E5%8F%B0", waiting until "load"
+
+2025-04-05 19:39:24,270 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-05 19:39:24,839 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-05 19:39:24,972 - ERROR - 关键词 久久发娱乐彩票998 搜索失败：Page.goto: Navigation to "https://m.baidu.com/s?wd=%E4%B9%85%E4%B9%85%E5%8F%91%E5%A8%B1%E4%B9%90%E5%BD%A9%E7%A5%A8998" is interrupted by another navigation to "chrome-error://chromewebdata/"
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E4%B9%85%E4%B9%85%E5%8F%91%E5%A8%B1%E4%B9%90%E5%BD%A9%E7%A5%A8998", waiting until "load"
+
+2025-04-05 19:39:25,416 - ERROR - 关键词 亚洲彩票最信赖的平台 搜索失败：Page.goto: Navigation to "https://m.baidu.com/s?wd=%E4%BA%9A%E6%B4%B2%E5%BD%A9%E7%A5%A8%E6%9C%80%E4%BF%A1%E8%B5%96%E7%9A%84%E5%B9%B3%E5%8F%B0" is interrupted by another navigation to "https://m.baidu.com/s?wd=%E4%B9%85%E4%B9%85%E5%8F%91%E5%A8%B1%E4%B9%90%E5%BD%A9%E7%A5%A8998"
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E4%BA%9A%E6%B4%B2%E5%BD%A9%E7%A5%A8%E6%9C%80%E4%BF%A1%E8%B5%96%E7%9A%84%E5%B9%B3%E5%8F%B0", waiting until "load"
+
+2025-04-05 19:39:25,600 - ERROR - 关键词 大众彩票app下载有返水 搜索失败：Page.goto: Navigation to "https://m.baidu.com/s?wd=%E5%A4%A7%E4%BC%97%E5%BD%A9%E7%A5%A8app%E4%B8%8B%E8%BD%BD%E6%9C%89%E8%BF%94%E6%B0%B4" is interrupted by another navigation to "https://m.baidu.com/s?wd=%E4%BA%9A%E6%B4%B2%E5%BD%A9%E7%A5%A8%E6%9C%80%E4%BF%A1%E8%B5%96%E7%9A%84%E5%B9%B3%E5%8F%B0"
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E5%A4%A7%E4%BC%97%E5%BD%A9%E7%A5%A8app%E4%B8%8B%E8%BD%BD%E6%9C%89%E8%BF%94%E6%B0%B4", waiting until "load"
+
+2025-04-05 19:39:43,483 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-05 19:39:44,045 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-05 19:39:44,167 - ERROR - 关键词 电竞竞猜平台app 搜索失败：Page.goto: Navigation to "https://m.baidu.com/s?wd=%E7%94%B5%E7%AB%9E%E7%AB%9E%E7%8C%9C%E5%B9%B3%E5%8F%B0app" is interrupted by another navigation to "chrome-error://chromewebdata/"
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E7%94%B5%E7%AB%9E%E7%AB%9E%E7%8C%9C%E5%B9%B3%E5%8F%B0app", waiting until "load"
+
+2025-04-05 19:39:44,650 - ERROR - 关键词 电竞投注app官网 搜索失败：Page.goto: Navigation to "https://m.baidu.com/s?wd=%E7%94%B5%E7%AB%9E%E6%8A%95%E6%B3%A8app%E5%AE%98%E7%BD%91" is interrupted by another navigation to "https://m.baidu.com/s?wd=%E7%94%B5%E7%AB%9E%E7%AB%9E%E7%8C%9C%E5%B9%B3%E5%8F%B0app"
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E7%94%B5%E7%AB%9E%E6%8A%95%E6%B3%A8app%E5%AE%98%E7%BD%91", waiting until "load"
+
+2025-04-05 19:39:45,255 - ERROR - 关键词 电竞赛事押注平台正规 搜索失败：Page.goto: Navigation to "https://m.baidu.com/s?wd=%E7%94%B5%E7%AB%9E%E8%B5%9B%E4%BA%8B%E6%8A%BC%E6%B3%A8%E5%B9%B3%E5%8F%B0%E6%AD%A3%E8%A7%84" is interrupted by another navigation to "https://m.baidu.com/s?wd=%E7%94%B5%E7%AB%9E%E6%8A%95%E6%B3%A8app%E5%AE%98%E7%BD%91"
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E7%94%B5%E7%AB%9E%E8%B5%9B%E4%BA%8B%E6%8A%BC%E6%B3%A8%E5%B9%B3%E5%8F%B0%E6%AD%A3%E8%A7%84", waiting until "load"
+
+2025-04-05 19:39:59,512 - ERROR - 链接 http://nourl.ubs.baidu.com/51364 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://nourl.ubs.baidu.com/51364
+Call log:
+  - navigating to "http://nourl.ubs.baidu.com/51364", waiting until "load"
+
+2025-04-05 19:40:00,075 - ERROR - 域名 http://nourl.ubs.baidu.com/51364 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://nourl.ubs.baidu.com/51364
+Call log:
+  - navigating to "http://nourl.ubs.baidu.com/51364", waiting until "load"
+
+2025-04-05 19:40:00,466 - ERROR - 链接 http://gubaf10.eastmoney.com/list,gssz,1272378399.html 访问失败：Page.goto: Navigation to "http://gubaf10.eastmoney.com/list,gssz,1272378399.html" is interrupted by another navigation to "chrome-error://chromewebdata/"
+Call log:
+  - navigating to "http://gubaf10.eastmoney.com/list,gssz,1272378399.html", waiting until "load"
+
+2025-04-05 19:40:00,650 - ERROR - 域名 http://gubaf10.eastmoney.com/list,gssz,1272378399.html 访问失败：Page.goto: Navigation to "http://gubaf10.eastmoney.com/list,gssz,1272378399.html" is interrupted by another navigation to "http://gubaf10.eastmoney.com/list,gssz,1272378399.html"
+Call log:
+  - navigating to "http://gubaf10.eastmoney.com/list,gssz,1272378399.html", waiting until "load"
+
+2025-04-05 19:40:00,771 - ERROR - 关键词 pg电子娱乐平台下载1号 搜索失败：Page.goto: Navigation to "https://m.baidu.com/s?wd=pg%E7%94%B5%E5%AD%90%E5%A8%B1%E4%B9%90%E5%B9%B3%E5%8F%B0%E4%B8%8B%E8%BD%BD1%E5%8F%B7" is interrupted by another navigation to "http://gubaf10.eastmoney.com/list,gssz,1272378399.html"
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=pg%E7%94%B5%E5%AD%90%E5%A8%B1%E4%B9%90%E5%B9%B3%E5%8F%B0%E4%B8%8B%E8%BD%BD1%E5%8F%B7", waiting until "load"
+
+2025-04-05 19:40:01,264 - ERROR - 关键词 亚洲彩票登录平台 搜索失败：Page.goto: Navigation to "https://m.baidu.com/s?wd=%E4%BA%9A%E6%B4%B2%E5%BD%A9%E7%A5%A8%E7%99%BB%E5%BD%95%E5%B9%B3%E5%8F%B0" is interrupted by another navigation to "https://m.baidu.com/s?wd=pg%E7%94%B5%E5%AD%90%E5%A8%B1%E4%B9%90%E5%B9%B3%E5%8F%B0%E4%B8%8B%E8%BD%BD1%E5%8F%B7"
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E4%BA%9A%E6%B4%B2%E5%BD%A9%E7%A5%A8%E7%99%BB%E5%BD%95%E5%B9%B3%E5%8F%B0", waiting until "load"
+
+2025-04-05 19:40:01,456 - ERROR - 关键词 手机上玩快三输十万能追回 搜索失败：Page.goto: Navigation to "https://m.baidu.com/s?wd=%E6%89%8B%E6%9C%BA%E4%B8%8A%E7%8E%A9%E5%BF%AB%E4%B8%89%E8%BE%93%E5%8D%81%E4%B8%87%E8%83%BD%E8%BF%BD%E5%9B%9E" is interrupted by another navigation to "https://m.baidu.com/s?wd=%E4%BA%9A%E6%B4%B2%E5%BD%A9%E7%A5%A8%E7%99%BB%E5%BD%95%E5%B9%B3%E5%8F%B0"
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E6%89%8B%E6%9C%BA%E4%B8%8A%E7%8E%A9%E5%BF%AB%E4%B8%89%E8%BE%93%E5%8D%81%E4%B8%87%E8%83%BD%E8%BF%BD%E5%9B%9E", waiting until "load"
+
+2025-04-05 19:42:20,106 - ERROR - 链接 https://finance.sina.cn/tech/2025-03-29/detail-inerhrnt6485939.d.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://finance.sina.cn/tech/2025-03-29/detail-inerhrnt6485939.d.html", waiting until "load"
+
+2025-04-05 19:43:04,654 - ERROR - 链接 http://m.downcc.com/k/ikexvy 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.downcc.com/k/ikexvy", waiting until "load"
+
+2025-04-05 19:43:14,659 - ERROR - 域名 http://m.downcc.com/k/ikexvy 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.downcc.com/k/ikexvy", waiting until "load"
+
+2025-04-05 19:43:24,668 - ERROR - 链接 http://m.yx007.com/azapp/123586.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.yx007.com/azapp/123586.html", waiting until "load"
+
+2025-04-05 19:43:42,232 - ERROR - 链接 https://lvlin.baidu.com/question/885200348096581812.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://lvlin.baidu.com/question/885200348096581812.html", waiting until "load"
+
+2025-04-05 19:43:52,248 - ERROR - 域名 https://lvlin.baidu.com/question/885200348096581812.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://lvlin.baidu.com/question/885200348096581812.html", waiting until "load"
+
+2025-04-05 19:44:02,262 - ERROR - 链接 https://m.64365.com/zs/1359941.aspx 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.64365.com/zs/1359941.aspx", waiting until "load"
+
+2025-04-05 19:44:23,856 - ERROR - 链接 https://haokan.baidu.com/v?pd=wisenatural&vid=8260059501685898099 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://haokan.baidu.com/v?pd=wisenatural&vid=8260059501685898099", waiting until "load"
+
+2025-04-05 19:44:31,094 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 19:44:31,096 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-05 19:44:44,923 - ERROR - 链接 http://finance.sina.com.cn/jjxw/2024-06-27/doc-incacknq9427722.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://finance.sina.com.cn/jjxw/2024-06-27/doc-incacknq9427722.shtml", waiting until "load"
+
+2025-04-05 19:44:54,928 - ERROR - 域名 http://finance.sina.com.cn/jjxw/2024-06-27/doc-incacknq9427722.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://finance.sina.com.cn/jjxw/2024-06-27/doc-incacknq9427722.shtml", waiting until "load"
+
