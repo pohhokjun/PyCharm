@@ -1940,7 +1940,7 @@ async def main():
             await search_keyword(page, keyword, all_results)
             if i % 5 == 0 or i == len(keywords):
                 df = pd.DataFrame(all_results)
-                print(f"\n当前数据结果（前5条）：\n{df.head().to_string()}")
+                print(f"\n当前数据结果（前5条）：\n{df.tail(5).to_string()}")
                 print(f"完成进度：{i}/{len(keywords)} 个关键词")
                 if i == 5:
                     df.to_excel(excel_file, index=False, sheet_name='Sheet1', engine='openpyxl')

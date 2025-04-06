@@ -7,7 +7,7 @@ import pandas as pd
 from datetime import datetime
 
 # 配置
-FOLDER_PATH = r'C:\Henvita\1_定时注单导出\收费站'
+FOLDER_PATH = r'C:/Henvita/1_定时注单导出/收费站/'
 DB_CONFIG = {
     'host': '127.0.0.1',
     'port': 3306,

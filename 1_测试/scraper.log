@@ -1,0 +1,30 @@
+2025-04-06 11:45:04,768 - INFO - 运行开始时间 2025-04-06 11:45
+2025-04-06 11:46:21,575 - ERROR - 链接 https://m.douyin.com/share/user/MS4wLjABAAAAs1k1rWI1IG3Qt3ycgbt5sg_h5MBsfEerbXF2M5ycWMU 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.douyin.com/share/user/MS4wLjABAAAAs1k1rWI1IG3Qt3ycgbt5sg_h5MBsfEerbXF2M5ycWMU", waiting until "load"
+
+2025-04-06 11:46:30,745 - ERROR - 链接 https://m.zuobiandown.com/gd13/119139.html 访问失败：Page.goto: net::ERR_ABORTED at https://m.zuobiandown.com/gd13/119139.html
+Call log:
+  - navigating to "https://m.zuobiandown.com/gd13/119139.html", waiting until "load"
+
+2025-04-06 11:46:40,748 - ERROR - 域名 https://m.zuobiandown.com/gd13/119139.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.zuobiandown.com/gd13/119139.html", waiting until "load"
+
+2025-04-06 11:47:00,843 - ERROR - 链接 https://www.ljnsm.com/ 访问失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.ljnsm.com/
+Call log:
+  - navigating to "https://www.ljnsm.com/", waiting until "load"
+
+2025-04-06 11:47:01,535 - ERROR - 域名 https://www.ljnsm.com/ 访问失败：Page.goto: net::ERR_CERT_COMMON_NAME_INVALID at https://www.ljnsm.com/
+Call log:
+  - navigating to "https://www.ljnsm.com/", waiting until "load"
+
+2025-04-06 11:47:30,510 - ERROR - 域名 http://www.zjpu.edu.cn/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.zjpu.edu.cn/", waiting until "load"
+
+2025-04-06 11:47:40,524 - ERROR - 域名 http://www.jhc.edu.cn/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.jhc.edu.cn/", waiting until "load"
+
+2025-04-06 11:47:42,754 - INFO - 运行结束时间 2025-04-06 11:47
