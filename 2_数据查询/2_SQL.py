@@ -6,6 +6,7 @@ from openpyxl.utils import get_column_letter
 from tqdm import tqdm
 import re
 
+
 # SQL 操作部分
 def get_db_connection(host, port, user, password, database):
     """建立数据库连接"""
@@ -15,11 +16,12 @@ def get_db_connection(host, port, user, password, database):
         print(f"连接数据库出错: {e}")
         return None
 
-def fetch_member_ids(connection):
+
+def fetch_member_ids(connection, database, table_name):
     """查询满足条件的 member_ids"""
-    sql = """
+    sql = f"""
     SELECT member_id
-    FROM finance_pay_records
+    FROM {database}.{table_name}
     WHERE DATE(created_at) >= '2024-12-30'
     GROUP BY member_id
     HAVING SUM(order_amount) > 0
@@ -31,10 +33,11 @@ def fetch_member_ids(connection):
         print(f"获取 member_ids 出错: {e}")
         return ()
 
-def fetch_main_data(connection, member_ids):
+
+def fetch_main_data(connection, member_ids, database, table_name):
     """执行主查询并返回数据"""
     if not member_ids:  # 如果 member_ids 为空，移除 IN 条件
-        sql = """
+        sql = f"""
         SELECT
             DATE(created_at) AS created_date,
             site_id, member_id, member_username, id, created_at,
@@ -44,7 +47,7 @@ def fetch_main_data(connection, member_ids):
                 ELSE pay_type
             END AS '支付方式',
             pay_channel, order_status
-        FROM finance_pay_records
+        FROM {database}.{table_name}
         WHERE created_at > '2024-12-30 00:00:00'
         AND created_at < '2025-01-01 23:59:59'
         AND site_id = 2000
@@ -64,7 +67,7 @@ def fetch_main_data(connection, member_ids):
                 ELSE pay_type
             END AS '支付方式',
             pay_channel, order_status
-        FROM finance_pay_records
+        FROM {database}.{table_name}
         WHERE member_id IN {member_ids}
         AND created_at > '2024-12-30 00:00:00'
         AND created_at < '2025-01-01 23:59:59'
@@ -80,16 +83,19 @@ def fetch_main_data(connection, member_ids):
         print(f"执行主查询出错: {e}")
         return None
 
+
 # Excel 操作部分
 def extract_table_name(sql):
     """从 SQL 查询中提取表名"""
     match = re.search(r'FROM\s+(\w+)', sql, re.IGNORECASE)
     return match.group(1) if match else "unknown_table"
 
+
 def generate_excel_filename(database, table_name):
     """生成 Excel 文件名"""
     now = datetime.datetime.now().strftime("%Y-%m-%d %H.%M")
     return f"{database} {table_name} {now}.xlsx"
+
 
 def write_to_excel(chunks, excel_filename):
     """将数据写入 Excel"""
@@ -108,6 +114,7 @@ def write_to_excel(chunks, excel_filename):
     print(f"总数据行数: {total_rows}，已导出到 {excel_filename}")
     return total_rows
 
+
 def format_excel(excel_filename, chunk_size, total_rows, column_count):
     """格式化 Excel 文件"""
     workbook = openpyxl.load_workbook(excel_filename)
@@ -118,6 +125,7 @@ def format_excel(excel_filename, chunk_size, total_rows, column_count):
     workbook.save(excel_filename)
     print(f"{excel_filename} 的所有 sheet 已冻结首行并设置筛选。")
 
+
 # 主流程
 def main():
     # 数据库连接信息
@@ -125,10 +133,13 @@ def main():
     port = 3366
     user = 'bigdata'
     password = 'uvb5SOSmLH8sCoSU'
+
+    # 定义数据库和表名，便于统一修改
     database = 'finance_1000'
+    table_name = 'finance_pay_records'
 
     # 添加开关变量，控制是否使用 fetch_member_ids
-    use_fetch_member_ids = True  # 设置为 True 使用，False 则跳过
+    use_fetch_member_ids = False  # 设置为 True 使用，False 则跳过
 
     # SQL 查询部分
     start_time = datetime.datetime.now()
@@ -140,7 +151,7 @@ def main():
 
     try:
         if use_fetch_member_ids:
-            member_ids = fetch_member_ids(connection)
+            member_ids = fetch_member_ids(connection, database, table_name)
             if not member_ids:
                 print("未获取到有效的 member_ids")
                 # 继续执行，但 member_ids 为空时 fetch_main_data 会处理
@@ -148,20 +159,20 @@ def main():
             # 如果不使用 fetch_member_ids，设置为空元组
             member_ids = tuple()
 
-        chunks = fetch_main_data(connection, member_ids)
+        chunks = fetch_main_data(connection, member_ids, database, table_name)
         if chunks is None:
             return
 
         # Excel 处理部分
-        table_name = extract_table_name("FROM finance_pay_records")
-        excel_filename = generate_excel_filename(database, table_name)
+        table_name_from_sql = extract_table_name(f"FROM {table_name}")
+        excel_filename = generate_excel_filename(database, table_name_from_sql)
         total_rows = write_to_excel(chunks, excel_filename)
 
         # 额外查询以获取列数，检查 member_ids 是否为空
         if not member_ids:
-            sample_sql = "SELECT * FROM finance_pay_records LIMIT 1"
+            sample_sql = f"SELECT * FROM {database}.{table_name} LIMIT 1"
         else:
-            sample_sql = f"SELECT * FROM finance_pay_records WHERE member_id IN {member_ids} LIMIT 1"
+            sample_sql = f"SELECT * FROM {database}.{table_name} WHERE member_id IN {member_ids} LIMIT 1"
         sample_chunk = pd.read_sql_query(sample_sql, connection)
         column_count = len(sample_chunk.columns)
         format_excel(excel_filename, 1000000, total_rows, column_count)
@@ -174,6 +185,7 @@ def main():
     duration = end_time - start_time
     print(f"运行结束时间: {end_time.strftime('%Y-%m-%d %H:%M')}")
     print(f"总耗时: {duration.total_seconds():.2f} 秒")
+
 
 if __name__ == "__main__":
     main()
