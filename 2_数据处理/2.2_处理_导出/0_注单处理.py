@@ -105,14 +105,14 @@ def process_esports_data(df):
 def main():
     # 清空文件夹
     clear_folder(r'C:\Henvita\1_数据导出')
-    clear_folder(r'C:\Henvita\1_昨日注单数据')
+    clear_folder(r'C:\Henvita\1_TXT注单数据')
 
     # 移动文件
     source_folder = r'C:\Users\Administrator\Downloads\Telegram Desktop'
-    destination_folder = r'C:\Henvita\1_昨日注单数据'
+    destination_folder = r'C:\Henvita\1_TXT注单数据'
     os.makedirs(destination_folder, exist_ok=True)
     for filename in os.listdir(source_folder):
-        if filename.startswith('昨日') and filename.endswith('_注单数据.txt'):
+        if filename.endswith('_注单数据.txt'):
             try:
                 shutil.move(os.path.join(source_folder, filename), os.path.join(destination_folder, filename))
                 print(f"已移动文件: {filename} 到 {destination_folder}")
