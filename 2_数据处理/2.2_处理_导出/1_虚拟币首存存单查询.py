@@ -61,7 +61,7 @@ try:
         print("没有符合条件的数据。")
     else:
         # 保存到 Excel 文件，冻结首行
-        excel_path = r'C:\Henvita\1_数据导出\虚拟币首存单号.xlsx'
+        excel_path = r'C:\Henvita\0_数据导出\虚拟币首存单号.xlsx'
         with pd.ExcelWriter(excel_path, engine='xlsxwriter') as writer:
             # 写入数据，不写入默认的列名，从第二行开始写入数据
             df.to_excel(writer, sheet_name='Sheet1', index=False, header=False, startrow=1)

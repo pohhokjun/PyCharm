@@ -1,0 +1,314 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>数据透视图</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #000; /* 设置背景颜色为黑色 */
+      color: #fff;
+      display: flex;
+      min-height: 100vh;
+    }
+    .sidebar {
+      width: 200px;
+      background-color: #222;
+      color: #fff;
+      padding: 20px;
+      border-right: 1px solid #444;
+      display: flex;
+      flex-direction: column;
+    }
+    .sidebar h2 {
+      color: #eee;
+      margin-top: 0;
+      margin-bottom: 15px;
+    }
+    .sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .sidebar li a {
+      display: block;
+      padding: 10px 15px;
+      text-decoration: none;
+      color: #ddd;
+      border-radius: 5px;
+      margin-bottom: 5px;
+      cursor: pointer; /* 指示可点击 */
+    }
+    .sidebar li a:hover {
+      background-color: #555;
+      color: #fff;
+    }
+    .pivot-view {
+      flex-grow: 1;
+      padding: 20px;
+      overflow: auto;
+      background-color: #111; /* 调整主内容区域背景色 */
+      display: flex;
+      flex-direction: column;
+      gap: 20px; /* 图表和筛选器之间的间距 */
+    }
+    .filter-container {
+      background-color: #333;
+      padding: 10px;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+    .filter-container button {
+      background-color: #555;
+      color: #eee;
+      border: none;
+      padding: 8px 15px;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    .filter-container button:hover {
+      background-color: #777;
+    }
+    .chart-container {
+      width: 100%;
+      background-color: #333; /* 图表容器背景色 */
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      padding: 10px;
+      box-sizing: border-box;
+      display: none; /* 初始隐藏 */
+    }
+    .chart-container h2 {
+      color: #eee;
+      margin-top: 0;
+    }
+    .chart-container canvas {
+      width: 100%;
+      max-height: 300px; /* 可以设置最大高度 */
+    }
+    .hidden-data {
+      display: none;
+    }
+  </style>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    var allData = {
+      'raw': {
+        labels: ['A-东部-1月', 'B-西部-1月', 'A-北部-2月', 'B-东部-2月', 'C-西部-3月', 'A-南部-3月'],
+        datasets: [{
+          label: '销售额',
+          data: [100, 150, 120, 180, 90, 160],
+          backgroundColor: 'rgba(54, 162, 235, 0.6)',
+          borderColor: 'rgba(54, 162, 235, 1)',
+          borderWidth: 1,
+          type: 'bar'
+        }]
+      },
+      'aggregated': {
+        labels: ['东部', '西部', '北部', '南部'],
+        datasets: [{
+          label: '总销售额',
+          data: [280, 240, 120, 160],
+          backgroundColor: 'rgba(255, 99, 132, 0.6)',
+          borderColor: 'rgba(255, 99, 132, 1)',
+          borderWidth: 1,
+          type: 'bar'
+        }, {
+          label: '平均销售额',
+          data: [140, 120, 120, 160],
+          borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 2,
+          type: 'line'
+        }]
+      },
+      'product_a': {
+        labels: ['东部-1月', '北部-2月', '南部-3月'],
+        datasets: [{
+          label: '销售额 (产品A)',
+          data: [100, 120, 160],
+          backgroundColor: 'rgba(255, 206, 86, 0.6)',
+          borderColor: 'rgba(255, 206, 86, 1)',
+          borderWidth: 1,
+          type: 'bar'
+        }]
+      },
+      'region_east': {
+        labels: ['1月', '2月'],
+        datasets: [{
+          label: '销售额 (东部)',
+          data: [100, 180],
+          backgroundColor: 'rgba(153, 102, 255, 0.6)',
+          borderColor: 'rgba(153, 102, 255, 1)',
+          borderWidth: 1,
+          type: 'bar'
+        }]
+      }
+    };
+
+    var charts = {};
+    var currentDataKey = 'raw'; // 默认显示的数据
+
+    function initCharts() {
+      createChart('raw-data-chart', allData['raw'], 'bar');
+      createChart('aggregated-data-chart', allData['aggregated'], 'bar');
+      createChart('product-a-chart', allData['product_a'], 'bar');
+      createChart('region-east-chart', allData['region_east'], 'bar');
+    }
+
+    function createChart(canvasId, data, type) {
+      var ctx = document.getElementById(canvasId).getContext('2d');
+      charts[canvasId] = new Chart(ctx, {
+        type: type,
+        data: data,
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true
+            }
+          }
+        }
+      });
+    }
+
+    function updateChart(canvasId, newData) {
+      if (charts[canvasId]) {
+        charts[canvasId].data = newData;
+        charts[canvasId].update();
+      }
+    }
+
+    function toggleDataView(viewId) {
+      var chartContainers = document.querySelectorAll('.chart-container');
+      chartContainers.forEach(function(container) {
+        container.style.display = 'none';
+      });
+      var selectedView = document.getElementById(viewId);
+      if (selectedView) {
+        selectedView.style.display = 'block';
+      }
+    }
+
+    function filterData(filterKey) {
+      var newDataKey;
+      switch (filterKey) {
+        case 'all':
+          newDataKey = 'raw';
+          break;
+        case 'product_a':
+          newDataKey = 'product_a';
+          break;
+        case 'region_east':
+          newDataKey = 'region_east';
+          break;
+        default:
+          newDataKey = 'raw';
+      }
+      currentDataKey = newDataKey;
+      updateChart('raw-data-chart', allData[newDataKey]);
+      // 这里可以同步更新其他的图表，如果它们的数据也需要根据筛选条件变化
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+      initCharts();
+      toggleDataView('raw-data-container'); // 初始显示第一个图表
+    });
+  </script>
+</head>
+<body>
+  <div class="sidebar">
+    <h2>功能区</h2>
+    <ul>
+      <li><a href="#" onclick="toggleDataView('raw-data-container')">原始数据图</a></li>
+      <li><a href="#" onclick="toggleDataView('aggregated-data-container')">聚合数据图</a></li>
+      <li><a href="#" onclick="toggleDataView('product-a-container')">产品A销售额</a></li>
+      <li><a href="#" onclick="toggleDataView('region-east-container')">东部地区销售额</a></li>
+      <li><a href="#">筛选器</a></li>
+      <li><a href="#">行标签</a></li>
+      <li><a href="#">列标签</a></li>
+      <li><a href="#">数值</a></li>
+      <li><a href="#">图表选项</a></li>
+      <li><a href="#">刷新数据</a></li>
+      <li><a href="#">字段列表</a></li>
+    </ul>
+  </div>
+  <div class="pivot-view">
+    <div class="filter-container">
+      <button onclick="filterData('all')">全部数据</button>
+      <button onclick="filterData('product_a')">产品 A</button>
+      <button onclick="filterData('region_east')">东部地区</button>
+      </div>
+
+    <div id="raw-data-container" class="chart-container">
+      <h2>原始数据图</h2>
+      <canvas id="raw-data-chart"></canvas>
+    </div>
+
+    <div id="aggregated-data-container" class="chart-container">
+      <h2>聚合数据图</h2>
+      <canvas id="aggregated-data-chart"></canvas>
+    </div>
+
+    <div id="product-a-container" class="chart-container">
+      <h2>产品 A 销售额</h2>
+      <canvas id="product-a-chart"></canvas>
+    </div>
+
+    <div id="region-east-container" class="chart-container">
+      <h2>东部地区销售额</h2>
+      <canvas id="region-east-chart"></canvas>
+    </div>
+
+    <div id="filters-view" class="chart-container">
+      <h2>筛选器</h2>
+      <p>这里显示筛选器相关的功能。</p>
+      <p>（占位内容）</p>
+    </div>
+
+    <div id="row-labels-view" class="chart-container">
+      <h2>行标签</h2>
+      <p>这里显示行标签相关的设置。</p>
+      <p>（占位内容）</p>
+    </div>
+
+    <div id="column-labels-view" class="chart-container">
+      <h2>列标签</h2>
+      <p>这里显示列标签相关的设置。</p>
+      <p>（占位内容）</p>
+    </div>
+
+    <div id="values-view" class="chart-container">
+      <h2>数值</h2>
+      <p>这里显示数值字段相关的设置。</p>
+      <p>（占位内容）</p>
+    </div>
+
+    <div id="chart-options-view" class="chart-container">
+      <h2>图表选项</h2>
+      <p>这里显示图表相关的选项。</p>
+      <p>（占位内容）</p>
+    </div>
+
+    <div id="refresh-data-view" class="chart-container">
+      <h2>刷新数据</h2>
+      <p>点击按钮刷新数据。</p>
+      <button>刷新</button>
+    </div>
+
+    <div id="field-list-view" class="chart-container">
+      <h2>字段列表</h2>
+      <p>这里显示可用的字段列表。</p>
+      <ul>
+        <li>产品</li>
+        <li>地区</li>
+        <li>月份</li>
+        <li>销售额</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>

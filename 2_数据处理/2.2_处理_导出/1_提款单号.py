@@ -91,7 +91,7 @@ def main():
     df['提现类型'] = df['提现类型'].map(WITHDRAW_TYPES)
 
     # 保存路径
-    save_path = r'C:\Henvita\1_数据导出'
+    save_path = r'C:\Henvita\0_数据导出'
     os.makedirs(save_path, exist_ok=True)
 
     # 为每个站点生成文件

@@ -24,7 +24,7 @@ def clear_folder(folder_path):
 
 
 # 导出Excel文件，冻结首行并启用筛选功能
-def excel_out_oversize(df, file_name, date_suffix, output_dir=r'C:\Henvita\1_数据导出'):
+def excel_out_oversize(df, file_name, date_suffix, output_dir=r'C:\Henvita\0_数据导出'):
     subsets = [df.iloc[i:i + 1000000] for i in range(0, len(df), 1000000)]
     dated_file_name = f"【{file_name.split(' ', 1)[0]}】{file_name.split(' ', 1)[1]} {date_suffix}"
     output_path = os.path.join(output_dir, f'{dated_file_name}.xlsx')
@@ -104,11 +104,11 @@ def process_esports_data(df):
 # 主处理逻辑
 def main():
     # 清空文件夹
-    clear_folder(r'C:\Henvita\1_数据导出')
+    clear_folder(r'C:\Henvita\0_数据导出')
     clear_folder(r'C:\Henvita\1_TXT注单数据')
 
     # 移动文件
-    source_folder = r'C:\Users\Administrator\Downloads\Telegram Desktop'
+    source_folder = r'C:\Users\Administrator\Downloads'
     destination_folder = r'C:\Henvita\1_TXT注单数据'
     os.makedirs(destination_folder, exist_ok=True)
     for filename in os.listdir(source_folder):
