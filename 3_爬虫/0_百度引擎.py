@@ -11,6 +11,8 @@ from openpyxl.cell.cell import ILLEGAL_CHARACTERS_RE  # 导入 ILLEGAL_CHARACTER
 import os
 import tldextract
 import json
+import requests
+import whois  # 新增 whois 库用于获取域名更新时间
 
 # 关键词和域名列表
 KEYWORDS = '''
@@ -7952,6 +7954,38 @@ def detect_content_type(url, soup):
     elif "video" in url.lower() or soup.find('video'): return "视频"
     else: return "未知"
 
+# 检查是否为响应式网站
+def check_responsive(url):
+    try:
+        soup = BeautifulSoup(requests.get(url, timeout=5).text, 'html.parser')
+        return "响应式网站" if soup.find('meta', attrs={'name': 'viewport'}) else "非响应式网站"
+    except Exception as e:
+        return f"无法访问: {e}"
+
+# 获取域名最后更新时间
+def get_domain_last_updated(url):
+    try:
+        domain = url.split("//")[-1].split("/")[0]
+        updated_date = whois.whois(domain).updated_date
+        if isinstance(updated_date, list):
+            updated_date = updated_date[0]
+        return updated_date.replace(tzinfo=None) if updated_date and hasattr(updated_date, 'tzinfo') else updated_date
+    except Exception:
+        return None
+
+# 获取品牌词
+def get_brand_terms(website_name):
+    try:
+        response = requests.get(website_name, timeout=5)
+        response.encoding = response.apparent_encoding
+        title = BeautifulSoup(response.text, 'html.parser').find('title')
+        if title and title.text.strip():
+            return ', '.join(filter(None, re.split(r'[\s\W_]+', title.text.strip())))
+        domain = website_name.split("//")[-1].split("/")[0].replace('www.', '').split('.')[0]
+        return domain or "未识别品牌词"
+    except Exception:
+        return ""
+
 # 搜索关键词
 async def search_keyword(page, keyword, all_results):
     search_url = f"https://m.baidu.com/s?wd={keyword}"
@@ -7970,6 +8004,10 @@ async def search_keyword(page, keyword, all_results):
             metadata, content_type = ({'title': '', 'keywords': '', 'description': ''}, '未知') if link == '无链接' else await fetch_page_data(page, link)
             # 添加UCI计算
             uci = await calculate_page_uci(page, link)
+            # 添加新功能调用
+            responsive_type = check_responsive(link) if link != '无链接' else "无链接"
+            last_updated = get_domain_last_updated(link) if link != '无链接' else None
+            brand_terms = get_brand_terms(link) if link != '无链接' else ""
             all_results.append({
                 '搜索关键词': keyword,
                 '大家还在搜': related_searches,
@@ -7978,7 +8016,10 @@ async def search_keyword(page, keyword, all_results):
                 '页面标题': metadata['title'],
                 '关键词': metadata['keywords'],
                 '描述': metadata['description'],
-                'UCI': uci
+                'UCI': uci,
+                '响应类型': responsive_type,
+                '最后更新时间': last_updated,
+                '品牌词': brand_terms
             })
     except Exception as e:
         logging.error(f"关键词 {keyword} 搜索失败：{e}")

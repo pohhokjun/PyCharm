@@ -2,10 +2,11 @@ import pymysql
 import pandas as pd
 from openpyxl import load_workbook
 import os
+from sqlalchemy import create_engine
 
 # 时间范围（便于修改）
-START_TIME = '2025-02-09 00:00:00'  # 开始时间
-END_TIME = '2025-02-09 23:59:59'    # 结束时间
+START_TIME = '2025-04-09 00:00:00'  # 开始时间
+END_TIME = '2025-04-09 23:59:59'    # 结束时间
 
 # 全局映射字典
 PAY_METHODS = {
@@ -42,19 +43,21 @@ def save_excel_with_freeze(df, file_path):
     wb.save(file_path)
 
 def main():
-    # 数据库连接
-    connection = pymysql.connect(
-        host='18.178.159.230',
-        port=3366,
-        user='bigdata',
-        password='uvb5SOSmLH8sCoSU',
-        database='finance_1000'
-    )
+    # 数据库连接信息
+    db_config = {
+        'host': '18.178.159.230',
+        'port': 3366,
+        'user': 'bigdata',
+        'password': 'uvb5SOSmLH8sCoSU',
+        'database': 'finance_1000'
+    }
+
+    # 构建 SQLAlchemy 连接字符串
+    engine = create_engine(f"mysql+pymysql://{db_config['user']}:{db_config['password']}@{db_config['host']}:{db_config['port']}/{db_config['database']}")
 
     # 查询数据
     query = f"SELECT * FROM finance_1000.finance_pay_records WHERE pay_status IN (2, 3) AND confirm_at BETWEEN '{START_TIME}' AND '{END_TIME}';"
-    df = pd.read_sql_query(query, connection)
-    connection.close()
+    df = pd.read_sql_query(query, engine)
 
     # 重命名列
     df.columns = ['ID', '站点ID', '会员ID', '会员用户名', '会员真实姓名', '会员等级', '上级ID', '账单号',
@@ -70,19 +73,25 @@ def main():
                   '客户端类型X']
 
     # 选择需要的列并应用映射
-    df = df[SELECTED_COLUMNS]
-    df['支付方式'] = df['支付方式'].map(PAY_METHODS)
-    df['支付状态'] = df['支付状态'].map(PAY_STATUS)
-    df['类别'] = df['类别'].map(CATEGORIES)
+    df = df[SELECTED_COLUMNS].copy()  # 避免 SettingWithCopyWarning
+    df.loc[:, '支付方式'] = df['支付方式'].map(PAY_METHODS)
+    df.loc[:, '支付状态'] = df['支付状态'].map(PAY_STATUS)
+    df.loc[:, '类别'] = df['类别'].map(CATEGORIES)
 
     # 保存路径
     save_path = r'C:\Henvita\0_数据导出'
     os.makedirs(save_path, exist_ok=True)
 
+    # 格式化时间
+    start_date_short = START_TIME[5:7] + '.' + START_TIME[8:10]
+    end_date_short = END_TIME[5:7] + '.' + END_TIME[8:10]
+    date_range_str = f"{start_date_short}-{end_date_short}"
+
     # 为每个站点生成文件
     for site_id, site_name in SITES.items():
-        file_path = f'{save_path}\\{site_name}存款单号.xlsx'
-        site_df = df[df['站点ID'] == site_id]
+        file_name = f"【{site_name}】存款单号 {date_range_str}.xlsx"
+        file_path = os.path.join(save_path, file_name)
+        site_df = df[df['站点ID'] == site_id].copy() # 避免 SettingWithCopyWarning
         save_excel_with_freeze(site_df, file_path)
 
     print(f"所有站点的数据已导出到 {save_path} 并冻结了首行")

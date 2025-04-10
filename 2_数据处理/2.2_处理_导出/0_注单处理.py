@@ -7,22 +7,6 @@ import re
 import shutil
 
 
-# 清空指定文件夹
-def clear_folder(folder_path):
-    if os.path.exists(folder_path):
-        for item in os.listdir(folder_path):
-            item_path = os.path.join(folder_path, item)
-            try:
-                if os.path.isfile(item_path) or os.path.islink(item_path):
-                    os.unlink(item_path)
-                elif os.path.isdir(item_path):
-                    shutil.rmtree(item_path)
-            except Exception as e:
-                print(f"删除 {item_path} 时出错: {e}")
-    else:
-        print(f"文件夹 {folder_path} 不存在")
-
-
 # 导出Excel文件，冻结首行并启用筛选功能
 def excel_out_oversize(df, file_name, date_suffix, output_dir=r'C:\Henvita\0_数据导出'):
     subsets = [df.iloc[i:i + 1000000] for i in range(0, len(df), 1000000)]
@@ -45,7 +29,7 @@ def excel_out_oversize(df, file_name, date_suffix, output_dir=r'C:\Henvita\0_数
 def read_txt_to_df(path):
     df_list = []
     for file in os.listdir(path):
-        if file.endswith('.txt'):
+        if file.endswith('_注单数据.txt'):
             with open(os.path.join(path, file), 'r', encoding='utf-8') as f:
                 df_list.append(pd.read_csv(f, sep='\t', low_memory=False))
     return pd.concat(df_list) if df_list else pd.DataFrame()
@@ -103,28 +87,15 @@ def process_esports_data(df):
 
 # 主处理逻辑
 def main():
-    # 清空文件夹
-    clear_folder(r'C:\Henvita\0_数据导出')
-    clear_folder(r'C:\Henvita\1_TXT注单数据')
-
-    # 移动文件
+    # 设置数据源文件夹
     source_folder = r'C:\Users\Administrator\Downloads'
-    destination_folder = r'C:\Henvita\1_TXT注单数据'
-    os.makedirs(destination_folder, exist_ok=True)
-    for filename in os.listdir(source_folder):
-        if filename.endswith('_注单数据.txt'):
-            try:
-                shutil.move(os.path.join(source_folder, filename), os.path.join(destination_folder, filename))
-                print(f"已移动文件: {filename} 到 {destination_folder}")
-            except Exception as e:
-                print(f"移动文件 {filename} 失败: {e}")
 
     # 获取昨日日期
     yesterday = datetime.now() - dt.timedelta(days=1)
     date_suffix = f'{yesterday.month}.{yesterday.day}'
 
     # 读取数据
-    data = read_txt_to_df(destination_folder)
+    data = read_txt_to_df(source_folder)
     if data.empty:
         print("未找到数据文件，程序退出。")
         return

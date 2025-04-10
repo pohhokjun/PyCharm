@@ -1,5 +1,5 @@
-import pymysql
 import pandas as pd
+from sqlalchemy import create_engine, text
 
 # 数据库连接信息
 db_config = {
@@ -9,6 +9,9 @@ db_config = {
     'password': 'uvb5SOSmLH8sCoSU',
     'database': 'finance_1000'
 }
+
+# 构建 SQLAlchemy 连接字符串
+engine_url = f"mysql+pymysql://{db_config['user']}:{db_config['password']}@{db_config['host']}:{db_config['port']}/{db_config['database']}"
 
 # SQL 查询语句
 query = """
@@ -46,15 +49,17 @@ SELECT site_id AS '站点ID',
        complete_time AS '完成时间'
 FROM ranked_records
 WHERE rn = 1
-  AND confirm_at >= '2025-02-23'
-  AND confirm_at < '2025-02-24';
+  AND confirm_at >= '2025-04-09'
+  AND confirm_at < '2025-04-09';
 """
 
 try:
-    # 连接数据库
-    with pymysql.connect(**db_config) as connection:
-        # 读取数据到 DataFrame
-        df = pd.read_sql_query(query, connection)
+    # 创建 SQLAlchemy 引擎
+    engine = create_engine(engine_url)
+
+    # 读取数据到 DataFrame
+    with engine.connect() as connection:
+        df = pd.read_sql_query(text(query), connection)
 
     # 如果 DataFrame 为空，提示用户
     if df.empty:
@@ -84,9 +89,5 @@ try:
 
         print(f"数据已导出到：{excel_path}")
 
-except pymysql.Error as e:
-    print(f"数据库错误：{e}")
-except FileNotFoundError as e:
-    print(f"文件路径错误：{e}")
 except Exception as e:
     print(f"发生错误：{e}")
