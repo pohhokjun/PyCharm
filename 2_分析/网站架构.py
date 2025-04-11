@@ -41,11 +41,14 @@ def generate_excel_pivot_view_html_optimized():
     all_data = {}
     for sheet in sheets:
         sheet_df = sheets_data[sheet]
-        sheet_date_labels = sheet_df['日期'].unique().tolist() if '日期' in sheet_df.columns else []
-        value_columns = [col for col in sheet_df.columns if col not in ['日期', '站点ID'] and pd.api.types.is_numeric_dtype(sheet_df[col])]
+        # 使用 B 列（第二列）作为 X 轴标签
+        sheet_date_labels = sheet_df.iloc[:, 1].unique().tolist() if len(sheet_df.columns) > 1 else []
+        # 数值列从第 C 列（第三列）开始
+        value_columns = [col for col in sheet_df.columns[2:] if pd.api.types.is_numeric_dtype(sheet_df[col])]
         sheet_datasets = []
         for i, column in enumerate(value_columns):
-            data = sheet_df.groupby('日期')[column].sum().reindex(sheet_date_labels).fillna(0).tolist()
+            # 使用 B 列分组
+            data = sheet_df.groupby(sheet_df.columns[1])[column].sum().reindex(sheet_date_labels).fillna(0).tolist()
             color_idx = i % len(colors)
             sheet_datasets.append({
                 'label': column,
@@ -59,7 +62,8 @@ def generate_excel_pivot_view_html_optimized():
             'labels': sheet_date_labels,
             'datasets': sheet_datasets,
             'raw_df': sheet_df.to_json(orient='records', date_format='iso'),
-            'site_ids': ['汇总'] + sheet_df['站点ID'].unique().tolist() if '站点ID' in sheet_df.columns else ['汇总']
+            # 使用 A 列（第一列）作为筛选条件
+            'site_ids': ['汇总'] + sheet_df.iloc[:, 0].unique().tolist() if len(sheet_df.columns) > 0 else ['汇总']
         }
     print(f"all_data 中的 sheet：{list(all_data.keys())}")
 
@@ -153,7 +157,7 @@ def generate_excel_pivot_view_html_optimized():
       var tableBody = document.getElementById('data-table').getElementsByTagName('tbody')[0];
       tableBody.innerHTML = '';
       var headerRow = document.getElementById('data-table').getElementsByTagName('thead')[0].getElementsByTagName('tr')[0];
-      headerRow.innerHTML = '<th>日期</th>' + data.datasets.map(ds => '<th>' + ds.label + '</th>').join('');
+      headerRow.innerHTML = '<th>' + allData[currentSheet].labels[0] + '</th>' + data.datasets.map(ds => '<th>' + ds.label + '</th>').join('');
       data.labels.forEach((label, index) => {
         var row = document.createElement('tr');
         var dateCell = document.createElement('td');
@@ -186,12 +190,12 @@ def generate_excel_pivot_view_html_optimized():
     function filterData(filterKey, element) {
       var newData = { labels: allData[currentSheet].labels, datasets: [] };
       var rawDf = JSON.parse(allData[currentSheet].raw_df);
-      var hasSiteId = rawDf.some(row => '站点ID' in row);
-      var filteredData = hasSiteId && filterKey !== '汇总' ? rawDf.filter(row => String(row['站点ID']) === String(filterKey)) : rawDf;
+      var hasSiteId = rawDf.some(row => allData[currentSheet].site_ids.includes(row[Object.keys(row)[0]]));
+      var filteredData = hasSiteId && filterKey !== '汇总' ? rawDf.filter(row => String(row[Object.keys(row)[0]]) === String(filterKey)) : rawDf;
 
       var groupedData = {};
       filteredData.forEach(row => {
-        var date = row['日期'].split('T')[0];
+        var date = row[Object.keys(row)[1]]; // 使用 B 列
         if (!groupedData[date]) groupedData[date] = {};
         allData[currentSheet].datasets.forEach(dataset => {
           groupedData[date][dataset.label] = (groupedData[date][dataset.label] || 0) + (row[dataset.label] || 0);

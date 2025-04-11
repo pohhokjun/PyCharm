@@ -45,7 +45,6 @@ def get_platform_report_sql(db, table):
            SUM(dividend_amount) AS 红利,
            SUM(rebate_amount) AS 返水,
            SUM(per_commission_amount) AS 代理佣金,
-           AVG(group_amount_ratio) AS 集团分成比例,
            SUM(group_profit) AS 集团分成,
            (SUM(net_amount_settle) + SUM(early_settle_net_amount_settle) +
             SUM(deposit_adjust_amount) + SUM(dividend_amount) +
@@ -183,13 +182,7 @@ def get_payment_report_sql(db, table):
     FROM date_buckets
     WHERE 时间段 IS NOT NULL
     GROUP BY 时间段, pay_type
-    ORDER BY 
-        CASE 
-            WHEN 时间段 = '近3日' THEN 1
-            WHEN 时间段 = '近7日' THEN 2
-            WHEN 时间段 = '近15日' THEN 3
-            WHEN 时间段 = '近30日' THEN 4
-        END ASC, 支付类型 ASC
+    ORDER BY 总订单金额 DESC
     """
 
 # SQL 函数映射
