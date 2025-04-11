@@ -6,23 +6,26 @@ from openpyxl.utils import get_column_letter
 import os
 from multiprocessing import Pool
 import logging
+import pymysql
+import multiprocessing
 
 # 配置日志
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
-# 数据库连接配置（不指定默认数据库）
+# 数据库连接配置（支持环境变量，增强安全性）
 CONFIG = {
-    'host': '18.178.159.230',
-    'port': 3366,
-    'user': 'bigdata',
-    'password': 'uvb5SOSmLH8sCoSU'
+    'host': os.getenv('DB_HOST', '18.178.159.230'),
+    'port': int(os.getenv('DB_PORT', 3366)),
+    'user': os.getenv('DB_USER', 'bigdata'),
+    'password': os.getenv('DB_PASSWORD', 'uvb5SOSmLH8sCoSU')
 }
 
 # 报表配置
 REPORTS = {
     '平台报表': {'db': 'bigdata', 'table': 'platform_daily_report', 'date_as_text': True},
     '留存': {'db': 'bigdata', 'table': 'member_daily_statics', 'date_as_text': True},
-    '支付统计': {'db': 'finance_1000', 'table': 'finance_pay_records', 'date_as_text': True}
+    '存款': {'db': 'finance_1000', 'table': 'finance_pay_records', 'date_as_text': True},
+    '取款': {'db': 'finance_1000', 'table': 'finance_withdraw', 'date_as_text': True}
 }
 
 # SQL 查询函数
@@ -169,46 +172,125 @@ def get_payment_report_sql(db, table):
             WHEN pay_type = 1034 THEN '365钱包'
             WHEN pay_type = 1035 THEN 'ABPAY钱包'
             ELSE pay_type
-        END AS 支付类型,
+        END AS 存款类型,
         COUNT(*) AS 订单数,
         SUM(CASE WHEN pay_status = 2 THEN 1 ELSE 0 END) AS 成功数量,
-        SUM(order_amount) AS 总订单金额,
+        ROUND(IF(COUNT(*) = 0, 0, SUM(CASE WHEN pay_status = 2 THEN 1 ELSE 0 END) / COUNT(*)), 4) AS 成功率,
         SUM(CASE WHEN pay_status = 2 THEN order_amount ELSE 0 END) AS 成功金额,
         CONCAT(
             LPAD(FLOOR(AVG(CASE WHEN pay_status = 2 THEN TIMESTAMPDIFF(SECOND, created_at, confirm_at) ELSE NULL END) / 3600), 2, '0'), ':',
             LPAD(FLOOR((AVG(CASE WHEN pay_status = 2 THEN TIMESTAMPDIFF(SECOND, created_at, confirm_at) ELSE NULL END) MOD 3600) / 60), 2, '0'), ':',
             LPAD(FLOOR(AVG(CASE WHEN pay_status = 2 THEN TIMESTAMPDIFF(SECOND, created_at, confirm_at) ELSE NULL END) MOD 60), 2, '0')
-        ) AS 平均处理时间
+        ) AS 处理时间
     FROM date_buckets
     WHERE 时间段 IS NOT NULL
     GROUP BY 时间段, pay_type
-    ORDER BY 总订单金额 DESC
+    ORDER BY 订单数 DESC
+    """
+
+def get_withdraw_report_sql(db, table):
+    return f"""
+    WITH date_buckets AS (
+        SELECT 
+            CASE 
+                WHEN confirm_at >= DATE_SUB(CURDATE(), INTERVAL 3 DAY) THEN '近3日'
+                WHEN confirm_at >= DATE_SUB(CURDATE(), INTERVAL 7 DAY) THEN '近7日'
+                WHEN confirm_at >= DATE_SUB(CURDATE(), INTERVAL 15 DAY) THEN '近15日'
+                WHEN confirm_at >= DATE_SUB(CURDATE(), INTERVAL 30 DAY) THEN '近30日'
+            END AS 时间段,
+            withdraw_type,
+            draw_status,
+            amount,
+            created_at,
+            confirm_at
+        FROM {db}.{table}
+        WHERE site_id = 2000
+          AND category = 1
+          AND draw_status IN (402, 501)
+          AND confirm_at >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)
+          AND confirm_at <= CURDATE()
+    )
+    SELECT 
+        时间段,
+        CASE
+            WHEN withdraw_type = 2001 THEN '提款至银行卡'
+            WHEN withdraw_type = 20202 THEN '提款至中心钱包'
+            WHEN withdraw_type = 20203 THEN '佣金转账'
+            WHEN withdraw_type = 20204 THEN '额度转账'
+            WHEN withdraw_type = 20205 THEN '额度代存'
+            WHEN withdraw_type = 20206 THEN '佣金代存'
+            WHEN withdraw_type = 20207 THEN '额度手动下分'
+            WHEN withdraw_type = 2002 THEN '提款至虚拟币账户'
+            WHEN withdraw_type = 20209 THEN '代客提款'
+            WHEN withdraw_type = 1006 THEN 'Mpay钱包'
+            WHEN withdraw_type = 1008 THEN 'IPAY钱包'
+            WHEN withdraw_type = 1018 THEN 'EBPAY钱包'
+            WHEN withdraw_type = 1021 THEN '988钱包'
+            WHEN withdraw_type = 1022 THEN 'JD钱包'
+            WHEN withdraw_type = 1023 THEN 'C币钱包'
+            WHEN withdraw_type = 1024 THEN 'K豆钱包'
+            WHEN withdraw_type = 1025 THEN '钱能钱包'
+            WHEN withdraw_type = 1026 THEN 'TG钱包'
+            WHEN withdraw_type = 1027 THEN 'FPAY钱包'
+            WHEN withdraw_type = 1028 THEN 'OKPAY钱包'
+            WHEN withdraw_type = 1029 THEN 'TOPAY钱包'
+            WHEN withdraw_type = 1030 THEN 'GOPAY钱包'
+            WHEN withdraw_type = 1031 THEN '808钱包'
+            WHEN withdraw_type = 1033 THEN '万币钱包'
+            WHEN withdraw_type = 1034 THEN '365钱包'
+            WHEN withdraw_type = 1035 THEN 'ABPAY钱包'
+            WHEN withdraw_type = 1002 THEN '支付宝提款'
+            WHEN withdraw_type = 0 THEN '手动下分'
+            ELSE '未知'
+        END AS 取款类型,
+        COUNT(*) AS 订单数,
+        SUM(CASE WHEN draw_status = 402 THEN 1 ELSE 0 END) AS 成功数量,
+        ROUND(IF(COUNT(*) = 0, 0, SUM(CASE WHEN draw_status = 402 THEN 1 ELSE 0 END) / COUNT(*)), 4) AS 成功率,
+        SUM(CASE WHEN draw_status = 402 THEN amount ELSE 0 END) AS 成功金额,
+        CONCAT(
+            LPAD(FLOOR(AVG(CASE WHEN draw_status = 402 THEN TIMESTAMPDIFF(SECOND, created_at, confirm_at) ELSE NULL END) / 3600), 2, '0'), ':',
+            LPAD(FLOOR((AVG(CASE WHEN draw_status = 402 THEN TIMESTAMPDIFF(SECOND, created_at, confirm_at) ELSE NULL END) MOD 3600) / 60), 2, '0'), ':',
+            LPAD(FLOOR(AVG(CASE WHEN draw_status = 402 THEN TIMESTAMPDIFF(SECOND, created_at, confirm_at) ELSE NULL END) MOD 60), 2, '0')
+        ) AS 处理时间
+    FROM date_buckets
+    WHERE 时间段 IS NOT NULL
+    GROUP BY 时间段, withdraw_type
+    ORDER BY 订单数 DESC
     """
 
 # SQL 函数映射
 SQL_FUNCTIONS = {
     '平台报表': get_platform_report_sql,
     '留存': get_retention_report_sql,
-    '支付统计': get_payment_report_sql
+    '存款': get_payment_report_sql,
+    '取款': get_withdraw_report_sql
 }
 
 def process_report(args):
     """处理单个报表的查询和返回结果"""
     sheet_name, config, report_config = args
     try:
-        engine = create_engine(f"mysql+pymysql://{config['user']}:{config['password']}@{config['host']}:{config['port']}/")
-        sql = SQL_FUNCTIONS[sheet_name](report_config['db'], report_config['table'])
-        df_iterator = pd.read_sql(sql, engine, chunksize=50000)
-        data = []
-        columns = None
-        for chunk in df_iterator:
-            if columns is None:
-                columns = chunk.columns.tolist()
-            if report_config['date_as_text'] and '日期' in columns:
-                chunk['日期'] = chunk['日期'].astype(str)
-            data.extend(chunk.values.tolist())
-        engine.dispose()
-        return sheet_name, columns, data, True
+        # 在子进程中创建独立的数据库引擎
+        engine = create_engine(
+            f"mysql+pymysql://{config['user']}:{config['password']}@{config['host']}:{config['port']}/",
+            pool_size=5,
+            max_overflow=10,
+            pool_timeout=30
+        )
+        try:
+            sql = SQL_FUNCTIONS[sheet_name](report_config['db'], report_config['table'])
+            df_iterator = pd.read_sql(sql, engine, chunksize=50000)
+            data = []
+            columns = None
+            for chunk in df_iterator:
+                if columns is None:
+                    columns = chunk.columns.tolist()
+                if report_config['date_as_text'] and '日期' in columns:
+                    chunk['日期'] = pd.to_datetime(chunk['日期']).dt.strftime('%Y-%m-%d')
+                data.extend(chunk.values.tolist())
+            return sheet_name, columns, data, True
+        finally:
+            engine.dispose()  # 确保释放连接
     except Exception as e:
         logging.error(f"处理 {sheet_name} 出错: {e}")
         return sheet_name, None, None, False
@@ -229,10 +311,15 @@ def write_to_excel(results, filename):
             worksheet.append(row)
         worksheet.freeze_panes = 'A2'
         worksheet.auto_filter.ref = f"A1:{get_column_letter(len(columns))}{worksheet.max_row}"
-        if sheet_name == '支付统计':
-            for row in worksheet['F2:G' + str(worksheet.max_row)]:
-                for cell in row:
-                    cell.number_format = '#,##0.00'
+        if sheet_name in ['存款', '取款'] and worksheet.max_row > 1:
+            # 成功率列（第 5 列，索引为 E）
+            for row in worksheet['E2:E' + str(worksheet.max_row)]:
+                cell = row[0]  # 解包单元素元组，获取 Cell 对象
+                cell.number_format = '0.00%'
+            # 成功金额列（第 6 列，索引为 F）
+            for row in worksheet['F2:F' + str(worksheet.max_row)]:
+                cell = row[0]  # 解包单元素元组，获取 Cell 对象
+                cell.number_format = '#,##0.00'
 
     workbook.save(filename)
     logging.info(f"数据已导出到 {filename}")
@@ -244,7 +331,9 @@ def main():
     script_name = os.path.splitext(os.path.basename(__file__))[0]
     excel_filename = f"{script_name}.xlsx"
 
-    with Pool(processes=3) as pool:
+    # 动态设置进程数
+    pool_size = min(len(REPORTS), multiprocessing.cpu_count())
+    with Pool(processes=pool_size) as pool:
         tasks = [(name, CONFIG, REPORTS[name]) for name in REPORTS]
         results = pool.map(process_report, tasks)
 

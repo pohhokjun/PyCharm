@@ -10,14 +10,45 @@ class TimestampEncoder(json.JSONEncoder):
             return obj.isoformat()
         return super().default(obj)
 
+def time_to_seconds(time_str):
+    """将时间字符串（hh:mm:ss 或其他格式）转换为秒数"""
+    try:
+        if isinstance(time_str, str):
+            parts = time_str.split(':')
+            if len(parts) == 3:
+                hours, minutes, seconds = map(float, parts)
+                return hours * 3600 + minutes * 60 + seconds
+            elif len(parts) == 2:
+                minutes, seconds = map(float, parts)
+                return minutes * 60 + seconds
+            elif len(parts) == 1:
+                return float(parts[0])
+        return 0
+    except (ValueError, TypeError):
+        return 0
+
 def load_all_sheets(file_path):
     """加载所有 sheet 数据"""
     try:
+        if not os.path.exists(file_path):
+            print(f"错误：文件 {file_path} 不存在")
+            return None
         excel_file = pd.ExcelFile(file_path)
         print(f"找到的 sheet 名称：{excel_file.sheet_names}")
-        sheets_data = {sheet: pd.read_excel(file_path, sheet_name=sheet)
-                       for sheet in excel_file.sheet_names}
+        sheets_data = {}
+        for sheet in excel_file.sheet_names:
+            df = pd.read_excel(file_path, sheet_name=sheet)
+            if len(df.columns) < 3:
+                print(f"警告：Sheet {sheet} 的列数不足，至少需要 3 列，跳过处理")
+                continue
+            sheets_data[sheet] = df
+        if not sheets_data:
+            print("错误：没有有效的 sheet 数据")
+            return None
         return sheets_data
+    except ValueError as ve:
+        print(f"错误：Excel 文件格式不正确 - {ve}")
+        return None
     except Exception as e:
         print(f"错误：读取 Excel 文件时发生问题 - {e}")
         return None
@@ -29,7 +60,7 @@ def generate_excel_pivot_view_html_optimized():
 
     sheets = list(sheets_data.keys())
     print(f"加载的 sheet：{sheets}")
-    default_sheet = sheets[0]
+    default_sheet = sheets[0] if sheets else ""
     colors = [
         ('rgba(54, 162, 235, 0.6)', 'rgba(54, 162, 235, 1)'),
         ('rgba(255, 99, 132, 0.6)', 'rgba(255, 99, 132, 1)'),
@@ -41,29 +72,64 @@ def generate_excel_pivot_view_html_optimized():
     all_data = {}
     for sheet in sheets:
         sheet_df = sheets_data[sheet]
-        # 使用 B 列（第二列）作为 X 轴标签
-        sheet_date_labels = sheet_df.iloc[:, 1].unique().tolist() if len(sheet_df.columns) > 1 else []
-        # 数值列从第 C 列（第三列）开始
+        sheet_date_labels = sheet_df.iloc[:, 1].dropna().unique().tolist() if len(sheet_df.columns) > 1 else []
         value_columns = [col for col in sheet_df.columns[2:] if pd.api.types.is_numeric_dtype(sheet_df[col])]
         sheet_datasets = []
-        for i, column in enumerate(value_columns):
-            # 使用 B 列分组
-            data = sheet_df.groupby(sheet_df.columns[1])[column].sum().reindex(sheet_date_labels).fillna(0).tolist()
-            color_idx = i % len(colors)
-            sheet_datasets.append({
-                'label': column,
-                'data': data,
-                'backgroundColor': colors[color_idx][0],
-                'borderColor': colors[color_idx][1],
-                'borderWidth': 1,
-                'type': 'bar'
-            })
+
+        if sheet in ["存款", "取款"]:
+            time_col = "处理时间"  # 统一使用 "处理时间"
+            other_value_columns = [col for col in value_columns if col != time_col]
+            for i, column in enumerate(other_value_columns):
+                data = sheet_df.groupby(sheet_df.columns[1])[column].sum().reindex(sheet_date_labels).fillna(0).tolist()
+                color_idx = i % len(colors)
+                sheet_datasets.append({
+                    'label': column,
+                    'data': data,
+                    'backgroundColor': colors[color_idx][0],
+                    'borderColor': colors[color_idx][1],
+                    'borderWidth': 1,
+                    'type': 'bar',
+                    'yAxisID': 'y-left'
+                })
+            if time_col in sheet_df.columns:
+                sheet_df[time_col] = sheet_df[time_col].apply(time_to_seconds)
+                data = sheet_df.groupby(sheet_df.columns[1])[time_col].mean().reindex(sheet_date_labels).fillna(0).tolist()
+                sheet_datasets.append({
+                    'label': time_col,
+                    'data': data,
+                    'backgroundColor': 'rgba(255, 159, 64, 0.6)',
+                    'borderColor': 'rgba(255, 159, 64, 1)',
+                    'borderWidth': 2,
+                    'type': 'line',
+                    'yAxisID': 'y-right',
+                    'fill': False
+                })
+            else:
+                print(f"警告：Sheet {sheet} 未找到 '处理时间' 列")
+        else:
+            for i, column in enumerate(value_columns):
+                data = sheet_df.groupby(sheet_df.columns[1])[column].sum().reindex(sheet_date_labels).fillna(0).tolist()
+                color_idx = i % len(colors)
+                sheet_datasets.append({
+                    'label': column,
+                    'data': data,
+                    'backgroundColor': colors[color_idx][0],
+                    'borderColor': colors[color_idx][1],
+                    'borderWidth': 1,
+                    'type': 'bar'
+                })
+
+        site_ids = sheet_df.iloc[:, 0].dropna().unique().tolist() if len(sheet_df.columns) > 0 else []
+        if sheet in ["存款", "取款"]:
+            site_ids = [x for x in site_ids if x != "汇总"]
+        else:
+            site_ids = ['汇总'] + site_ids
+
         all_data[sheet] = {
             'labels': sheet_date_labels,
             'datasets': sheet_datasets,
             'raw_df': sheet_df.to_json(orient='records', date_format='iso'),
-            # 使用 A 列（第一列）作为筛选条件
-            'site_ids': ['汇总'] + sheet_df.iloc[:, 0].unique().tolist() if len(sheet_df.columns) > 0 else ['汇总']
+            'site_ids': site_ids
         }
     print(f"all_data 中的 sheet：{list(all_data.keys())}")
 
@@ -74,14 +140,16 @@ def generate_excel_pivot_view_html_optimized():
   <title>数据透视图</title>
   <style>
     body { font-family: sans-serif; margin: 0; padding: 0; background-color: #000; color: #fff; display: flex; min-height: 100vh; }
-    .sidebar { width: 200px; background-color: #222; color: #fff; padding: 20px; border-right: 1px solid #444; display: flex; flex-direction: column; position: fixed; top: 0; bottom: 0; overflow-y: auto; }
+    * { scrollbar-width: none; -ms-overflow-style: none; }
+    *::-webkit-scrollbar { display: none; }
+    .sidebar { width: 133px; background-color: #222; color: #fff; padding: 20px; border-right: 1px solid #444; display: flex; flex-direction: column; position: fixed; top: 0; bottom: 0; overflow-y: auto; }
     .sidebar h2 { color: #eee; margin-top: 0; margin-bottom: 15px; }
     .sidebar ul { list-style: none; padding: 0; margin: 0; }
     .sidebar li a { display: block; padding: 10px 15px; text-decoration: none; color: #ddd; border-radius: 5px; margin-bottom: 5px; cursor: pointer; }
     .sidebar li a:hover { background-color: #555; color: #fff; }
     .sidebar li a.active { background-color: #777; color: #fff; }
-    .pivot-view { flex-grow: 1; padding: 20px; overflow: auto; background-color: #111; display: flex; flex-direction: column; gap: 20px; margin-left: 240px; }
-    .filter-container { background-color: #333; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); display: flex; gap: 10px; align-items: center; position: fixed; top: 0; left: 240px; right: 0; z-index: 10; }
+    .pivot-view { flex-grow: 1; padding: 20px; overflow: auto; background-color: #111; display: flex; flex-direction: column; gap: 20px; margin-left: 173px; }
+    .filter-container { background-color: #333; padding: 10px; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); display: flex; gap: 10px; align-items: center; position: fixed; top: 0; left: 173px; right: 0; z-index: 10; }
     .filter-container button { background-color: #555; color: #eee; border: none; padding: 8px 15px; border-radius: 3px; cursor: pointer; }
     .filter-container button:hover { background-color: #777; }
     .filter-container button.active { background-color: #999; color: #fff; }
@@ -89,36 +157,82 @@ def generate_excel_pivot_view_html_optimized():
     .chart-container.active { display: block; }
     .chart-container h2 { color: #eee; margin-top: 0; }
     .chart-container canvas { width: 100%; max-height: 400px; }
-    .table-container { 
-      width: 100%; 
-      max-width: 100%; 
-      background-color: #333; 
-      border-radius: 5px; 
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); 
-      padding: 10px; 
-      box-sizing: border-box; 
-      font-size: 12px; 
+    .table-container {
+      width: 100%;
+      max-width: 100%;
+      background-color: #333;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+      padding: 10px;
+      box-sizing: border-box;
+      font-size: 12px;
+      position: relative;
     }
-    .table-container table { 
-      width: 100%; 
-      border-collapse: collapse; 
-      color: #eee; 
-      table-layout: fixed; /* 固定表格布局，自动分配列宽 */
+    .table-header-window {
+      width: 100%;
+      background-color: #333;
+      border-bottom: 1px solid #555;
+      position: sticky;
+      top: 60px;
+      z-index: 10 Facets: 1
+      z-index: 10;
     }
-    .table-container th, .table-container td { 
-      padding: 6px; 
-      text-align: left; 
-      border-bottom: 1px solid #555; 
-      white-space: nowrap; /* 保持内容不换行 */
-      overflow: hidden; /* 隐藏超出部分 */
-      text-overflow: ellipsis; /* 用省略号表示超出内容 */
+    .table-header-scroll {
+      width: 100%;
+      overflow-x: auto;
     }
-    .table-container th { background-color: #444; }
+    .table-body-scroll {
+      width: 100%;
+      max-height: 500px;
+      overflow-x: auto;
+      overflow-y: auto;
+    }
+    .table-container table {
+      width: 100%;
+      border-collapse: collapse;
+      color: #eee;
+      table-layout: fixed;
+    }
+    .table-container th,
+    .table-container td {
+      padding: 6px;
+      text-align: left;
+      border-bottom: 1px solid #555;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    .table-container th {
+      background-color: #444;
+    }
     #loading { position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); background-color: rgba(0, 0, 0, 0.8); padding: 20px; border-radius: 5px; z-index: 100; }
-    @media (max-width: 768px) { .sidebar { width: 150px; } .pivot-view { margin-left: 170px; } .filter-container { left: 170px; flex-wrap: wrap; } }
+    @media (max-width: 768px) {
+      .sidebar { width: 100px; }
+      .pivot-view { margin-left: 140px; }
+      .filter-container { left: 140px; flex-wrap: wrap; }
+      .table-header-window { top: 60px; }
+      .table-body-scroll { max-height: 400px; }
+    }
   </style>
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   <script>
+    function formatSeconds(seconds) {
+      var hours = Math.floor(seconds / 3600);
+      var minutes = Math.floor((seconds % 3600) / 60);
+      var secs = Math.floor(seconds % 60);
+      return [
+        hours.toString().padStart(2, '0'),
+        minutes.toString().padStart(2, '0'),
+        secs.toString().padStart(2, '0')
+      ].join(':');
+    }
+
+    function formatSecondsToMMSS(seconds) {
+      var minutes = Math.floor(seconds / 60);
+      var secs = Math.floor(seconds % 60);
+      return minutes.toString().padStart(2, '0') + ':' + secs.toString().padStart(2, '0');
+    }
+
     var allData = """ + json.dumps(all_data, cls=TimestampEncoder) + """;
     var charts = {};
     var currentSheet = '""" + default_sheet + """';
@@ -126,22 +240,47 @@ def generate_excel_pivot_view_html_optimized():
     function initCharts() {
       Object.keys(allData).forEach(sheet => {
         var canvasId = sheet + '-chart';
-        createChart(canvasId, allData[sheet], 'bar');
+        var chartType = sheet === '存款' || sheet === '取款' ? 'bar' : 'bar';
+        createChart(canvasId, allData[sheet], chartType);
       });
       toggleDataView('""" + default_sheet + """-container');
     }
 
     function createChart(canvasId, data, type) {
       var ctx = document.getElementById(canvasId).getContext('2d');
+      var options = {
+        responsive: true,
+        maintainAspectRatio: false,
+        scales: {
+          'y-left': {
+            beginAtZero: true,
+            position: 'left',
+            ticks: { color: '#fff' },
+            grid: { display: true },
+            title: { display: true, text: '数值', color: '#fff' }
+          },
+          x: { ticks: { color: '#fff' } }
+        },
+        plugins: { legend: { labels: { color: '#fff' } } }
+      };
+      if (canvasId === '存款-chart' || canvasId === '取款-chart') {
+        options.scales['y-right'] = {
+          beginAtZero: true,
+          position: 'right',
+          ticks: {
+            color: '#fff',
+            callback: function(value) {
+              return formatSecondsToMMSS(value);
+            }
+          },
+          grid: { display: false },
+          title: { display: true, text: '处理时间 (MM:SS)', color: '#fff' }
+        };
+      }
       charts[canvasId] = new Chart(ctx, {
         type: type,
         data: data,
-        options: {
-          responsive: true,
-          maintainAspectRatio: false,
-          scales: { y: { beginAtZero: true, ticks: { color: '#fff' } }, x: { ticks: { color: '#fff' } } },
-          plugins: { legend: { labels: { color: '#fff' } } }
-        }
+        options: options
       });
     }
 
@@ -155,9 +294,9 @@ def generate_excel_pivot_view_html_optimized():
 
     function updateTable(data) {
       var tableBody = document.getElementById('data-table').getElementsByTagName('tbody')[0];
+      var headerRow = document.getElementById('data-table-header').getElementsByTagName('thead')[0].getElementsByTagName('tr')[0];
       tableBody.innerHTML = '';
-      var headerRow = document.getElementById('data-table').getElementsByTagName('thead')[0].getElementsByTagName('tr')[0];
-      headerRow.innerHTML = '<th>' + allData[currentSheet].labels[0] + '</th>' + data.datasets.map(ds => '<th>' + ds.label + '</th>').join('');
+      headerRow.innerHTML = '<th>' + (allData[currentSheet].raw_df ? Object.keys(JSON.parse(allData[currentSheet].raw_df)[0])[1] : '日期') + '</th>' + data.datasets.map(ds => '<th>' + ds.label + '</th>').join('');
       data.labels.forEach((label, index) => {
         var row = document.createElement('tr');
         var dateCell = document.createElement('td');
@@ -165,11 +304,22 @@ def generate_excel_pivot_view_html_optimized():
         row.appendChild(dateCell);
         data.datasets.forEach(dataset => {
           var cell = document.createElement('td');
-          cell.textContent = dataset.data[index];
+          var value = dataset.data[index];
+          cell.textContent = dataset.label === '处理时间' ? formatSecondsToMMSS(value) : value;
           row.appendChild(cell);
         });
         tableBody.appendChild(row);
       });
+
+      // 同步滚动
+      var headerScroll = document.querySelector('.table-header-scroll');
+      var bodyScroll = document.querySelector('.table-body-scroll');
+      headerScroll.onscroll = function () {
+        bodyScroll.scrollLeft = headerScroll.scrollLeft;
+      };
+      bodyScroll.onscroll = function () {
+        headerScroll.scrollLeft = bodyScroll.scrollLeft;
+      };
     }
 
     function toggleDataView(viewId, element) {
@@ -182,7 +332,7 @@ def generate_excel_pivot_view_html_optimized():
       if (element) element.classList.add('active');
       currentSheet = viewId.split('-')[0];
       updateTable(allData[currentSheet]);
-      document.querySelector('.filter-container').innerHTML = allData[currentSheet].site_ids.map(id => 
+      document.querySelector('.filter-container').innerHTML = allData[currentSheet].site_ids.map(id =>
         '<button onclick="filterData(\\'' + id + '\\', this)">' + id + '</button>'
       ).join('');
     }
@@ -195,22 +345,40 @@ def generate_excel_pivot_view_html_optimized():
 
       var groupedData = {};
       filteredData.forEach(row => {
-        var date = row[Object.keys(row)[1]]; // 使用 B 列
+        var date = row[Object.keys(row)[1]];
         if (!groupedData[date]) groupedData[date] = {};
         allData[currentSheet].datasets.forEach(dataset => {
-          groupedData[date][dataset.label] = (groupedData[date][dataset.label] || 0) + (row[dataset.label] || 0);
+          var value = row[dataset.label];
+          if (dataset.label === '处理时间') {
+            value = value !== undefined ? parseFloat(value) : 0;
+            groupedData[date][dataset.label] = (groupedData[date][dataset.label] || []).concat([value]);
+          } else {
+            value = value !== undefined ? parseFloat(value) : 0;
+            groupedData[date][dataset.label] = (groupedData[date][dataset.label] || 0) + value;
+          }
         });
       });
 
       allData[currentSheet].datasets.forEach(dataset => {
-        var data = allData[currentSheet].labels.map(date => groupedData[date] ? (groupedData[date][dataset.label] || 0) : 0);
+        var data = allData[currentSheet].labels.map(date => {
+          if (groupedData[date]) {
+            if (dataset.label === '处理时间') {
+              var values = groupedData[date][dataset.label] || [];
+              return values.length ? values.reduce((a, b) => a + b, 0) / values.length : 0;
+            }
+            return groupedData[date][dataset.label] || 0;
+          }
+          return 0;
+        });
         newData.datasets.push({
           label: dataset.label,
           data: data,
           backgroundColor: dataset.backgroundColor,
           borderColor: dataset.borderColor,
           borderWidth: dataset.borderWidth,
-          type: dataset.type
+          type: dataset.type,
+          yAxisID: dataset.yAxisID || (dataset.label === '处理时间' ? 'y-right' : 'y-left'),
+          fill: dataset.fill
         });
       });
 
@@ -224,7 +392,8 @@ def generate_excel_pivot_view_html_optimized():
       document.getElementById('loading').style.display = 'block';
       initCharts();
       document.getElementById('loading').style.display = 'none';
-      document.querySelector('.filter-container button').classList.add('active');
+      var firstButton = document.querySelector('.filter-container button');
+      if (firstButton) firstButton.classList.add('active');
     });
   </script>
 </head>
@@ -252,11 +421,19 @@ def generate_excel_pivot_view_html_optimized():
       <canvas id="{sheet}-chart"></canvas>
     </div>""" for sheet in sheets]) + """
     <div class="table-container">
-      <h2>数据表格</h2>
-      <table id="data-table">
-        <thead><tr></tr></thead>
-        <tbody></tbody>
-      </table>
+      <div class="table-header-window">
+        <h2>数据表格</h2>
+        <div class="table-header-scroll">
+          <table id="data-table-header">
+            <thead><tr></tr></thead>
+          </table>
+        </div>
+      </div>
+      <div class="table-body-scroll">
+        <table id="data-table">
+          <tbody></tbody>
+        </table>
+      </div>
     </div>
   </div>
   <div id="loading" style="display: none;">加载中...</div>
