@@ -117,12 +117,9 @@ def save_to_excel(df: pd.DataFrame, filename: str):
 
 def work(db_query: DatabaseQuery) -> pd.DataFrame:
     """执行查询并合并结果"""
-    # 获取推广部信息和未投注会员
-    maintable = db_query.query_promotion()
-    secondarytable = db_query.query_non_betting_members()
-
-    # 合并数据
-    result_df = maintable.merge(secondarytable, on='会员ID', how='inner')
+    result_df = (db_query.query_promotion()
+                 .merge(db_query.query_non_betting_members(), on='会员ID', how='inner')
+                 .merge(db_query.query_winning_members(), on='会员ID', how='inner'))
     return result_df
 
 
