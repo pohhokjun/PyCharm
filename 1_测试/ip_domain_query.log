@@ -1,0 +1,102 @@
+2025-04-14 17:52:33,885 - INFO - guangyuangs.com - title: 必一·运动(BSports)官方网站, keywords: 必一运动,bsports必一体育,必一bsports体育,必一运动官方网站, description: 必一·运动(BSports)官方网站✅🏆『guangyuangs.com』🏆✅世界顶级真人游戏让生活更精彩!为国内游戏玩家打造的全球最顶级乐趣游戏APP,提供下载、入口、首页、平台、登陆、官网、二十四小时专属客服在线服务!全球最安全,最信誉,最公平的平台运营商!
+2025-04-14 17:52:41,233 - ERROR - 访问 https://www.guiermei.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://www.guiermei.com/", waiting until "load"
+
+2025-04-14 17:52:41,992 - INFO - www.guiermei.com - title: AGZ6.COM:AG尊龙官网, keywords: , description: 
+2025-04-14 17:52:47,002 - ERROR - 访问 https://guiermei.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://guiermei.com/", waiting until "load"
+
+2025-04-14 17:52:50,218 - INFO - guiermei.com - title: AGZ6.COM:AG尊龙官网, keywords: , description: 
+2025-04-14 17:52:54,220 - INFO - www.jtlsckj.com - title: 球信网·(中国)集团官网, keywords: 球信网,球信网平台,球信网网址,球信网, description: 球信网·(中国)集团官网『🏅亚洲顶尖综合体育平台运营商🏅』！球信网提供快速注册链接入口🎯、APP下载📱、平台首页及登录服务。作为中国区领先的平台,球信网为用户提供安全、稳定的注册体验,24小时客服随时在线支持。立即前往球信网,轻松注册,畅享高品质平台服务！
+2025-04-14 17:53:02,782 - ERROR - 访问 https://www.ax-jx.com 失败: Page.goto: net::ERR_CONNECTION_REFUSED at https://www.ax-jx.com/
+Call log:
+  - navigating to "https://www.ax-jx.com/", waiting until "load"
+
+2025-04-14 17:53:03,516 - ERROR - 访问 http://www.ax-jx.com 失败: Page.goto: Navigation to "http://www.ax-jx.com/" is interrupted by another navigation to "chrome-error://chromewebdata/"
+Call log:
+  - navigating to "http://www.ax-jx.com/", waiting until "load"
+
+2025-04-14 17:53:08,520 - ERROR - 访问 https://www.faj123.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://www.faj123.com/", waiting until "load"
+
+2025-04-14 17:53:14,259 - ERROR - 访问 http://www.faj123.com 失败: Page.wait_for_selector: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("body") to be visible
+  -     15 × locator resolved to hidden <body></body>
+
+2025-04-14 17:53:16,331 - INFO - cmstudio.cn - title: 济南看男科疾病医院哪家好 - 治疗包皮过长价格 - 济南军颐医院, keywords: 济南看男科疾病医院哪家好,济南治疗包皮过长价格,济南军颐医院, description: 济南看男科疾病医院哪家好?济南军颐医院是济南一家针对男性开展的专科医院,医院科室分明,专业治疗前列腺疾病、生殖感染、包皮过长、男性不育、性功能障碍等男科疾病,收费透明,价格合理,针对每个病人,提供一对一诊疗服务.
+2025-04-14 17:53:18,889 - INFO - mfwg.net - title: 厦门市肛肠病医院排名 - 厦门肛肠科医院排行榜 - 厦门湖里天伦医院, keywords: 厦门市肛肠病医院排名,厦门肛肠科医院排行榜,厦门湖里天伦医院, description: 厦门湖里天伦医院肛肠科是厦门肛肠科医院排行榜上排名较好的肛肠病专科医院,市医保定点医院,汇集多名肛肠专家,为您解答痔疮、便秘、肛瘘、肛裂、直肠炎、结肠炎、肛周脓肿、肛乳头肥大、直肠息肉等肛肠疾病的原因以及怎么治疗方法等.
+2025-04-14 17:53:20,028 - INFO - www.imboke.com - title: 厦门人流医院 - 厦门无痛人流医院排行 - 厦门湖里天伦医院, keywords: 厦门人流医院,厦门无痛人流医院排行,厦门湖里天伦医院, description: 厦门妇科医院排行,厦门无痛人流医院哪家好?厦门湖里天伦医院致力于女性疾病治疗与研究,专注女性健康,专业开展无痛人流,妇科炎症,宫颈疾病,内分泌疾病,女性不孕,石女等诊疗项目,可在线预约挂号,是厦门地区女性朋友的放心之选.
+2025-04-14 17:53:21,176 - INFO - www.dfxyair.com - title: 咸阳做包皮手术医院哪家好 - 专业包皮包茎手术医院 - 咸阳九龙医院, keywords: 咸阳做包皮手术医院哪家好,咸阳专业包皮包茎手术医院,咸阳九龙医院, description: 咸阳做包皮手术医院哪家好?咸阳九龙医院男科是咸阳专业包皮包茎手术医院,在包皮包茎等生殖整形手术方面拥有丰富的临床经验,全心致力于男科疾病的研究与临床治疗.
+2025-04-14 17:53:26,185 - ERROR - 访问 https://7headlines.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://7headlines.com/", waiting until "load"
+
+2025-04-14 17:53:26,325 - ERROR - 访问 http://7headlines.com 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://7headlines.com/
+Call log:
+  - navigating to "http://7headlines.com/", waiting until "load"
+
+2025-04-14 17:53:31,331 - ERROR - 访问 https://bo-u.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://bo-u.cn/", waiting until "load"
+
+2025-04-14 17:53:36,333 - ERROR - 访问 http://bo-u.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://bo-u.cn/", waiting until "load"
+
+2025-04-14 17:53:37,943 - INFO - 100holdings.com.cn - title: 福州打胎医院「专业妇科」无痛打胎要多少钱 - 福州无痛堕胎医院, keywords: 福州打胎医院,无痛打胎要多少钱,福州无痛堕胎医院, description: 福州打胎多少钱,福州无痛人流医院「福州左海妇科医院」是一家专业的妇科人流医院,在福州妇科医院排名中享有较好的口碑.要问福州打胎取环多少钱,福州打胎医院哪家好,福州左海妇科医院在线医生为你解答.
+2025-04-14 17:53:40,310 - INFO - partyok.cn - title: 南通男科医院排名 「泌尿专科」看男科医院去哪里好 南通广济医院预约挂号, keywords: 南通男科医院哪家好,南通男性专科医院,南通广济医院, description: 南通男科医院排名,南通哪家男科医院好「正规」南通广济男子医院是南通专业的男性医院,专治包皮包茎,前列腺炎,性功能障碍，阳痿早泄,生殖感染,生殖整形等男性疾病.看男科就到南通广济泌尿医院.
+2025-04-14 17:53:41,746 - INFO - www.mirecc.org - title: 昆明哪里看男科比较好 - 昆明正规男科医院 - 昆明男科哪个医院靠谱 - 云南九洲医院, keywords: 昆明哪里看男科比较好,昆明正规男科医院,昆明男科哪个医院靠谱,云南九洲医院, description: 昆明哪里看男科比较好?云南九洲医院男科是昆明治疗男性疾病正规靠谱的医院,云南九洲医院男科专业治疗前列腺炎、阳痿、射精过快、包皮过长等男性专科疾病,同时为广大男性朋友提供男科专家在线咨询与在线答疑服务,各种难言之隐可放心安全地与云南九洲医院男科专家沟通交流.
+2025-04-14 17:53:43,167 - INFO - szprida.com - title: 青岛市肛肠病医院排名 - 青岛肛肠专科医院排行榜 - 青岛医博肛肠医院, keywords: 青岛市肛肠病医院排名,青岛肛肠专科医院排行榜,青岛医博肛肠医院, description: 青岛市肛肠病医院排行榜排名哪家好?青岛医博肛肠医院主要开展痔疮,外痔,内痔,混合痔,肛瘘,肛瘘治疗,肛裂,肛裂治疗,便秘,便血,肛周脓肿,脱肛等常见肛肠疾病的预防及治疗，同时提供快捷的在线咨询服务,是青岛好的肛肠专科医院.
+2025-04-14 17:53:50,991 - ERROR - 访问 https://strzdb.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://strzdb.com/", waiting until "load"
+
+2025-04-14 17:53:55,997 - ERROR - 访问 http://strzdb.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://strzdb.com/", waiting until "load"
+
+2025-04-14 17:54:01,013 - ERROR - 访问 https://qqlwzsh.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://qqlwzsh.com/", waiting until "load"
+
+2025-04-14 17:54:03,808 - INFO - qqlwzsh.com - title: 龙8头号玩家(中国)唯一官方网站, keywords: 龙8头号玩家,头号玩家龙8官方网站,龙8中国官网唯一入口,龙8登录入口, description: 龙8头号玩家为您提供:最新版客户端,登录入口,涵盖真人、体育、电子、视讯等,十几年信誉品牌安全靠谱稳定,最热门的娱乐场所之一,秉承保证一流质量,保持一级信誉的经营理念,坚持客户第一的原则为广大客户提供优质的服务。平台支持Web、H7、手机版更有iOS、Android原生APP官方下载。
+2025-04-14 17:54:06,059 - ERROR - 访问 https://chengzhiqi.com 失败: Page.goto: net::ERR_CONNECTION_REFUSED at https://chengzhiqi.com/
+Call log:
+  - navigating to "https://chengzhiqi.com/", waiting until "load"
+
+2025-04-14 17:54:06,810 - ERROR - 访问 http://chengzhiqi.com 失败: Page.goto: Navigation to "http://chengzhiqi.com/" is interrupted by another navigation to "chrome-error://chromewebdata/"
+Call log:
+  - navigating to "http://chengzhiqi.com/", waiting until "load"
+
+2025-04-14 17:54:08,838 - ERROR - 访问 https://www.xxxxyey.com 失败: Page.goto: net::ERR_SSL_PROTOCOL_ERROR at https://www.xxxxyey.com/
+Call log:
+  - navigating to "https://www.xxxxyey.com/", waiting until "load"
+
+2025-04-14 17:54:09,563 - ERROR - 访问 http://www.xxxxyey.com 失败: Page.goto: Navigation to "http://www.xxxxyey.com/" is interrupted by another navigation to "chrome-error://chromewebdata/"
+Call log:
+  - navigating to "http://www.xxxxyey.com/", waiting until "load"
+
+2025-04-14 17:54:10,289 - ERROR - 访问 https://www.gzxdfsb.com 失败: Page.goto: Navigation to "https://www.gzxdfsb.com/" is interrupted by another navigation to "http://www.xxxxyey.com/"
+Call log:
+  - navigating to "https://www.gzxdfsb.com/", waiting until "load"
+
+2025-04-14 17:54:11,027 - ERROR - 访问 http://www.gzxdfsb.com 失败: Page.goto: Navigation to "http://www.gzxdfsb.com/" is interrupted by another navigation to "https://www.gzxdfsb.com/"
+Call log:
+  - navigating to "http://www.gzxdfsb.com/", waiting until "load"
+
+2025-04-14 17:54:11,757 - ERROR - 查询失败 156.224.49.109: Page.goto: Navigation to "https://ipchaxun.com/156.224.49.109" is interrupted by another navigation to "http://www.gzxdfsb.com/"
+Call log:
+  - navigating to "https://ipchaxun.com/156.224.49.109", waiting until "load"
+
+2025-04-14 17:54:16,310 - ERROR - 访问 https://查询失败 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--zssz55ay90a7bb/
+Call log:
+  - navigating to "https://xn--zssz55ay90a7bb/", waiting until "load"
+
+2025-04-14 17:54:18,598 - ERROR - 访问 http://查询失败 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--zssz55ay90a7bb/
+Call log:
+  - navigating to "http://xn--zssz55ay90a7bb/", waiting until "load"
+

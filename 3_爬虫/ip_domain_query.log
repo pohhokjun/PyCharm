@@ -1,0 +1,36 @@
+2025-04-14 16:38:26,665 - INFO - 开始处理: wmihealth.com
+2025-04-14 16:38:26,783 - INFO - wmihealth.com -> ['156.237.198.212', '156.237.198.213', '156.237.198.214', '156.237.198.215', '156.237.198.216', '156.237.198.217', '156.237.198.218']
+2025-04-14 16:38:26,783 - INFO - 开始查询: https://ipchaxun.com2025-04-14 16:38:32025-04-14 16:38:32,277 - INFO - 156.237.198.212 绑定的域名: ['www.huaihaiw.net']
+2025-04-14 16:38:32,277 - INFO - 获取页面信息: http://www.huaihaiw.ne2025-04-14 16:38:50,290 - ERROR - 抓取 www.ff369.com 信息失败: Message: invalid session id: session deleted as the browser has closed the connection
+from disconnected: Unable to receive message from renderer
+  (Session info: chrome=135.0.7049.85)
+Stacktrace:
+	GetHandleVerifier [0x00007FF743615335+78597]
+	GetHandleVerifier [0x00007FF743615390+78688]
+	(No symbol) [0x00007FF7433C91AA]
+	(No symbol) [0x00007FF7433B65AC]
+	(No symbol) [0x00007FF7433B629A]
+	(No symbol) [0x00007FF7433B3F4A]
+	(No symbol) [0x00007FF7433B48FF]
+	(No symbol) [0x00007FF7433C34FE]
+	(No symbol) [0x00007FF7433D9931]
+	(No symbol) [0x00007FF7433E08DA]
+	(No symbol) [0x00007FF7433B506D]
+	(No symbol) [0x00007FF7433D9121]
+	(No symbol) [0x00007FF7433D939B]
+	(No symbol) [0x00007FF74346F650]
+	(No symbol) [0x00007FF743446EC3]
+	(No symbol) [0x00007FF7434103F8]
+	(No symbol) [0x00007FF743411163]
+	GetHandleVerifier [0x00007FF7438BEEED+2870973]
+	GetHandleVerifier [0x00007FF7438B9698+2848360]
+	GetHandleVerifier [0x00007FF7438D6973+2967875]
+	GetHandleVerifier [0x00007FF74363017A+188746]
+	GetHandleVerifier [0x00007FF74363845F+222255]
+	GetHandleVerifier [0x00007FF74361D2B4+111236]
+	GetHandleVerifier [0x00007FF74361D462+111666]
+	GetHandleVerifier [0x00007FF743603589+5465]
+	BaseThreadInitThunk [0x00007FFE2E4A7374+20]
+	RtlUserThreadStart [0x00007FFE2ED1CC91+33]
+
+2025-04-14 16:38:50,290 - INFO - 获取页面信息: http://www.isisphotos.com

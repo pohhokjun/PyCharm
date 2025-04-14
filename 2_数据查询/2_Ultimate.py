@@ -3,12 +3,14 @@ from sqlalchemy import create_engine
 from datetime import datetime
 from typing import List, Tuple
 
-
 class DatabaseQuery:
-    def __init__(self, host: str, port: int, user: str, password: str):
+    def __init__(self, host: str, port: int, user: str, password: str,
+                 start_date: str = '2025-03-01', end_date: str = '2025-03-31'):
         """初始化数据库连接参数"""
         connection_string = f"mysql+mysqlconnector://{user}:{password}@{host}:{port}/"
         self.engine = create_engine(connection_string)
+        self.start_date = start_date
+        self.end_date = end_date
 
     def query_promotion(self) -> pd.DataFrame:
         """查询推广部相关信息"""
@@ -38,12 +40,21 @@ class DatabaseQuery:
         """
         return pd.read_sql(query, self.engine)
 
+    def query_login_members(self) -> pd.DataFrame:
+        """查询登入注会员"""
+        query = f"""
+        SELECT DISTINCT id AS '会员ID'
+        FROM u1_1000.member_info
+        WHERE last_login_time BETWEEN '{self.start_date}' AND '{self.end_date}'
+        """
+        return pd.read_sql(query, self.engine)
+
     def query_non_betting_members(self) -> pd.DataFrame:
         """查询未投注会员"""
-        query = """
+        query = f"""
         SELECT member_id AS '会员ID'
         FROM bigdata.member_daily_statics
-        WHERE statics_date BETWEEN '2025-03-01' AND '2025-03-31'
+        WHERE statics_date BETWEEN '{self.start_date}' AND '{self.end_date}'
         GROUP BY member_id
         HAVING SUM(valid_bet_amount) = 0
         """
@@ -51,10 +62,10 @@ class DatabaseQuery:
 
     def query_betting_members(self) -> pd.DataFrame:
         """查询投注金额大于10000的会员"""
-        query = """
+        query = f"""
         SELECT member_id AS '会员ID'
         FROM bigdata.member_daily_statics
-        WHERE statics_date BETWEEN '2025-03-01' AND '2025-03-31'
+        WHERE statics_date BETWEEN '{self.start_date}' AND '{self.end_date}'
         GROUP BY member_id
         HAVING SUM(valid_bet_amount) > 10000
         """
@@ -62,10 +73,10 @@ class DatabaseQuery:
 
     def query_losing_members(self) -> pd.DataFrame:
         """查询输钱大于3000的会员"""
-        query = """
+        query = f"""
         SELECT member_id AS '会员ID'
         FROM bigdata.member_daily_statics
-        WHERE statics_date BETWEEN '2025-03-01' AND '2025-03-31'
+        WHERE statics_date BETWEEN '{self.start_date}' AND '{self.end_date}'
         GROUP BY member_id
         HAVING SUM(profit) > 3000
         """
@@ -73,10 +84,10 @@ class DatabaseQuery:
 
     def query_winning_members(self) -> pd.DataFrame:
         """查询赢钱大于3000的会员"""
-        query = """
+        query = f"""
         SELECT member_id AS '会员ID'
         FROM bigdata.member_daily_statics
-        WHERE statics_date BETWEEN '2025-03-01' AND '2025-03-31'
+        WHERE statics_date BETWEEN '{self.start_date}' AND '{self.end_date}'
         GROUP BY member_id
         HAVING SUM(profit) < -3000
         """
@@ -84,10 +95,10 @@ class DatabaseQuery:
 
     def query_frequent_depositors(self) -> pd.DataFrame:
         """查询存款次数大于3的会员"""
-        query = """
+        query = f"""
         SELECT member_id AS '会员ID'
         FROM bigdata.member_daily_statics
-        WHERE statics_date BETWEEN '2025-03-01' AND '2025-03-31'
+        WHERE statics_date BETWEEN '{self.start_date}' AND '{self.end_date}'
         GROUP BY member_id
         HAVING SUM(draw_count) > 3
         """
@@ -95,10 +106,10 @@ class DatabaseQuery:
 
     def query_high_depositors(self) -> pd.DataFrame:
         """查询存款金额大于5000的会员"""
-        query = """
+        query = f"""
         SELECT member_id AS '会员ID'
         FROM bigdata.member_daily_statics
-        WHERE statics_date BETWEEN '2025-03-01' AND '2025-03-31'
+        WHERE statics_date BETWEEN '{self.start_date}' AND '{self.end_date}'
         GROUP BY member_id
         HAVING SUM(draw) > 5000
         """
@@ -118,8 +129,8 @@ def save_to_excel(df: pd.DataFrame, filename: str):
 def work(db_query: DatabaseQuery) -> pd.DataFrame:
     """执行查询并合并结果"""
     result_df = (db_query.query_promotion()
-                 .merge(db_query.query_non_betting_members(), on='会员ID', how='inner')
-                 .merge(db_query.query_winning_members(), on='会员ID', how='inner'))
+                 .merge(db_query.query_login_members(), on='会员ID', how='inner')
+                 )
     return result_df
 
 
@@ -132,7 +143,9 @@ def main():
         host='18.178.159.230',
         port=3366,
         user='bigdata',
-        password='uvb5SOSmLH8sCoSU'
+        password='uvb5SOSmLH8sCoSU',
+        start_date='2025-03-01',  # 统一日期，可修改
+        end_date='2025-03-31'     # 统一日期，可修改
     )
 
     # 执行查询
@@ -145,7 +158,6 @@ def main():
 
     end_time = datetime.now()
     print(f"运行结束时间: {end_time.strftime('%Y-%m-%d %H:%M')}")
-
 
 if __name__ == "__main__":
     main()

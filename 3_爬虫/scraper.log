@@ -42355,3 +42355,2541 @@ Call log:
 Call log:
   - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
 
+2025-04-13 20:52:49,019 - ERROR - 链接 https://www.xda.cn/game/195571.html 访问失败：Page.goto: net::ERR_CONNECTION_REFUSED at https://www.xda.cn/game/195571.html
+Call log:
+  - navigating to "https://www.xda.cn/game/195571.html", waiting until "load"
+
+2025-04-13 20:52:49,270 - ERROR - 域名 https://www.xda.cn/game/195571.html 访问失败：Page.goto: net::ERR_CONNECTION_REFUSED at https://www.xda.cn/game/195571.html
+Call log:
+  - navigating to "https://www.xda.cn/game/195571.html", waiting until "load"
+
+2025-04-13 20:53:04,193 - ERROR - 链接 https://baike.baidu.com/item/%E5%9B%BD%E9%99%85%E8%B1%A1%E6%A3%8B/80888 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://baike.baidu.com/item/%E5%9B%BD%E9%99%85%E8%B1%A1%E6%A3%8B/80888", waiting until "load"
+
+2025-04-13 20:53:14,199 - ERROR - 域名 https://baike.baidu.com/item/%E5%9B%BD%E9%99%85%E8%B1%A1%E6%A3%8B/80888 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://baike.baidu.com/item/%E5%9B%BD%E9%99%85%E8%B1%A1%E6%A3%8B/80888", waiting until "load"
+
+2025-04-13 20:53:39,738 - ERROR - 链接 https://m.ynzb.com.cn/clkp/8194/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.ynzb.com.cn/clkp/8194/", waiting until "load"
+
+2025-04-13 20:53:49,744 - ERROR - 域名 https://m.ynzb.com.cn/clkp/8194/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.ynzb.com.cn/clkp/8194/", waiting until "load"
+
+2025-04-13 20:54:03,386 - ERROR - 链接 http://nourl.ubs.baidu.com/46678/entertainment 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://nourl.ubs.baidu.com/46678/entertainment
+Call log:
+  - navigating to "http://nourl.ubs.baidu.com/46678/entertainment", waiting until "load"
+
+2025-04-13 20:54:03,703 - ERROR - 域名 http://nourl.ubs.baidu.com/46678/entertainment 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://nourl.ubs.baidu.com/46678/entertainment
+Call log:
+  - navigating to "http://nourl.ubs.baidu.com/46678/entertainment", waiting until "load"
+
+2025-04-13 20:54:27,274 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 20:54:27,277 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 20:54:58,075 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 20:54:58,078 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 20:55:17,470 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 20:55:17,473 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 20:55:48,777 - ERROR - 链接 https://diantai.ifeng.com/ifbook/aIHISXAvQm 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://diantai.ifeng.com/ifbook/aIHISXAvQm", waiting until "load"
+
+2025-04-13 20:55:58,786 - ERROR - 域名 https://diantai.ifeng.com/ifbook/aIHISXAvQm 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://diantai.ifeng.com/ifbook/aIHISXAvQm", waiting until "load"
+
+2025-04-13 20:57:40,811 - ERROR - 链接 https://m.sohu.com/a/873341802_122353360/?pvid=000115_3w_a 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.sohu.com/a/873341802_122353360/?pvid=000115_3w_a", waiting until "load"
+
+2025-04-13 20:57:47,559 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 20:57:47,561 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 20:58:22,236 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 20:58:22,572 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 20:59:32,203 - ERROR - 关键词 beat365在线官网登录入口 搜索失败：Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=beat365%E5%9C%A8%E7%BA%BF%E5%AE%98%E7%BD%91%E7%99%BB%E5%BD%95%E5%85%A5%E5%8F%A3", waiting until "load"
+
+2025-04-13 20:59:43,872 - ERROR - 链接 https://baike.baidu.com/item/%E6%96%B0%E5%89%91%E6%A1%A5%E7%94%9F%E6%B4%BB%E4%B8%8E%E5%95%86%E5%8A%A1%E8%8B%B1%E8%AF%AD365/7997818 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://baike.baidu.com/item/%E6%96%B0%E5%89%91%E6%A1%A5%E7%94%9F%E6%B4%BB%E4%B8%8E%E5%95%86%E5%8A%A1%E8%8B%B1%E8%AF%AD365/7997818", waiting until "load"
+
+2025-04-13 21:00:41,184 - ERROR - 链接 http://eyu.zaixian-fanyi.com/fan_yi_14345621 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://eyu.zaixian-fanyi.com/fan_yi_14345621", waiting until "load"
+
+2025-04-13 21:00:51,193 - ERROR - 域名 http://eyu.zaixian-fanyi.com/fan_yi_14345621 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://eyu.zaixian-fanyi.com/fan_yi_14345621", waiting until "load"
+
+2025-04-13 21:01:50,826 - ERROR - 链接 https://www.douyin.com/video/7385563206590254377 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.douyin.com/video/7385563206590254377", waiting until "load"
+
+2025-04-13 21:02:45,638 - ERROR - 链接 https://news.cctv.com/2024/01/05/ARTIQ7yFmAbUSkYol863HedQ240105.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.cctv.com/2024/01/05/ARTIQ7yFmAbUSkYol863HedQ240105.shtml", waiting until "load"
+
+2025-04-13 21:03:03,647 - ERROR - 链接 https://tv.cctv.cn/2024/11/24/VIDEvdf0tDirpx4LOJQWMWYi241124.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://tv.cctv.cn/2024/11/24/VIDEvdf0tDirpx4LOJQWMWYi241124.shtml", waiting until "load"
+
+2025-04-13 21:06:03,078 - ERROR - 链接 https://m.sohu.com/a/751456425_121124365 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.sohu.com/a/751456425_121124365", waiting until "load"
+
+2025-04-13 21:06:13,080 - ERROR - 域名 https://m.sohu.com/a/751456425_121124365 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.sohu.com/a/751456425_121124365", waiting until "load"
+
+2025-04-13 21:06:42,991 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 21:06:43,306 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 21:09:29,078 - ERROR - 链接 https://diantai.ifeng.com/ifbookl8ng9w9mcP 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://diantai.ifeng.com/ifbookl8ng9w9mcP", waiting until "load"
+
+2025-04-13 21:09:39,084 - ERROR - 域名 https://diantai.ifeng.com/ifbookl8ng9w9mcP 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://diantai.ifeng.com/ifbookl8ng9w9mcP", waiting until "load"
+
+2025-04-13 21:10:00,202 - ERROR - 链接 https://diantai.ifeng.com/ifbookNoWPHgWde1 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://diantai.ifeng.com/ifbookNoWPHgWde1", waiting until "load"
+
+2025-04-13 21:10:10,217 - ERROR - 域名 https://diantai.ifeng.com/ifbookNoWPHgWde1 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://diantai.ifeng.com/ifbookNoWPHgWde1", waiting until "load"
+
+2025-04-13 21:14:33,916 - ERROR - 链接 http://www.360doc.cn/document/20654250_1116866394.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.360doc.cn/document/20654250_1116866394.html", waiting until "load"
+
+2025-04-13 21:14:43,925 - ERROR - 域名 http://www.360doc.cn/document/20654250_1116866394.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.360doc.cn/document/20654250_1116866394.html", waiting until "load"
+
+2025-04-13 21:15:13,605 - ERROR - 链接 http://m.danji100.com/app/182125.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.danji100.com/app/182125.html", waiting until "load"
+
+2025-04-13 21:15:29,092 - ERROR - 链接 https://www.pgyer.com/0HiS 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.pgyer.com/0HiS", waiting until "load"
+
+2025-04-13 21:15:33,472 - ERROR - 链接 http://m.appchina.com/app/com.bocai.studio 访问失败：Page.goto: net::ERR_CONNECTION_RESET at http://m.appchina.com/app/com.bocai.studio
+Call log:
+  - navigating to "http://m.appchina.com/app/com.bocai.studio", waiting until "load"
+
+2025-04-13 21:15:33,656 - ERROR - 域名 http://m.appchina.com/app/com.bocai.studio 访问失败：Page.goto: net::ERR_CONNECTION_RESET at http://m.appchina.com/app/com.bocai.studio
+Call log:
+  - navigating to "http://m.appchina.com/app/com.bocai.studio", waiting until "load"
+
+2025-04-13 21:16:00,237 - ERROR - 链接 https://www.aedu.cn/html/index.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.aedu.cn/html/index.html", waiting until "load"
+
+2025-04-13 21:17:23,069 - ERROR - 链接 https://www.btcbaike.com/xm/35ikk.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.btcbaike.com/xm/35ikk.html", waiting until "load"
+
+2025-04-13 21:17:33,083 - ERROR - 域名 https://www.btcbaike.com/xm/35ikk.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.btcbaike.com/xm/35ikk.html", waiting until "load"
+
+2025-04-13 21:18:03,219 - ERROR - 链接 https://licai.cofool.com/ask/qa_4132251.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://licai.cofool.com/ask/qa_4132251.html", waiting until "load"
+
+2025-04-13 21:18:13,231 - ERROR - 域名 https://licai.cofool.com/ask/qa_4132251.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://licai.cofool.com/ask/qa_4132251.html", waiting until "load"
+
+2025-04-13 21:18:33,628 - ERROR - 链接 http://www.sjnymls.cn/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.sjnymls.cn/", waiting until "load"
+
+2025-04-13 21:18:43,641 - ERROR - 域名 http://www.sjnymls.cn/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.sjnymls.cn/", waiting until "load"
+
+2025-04-13 21:19:02,148 - ERROR - 链接 https://zhidao.baidu.com/question/949841593690878172.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://zhidao.baidu.com/question/949841593690878172.html", waiting until "load"
+
+2025-04-13 21:19:12,164 - ERROR - 域名 https://zhidao.baidu.com/question/949841593690878172.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://zhidao.baidu.com/question/949841593690878172.html", waiting until "load"
+
+2025-04-13 21:19:56,522 - ERROR - 链接 https://blog.csdn.net/simon1223z/article/details/126787707 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://blog.csdn.net/simon1223z/article/details/126787707", waiting until "load"
+
+2025-04-13 21:20:06,536 - ERROR - 域名 https://blog.csdn.net/simon1223z/article/details/126787707 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://blog.csdn.net/simon1223z/article/details/126787707", waiting until "load"
+
+2025-04-13 21:20:19,915 - ERROR - 链接 https://tieba.baidu.com/p/2827596951 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://tieba.baidu.com/p/2827596951", waiting until "load"
+
+2025-04-13 21:20:29,919 - ERROR - 域名 https://tieba.baidu.com/p/2827596951 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://tieba.baidu.com/p/2827596951", waiting until "load"
+
+2025-04-13 21:20:49,938 - ERROR - 链接 https://cp.zgzcw.com/zjtj/gs/19910054/201 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://cp.zgzcw.com/zjtj/gs/19910054/201", waiting until "load"
+
+2025-04-13 21:21:25,506 - ERROR - 关键词 网赌刷返水5次了警察会知道吗 搜索失败：Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E7%BD%91%E8%B5%8C%E5%88%B7%E8%BF%94%E6%B0%B45%E6%AC%A1%E4%BA%86%E8%AD%A6%E5%AF%9F%E4%BC%9A%E7%9F%A5%E9%81%93%E5%90%97", waiting until "load"
+
+2025-04-13 21:21:52,908 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 21:21:52,910 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 21:21:52,913 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 21:21:52,915 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 21:22:15,985 - ERROR - 域名 http://itech.ifeng.com/44946293/news.shtml?srctag=pc2m 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://itech.ifeng.com/44946293/news.shtml?srctag=pc2m", waiting until "load"
+
+2025-04-13 21:22:46,990 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 21:22:47,257 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 21:23:16,944 - ERROR - 链接 http://ntrg.jsjc.gov.cn/jianwu/guifan/201712/t20171218_225126.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://ntrg.jsjc.gov.cn/jianwu/guifan/201712/t20171218_225126.shtml", waiting until "load"
+
+2025-04-13 21:23:26,955 - ERROR - 域名 http://ntrg.jsjc.gov.cn/jianwu/guifan/201712/t20171218_225126.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://ntrg.jsjc.gov.cn/jianwu/guifan/201712/t20171218_225126.shtml", waiting until "load"
+
+2025-04-13 21:23:40,223 - ERROR - 链接 http://m.zaixian-fanyi.com/fan_yi_3864687 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.zaixian-fanyi.com/fan_yi_3864687", waiting until "load"
+
+2025-04-13 21:23:50,237 - ERROR - 域名 http://m.zaixian-fanyi.com/fan_yi_3864687 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.zaixian-fanyi.com/fan_yi_3864687", waiting until "load"
+
+2025-04-13 21:24:21,957 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 21:24:22,229 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 21:24:25,965 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 21:24:25,968 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 21:25:07,688 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 21:25:07,691 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 21:25:19,457 - ERROR - 链接 https://m.jiankang.com/yinshi/c79693/ 访问失败：Page.goto: net::ERR_EMPTY_RESPONSE at https://m.jiankang.com/yinshi/c79693/
+Call log:
+  - navigating to "https://m.jiankang.com/yinshi/c79693/", waiting until "load"
+
+2025-04-13 21:25:19,642 - ERROR - 域名 https://m.jiankang.com/yinshi/c79693/ 访问失败：Page.goto: net::ERR_EMPTY_RESPONSE at https://m.jiankang.com/yinshi/c79693/
+Call log:
+  - navigating to "https://m.jiankang.com/yinshi/c79693/", waiting until "load"
+
+2025-04-13 21:26:18,547 - ERROR - 链接 https://m.douyin.com/share/video/7457541719131720971 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.douyin.com/share/video/7457541719131720971", waiting until "load"
+
+2025-04-13 21:26:28,552 - ERROR - 域名 https://m.douyin.com/share/video/7457541719131720971 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.douyin.com/share/video/7457541719131720971", waiting until "load"
+
+2025-04-13 21:27:03,998 - ERROR - 链接 https://www.okooo.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.okooo.com/", waiting until "load"
+
+2025-04-13 21:27:14,014 - ERROR - 域名 https://www.okooo.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.okooo.com/", waiting until "load"
+
+2025-04-13 21:27:29,235 - ERROR - 链接 https://www.okooo.com/shoujigoucai/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.okooo.com/shoujigoucai/", waiting until "load"
+
+2025-04-13 21:29:43,112 - ERROR - 链接 https://baike.baidu.com/item/%E5%A5%BD%E5%BD%A9%E6%8A%95/22092398 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://baike.baidu.com/item/%E5%A5%BD%E5%BD%A9%E6%8A%95/22092398", waiting until "load"
+
+2025-04-13 21:29:53,128 - ERROR - 域名 https://baike.baidu.com/item/%E5%A5%BD%E5%BD%A9%E6%8A%95/22092398 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://baike.baidu.com/item/%E5%A5%BD%E5%BD%A9%E6%8A%95/22092398", waiting until "load"
+
+2025-04-13 21:30:23,476 - ERROR - 链接 https://baike.baidu.com/item/1000%E7%82%AE%E8%93%9D%E6%B5%B7%E4%B8%96%E7%95%8C%E6%B8%B8%E6%88%8F%E6%9C%BA/7790898 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://baike.baidu.com/item/1000%E7%82%AE%E8%93%9D%E6%B5%B7%E4%B8%96%E7%95%8C%E6%B8%B8%E6%88%8F%E6%9C%BA/7790898", waiting until "load"
+
+2025-04-13 21:30:35,599 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 21:30:35,602 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 21:30:56,330 - ERROR - 链接 https://www.d1xz.net/fsml/dpqm/art636663.aspx 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.d1xz.net/fsml/dpqm/art636663.aspx", waiting until "load"
+
+2025-04-13 21:31:06,347 - ERROR - 域名 https://www.d1xz.net/fsml/dpqm/art636663.aspx 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.d1xz.net/fsml/dpqm/art636663.aspx", waiting until "load"
+
+2025-04-13 21:32:30,398 - ERROR - 链接 https://www.despiel.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.despiel.com/", waiting until "load"
+
+2025-04-13 21:32:40,409 - ERROR - 域名 https://www.despiel.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.despiel.com/", waiting until "load"
+
+2025-04-13 21:33:58,181 - ERROR - 链接 https://m.55128.cn/zs/226_4420.htm 访问失败：Page.goto: net::ERR_CONNECTION_REFUSED at https://m.55128.cn/zs/226_4420.htm
+Call log:
+  - navigating to "https://m.55128.cn/zs/226_4420.htm", waiting until "load"
+
+2025-04-13 21:33:58,418 - ERROR - 域名 https://m.55128.cn/zs/226_4420.htm 访问失败：Page.goto: net::ERR_CONNECTION_REFUSED at https://m.55128.cn/zs/226_4420.htm
+Call log:
+  - navigating to "https://m.55128.cn/zs/226_4420.htm", waiting until "load"
+
+2025-04-13 21:34:25,617 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 21:34:25,619 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 21:34:37,430 - ERROR - 链接 https://tieba.baidu.com/p/9177583542 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://tieba.baidu.com/p/9177583542", waiting until "load"
+
+2025-04-13 21:35:02,031 - ERROR - 链接 https://www.cwl.gov.cn/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.cwl.gov.cn/", waiting until "load"
+
+2025-04-13 21:35:12,033 - ERROR - 域名 https://www.cwl.gov.cn/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.cwl.gov.cn/", waiting until "load"
+
+2025-04-13 21:35:21,507 - ERROR - 链接 http://eyu.zaixian-fanyi.com/fan_yi_14113502 访问失败：Page.goto: net::ERR_EMPTY_RESPONSE at http://eyu.zaixian-fanyi.com/fan_yi_14113502
+Call log:
+  - navigating to "http://eyu.zaixian-fanyi.com/fan_yi_14113502", waiting until "load"
+
+2025-04-13 21:35:21,603 - ERROR - 域名 http://eyu.zaixian-fanyi.com/fan_yi_14113502 访问失败：Page.goto: net::ERR_EMPTY_RESPONSE at http://eyu.zaixian-fanyi.com/fan_yi_14113502
+Call log:
+  - navigating to "http://eyu.zaixian-fanyi.com/fan_yi_14113502", waiting until "load"
+
+2025-04-13 21:37:10,884 - ERROR - 关键词 首页竞彩网 搜索失败：Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E9%A6%96%E9%A1%B5%E7%AB%9E%E5%BD%A9%E7%BD%91", waiting until "load"
+
+2025-04-13 21:37:50,945 - ERROR - 链接 https://zgzcw.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://zgzcw.com/", waiting until "load"
+
+2025-04-13 21:38:00,950 - ERROR - 域名 https://zgzcw.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://zgzcw.com/", waiting until "load"
+
+2025-04-13 21:38:28,884 - ERROR - 链接 http://buy.okooo.com/ 访问失败：Page.goto: net::ERR_CONNECTION_RESET at http://buy.okooo.com/
+Call log:
+  - navigating to "http://buy.okooo.com/", waiting until "load"
+
+2025-04-13 21:38:29,328 - ERROR - 域名 http://buy.okooo.com/ 访问失败：Page.goto: net::ERR_CONNECTION_RESET at http://buy.okooo.com/
+Call log:
+  - navigating to "http://buy.okooo.com/", waiting until "load"
+
+2025-04-13 21:39:27,615 - ERROR - 链接 https://m.douyin.com/zhuanti/7170990156080793637 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.douyin.com/zhuanti/7170990156080793637", waiting until "load"
+
+2025-04-13 21:40:30,469 - ERROR - 链接 http://m.zaixian-fanyi.com/fan_yi_4518037 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.zaixian-fanyi.com/fan_yi_4518037", waiting until "load"
+
+2025-04-13 21:40:40,476 - ERROR - 域名 http://m.zaixian-fanyi.com/fan_yi_4518037 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.zaixian-fanyi.com/fan_yi_4518037", waiting until "load"
+
+2025-04-13 21:41:46,871 - ERROR - 链接 https://www.bjlot.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.bjlot.com/", waiting until "load"
+
+2025-04-13 21:41:56,884 - ERROR - 域名 https://www.bjlot.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.bjlot.com/", waiting until "load"
+
+2025-04-13 21:44:12,914 - ERROR - 链接 http://www.weiwenju.com/cy/ermansanping/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.weiwenju.com/cy/ermansanping/", waiting until "load"
+
+2025-04-13 21:44:22,919 - ERROR - 域名 http://www.weiwenju.com/cy/ermansanping/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.weiwenju.com/cy/ermansanping/", waiting until "load"
+
+2025-04-13 21:44:44,362 - ERROR - 链接 https://m.66law.cn/question/41495826.aspx 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.66law.cn/question/41495826.aspx", waiting until "load"
+
+2025-04-13 21:44:54,369 - ERROR - 域名 https://m.66law.cn/question/41495826.aspx 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.66law.cn/question/41495826.aspx", waiting until "load"
+
+2025-04-13 21:44:58,361 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 21:44:58,363 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 21:45:08,370 - ERROR - 链接 http://www.m.share.xingshenge.com/OOk/detail/MAFyhd.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.m.share.xingshenge.com/OOk/detail/MAFyhd.html", waiting until "load"
+
+2025-04-13 21:45:21,175 - ERROR - 链接 http://ppc04i.m.szcsj.com/ 访问失败：Page.goto: net::ERR_HTTP_RESPONSE_CODE_FAILURE at http://ppc04i.m.szcsj.com/
+Call log:
+  - navigating to "http://ppc04i.m.szcsj.com/", waiting until "load"
+
+2025-04-13 21:45:26,718 - ERROR - 域名 http://ppc04i.m.szcsj.com/ 访问失败：Page.goto: net::ERR_HTTP_RESPONSE_CODE_FAILURE at http://ppc04i.m.szcsj.com/
+Call log:
+  - navigating to "http://ppc04i.m.szcsj.com/", waiting until "load"
+
+2025-04-13 21:45:51,630 - ERROR - 链接 https://www.cwl.gov.cn/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.cwl.gov.cn/", waiting until "load"
+
+2025-04-13 21:46:01,639 - ERROR - 域名 https://www.cwl.gov.cn/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.cwl.gov.cn/", waiting until "load"
+
+2025-04-13 21:46:50,739 - ERROR - 链接 https://haokan.baidu.com/v?pd=wisenatural&vid=1319757364472435612 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://haokan.baidu.com/v?pd=wisenatural&vid=1319757364472435612", waiting until "load"
+
+2025-04-13 21:47:17,493 - ERROR - 链接 https://tieba.baidu.com/p/7575327624 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://tieba.baidu.com/p/7575327624", waiting until "load"
+
+2025-04-13 21:47:27,503 - ERROR - 域名 https://tieba.baidu.com/p/7575327624 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://tieba.baidu.com/p/7575327624", waiting until "load"
+
+2025-04-13 21:47:35,649 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 21:47:35,651 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 21:47:35,839 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 21:47:36,134 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 21:47:39,920 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 21:47:39,923 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 21:48:27,175 - ERROR - 链接 http://www.1bgx.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.1bgx.com/", waiting until "load"
+
+2025-04-13 21:48:44,408 - ERROR - 链接 https://www.ystmaocao.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.ystmaocao.com/", waiting until "load"
+
+2025-04-13 21:48:56,980 - ERROR - 链接 http://share.fasdgh.com/YLh/detail/vXLUYx.html 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://share.fasdgh.com/YLh/detail/vXLUYx.html
+Call log:
+  - navigating to "http://share.fasdgh.com/YLh/detail/vXLUYx.html", waiting until "load"
+
+2025-04-13 21:48:57,305 - ERROR - 域名 http://share.fasdgh.com/YLh/detail/vXLUYx.html 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://share.fasdgh.com/YLh/detail/vXLUYx.html
+Call log:
+  - navigating to "http://share.fasdgh.com/YLh/detail/vXLUYx.html", waiting until "load"
+
+2025-04-13 21:49:30,499 - ERROR - 链接 http://178wb.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://178wb.com/", waiting until "load"
+
+2025-04-13 21:49:46,510 - ERROR - 链接 http://www.szhqzszy.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.szhqzszy.com/", waiting until "load"
+
+2025-04-13 21:49:56,525 - ERROR - 域名 http://www.szhqzszy.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.szhqzszy.com/", waiting until "load"
+
+2025-04-13 21:50:20,423 - ERROR - 链接 https://www.jlhytyy.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.jlhytyy.com/", waiting until "load"
+
+2025-04-13 21:50:44,709 - ERROR - 链接 http://www.7766av.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.7766av.com/", waiting until "load"
+
+2025-04-13 21:51:03,127 - ERROR - 链接 https://m.jingaohua.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.jingaohua.com/", waiting until "load"
+
+2025-04-13 21:51:18,142 - ERROR - 链接 http://test.zaixian-fanyi.com/fan_yi_1508522 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://test.zaixian-fanyi.com/fan_yi_1508522", waiting until "load"
+
+2025-04-13 21:51:28,150 - ERROR - 域名 http://test.zaixian-fanyi.com/fan_yi_1508522 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://test.zaixian-fanyi.com/fan_yi_1508522", waiting until "load"
+
+2025-04-13 21:52:14,303 - ERROR - 链接 https://www.lf-lt.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.lf-lt.com/", waiting until "load"
+
+2025-04-13 21:52:24,320 - ERROR - 域名 https://www.lf-lt.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.lf-lt.com/", waiting until "load"
+
+2025-04-13 21:53:02,826 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 21:53:02,828 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 21:53:37,109 - ERROR - 链接 https://h5.1ting.com/ruanjian/17123.html 访问失败：Page.goto: net::ERR_CONNECTION_REFUSED at https://h5.1ting.com/ruanjian/17123.html
+Call log:
+  - navigating to "https://h5.1ting.com/ruanjian/17123.html", waiting until "load"
+
+2025-04-13 21:53:37,375 - ERROR - 域名 https://h5.1ting.com/ruanjian/17123.html 访问失败：Page.goto: net::ERR_CONNECTION_REFUSED at https://h5.1ting.com/ruanjian/17123.html
+Call log:
+  - navigating to "https://h5.1ting.com/ruanjian/17123.html", waiting until "load"
+
+2025-04-13 21:54:25,311 - ERROR - 链接 http://www.360doc.cn/article/35857553_1038025460.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.360doc.cn/article/35857553_1038025460.html", waiting until "load"
+
+2025-04-13 21:55:11,740 - ERROR - 链接 https://m.55128.cn/zs/226_44019.htm 访问失败：Page.goto: net::ERR_CONNECTION_REFUSED at https://m.55128.cn/zs/226_44019.htm
+Call log:
+  - navigating to "https://m.55128.cn/zs/226_44019.htm", waiting until "load"
+
+2025-04-13 21:55:12,006 - ERROR - 域名 https://m.55128.cn/zs/226_44019.htm 访问失败：Page.goto: net::ERR_CONNECTION_REFUSED at https://m.55128.cn/zs/226_44019.htm
+Call log:
+  - navigating to "https://m.55128.cn/zs/226_44019.htm", waiting until "load"
+
+2025-04-13 21:55:37,040 - ERROR - 链接 https://m.55128.cn/zs/225_4406.htm 访问失败：Page.goto: net::ERR_CONNECTION_REFUSED at https://m.55128.cn/zs/225_4406.htm
+Call log:
+  - navigating to "https://m.55128.cn/zs/225_4406.htm", waiting until "load"
+
+2025-04-13 21:55:37,307 - ERROR - 域名 https://m.55128.cn/zs/225_4406.htm 访问失败：Page.goto: net::ERR_CONNECTION_REFUSED at https://m.55128.cn/zs/225_4406.htm
+Call log:
+  - navigating to "https://m.55128.cn/zs/225_4406.htm", waiting until "load"
+
+2025-04-13 21:56:17,921 - ERROR - 链接 https://www.lottery.gov.cn/ksjz/wgy/klcc_henan/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.lottery.gov.cn/ksjz/wgy/klcc_henan/", waiting until "load"
+
+2025-04-13 21:58:06,902 - ERROR - 链接 http://www.jj633.com/a/489726.html 访问失败：Page.goto: Navigation to "http://www.jj633.com/a/489726.html" is interrupted by another navigation to "https://plogin.m.jd.com/login/login?appid=100&wxautologin=false&returnurl=https%3A%2F%2Fcaipiao.m.jd.com%2F%3Fnull"
+Call log:
+  - navigating to "http://www.jj633.com/a/489726.html", waiting until "load"
+
+2025-04-13 21:58:20,567 - ERROR - 链接 http://inews.ifeng.com/57695642/news.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://inews.ifeng.com/57695642/news.shtml", waiting until "load"
+
+2025-04-13 21:59:00,198 - ERROR - 链接 http://www.share.forum-dev.fun/231/detail/89787384/ 访问失败：Page.goto: net::ERR_HTTP_RESPONSE_CODE_FAILURE at http://www.share.forum-dev.fun/231/detail/89787384/
+Call log:
+  - navigating to "http://www.share.forum-dev.fun/231/detail/89787384/", waiting until "load"
+
+2025-04-13 21:59:00,317 - ERROR - 域名 http://www.share.forum-dev.fun/231/detail/89787384/ 访问失败：Page.goto: net::ERR_HTTP_RESPONSE_CODE_FAILURE at http://www.share.forum-dev.fun/231/detail/89787384/
+Call log:
+  - navigating to "http://www.share.forum-dev.fun/231/detail/89787384/", waiting until "load"
+
+2025-04-13 21:59:18,761 - ERROR - 域名 https://wenku.baidu.com/portal/browse/websitemap 访问失败：Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("body") to be visible
+  -     25 × locator resolved to hidden <body>…</body>
+
+2025-04-13 21:59:30,927 - ERROR - 链接 http://m.zaixian-fanyi.com/fan_yi_760429 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.zaixian-fanyi.com/fan_yi_760429", waiting until "load"
+
+2025-04-13 21:59:40,940 - ERROR - 域名 http://m.zaixian-fanyi.com/fan_yi_760429 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.zaixian-fanyi.com/fan_yi_760429", waiting until "load"
+
+2025-04-13 22:00:39,767 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 22:00:39,770 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 22:00:55,922 - ERROR - 链接 http://eyu.zaixian-fanyi.com/fan_yi_6724134 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://eyu.zaixian-fanyi.com/fan_yi_6724134", waiting until "load"
+
+2025-04-13 22:01:05,933 - ERROR - 域名 http://eyu.zaixian-fanyi.com/fan_yi_6724134 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://eyu.zaixian-fanyi.com/fan_yi_6724134", waiting until "load"
+
+2025-04-13 22:01:49,124 - ERROR - 链接 http://eyu.zaixian-fanyi.com/fan_yi_2585036 访问失败：Page.goto: net::ERR_CONNECTION_TIMED_OUT at http://eyu.zaixian-fanyi.com/fan_yi_2585036
+Call log:
+  - navigating to "http://eyu.zaixian-fanyi.com/fan_yi_2585036", waiting until "load"
+
+2025-04-13 22:01:49,270 - ERROR - 域名 http://eyu.zaixian-fanyi.com/fan_yi_2585036 访问失败：Page.goto: net::ERR_CONNECTION_TIMED_OUT at http://eyu.zaixian-fanyi.com/fan_yi_2585036
+Call log:
+  - navigating to "http://eyu.zaixian-fanyi.com/fan_yi_2585036", waiting until "load"
+
+2025-04-13 22:02:30,481 - ERROR - 链接 http://m.zaixian-fanyi.com/fan_yi_1070994 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.zaixian-fanyi.com/fan_yi_1070994", waiting until "load"
+
+2025-04-13 22:02:40,497 - ERROR - 域名 http://m.zaixian-fanyi.com/fan_yi_1070994 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.zaixian-fanyi.com/fan_yi_1070994", waiting until "load"
+
+2025-04-13 22:03:25,199 - ERROR - 链接 http://eyu.zaixian-fanyi.com/fan_yi_12614789 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://eyu.zaixian-fanyi.com/fan_yi_12614789", waiting until "load"
+
+2025-04-13 22:03:35,202 - ERROR - 域名 http://eyu.zaixian-fanyi.com/fan_yi_12614789 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://eyu.zaixian-fanyi.com/fan_yi_12614789", waiting until "load"
+
+2025-04-13 22:04:07,681 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 22:04:07,987 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 22:05:16,143 - ERROR - 关键词 如何在手机上直接买彩票 搜索失败：Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E5%A6%82%E4%BD%95%E5%9C%A8%E6%89%8B%E6%9C%BA%E4%B8%8A%E7%9B%B4%E6%8E%A5%E4%B9%B0%E5%BD%A9%E7%A5%A8", waiting until "load"
+
+2025-04-13 22:05:31,423 - ERROR - 链接 https://www.lottery.gov.cn/lottery/upload/20190306/20190306185252182.pdf 访问失败：Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("body") to be visible
+  -     25 × locator resolved to hidden <body>…</body>
+
+2025-04-13 22:05:42,510 - ERROR - 域名 https://www.lottery.gov.cn/lottery/upload/20190306/20190306185252182.pdf 访问失败：Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("body") to be visible
+  -     25 × locator resolved to hidden <body>…</body>
+
+2025-04-13 22:07:38,425 - ERROR - 链接 https://www.lottery.gov.cn/lottery/upload/20190306/20190306185252182.pdf 访问失败：Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("body") to be visible
+  -     25 × locator resolved to hidden <body>…</body>
+
+2025-04-13 22:07:48,569 - ERROR - 域名 https://www.lottery.gov.cn/lottery/upload/20190306/20190306185252182.pdf 访问失败：Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("body") to be visible
+  -     25 × locator resolved to hidden <body>…</body>
+
+2025-04-13 22:09:35,642 - ERROR - 链接 http://eyu.zaixian-fanyi.com/fan_yi_1417089 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://eyu.zaixian-fanyi.com/fan_yi_1417089", waiting until "load"
+
+2025-04-13 22:09:45,652 - ERROR - 域名 http://eyu.zaixian-fanyi.com/fan_yi_1417089 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://eyu.zaixian-fanyi.com/fan_yi_1417089", waiting until "load"
+
+2025-04-13 22:11:01,333 - ERROR - 链接 https://xueqiu.com/1656644670/255169363 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://xueqiu.com/1656644670/255169363", waiting until "load"
+
+2025-04-13 22:11:18,538 - ERROR - 链接 http://riyu.zaixian-fanyi.com/fan_yi_5505806 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://riyu.zaixian-fanyi.com/fan_yi_5505806", waiting until "load"
+
+2025-04-13 22:11:28,544 - ERROR - 域名 http://riyu.zaixian-fanyi.com/fan_yi_5505806 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://riyu.zaixian-fanyi.com/fan_yi_5505806", waiting until "load"
+
+2025-04-13 22:12:00,230 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 22:12:00,554 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 22:12:19,912 - ERROR - 链接 https://news.ifeng.com/c/7fcncHs9bRM 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.ifeng.com/c/7fcncHs9bRM", waiting until "load"
+
+2025-04-13 22:12:29,925 - ERROR - 域名 https://news.ifeng.com/c/7fcncHs9bRM 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.ifeng.com/c/7fcncHs9bRM", waiting until "load"
+
+2025-04-13 22:13:39,544 - ERROR - 关键词 鸿博网址登录 搜索失败：Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E9%B8%BF%E5%8D%9A%E7%BD%91%E5%9D%80%E7%99%BB%E5%BD%95", waiting until "load"
+
+2025-04-13 22:13:52,055 - ERROR - 链接 https://news.ifeng.com/c/7fcncHs9bRM 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.ifeng.com/c/7fcncHs9bRM", waiting until "load"
+
+2025-04-13 22:14:02,059 - ERROR - 域名 https://news.ifeng.com/c/7fcncHs9bRM 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.ifeng.com/c/7fcncHs9bRM", waiting until "load"
+
+2025-04-13 22:15:07,312 - ERROR - 链接 https://www.ynhycr.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.ynhycr.com/", waiting until "load"
+
+2025-04-13 22:15:47,030 - ERROR - 链接 https://www.dir28.com/32160.html 访问失败：Page.goto: net::ERR_CONNECTION_REFUSED at https://www.dir28.com/32160.html
+Call log:
+  - navigating to "https://www.dir28.com/32160.html", waiting until "load"
+
+2025-04-13 22:15:47,297 - ERROR - 域名 https://www.dir28.com/32160.html 访问失败：Page.goto: net::ERR_CONNECTION_REFUSED at https://www.dir28.com/32160.html
+Call log:
+  - navigating to "https://www.dir28.com/32160.html", waiting until "load"
+
+2025-04-13 22:16:15,618 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 22:16:15,620 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 22:17:12,450 - ERROR - 链接 http://wx.m.okooo.com/you/?match_id=1230866 访问失败：Page.goto: net::ERR_CONNECTION_RESET at http://wx.m.okooo.com/you/?match_id=1230866
+Call log:
+  - navigating to "http://wx.m.okooo.com/you/?match_id=1230866", waiting until "load"
+
+2025-04-13 22:17:12,851 - ERROR - 域名 http://wx.m.okooo.com/you/?match_id=1230866 访问失败：Page.goto: net::ERR_CONNECTION_RESET at http://wx.m.okooo.com/you/?match_id=1230866
+Call log:
+  - navigating to "http://wx.m.okooo.com/you/?match_id=1230866", waiting until "load"
+
+2025-04-13 22:17:35,288 - ERROR - 链接 http://www1.zgzcw.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www1.zgzcw.com/", waiting until "load"
+
+2025-04-13 22:17:45,301 - ERROR - 域名 http://www1.zgzcw.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www1.zgzcw.com/", waiting until "load"
+
+2025-04-13 22:18:48,629 - ERROR - 链接 http://m.zaixian-fanyi.com/fan_yi_5080589 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.zaixian-fanyi.com/fan_yi_5080589", waiting until "load"
+
+2025-04-13 22:18:58,630 - ERROR - 域名 http://m.zaixian-fanyi.com/fan_yi_5080589 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.zaixian-fanyi.com/fan_yi_5080589", waiting until "load"
+
+2025-04-13 22:19:40,044 - ERROR - 链接 http://eyu.zaixian-fanyi.com/fan_yi_11225705 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://eyu.zaixian-fanyi.com/fan_yi_11225705", waiting until "load"
+
+2025-04-13 22:19:50,056 - ERROR - 域名 http://eyu.zaixian-fanyi.com/fan_yi_11225705 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://eyu.zaixian-fanyi.com/fan_yi_11225705", waiting until "load"
+
+2025-04-13 22:21:47,440 - ERROR - 链接 https://m.500.com/info/live/zucai/ 访问失败：Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("body") to be visible
+  -     24 × locator resolved to hidden <body>…</body>
+
+2025-04-13 22:21:58,074 - ERROR - 域名 https://m.500.com/info/live/zucai/ 访问失败：Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("body") to be visible
+  -     24 × locator resolved to hidden <body>…</body>
+
+2025-04-13 22:22:53,070 - ERROR - 链接 http://www1.zgzcw.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www1.zgzcw.com/", waiting until "load"
+
+2025-04-13 22:23:13,890 - ERROR - 链接 https://live.zgzcw.com/bd/?eqid=b19d3d6a000e5dbc00000006647194b6 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://live.zgzcw.com/bd/?eqid=b19d3d6a000e5dbc00000006647194b6", waiting until "load"
+
+2025-04-13 22:23:35,341 - ERROR - 链接 https://dfp.sxxzfyl.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://dfp.sxxzfyl.com/", waiting until "load"
+
+2025-04-13 22:23:45,352 - ERROR - 域名 https://dfp.sxxzfyl.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://dfp.sxxzfyl.com/", waiting until "load"
+
+2025-04-13 22:23:58,768 - ERROR - 域名 http://www.share.maoxiaopang.com/PwW/detail/ZrgRSOW.html 访问失败：Page.goto: net::ERR_ABORTED at http://www.share.maoxiaopang.com/PwW/detail/ZrgRSOW.html
+Call log:
+  - navigating to "http://www.share.maoxiaopang.com/PwW/detail/ZrgRSOW.html", waiting until "load"
+
+2025-04-13 22:24:41,877 - ERROR - 链接 http://m.xks.cfvji.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.xks.cfvji.com/", waiting until "load"
+
+2025-04-13 22:24:51,880 - ERROR - 域名 http://m.xks.cfvji.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.xks.cfvji.com/", waiting until "load"
+
+2025-04-13 22:25:14,916 - ERROR - 链接 http://www.qyghs.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.qyghs.com/", waiting until "load"
+
+2025-04-13 22:25:24,924 - ERROR - 域名 http://www.qyghs.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.qyghs.com/", waiting until "load"
+
+2025-04-13 22:25:37,311 - ERROR - 链接 http://test.zaixian-fanyi.com/fan_yi_2109797 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://test.zaixian-fanyi.com/fan_yi_2109797", waiting until "load"
+
+2025-04-13 22:25:47,316 - ERROR - 域名 http://test.zaixian-fanyi.com/fan_yi_2109797 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://test.zaixian-fanyi.com/fan_yi_2109797", waiting until "load"
+
+2025-04-13 22:27:01,398 - ERROR - 链接 https://baijiahao.baidu.com/s?id=1822096278739329816&wfr=spider&for=pc 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://baijiahao.baidu.com/s?id=1822096278739329816&wfr=spider&for=pc", waiting until "load"
+
+2025-04-13 22:27:11,401 - ERROR - 域名 https://baijiahao.baidu.com/s?id=1822096278739329816&wfr=spider&for=pc 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://baijiahao.baidu.com/s?id=1822096278739329816&wfr=spider&for=pc", waiting until "load"
+
+2025-04-13 22:28:01,505 - ERROR - 链接 https://www.chinanews.com/scroll-news/2009/0223/news.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.chinanews.com/scroll-news/2009/0223/news.shtml", waiting until "load"
+
+2025-04-13 22:28:11,515 - ERROR - 域名 https://www.chinanews.com/scroll-news/2009/0223/news.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.chinanews.com/scroll-news/2009/0223/news.shtml", waiting until "load"
+
+2025-04-13 22:28:45,860 - ERROR - 链接 http://eyu.zaixian-fanyi.com/fan_yi_11842096 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://eyu.zaixian-fanyi.com/fan_yi_11842096", waiting until "load"
+
+2025-04-13 22:28:55,874 - ERROR - 域名 http://eyu.zaixian-fanyi.com/fan_yi_11842096 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://eyu.zaixian-fanyi.com/fan_yi_11842096", waiting until "load"
+
+2025-04-13 22:30:13,192 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 22:30:13,194 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 22:30:53,152 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 22:30:53,154 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 22:31:51,524 - ERROR - 链接 https://www.intel.cn/content/dam/docs/cn/zh/683375/current/sam1403481003746.svg 访问失败：Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("body") to be visible
+
+2025-04-13 22:32:01,540 - ERROR - 域名 https://www.intel.cn/content/dam/docs/cn/zh/683375/current/sam1403481003746.svg 访问失败：Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("body") to be visible
+
+2025-04-13 22:33:30,374 - ERROR - 链接 http://eyu.zaixian-fanyi.com/fan_yi_10545850 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://eyu.zaixian-fanyi.com/fan_yi_10545850", waiting until "load"
+
+2025-04-13 22:33:40,390 - ERROR - 域名 http://eyu.zaixian-fanyi.com/fan_yi_10545850 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://eyu.zaixian-fanyi.com/fan_yi_10545850", waiting until "load"
+
+2025-04-13 22:34:35,898 - ERROR - 链接 https://www.500.com/wap/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.500.com/wap/", waiting until "load"
+
+2025-04-13 22:34:45,899 - ERROR - 域名 https://www.500.com/wap/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.500.com/wap/", waiting until "load"
+
+2025-04-13 22:35:00,819 - ERROR - 链接 https://www.500.com/wap/index.php 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.500.com/wap/index.php", waiting until "load"
+
+2025-04-13 22:35:28,264 - ERROR - 链接 https://live.500.com/index.php%E5%9B%BE%E7%89%87 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://live.500.com/index.php%E5%9B%BE%E7%89%87", waiting until "load"
+
+2025-04-13 22:35:33,416 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 22:35:33,704 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 22:36:51,308 - ERROR - 链接 https://www.15s.cn/baike/373562.html 访问失败：Page.goto: net::ERR_ABORTED at https://www.15s.cn/baike/373562.html
+Call log:
+  - navigating to "https://www.15s.cn/baike/373562.html", waiting until "load"
+
+2025-04-13 22:37:12,243 - ERROR - 链接 https://www.xda.cn/game/245468.html 访问失败：Page.goto: net::ERR_CONNECTION_REFUSED at https://www.xda.cn/game/245468.html
+Call log:
+  - navigating to "https://www.xda.cn/game/245468.html", waiting until "load"
+
+2025-04-13 22:37:12,510 - ERROR - 域名 https://www.xda.cn/game/245468.html 访问失败：Page.goto: net::ERR_CONNECTION_REFUSED at https://www.xda.cn/game/245468.html
+Call log:
+  - navigating to "https://www.xda.cn/game/245468.html", waiting until "load"
+
+2025-04-13 22:39:49,606 - ERROR - 链接 https://m.sohu.com/a/836848113_122001006 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.sohu.com/a/836848113_122001006", waiting until "load"
+
+2025-04-13 22:40:46,104 - ERROR - 链接 http://2019.zhcw.com/ggl/zuixinyouxi/hjsd/index.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://2019.zhcw.com/ggl/zuixinyouxi/hjsd/index.shtml", waiting until "load"
+
+2025-04-13 22:40:56,115 - ERROR - 域名 http://2019.zhcw.com/ggl/zuixinyouxi/hjsd/index.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://2019.zhcw.com/ggl/zuixinyouxi/hjsd/index.shtml", waiting until "load"
+
+2025-04-13 22:42:20,427 - ERROR - 关键词 赌场娱乐导航app 搜索失败：Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E8%B5%8C%E5%9C%BA%E5%A8%B1%E4%B9%90%E5%AF%BC%E8%88%AAapp", waiting until "load"
+
+2025-04-13 22:42:58,052 - ERROR - 链接 https://m.douyin.com/share/challenge/1719546020692995 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.douyin.com/share/challenge/1719546020692995", waiting until "load"
+
+2025-04-13 22:44:00,736 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 22:44:00,738 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 22:44:24,196 - ERROR - 链接 https://tieba.baidu.com/p/9181423129 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://tieba.baidu.com/p/9181423129", waiting until "load"
+
+2025-04-13 22:44:34,206 - ERROR - 域名 https://tieba.baidu.com/p/9181423129 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://tieba.baidu.com/p/9181423129", waiting until "load"
+
+2025-04-13 22:44:50,171 - ERROR - 链接 http://m.962.net/y/574570 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.962.net/y/574570", waiting until "load"
+
+2025-04-13 22:45:08,530 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 22:45:08,856 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 22:45:50,501 - ERROR - 链接 https://m.xda.cn/game/254867.html 访问失败：Page.goto: net::ERR_CONNECTION_REFUSED at https://m.xda.cn/game/254867.html
+Call log:
+  - navigating to "https://m.xda.cn/game/254867.html", waiting until "load"
+
+2025-04-13 22:45:50,784 - ERROR - 域名 https://m.xda.cn/game/254867.html 访问失败：Page.goto: net::ERR_CONNECTION_REFUSED at https://m.xda.cn/game/254867.html
+Call log:
+  - navigating to "https://m.xda.cn/game/254867.html", waiting until "load"
+
+2025-04-13 22:46:08,486 - ERROR - 链接 http://gamecenter.baidu.com/static/game/zone.html?srcid=51261&appId=236486284937183232&sid=223537&channelid=60018&query=经典捕鱼# 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://gamecenter.baidu.com/static/game/zone.html?srcid=51261&appId=236486284937183232&sid=223537&channelid=60018&query=%E7%BB%8F%E5%85%B8%E6%8D%95%E9%B1%BC#", waiting until "load"
+
+2025-04-13 22:46:23,521 - ERROR - 链接 http://m.yx007.com/azyx/65443.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.yx007.com/azyx/65443.html", waiting until "load"
+
+2025-04-13 22:46:41,986 - ERROR - 链接 http://eyu.zaixian-fanyi.com/fan_yi_9935761 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://eyu.zaixian-fanyi.com/fan_yi_9935761", waiting until "load"
+
+2025-04-13 22:46:51,988 - ERROR - 域名 http://eyu.zaixian-fanyi.com/fan_yi_9935761 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://eyu.zaixian-fanyi.com/fan_yi_9935761", waiting until "load"
+
+2025-04-13 22:47:23,686 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 22:47:23,952 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 22:48:54,414 - ERROR - 链接 https://change.qq.com/m/a20211224by/index.htm 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://change.qq.com/m/a20211224by/index.htm", waiting until "load"
+
+2025-04-13 22:49:04,430 - ERROR - 域名 https://change.qq.com/m/a20211224by/index.htm 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://change.qq.com/m/a20211224by/index.htm", waiting until "load"
+
+2025-04-13 22:49:21,924 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 22:49:21,927 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 22:49:31,942 - ERROR - 链接 http://www.289.com/igame/518630.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.289.com/igame/518630.html", waiting until "load"
+
+2025-04-13 22:49:41,955 - ERROR - 域名 http://www.289.com/igame/518630.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.289.com/igame/518630.html", waiting until "load"
+
+2025-04-13 22:50:24,562 - ERROR - 链接 https://m.yxss.com/azyx/165700.html 访问失败：Page.goto: net::ERR_CONNECTION_RESET at https://m.yxss.com/azyx/165700.html
+Call log:
+  - navigating to "https://m.yxss.com/azyx/165700.html", waiting until "load"
+
+2025-04-13 22:50:25,679 - ERROR - 域名 https://m.yxss.com/azyx/165700.html 访问失败：Page.goto: Navigation to "https://m.yxss.com/azyx/165700.html" is interrupted by another navigation to "chrome-error://chromewebdata/"
+Call log:
+  - navigating to "https://m.yxss.com/azyx/165700.html", waiting until "load"
+
+2025-04-13 22:51:36,443 - ERROR - 链接 https://www.cdkjfw.com/venture/index.html?Id=SByQR2q0aP3EADwu0xkFlg== 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.cdkjfw.com/venture/index.html?Id=SByQR2q0aP3EADwu0xkFlg==", waiting until "load"
+
+2025-04-13 22:51:46,448 - ERROR - 域名 https://www.cdkjfw.com/venture/index.html?Id=SByQR2q0aP3EADwu0xkFlg== 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.cdkjfw.com/venture/index.html?Id=SByQR2q0aP3EADwu0xkFlg==", waiting until "load"
+
+2025-04-13 22:52:09,615 - ERROR - 链接 https://baijiahao.baidu.com/s?id=1813598413667611860&wfr=spider&for=pc 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://baijiahao.baidu.com/s?id=1813598413667611860&wfr=spider&for=pc", waiting until "load"
+
+2025-04-13 22:52:26,410 - ERROR - 链接 https://baike.baidu.com/tashuo/browse/content?id=aa3243d23c38a41aa42f9841 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://baike.baidu.com/tashuo/browse/content?id=aa3243d23c38a41aa42f9841", waiting until "load"
+
+2025-04-13 22:52:48,154 - ERROR - 链接 https://answer.baidu.com/answer/land?params=n6xnBVrgqUKAZ%2FWra%2BquX8VTSIKJ6XBgs4sw%2BzhWNzLkan016fg5i9RlsHU7fM0dg%2FLUPUHVb3wNzooHg%2B8dxuXcK%2BcLuhrbU9KGDZNQLItqeQEit4SuYIy8s3%2BTjutvMIBCUVQ4Gkym0mYHbpCWE4DXN0Q12gmXdGD5FvwSuHb7W%2FVgiU5PUKjI6GgK9wmP4%2BsuF1oeTUVVVZcJUVT6pI2TQQRNP57n1Xu6efEHXWo%3D&from=dqa&lid=10801659776825915060&word=%E6%9C%BA%E9%80%89%E6%9C%89%E4%BA%BA%E4%B8%AD%E8%BF%87%E4%B8%80%E7%AD%89%E5%A5%96%E5%90%97 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://answer.baidu.com/answer/land?params=n6xnBVrgqUKAZ%2FWra%2BquX8VTSIKJ6XBgs4sw%2BzhWNzLkan016fg5i9RlsHU7fM0dg%2FLUPUHVb3wNzooHg%2B8dxuXcK%2BcLuhrbU9KGDZNQLItqeQEit4SuYIy8s3%2BTjutvMIBCUVQ4Gkym0mYHbpCWE4DXN0Q12gmXdGD5FvwSuHb7W%2FVgiU5PUKjI6GgK9wmP4%2BsuF1oeTUVVVZcJUVT6pI2TQQRNP57n1Xu6efEHXWo%3D&from=dqa&lid=10801659776825915060&word=%E6%9C%BA%E9%80%89%E6%9C%89%E4%BA%BA%E4%B8%AD%E8%BF%87%E4%B8%80%E7%AD%89%E5%A5%96%E5%90%97", waiting until "load"
+
+2025-04-13 22:52:50,961 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 22:52:51,230 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 22:52:57,819 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 22:52:58,117 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 22:53:36,095 - ERROR - 链接 https://www.bjsjs.gov.cn/gongkai/zsk/mzfpjz/qt/202308/t20230808_72711.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.bjsjs.gov.cn/gongkai/zsk/mzfpjz/qt/202308/t20230808_72711.shtml", waiting until "load"
+
+2025-04-13 22:53:46,111 - ERROR - 域名 https://www.bjsjs.gov.cn/gongkai/zsk/mzfpjz/qt/202308/t20230808_72711.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.bjsjs.gov.cn/gongkai/zsk/mzfpjz/qt/202308/t20230808_72711.shtml", waiting until "load"
+
+2025-04-13 22:55:08,473 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 22:55:08,798 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 22:55:22,436 - ERROR - 链接 https://www.douyin.com/video/7284205991330172200 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.douyin.com/video/7284205991330172200", waiting until "load"
+
+2025-04-13 22:55:44,113 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 22:55:44,115 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 22:56:14,051 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 22:56:14,054 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 22:56:44,498 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 22:56:44,668 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 22:57:06,068 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 22:57:06,070 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 22:57:28,809 - ERROR - 关键词 959娱乐官网下载 搜索失败：Page.goto: net::ERR_ABORTED at https://m.baidu.com/s?wd=959%E5%A8%B1%E4%B9%90%E5%AE%98%E7%BD%91%E4%B8%8B%E8%BD%BD
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=959%E5%A8%B1%E4%B9%90%E5%AE%98%E7%BD%91%E4%B8%8B%E8%BD%BD", waiting until "load"
+
+2025-04-13 22:57:58,239 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 22:57:58,241 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 22:58:14,305 - ERROR - 链接 https://www.sport.gov.cn/gdnps/files/c28047814/28048342.pdf 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.sport.gov.cn/gdnps/files/c28047814/28048342.pdf", waiting until "load"
+
+2025-04-13 22:58:28,316 - ERROR - 域名 https://www.sport.gov.cn/gdnps/files/c28047814/28048342.pdf 访问失败：Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("body") to be visible
+  -     25 × locator resolved to hidden <body>…</body>
+
+2025-04-13 22:59:06,880 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 22:59:06,882 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 22:59:38,334 - ERROR - 链接 https://ent.ifeng.com/a/detail_2014_09/17/38804170_0.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://ent.ifeng.com/a/detail_2014_09/17/38804170_0.shtml", waiting until "load"
+
+2025-04-13 23:00:21,897 - ERROR - 域名 http://xiangtan.ctbww.com/ 访问失败：Page.goto: net::ERR_ABORTED at http://xiangtan.ctbww.com/
+Call log:
+  - navigating to "http://xiangtan.ctbww.com/", waiting until "load"
+
+2025-04-13 23:01:24,141 - ERROR - 域名 http://www.share.yjs2306.cn/UAU/detail/gaOIImp.html 访问失败：Page.goto: net::ERR_ABORTED at http://www.share.yjs2306.cn/UAU/detail/gaOIImp.html
+Call log:
+  - navigating to "http://www.share.yjs2306.cn/UAU/detail/gaOIImp.html", waiting until "load"
+
+2025-04-13 23:02:44,584 - ERROR - 链接 https://www.tgbus.com/caipiaonewsGIUnyy/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.tgbus.com/caipiaonewsGIUnyy/", waiting until "load"
+
+2025-04-13 23:03:16,551 - ERROR - 链接 https://touch.17500.cn/?key=%C0%B6%D2%D4%D6%D0 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://touch.17500.cn/?key=%C0%B6%D2%D4%D6%D0", waiting until "load"
+
+2025-04-13 23:03:26,556 - ERROR - 域名 https://touch.17500.cn/?key=%C0%B6%D2%D4%D6%D0 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://touch.17500.cn/?key=%C0%B6%D2%D4%D6%D0", waiting until "load"
+
+2025-04-13 23:04:43,264 - ERROR - 链接 https://pc.qq.com/detail/15/detail_32395.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://pc.qq.com/detail/15/detail_32395.html", waiting until "load"
+
+2025-04-13 23:04:53,271 - ERROR - 域名 https://pc.qq.com/detail/15/detail_32395.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://pc.qq.com/detail/15/detail_32395.html", waiting until "load"
+
+2025-04-13 23:05:25,725 - ERROR - 链接 https://m.sohu.com/a/518384364_116237 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.sohu.com/a/518384364_116237", waiting until "load"
+
+2025-04-13 23:09:02,544 - ERROR - 链接 http://8mm0755.com/BGY/detail/VfVTWSlz.html 访问失败：Page.goto: net::ERR_EMPTY_RESPONSE at http://8mm0755.com/BGY/detail/VfVTWSlz.html
+Call log:
+  - navigating to "http://8mm0755.com/BGY/detail/VfVTWSlz.html", waiting until "load"
+
+2025-04-13 23:09:02,684 - ERROR - 域名 http://8mm0755.com/BGY/detail/VfVTWSlz.html 访问失败：Page.goto: net::ERR_EMPTY_RESPONSE at http://8mm0755.com/BGY/detail/VfVTWSlz.html
+Call log:
+  - navigating to "http://8mm0755.com/BGY/detail/VfVTWSlz.html", waiting until "load"
+
+2025-04-13 23:09:04,518 - ERROR - 链接 http://xxthemes.com/NAZ/detail/AMIyVl.html 访问失败：Page.goto: net::ERR_EMPTY_RESPONSE at http://xxthemes.com/NAZ/detail/AMIyVl.html
+Call log:
+  - navigating to "http://xxthemes.com/NAZ/detail/AMIyVl.html", waiting until "load"
+
+2025-04-13 23:09:04,598 - ERROR - 域名 http://xxthemes.com/NAZ/detail/AMIyVl.html 访问失败：Page.goto: net::ERR_EMPTY_RESPONSE at http://xxthemes.com/NAZ/detail/AMIyVl.html
+Call log:
+  - navigating to "http://xxthemes.com/NAZ/detail/AMIyVl.html", waiting until "load"
+
+2025-04-13 23:09:36,584 - ERROR - 域名 http://hantaihb.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://hantaihb.com/", waiting until "load"
+
+2025-04-13 23:10:13,324 - ERROR - 链接 https://tieba.baidu.com/p/7776576960 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://tieba.baidu.com/p/7776576960", waiting until "load"
+
+2025-04-13 23:10:23,332 - ERROR - 域名 https://tieba.baidu.com/p/7776576960 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://tieba.baidu.com/p/7776576960", waiting until "load"
+
+2025-04-13 23:11:23,697 - ERROR - 域名 https://m.sohu.com/a/880969138_122004016 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.sohu.com/a/880969138_122004016", waiting until "load"
+
+2025-04-13 23:11:57,527 - ERROR - 链接 https://m.ctrip.com/webapp/you/tripshoot/paipai/detail/detail?articleId=107725325&isHideNavBar=YES&seo=0&twojumpwakeup=0&allianceId=1049189&sid=19855591 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.ctrip.com/webapp/you/tripshoot/paipai/detail/detail?articleId=107725325&isHideNavBar=YES&seo=0&twojumpwakeup=0&allianceId=1049189&sid=19855591", waiting until "load"
+
+2025-04-13 23:12:13,681 - ERROR - 链接 https://www.meipian.cn/59osai11 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.meipian.cn/59osai11", waiting until "load"
+
+2025-04-13 23:12:23,693 - ERROR - 域名 https://www.meipian.cn/59osai11 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.meipian.cn/59osai11", waiting until "load"
+
+2025-04-13 23:14:20,541 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 23:14:20,822 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 23:15:38,743 - ERROR - 链接 http://eyu.zaixian-fanyi.com/fan_yi_5760815 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://eyu.zaixian-fanyi.com/fan_yi_5760815", waiting until "load"
+
+2025-04-13 23:15:48,757 - ERROR - 域名 http://eyu.zaixian-fanyi.com/fan_yi_5760815 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://eyu.zaixian-fanyi.com/fan_yi_5760815", waiting until "load"
+
+2025-04-13 23:16:23,666 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:16:23,669 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:16:33,674 - ERROR - 链接 http://wap.hao123.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://wap.hao123.com/", waiting until "load"
+
+2025-04-13 23:16:43,685 - ERROR - 域名 http://wap.hao123.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://wap.hao123.com/", waiting until "load"
+
+2025-04-13 23:17:00,247 - ERROR - 链接 https://m.minecraftxz.com/game/257726.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.minecraftxz.com/game/257726.html", waiting until "load"
+
+2025-04-13 23:17:10,259 - ERROR - 域名 https://m.minecraftxz.com/game/257726.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.minecraftxz.com/game/257726.html", waiting until "load"
+
+2025-04-13 23:17:29,935 - ERROR - 链接 https://m.wandoujia.com/download/656809/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.wandoujia.com/download/656809/", waiting until "load"
+
+2025-04-13 23:17:54,785 - ERROR - 链接 https://qqgame.qq.com/?t=9 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://qqgame.qq.com/?t=9", waiting until "load"
+
+2025-04-13 23:18:04,786 - ERROR - 域名 https://qqgame.qq.com/?t=9 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://qqgame.qq.com/?t=9", waiting until "load"
+
+2025-04-13 23:18:20,722 - ERROR - 链接 http://m.zaixian-fanyi.com/fan_yi_9637524 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.zaixian-fanyi.com/fan_yi_9637524", waiting until "load"
+
+2025-04-13 23:18:30,728 - ERROR - 域名 http://m.zaixian-fanyi.com/fan_yi_9637524 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.zaixian-fanyi.com/fan_yi_9637524", waiting until "load"
+
+2025-04-13 23:19:17,791 - ERROR - 链接 http://www.1coding.cn/ 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://www.1coding.cn/
+Call log:
+  - navigating to "http://www.1coding.cn/", waiting until "load"
+
+2025-04-13 23:19:17,963 - ERROR - 域名 http://www.1coding.cn/ 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://www.1coding.cn/
+Call log:
+  - navigating to "http://www.1coding.cn/", waiting until "load"
+
+2025-04-13 23:19:45,515 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:19:45,517 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:20:00,359 - ERROR - 域名 https://m.sohu.com/a/882422194_120794010 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.sohu.com/a/882422194_120794010", waiting until "load"
+
+2025-04-13 23:20:12,768 - ERROR - 链接 http://dbjb.mps.gov.cn/Case/Law7DetailsInfo.html 访问失败：'content'
+2025-04-13 23:20:27,816 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:20:27,818 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:20:51,621 - ERROR - 链接 https://m.163.com/dy/article/EMKGQM3C05499G2G.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.163.com/dy/article/EMKGQM3C05499G2G.html", waiting until "load"
+
+2025-04-13 23:21:01,634 - ERROR - 域名 https://m.163.com/dy/article/EMKGQM3C05499G2G.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.163.com/dy/article/EMKGQM3C05499G2G.html", waiting until "load"
+
+2025-04-13 23:21:08,603 - ERROR - 链接 https://www.lawtime.cn/caipan/1712701.html 访问失败：Page.goto: net::ERR_CONNECTION_REFUSED at https://www.lawtime.cn/caipan/1712701.html
+Call log:
+  - navigating to "https://www.lawtime.cn/caipan/1712701.html", waiting until "load"
+
+2025-04-13 23:21:08,856 - ERROR - 域名 https://www.lawtime.cn/caipan/1712701.html 访问失败：Page.goto: net::ERR_CONNECTION_REFUSED at https://www.lawtime.cn/caipan/1712701.html
+Call log:
+  - navigating to "https://www.lawtime.cn/caipan/1712701.html", waiting until "load"
+
+2025-04-13 23:21:51,134 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:21:51,136 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:21:58,218 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:21:58,221 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:22:46,684 - ERROR - 链接 https://www.chinanews.com.cn/sh/2014/07-03/6348680.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.chinanews.com.cn/sh/2014/07-03/6348680.shtml", waiting until "load"
+
+2025-04-13 23:22:56,689 - ERROR - 域名 https://www.chinanews.com.cn/sh/2014/07-03/6348680.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.chinanews.com.cn/sh/2014/07-03/6348680.shtml", waiting until "load"
+
+2025-04-13 23:23:17,098 - ERROR - 链接 http://www.stfaj.com/ 访问失败：Page.goto: net::ERR_ABORTED at http://www.stfaj.com/
+Call log:
+  - navigating to "http://www.stfaj.com/", waiting until "load"
+
+2025-04-13 23:23:27,103 - ERROR - 域名 http://www.stfaj.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.stfaj.com/", waiting until "load"
+
+2025-04-13 23:23:44,458 - ERROR - 链接 http://baocheng-qiang.b2b.chemm.cn/Sample/Pro1966710.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://baocheng-qiang.b2b.chemm.cn/Sample/Pro1966710.html", waiting until "load"
+
+2025-04-13 23:23:54,464 - ERROR - 域名 http://baocheng-qiang.b2b.chemm.cn/Sample/Pro1966710.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://baocheng-qiang.b2b.chemm.cn/Sample/Pro1966710.html", waiting until "load"
+
+2025-04-13 23:25:01,758 - ERROR - 关键词 明陞m88备用 搜索失败：Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E6%98%8E%E9%99%9Em88%E5%A4%87%E7%94%A8", waiting until "load"
+
+2025-04-13 23:25:02,886 - ERROR - 链接 baiduboxapp://v19/utils/invokeHNPage 访问失败：Page.goto: net::ERR_ABORTED at baiduboxapp://v19/utils/invokeHNPage
+Call log:
+  - navigating to "baiduboxapp://v19/utils/invokeHNPage", waiting until "load"
+
+2025-04-13 23:25:02,895 - ERROR - 域名 baiduboxapp://v19/utils/invokeHNPage 访问失败：Page.goto: net::ERR_ABORTED at baiduboxapp://v19/utils/invokeHNPage
+Call log:
+  - navigating to "baiduboxapp://v19/utils/invokeHNPage", waiting until "load"
+
+2025-04-13 23:25:25,074 - ERROR - 链接 https://www.iqiyi.com/adv/v_19rqxvywoo.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.iqiyi.com/adv/v_19rqxvywoo.html", waiting until "load"
+
+2025-04-13 23:26:14,750 - ERROR - 链接 https://tw-innovation.com/ 访问失败：Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("body") to be visible
+  -     25 × locator resolved to hidden <body>…</body>
+
+2025-04-13 23:26:25,324 - ERROR - 域名 https://tw-innovation.com/ 访问失败：Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("body") to be visible
+  -     24 × locator resolved to hidden <body>…</body>
+
+2025-04-13 23:26:39,636 - ERROR - 链接 https://www.sport.gov.cn/consult/login.jsp 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.sport.gov.cn/consult/login.jsp", waiting until "load"
+
+2025-04-13 23:26:49,648 - ERROR - 域名 https://www.sport.gov.cn/consult/login.jsp 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.sport.gov.cn/consult/login.jsp", waiting until "load"
+
+2025-04-13 23:27:46,864 - ERROR - 链接 https://app.xiaomi.com/details?id=com.dragonports.sports 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://app.xiaomi.com/details?id=com.dragonports.sports", waiting until "load"
+
+2025-04-13 23:27:56,872 - ERROR - 域名 https://app.xiaomi.com/details?id=com.dragonports.sports 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://app.xiaomi.com/details?id=com.dragonports.sports", waiting until "load"
+
+2025-04-13 23:28:37,756 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 23:28:38,020 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 23:28:54,577 - ERROR - 域名 https://m.sohu.com/a/881034316_122383978 访问失败：Page.goto: net::ERR_ABORTED at https://m.sohu.com/a/881034316_122383978
+Call log:
+  - navigating to "https://m.sohu.com/a/881034316_122383978", waiting until "load"
+
+2025-04-13 23:29:42,425 - ERROR - 链接 https://m.edu.iask.sina.com.cn/jy/2IobLGwVhJ7.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.edu.iask.sina.com.cn/jy/2IobLGwVhJ7.html", waiting until "load"
+
+2025-04-13 23:30:07,518 - ERROR - 链接 http://m.hlsports.net/huanglongxinwen/27188.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.hlsports.net/huanglongxinwen/27188.html", waiting until "load"
+
+2025-04-13 23:30:17,526 - ERROR - 域名 http://m.hlsports.net/huanglongxinwen/27188.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.hlsports.net/huanglongxinwen/27188.html", waiting until "load"
+
+2025-04-13 23:31:18,305 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:31:18,308 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:31:36,200 - ERROR - 链接 https://m.hexun.com/news/2021-04-12/203396095.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.hexun.com/news/2021-04-12/203396095.html", waiting until "load"
+
+2025-04-13 23:31:46,208 - ERROR - 域名 https://m.hexun.com/news/2021-04-12/203396095.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.hexun.com/news/2021-04-12/203396095.html", waiting until "load"
+
+2025-04-13 23:31:59,437 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:31:59,440 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:32:38,751 - ERROR - 链接 https://zhidao.baidu.com/question/337679410114607165.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://zhidao.baidu.com/question/337679410114607165.html", waiting until "load"
+
+2025-04-13 23:32:48,754 - ERROR - 域名 https://zhidao.baidu.com/question/337679410114607165.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://zhidao.baidu.com/question/337679410114607165.html", waiting until "load"
+
+2025-04-13 23:32:53,861 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:32:53,863 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:33:01,035 - ERROR - 链接 https://3g.ali213.net/emu/Emu_5878.html?ivk_sa=1024320u 访问失败：Page.goto: net::ERR_EMPTY_RESPONSE at https://3g.ali213.net/emu/Emu_5878.html?ivk_sa=1024320u
+Call log:
+  - navigating to "https://3g.ali213.net/emu/Emu_5878.html?ivk_sa=1024320u", waiting until "load"
+
+2025-04-13 23:33:01,452 - ERROR - 域名 https://3g.ali213.net/emu/Emu_5878.html?ivk_sa=1024320u 访问失败：Page.goto: Navigation to "https://3g.ali213.net/emu/Emu_5878.html?ivk_sa=1024320u" is interrupted by another navigation to "chrome-error://chromewebdata/"
+Call log:
+  - navigating to "https://3g.ali213.net/emu/Emu_5878.html?ivk_sa=1024320u", waiting until "load"
+
+2025-04-13 23:34:37,130 - ERROR - 关键词 网赌是什么 搜索失败：Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E7%BD%91%E8%B5%8C%E6%98%AF%E4%BB%80%E4%B9%88", waiting until "load"
+
+2025-04-13 23:34:40,112 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:34:40,115 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:34:56,931 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:34:56,934 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:35:34,081 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:35:34,084 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:35:40,696 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 23:35:41,037 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 23:36:00,036 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 23:36:00,542 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 23:36:06,624 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 23:36:06,952 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 23:36:19,723 - ERROR - 链接 http://www.360doc.cn/article/5104624_472808372.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.360doc.cn/article/5104624_472808372.html", waiting until "load"
+
+2025-04-13 23:36:29,735 - ERROR - 域名 http://www.360doc.cn/article/5104624_472808372.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.360doc.cn/article/5104624_472808372.html", waiting until "load"
+
+2025-04-13 23:36:54,141 - ERROR - 链接 https://xueqiu.com/5698005127/194014496 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://xueqiu.com/5698005127/194014496", waiting until "load"
+
+2025-04-13 23:37:28,021 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:37:28,023 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:37:58,310 - ERROR - 链接 http://slt.gd.gov.cn/gkmlpt/content/4/4414/mmpost_4414652.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://slt.gd.gov.cn/gkmlpt/content/4/4414/mmpost_4414652.html", waiting until "load"
+
+2025-04-13 23:38:08,315 - ERROR - 域名 http://slt.gd.gov.cn/gkmlpt/content/4/4414/mmpost_4414652.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://slt.gd.gov.cn/gkmlpt/content/4/4414/mmpost_4414652.html", waiting until "load"
+
+2025-04-13 23:39:05,167 - ERROR - 链接 http://www.360doc.cn/article/2367727_95824521.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.360doc.cn/article/2367727_95824521.html", waiting until "load"
+
+2025-04-13 23:39:11,122 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 23:39:11,462 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 23:39:36,780 - ERROR - 链接 https://m.163.com/dy/article/FURD53UL0546ARCS.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.163.com/dy/article/FURD53UL0546ARCS.html", waiting until "load"
+
+2025-04-13 23:40:35,776 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:40:35,778 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:40:57,606 - ERROR - 链接 http://www.360doc.cn/article/1046_10046.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.360doc.cn/article/1046_10046.html", waiting until "load"
+
+2025-04-13 23:41:21,980 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:41:21,983 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:42:12,088 - ERROR - 链接 https://m.wandoujia.com/apps/8335579/history 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.wandoujia.com/apps/8335579/history", waiting until "load"
+
+2025-04-13 23:42:22,097 - ERROR - 域名 https://m.wandoujia.com/apps/8335579/history 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.wandoujia.com/apps/8335579/history", waiting until "load"
+
+2025-04-13 23:42:46,290 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:42:46,293 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:43:05,552 - ERROR - 链接 http://m.xianmojiujie.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.xianmojiujie.com/", waiting until "load"
+
+2025-04-13 23:43:46,799 - ERROR - 关键词 乐乐捕鱼微信登录版本 搜索失败：Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E4%B9%90%E4%B9%90%E6%8D%95%E9%B1%BC%E5%BE%AE%E4%BF%A1%E7%99%BB%E5%BD%95%E7%89%88%E6%9C%AC", waiting until "load"
+
+2025-04-13 23:44:30,804 - ERROR - 关键词 最新捕鱼游戏. 搜索失败：Page.goto: Timeout 30000ms exceeded.
+Call log:
+  - navigating to "https://m.baidu.com/s?wd=%E6%9C%80%E6%96%B0%E6%8D%95%E9%B1%BC%E6%B8%B8%E6%88%8F.", waiting until "load"
+
+2025-04-13 23:44:48,999 - ERROR - 链接 https://baike.baidu.com/item/%E8%A1%97%E6%9C%BA%E9%87%91%E8%9F%BE%E6%8D%95%E9%B1%BC/17578192 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://baike.baidu.com/item/%E8%A1%97%E6%9C%BA%E9%87%91%E8%9F%BE%E6%8D%95%E9%B1%BC/17578192", waiting until "load"
+
+2025-04-13 23:45:16,015 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:45:16,017 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:45:26,472 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:45:26,474 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:45:32,790 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:45:32,792 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:46:02,387 - ERROR - 链接 http://79j.sizetv.cn/ 访问失败：Page.goto: net::ERR_HTTP_RESPONSE_CODE_FAILURE at http://79j.sizetv.cn/
+Call log:
+  - navigating to "http://79j.sizetv.cn/", waiting until "load"
+
+2025-04-13 23:46:02,644 - ERROR - 域名 http://79j.sizetv.cn/ 访问失败：Page.goto: net::ERR_HTTP_RESPONSE_CODE_FAILURE at http://79j.sizetv.cn/
+Call log:
+  - navigating to "http://79j.sizetv.cn/", waiting until "load"
+
+2025-04-13 23:46:07,769 - ERROR - 链接 https://m.800820.net/tuku/tkpic_306180.html 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at https://m.800820.net/tuku/tkpic_306180.html
+Call log:
+  - navigating to "https://m.800820.net/tuku/tkpic_306180.html", waiting until "load"
+
+2025-04-13 23:46:08,858 - ERROR - 域名 https://m.800820.net/tuku/tkpic_306180.html 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at https://m.800820.net/tuku/tkpic_306180.html
+Call log:
+  - navigating to "https://m.800820.net/tuku/tkpic_306180.html", waiting until "load"
+
+2025-04-13 23:46:20,224 - ERROR - 链接 https://m.55125.cn/p3shijihao/?load_id=1 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.55125.cn/p3shijihao/?load_id=1", waiting until "load"
+
+2025-04-13 23:46:30,230 - ERROR - 域名 https://m.55125.cn/p3shijihao/?load_id=1 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.55125.cn/p3shijihao/?load_id=1", waiting until "load"
+
+2025-04-13 23:47:29,232 - ERROR - 链接 http://read.share.wangyan12345.top/132/detail/58292372/ 访问失败：Page.goto: net::ERR_HTTP_RESPONSE_CODE_FAILURE at http://read.share.wangyan12345.top/132/detail/58292372/
+Call log:
+  - navigating to "http://read.share.wangyan12345.top/132/detail/58292372/", waiting until "load"
+
+2025-04-13 23:47:29,669 - ERROR - 域名 http://read.share.wangyan12345.top/132/detail/58292372/ 访问失败：Page.goto: net::ERR_HTTP_RESPONSE_CODE_FAILURE at http://read.share.wangyan12345.top/132/detail/58292372/
+Call log:
+  - navigating to "http://read.share.wangyan12345.top/132/detail/58292372/", waiting until "load"
+
+2025-04-13 23:47:53,027 - ERROR - 链接 https://m.wandoujia.com/mip/apps/8114346?ivk_sa=1024320u 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.wandoujia.com/mip/apps/8114346?ivk_sa=1024320u", waiting until "load"
+
+2025-04-13 23:48:03,042 - ERROR - 域名 https://m.wandoujia.com/mip/apps/8114346?ivk_sa=1024320u 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.wandoujia.com/mip/apps/8114346?ivk_sa=1024320u", waiting until "load"
+
+2025-04-13 23:48:23,636 - ERROR - 链接 https://www.tgbus.com/caipiaonewsZ4GYhkr/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.tgbus.com/caipiaonewsZ4GYhkr/", waiting until "load"
+
+2025-04-13 23:48:51,217 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:48:51,219 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:48:51,408 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 23:48:51,709 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 23:49:42,784 - ERROR - 域名 https://m.sohu.com/a/835380209_121878374 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.sohu.com/a/835380209_121878374", waiting until "load"
+
+2025-04-13 23:49:58,078 - ERROR - 链接 http://www.qsolzd.cn/ 访问失败：Page.goto: net::ERR_HTTP_RESPONSE_CODE_FAILURE at http://www.qsolzd.cn/
+Call log:
+  - navigating to "http://www.qsolzd.cn/", waiting until "load"
+
+2025-04-13 23:49:58,149 - ERROR - 域名 http://www.qsolzd.cn/ 访问失败：Page.goto: net::ERR_HTTP_RESPONSE_CODE_FAILURE at http://www.qsolzd.cn/
+Call log:
+  - navigating to "http://www.qsolzd.cn/", waiting until "load"
+
+2025-04-13 23:50:46,546 - ERROR - 链接 http://www.360doc.cn/article/47751927_689634047.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.360doc.cn/article/47751927_689634047.html", waiting until "load"
+
+2025-04-13 23:50:56,560 - ERROR - 域名 http://www.360doc.cn/article/47751927_689634047.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.360doc.cn/article/47751927_689634047.html", waiting until "load"
+
+2025-04-13 23:51:21,382 - ERROR - 链接 https://live.m.500.com/detail/football/243191/analysis/zj 访问失败：Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("body") to be visible
+  -     25 × locator resolved to hidden <body>…</body>
+
+2025-04-13 23:51:32,848 - ERROR - 域名 https://live.m.500.com/detail/football/243191/analysis/zj 访问失败：Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("body") to be visible
+  -     25 × locator resolved to hidden <body>…</body>
+
+2025-04-13 23:51:43,856 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:51:43,859 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-13 23:51:44,012 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 23:51:44,362 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-13 23:51:57,564 - ERROR - 链接 https://lol.qq.com/act/a20180912s8gameguess/index.html?%E8%8B%B1%E9%9B%84%E8%81%94%E7%9B%9F%E5%85%A8%E7%90%83%E6%80%BB%E5%86%B3%E8%B5%9B%E3%80%90yabo6.in%E3%80%91 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://lol.qq.com/act/a20180912s8gameguess/index.html?%E8%8B%B1%E9%9B%84%E8%81%94%E7%9B%9F%E5%85%A8%E7%90%83%E6%80%BB%E5%86%B3%E8%B5%9B%E3%80%90yabo6.in%E3%80%91", waiting until "load"
+
+2025-04-13 23:52:07,572 - ERROR - 域名 https://lol.qq.com/act/a20180912s8gameguess/index.html?%E8%8B%B1%E9%9B%84%E8%81%94%E7%9B%9F%E5%85%A8%E7%90%83%E6%80%BB%E5%86%B3%E8%B5%9B%E3%80%90yabo6.in%E3%80%91 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://lol.qq.com/act/a20180912s8gameguess/index.html?%E8%8B%B1%E9%9B%84%E8%81%94%E7%9B%9F%E5%85%A8%E7%90%83%E6%80%BB%E5%86%B3%E8%B5%9B%E3%80%90yabo6.in%E3%80%91", waiting until "load"
+
+2025-04-13 23:52:32,273 - ERROR - 链接 https://lol.qq.com/news/space-detail.shtml?docid=6375290564278759319 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://lol.qq.com/news/space-detail.shtml?docid=6375290564278759319", waiting until "load"
+
+2025-04-13 23:52:42,282 - ERROR - 域名 https://lol.qq.com/news/space-detail.shtml?docid=6375290564278759319 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://lol.qq.com/news/space-detail.shtml?docid=6375290564278759319", waiting until "load"
+
+2025-04-13 23:53:11,651 - ERROR - 链接 https://lol.qq.com/news/detail_m.html?docid=8938599097104345991 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://lol.qq.com/news/detail_m.html?docid=8938599097104345991", waiting until "load"
+
+2025-04-13 23:53:21,666 - ERROR - 域名 https://lol.qq.com/news/detail_m.html?docid=8938599097104345991 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://lol.qq.com/news/detail_m.html?docid=8938599097104345991", waiting until "load"
+
+2025-04-13 23:53:41,590 - ERROR - 域名 https://m.sohu.com/n/465915142/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.sohu.com/n/465915142/", waiting until "load"
+
+2025-04-13 23:53:53,462 - ERROR - 链接 https://news.sina.cn/2020-11-20/detail-iiznezxs2893621.d.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.sina.cn/2020-11-20/detail-iiznezxs2893621.d.html", waiting until "load"
+
+2025-04-13 23:54:18,589 - ERROR - 域名 https://m.sohu.com/a/827702074_121798711 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.sohu.com/a/827702074_121798711", waiting until "load"
+
+2025-04-13 23:56:42,965 - ERROR - 链接 https://wen.baidu.com/question/721486469551315125.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://wen.baidu.com/question/721486469551315125.html", waiting until "load"
+
+2025-04-13 23:56:52,976 - ERROR - 域名 https://wen.baidu.com/question/721486469551315125.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://wen.baidu.com/question/721486469551315125.html", waiting until "load"
+
+2025-04-13 23:57:44,950 - ERROR - 链接 https://www.55125.cn/3dshijihao/?_adfa0.4146592004237162 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.55125.cn/3dshijihao/?_adfa0.4146592004237162", waiting until "load"
+
+2025-04-13 23:57:54,956 - ERROR - 域名 https://www.55125.cn/3dshijihao/?_adfa0.4146592004237162 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.55125.cn/3dshijihao/?_adfa0.4146592004237162", waiting until "load"
+
+2025-04-13 23:58:15,784 - ERROR - 链接 https://m.55125.cn/3dshijihao/list-10.htm 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.55125.cn/3dshijihao/list-10.htm", waiting until "load"
+
+2025-04-13 23:58:25,787 - ERROR - 域名 https://m.55125.cn/3dshijihao/list-10.htm 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.55125.cn/3dshijihao/list-10.htm", waiting until "load"
+
+2025-04-13 23:58:48,223 - ERROR - 链接 https://www.55125.cn/3dkjh/list-30.htm?jid=1&_r=1_0 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.55125.cn/3dkjh/list-30.htm?jid=1&_r=1_0", waiting until "load"
+
+2025-04-13 23:58:58,230 - ERROR - 域名 https://www.55125.cn/3dkjh/list-30.htm?jid=1&_r=1_0 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.55125.cn/3dkjh/list-30.htm?jid=1&_r=1_0", waiting until "load"
+
+2025-04-13 23:59:09,269 - ERROR - 链接 https://www.55125.cn/3dkjh/ 访问失败：Page.goto: net::ERR_CONNECTION_TIMED_OUT at https://www.55125.cn/3dkjh/
+Call log:
+  - navigating to "https://www.55125.cn/3dkjh/", waiting until "load"
+
+2025-04-13 23:59:19,286 - ERROR - 域名 https://www.55125.cn/3dkjh/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.55125.cn/3dkjh/", waiting until "load"
+
+2025-04-13 23:59:42,470 - ERROR - 链接 https://www.cwl.gov.cn/ygkj/wqkjgg/fc3d/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.cwl.gov.cn/ygkj/wqkjgg/fc3d/", waiting until "load"
+
+2025-04-13 23:59:52,475 - ERROR - 域名 https://www.cwl.gov.cn/ygkj/wqkjgg/fc3d/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.cwl.gov.cn/ygkj/wqkjgg/fc3d/", waiting until "load"
+
+2025-04-14 00:00:04,400 - ERROR - 链接 https://m.ssqzj.com/?searchid=10_282287055_1578194936000 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.ssqzj.com/?searchid=10_282287055_1578194936000", waiting until "load"
+
+2025-04-14 00:00:14,406 - ERROR - 域名 https://m.ssqzj.com/?searchid=10_282287055_1578194936000 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.ssqzj.com/?searchid=10_282287055_1578194936000", waiting until "load"
+
+2025-04-14 00:00:51,508 - ERROR - 链接 https://m.55125.cn/3dshijihao/?_t=1523098158 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.55125.cn/3dshijihao/?_t=1523098158", waiting until "load"
+
+2025-04-14 00:01:01,519 - ERROR - 域名 https://m.55125.cn/3dshijihao/?_t=1523098158 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.55125.cn/3dshijihao/?_t=1523098158", waiting until "load"
+
+2025-04-14 00:01:47,950 - ERROR - 链接 https://baike.baidu.com/item/%E8%8F%A0%E8%8F%9C%E6%97%B6%E9%97%B4%E7%BD%91/8918389 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://baike.baidu.com/item/%E8%8F%A0%E8%8F%9C%E6%97%B6%E9%97%B4%E7%BD%91/8918389", waiting until "load"
+
+2025-04-14 00:02:01,799 - ERROR - 链接 https://iqying.com/ 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at https://iqying.com/
+Call log:
+  - navigating to "https://iqying.com/", waiting until "load"
+
+2025-04-14 00:02:02,284 - ERROR - 域名 https://iqying.com/ 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at https://iqying.com/
+Call log:
+  - navigating to "https://iqying.com/", waiting until "load"
+
+2025-04-14 00:03:02,516 - ERROR - 链接 https://baike.baidu.com/item/%E8%8F%A0%E8%8F%9C%E6%97%B6%E9%97%B4%E7%BD%91/8918389 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://baike.baidu.com/item/%E8%8F%A0%E8%8F%9C%E6%97%B6%E9%97%B4%E7%BD%91/8918389", waiting until "load"
+
+2025-04-14 00:03:28,245 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:03:28,248 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:04:20,213 - ERROR - 链接 https://gp.qq.com/gicp/news/1134/12290289.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://gp.qq.com/gicp/news/1134/12290289.html", waiting until "load"
+
+2025-04-14 00:04:53,396 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:04:53,399 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:05:11,359 - ERROR - 链接 http://mutanjizy.com/news/646804.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://mutanjizy.com/news/646804.html", waiting until "load"
+
+2025-04-14 00:05:21,364 - ERROR - 域名 http://mutanjizy.com/news/646804.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://mutanjizy.com/news/646804.html", waiting until "load"
+
+2025-04-14 00:06:10,580 - ERROR - 链接 http://www.simoiot.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.simoiot.com/", waiting until "load"
+
+2025-04-14 00:06:14,599 - ERROR - 域名 http://www.simoiot.com/ 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://www.simoiot.com/
+Call log:
+  - navigating to "http://www.simoiot.com/", waiting until "load"
+
+2025-04-14 00:06:42,000 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:06:42,003 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:07:33,402 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:07:33,405 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:08:53,809 - ERROR - 链接 http://www.360doc.cn/article/327491_11402005.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.360doc.cn/article/327491_11402005.html", waiting until "load"
+
+2025-04-14 00:09:03,812 - ERROR - 域名 http://www.360doc.cn/article/327491_11402005.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.360doc.cn/article/327491_11402005.html", waiting until "load"
+
+2025-04-14 00:09:28,199 - ERROR - 链接 https://m.douyin.com/share/challenge/1614199966308360 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.douyin.com/share/challenge/1614199966308360", waiting until "load"
+
+2025-04-14 00:11:05,734 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:11:05,736 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:11:47,477 - ERROR - 链接 https://m.iask.sina.com.cn/mib/newqX86sW1kxNv.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.iask.sina.com.cn/mib/newqX86sW1kxNv.html", waiting until "load"
+
+2025-04-14 00:12:04,395 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:12:04,398 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:13:00,636 - ERROR - 链接 https://m.edu.iask.sina.com.cn/jy/36QAgHvcejd.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.edu.iask.sina.com.cn/jy/36QAgHvcejd.html", waiting until "load"
+
+2025-04-14 00:13:10,638 - ERROR - 域名 https://m.edu.iask.sina.com.cn/jy/36QAgHvcejd.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.edu.iask.sina.com.cn/jy/36QAgHvcejd.html", waiting until "load"
+
+2025-04-14 00:13:35,819 - ERROR - 链接 https://view.inews.qq.com/a/20220417A03LE800 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://view.inews.qq.com/a/20220417A03LE800", waiting until "load"
+
+2025-04-14 00:14:22,080 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:14:22,082 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:15:32,248 - ERROR - 链接 http://www.hedong.gov.cn/info/9615/139388.htm 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.hedong.gov.cn/info/9615/139388.htm", waiting until "load"
+
+2025-04-14 00:15:42,258 - ERROR - 域名 http://www.hedong.gov.cn/info/9615/139388.htm 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.hedong.gov.cn/info/9615/139388.htm", waiting until "load"
+
+2025-04-14 00:17:01,789 - ERROR - 链接 https://m.doyo.cn/app/403998.html 访问失败：Page.goto: net::ERR_CONNECTION_REFUSED at https://m.doyo.cn/app/403998.html
+Call log:
+  - navigating to "https://m.doyo.cn/app/403998.html", waiting until "load"
+
+2025-04-14 00:17:02,025 - ERROR - 域名 https://m.doyo.cn/app/403998.html 访问失败：Page.goto: net::ERR_CONNECTION_REFUSED at https://m.doyo.cn/app/403998.html
+Call log:
+  - navigating to "https://m.doyo.cn/app/403998.html", waiting until "load"
+
+2025-04-14 00:17:27,301 - ERROR - 链接 https://tieba.baidu.com/p/8678363618 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://tieba.baidu.com/p/8678363618", waiting until "load"
+
+2025-04-14 00:17:45,404 - ERROR - 链接 https://ixdzs8.com/ 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at https://ixdzs8.com/
+Call log:
+  - navigating to "https://ixdzs8.com/", waiting until "load"
+
+2025-04-14 00:17:46,056 - ERROR - 域名 https://ixdzs8.com/ 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at https://ixdzs8.com/
+Call log:
+  - navigating to "https://ixdzs8.com/", waiting until "load"
+
+2025-04-14 00:17:48,705 - ERROR - 链接 https://m.ixdzs.com/ 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at https://m.ixdzs.com/
+Call log:
+  - navigating to "https://m.ixdzs.com/", waiting until "load"
+
+2025-04-14 00:17:49,400 - ERROR - 域名 https://m.ixdzs.com/ 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at https://m.ixdzs.com/
+Call log:
+  - navigating to "https://m.ixdzs.com/", waiting until "load"
+
+2025-04-14 00:18:33,632 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:18:33,634 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:19:14,594 - ERROR - 链接 http://www.360doc.cn/article/37581541_827142752.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.360doc.cn/article/37581541_827142752.html", waiting until "load"
+
+2025-04-14 00:19:23,586 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:19:23,589 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:19:51,238 - ERROR - 链接 https://www.douyin.com/topic/7485496682751395891 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.douyin.com/topic/7485496682751395891", waiting until "load"
+
+2025-04-14 00:19:54,715 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:19:54,718 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:19:56,236 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:19:56,238 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:19:56,241 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:19:56,243 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:20:05,241 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-14 00:20:05,524 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-14 00:20:24,737 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-14 00:20:25,135 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-14 00:20:28,590 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:20:28,593 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:20:28,597 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:20:28,599 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:20:30,291 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:20:30,294 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:20:53,804 - ERROR - 链接 https://m.iask.sina.com.cn/jx/sh/4DG801kjfb3R.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.iask.sina.com.cn/jx/sh/4DG801kjfb3R.html", waiting until "load"
+
+2025-04-14 00:21:03,813 - ERROR - 域名 https://m.iask.sina.com.cn/jx/sh/4DG801kjfb3R.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.iask.sina.com.cn/jx/sh/4DG801kjfb3R.html", waiting until "load"
+
+2025-04-14 00:22:01,931 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-14 00:22:02,286 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-14 00:22:10,445 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-14 00:22:10,808 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-14 00:22:13,874 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:22:13,876 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:22:13,879 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:22:13,881 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:22:15,320 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:22:15,323 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:22:46,620 - ERROR - 链接 https://m.iask.sina.com.cn/b/new2EJdEfIskzd.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.iask.sina.com.cn/b/new2EJdEfIskzd.html", waiting until "load"
+
+2025-04-14 00:22:56,634 - ERROR - 域名 https://m.iask.sina.com.cn/b/new2EJdEfIskzd.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://m.iask.sina.com.cn/b/new2EJdEfIskzd.html", waiting until "load"
+
+2025-04-14 00:23:03,063 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:23:03,071 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:23:15,230 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:23:15,233 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:23:30,011 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:23:30,015 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:23:36,907 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-14 00:23:37,257 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-14 00:24:50,455 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:24:50,457 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:25:08,268 - ERROR - 链接 http://m.dbehsjw.cn/VHX/detail/DTwoViZEEJQp.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.dbehsjw.cn/VHX/detail/DTwoViZEEJQp.html", waiting until "load"
+
+2025-04-14 00:25:18,269 - ERROR - 域名 http://m.dbehsjw.cn/VHX/detail/DTwoViZEEJQp.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://m.dbehsjw.cn/VHX/detail/DTwoViZEEJQp.html", waiting until "load"
+
+2025-04-14 00:26:01,650 - ERROR - 链接 https://www.douyin.com/note/7403374355083693324 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.douyin.com/note/7403374355083693324", waiting until "load"
+
+2025-04-14 00:26:06,909 - ERROR - 链接 https://www.xiazaiba.com/chtml/321737.html?ty 访问失败：Page.goto: net::ERR_EMPTY_RESPONSE at https://www.xiazaiba.com/chtml/321737.html?ty
+Call log:
+  - navigating to "https://www.xiazaiba.com/chtml/321737.html?ty", waiting until "load"
+
+2025-04-14 00:26:07,111 - ERROR - 域名 https://www.xiazaiba.com/chtml/321737.html?ty 访问失败：Page.goto: net::ERR_EMPTY_RESPONSE at https://www.xiazaiba.com/chtml/321737.html?ty
+Call log:
+  - navigating to "https://www.xiazaiba.com/chtml/321737.html?ty", waiting until "load"
+
+2025-04-14 00:27:45,194 - ERROR - 链接 https://www.sport.gov.cn/atzx/n5461/c28433142/content.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.sport.gov.cn/atzx/n5461/c28433142/content.html", waiting until "load"
+
+2025-04-14 00:27:55,200 - ERROR - 域名 https://www.sport.gov.cn/atzx/n5461/c28433142/content.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.sport.gov.cn/atzx/n5461/c28433142/content.html", waiting until "load"
+
+2025-04-14 00:28:34,242 - ERROR - 链接 http://wap.hao123.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://wap.hao123.com/", waiting until "load"
+
+2025-04-14 00:28:44,247 - ERROR - 域名 http://wap.hao123.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://wap.hao123.com/", waiting until "load"
+
+2025-04-14 00:28:48,288 - ERROR - 链接 baiduboxapp://v19/utils/invokeHNPage 访问失败：Page.goto: net::ERR_ABORTED at baiduboxapp://v19/utils/invokeHNPage
+Call log:
+  - navigating to "baiduboxapp://v19/utils/invokeHNPage", waiting until "load"
+
+2025-04-14 00:28:48,296 - ERROR - 域名 baiduboxapp://v19/utils/invokeHNPage 访问失败：Page.goto: net::ERR_ABORTED at baiduboxapp://v19/utils/invokeHNPage
+Call log:
+  - navigating to "baiduboxapp://v19/utils/invokeHNPage", waiting until "load"
+
+2025-04-14 00:28:50,665 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:28:50,668 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:28:50,672 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:28:50,680 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:28:52,617 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:28:52,620 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:29:11,052 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:29:11,055 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:29:19,350 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:29:19,352 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:29:51,510 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:29:51,513 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:30:41,606 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:30:41,608 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:31:24,610 - ERROR - 链接 https://www.chinanews.com/m/sh/2019/10-15/8978926.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.chinanews.com/m/sh/2019/10-15/8978926.shtml", waiting until "load"
+
+2025-04-14 00:31:34,614 - ERROR - 域名 https://www.chinanews.com/m/sh/2019/10-15/8978926.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.chinanews.com/m/sh/2019/10-15/8978926.shtml", waiting until "load"
+
+2025-04-14 00:32:00,330 - ERROR - 链接 http://www.360doc.cn/article/47383264_809694723.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.360doc.cn/article/47383264_809694723.html", waiting until "load"
+
+2025-04-14 00:32:10,335 - ERROR - 域名 http://www.360doc.cn/article/47383264_809694723.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://www.360doc.cn/article/47383264_809694723.html", waiting until "load"
+
+2025-04-14 00:33:01,077 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:33:01,079 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:33:01,494 - ERROR - 链接 https://app.3dmgame.com/android/85280.html 访问失败：Page.goto: net::ERR_EMPTY_RESPONSE at https://app.3dmgame.com/android/85280.html
+Call log:
+  - navigating to "https://app.3dmgame.com/android/85280.html", waiting until "load"
+
+2025-04-14 00:33:01,766 - ERROR - 域名 https://app.3dmgame.com/android/85280.html 访问失败：Page.goto: net::ERR_CONNECTION_RESET at https://app.3dmgame.com/android/85280.html
+Call log:
+  - navigating to "https://app.3dmgame.com/android/85280.html", waiting until "load"
+
+2025-04-14 00:35:03,154 - ERROR - 链接 https://www.eolink.com/news/post/12185.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.eolink.com/news/post/12185.html", waiting until "load"
+
+2025-04-14 00:35:13,171 - ERROR - 域名 https://www.eolink.com/news/post/12185.html 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.eolink.com/news/post/12185.html", waiting until "load"
+
+2025-04-14 00:37:58,737 - ERROR - 链接 https://news.qq.com/rain/a/20250106A08FCJ00 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.qq.com/rain/a/20250106A08FCJ00", waiting until "load"
+
+2025-04-14 00:38:15,115 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:38:15,118 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:38:52,689 - ERROR - 域名 http://www.ciean.cn/ 访问失败：Page.goto: net::ERR_ABORTED at http://www.ciean.cn/
+Call log:
+  - navigating to "http://www.ciean.cn/", waiting until "load"
+
+2025-04-14 00:39:00,120 - ERROR - 域名 http://www.shailaisai.com/ 访问失败：Page.goto: net::ERR_ABORTED at http://www.shailaisai.com/
+Call log:
+  - navigating to "http://www.shailaisai.com/", waiting until "load"
+
+2025-04-14 00:39:44,410 - ERROR - 链接 http://bldy1688.com/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://bldy1688.com/", waiting until "load"
+
+2025-04-14 00:41:19,039 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:41:19,041 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:41:36,028 - ERROR - 域名 https://m.baidu.com/bh/m/detail/sv_11311977184545100067?vid=10703810472709878330 访问失败：Page.wait_for_selector: Timeout 10000ms exceeded.
+Call log:
+  - waiting for locator("body") to be visible
+  -     25 × locator resolved to hidden <body>…</body>
+
+2025-04-14 00:42:28,645 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:42:28,648 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:42:38,503 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:42:38,506 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:43:04,878 - ERROR - 链接 https://www.kuaishou.com/profile/3xqhfgbn5s7ymhe 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.kuaishou.com/profile/3xqhfgbn5s7ymhe", waiting until "load"
+
+2025-04-14 00:43:14,892 - ERROR - 域名 https://www.kuaishou.com/profile/3xqhfgbn5s7ymhe 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://www.kuaishou.com/profile/3xqhfgbn5s7ymhe", waiting until "load"
+
+2025-04-14 00:43:38,953 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-14 00:43:39,330 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-14 00:43:47,045 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-14 00:43:47,415 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-04-14 00:44:39,104 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:44:39,107 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:44:58,776 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:44:58,778 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:45:11,741 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:45:11,743 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:45:51,585 - ERROR - 链接 http://xinyuhuzhu.net/APa/detail/BfFEKl/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://xinyuhuzhu.net/APa/detail/BfFEKl/", waiting until "load"
+
+2025-04-14 00:46:01,587 - ERROR - 域名 http://xinyuhuzhu.net/APa/detail/BfFEKl/ 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://xinyuhuzhu.net/APa/detail/BfFEKl/", waiting until "load"
+
+2025-04-14 00:46:23,917 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:46:23,919 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:46:34,282 - ERROR - 链接 http://hu.sportingbet.com/ 访问失败：'content'
+2025-04-14 00:48:22,374 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:48:22,377 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-04-14 00:49:43,290 - ERROR - 链接 http://test.zaixian-fanyi.com/fan_yi_1577888 访问失败：Page.goto: net::ERR_EMPTY_RESPONSE at http://test.zaixian-fanyi.com/fan_yi_1577888
+Call log:
+  - navigating to "http://test.zaixian-fanyi.com/fan_yi_1577888", waiting until "load"
+
+2025-04-14 00:49:53,307 - ERROR - 域名 http://test.zaixian-fanyi.com/fan_yi_1577888 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "http://test.zaixian-fanyi.com/fan_yi_1577888", waiting until "load"
+
+2025-04-14 00:50:50,214 - ERROR - 链接 https://news.ifeng.com/rt_channel/index_2009_10_23.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.ifeng.com/rt_channel/index_2009_10_23.shtml", waiting until "load"
+
+2025-04-14 00:51:00,218 - ERROR - 域名 https://news.ifeng.com/rt_channel/index_2009_10_23.shtml 访问失败：Page.goto: Timeout 10000ms exceeded.
+Call log:
+  - navigating to "https://news.ifeng.com/rt_channel/index_2009_10_23.shtml", waiting until "load"
+
+2025-04-14 00:53:21,760 - ERROR - 链接 https://www.yzhgdl.com/ 访问失败：Page.goto: net::ERR_CERT_DATE_INVALID at https://www.yzhgdl.com/
+Call log:
+  - navigating to "https://www.yzhgdl.com/", waiting until "load"
+
+2025-04-14 00:53:21,846 - ERROR - 域名 https://www.yzhgdl.com/ 访问失败：Page.goto: net::ERR_CERT_DATE_INVALID at https://www.yzhgdl.com/
+Call log:
+  - navigating to "https://www.yzhgdl.com/", waiting until "load"
+
+2025-04-14 01:13:25,163 - ERROR - 域名 https://baike.baidu.com/item/B%E4%BD%93%E8%82%B2APP/64232909 访问失败：Page.content: Target page, context or browser has been closed
+2025-04-14 01:13:27,429 - ERROR - 链接 https://www.hnedu.cn/xiangshan/rpLbeg640333 访问失败：Page.goto: Target page, context or browser has been closed
+2025-04-14 01:13:27,432 - ERROR - 域名 https://www.hnedu.cn/xiangshan/rpLbeg640333 访问失败：Page.goto: Target page, context or browser has been closed
