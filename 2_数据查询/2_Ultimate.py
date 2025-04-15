@@ -1,14 +1,15 @@
 import pandas as pd
 from sqlalchemy import create_engine
 from datetime import datetime
-from typing import List, Tuple
+from dateutil.relativedelta import relativedelta
 
 class DatabaseQuery:
-    def __init__(self, host: str, port: int, user: str, password: str,
+    def __init__(self, host: str, port: int, user: str, password: str, site_id: int = 1000,
                  start_date: str = '2025-03-01', end_date: str = '2025-03-31'):
         """初始化数据库连接参数"""
         connection_string = f"mysql+mysqlconnector://{user}:{password}@{host}:{port}/"
         self.engine = create_engine(connection_string)
+        self.site_id = site_id  # 新增 site_id 属性
         self.start_date = start_date
         self.end_date = end_date
 
@@ -36,85 +37,121 @@ class DatabaseQuery:
             ON ma.agent_name = m.agent_name
         WHERE 
             d1.group_name = '推广部'
-            AND d2.group_name IN ('推广1部', '推广3部', '推广5部', '推广6部', '推广7部', '推广9部', '推广10部')
+            AND d2.group_name IN ('推广1部', '推广3部', '推广5部', '推广6部', '推广7部', '推广9部', '推广11部')
+            AND d1.site_id = %s
         """
-        return pd.read_sql(query, self.engine)
+        return pd.read_sql(query, self.engine, params=(self.site_id,))
 
     def query_login_members(self) -> pd.DataFrame:
         """查询登入注会员"""
-        query = f"""
+        query = """
         SELECT DISTINCT id AS '会员ID'
         FROM u1_1000.member_info
-        WHERE last_login_time BETWEEN '{self.start_date}' AND '{self.end_date}'
+        WHERE mi.last_login_time > %s
+        AND site_id = %s
         """
-        return pd.read_sql(query, self.engine)
+        return pd.read_sql(query, self.engine, params=(self.start_date, self.site_id))
+
+    def query_active_low_depositors(self) -> pd.DataFrame:
+        """查询在指定日期范围内登录且存款金额大于5000的会员"""
+        query = """
+        SELECT DISTINCT mds.member_id AS '会员ID'
+        FROM bigdata.member_daily_statics mds
+        INNER JOIN u1_1000.member_info mi
+            ON mds.member_id = mi.id
+        WHERE mds.statics_date BETWEEN %s AND %s
+            AND mi.last_login_time > %s
+            AND mds.site_id = %s
+        GROUP BY mds.member_id
+        HAVING SUM(mds.draw) < 500
+        """
+        return pd.read_sql(query, self.engine, params=(self.start_date, self.end_date, self.start_date, self.site_id))
+
+    def query_recent_login_members(self) -> pd.DataFrame:
+        """查询VIP等级>=3且在开始日期前一个月从1号开始登录的会员"""
+        start_date_obj = datetime.strptime(self.start_date, '%Y-%m-%d')
+        one_month_before = start_date_obj - relativedelta(months=1, day=1)
+        day_before_start_date = start_date_obj - relativedelta(days=1)
+        query = """
+        SELECT DISTINCT id AS '会员ID'
+        FROM u1_1000.member_info
+        WHERE vip_grade >= 3
+        AND last_login_time BETWEEN %s AND %s
+        AND site_id = %s
+        """
+        return pd.read_sql(query, self.engine, params=(one_month_before.strftime('%Y-%m-%d'), day_before_start_date.strftime('%Y-%m-%d'), self.site_id))
 
     def query_non_betting_members(self) -> pd.DataFrame:
         """查询未投注会员"""
-        query = f"""
+        query = """
         SELECT member_id AS '会员ID'
         FROM bigdata.member_daily_statics
-        WHERE statics_date BETWEEN '{self.start_date}' AND '{self.end_date}'
+        WHERE statics_date BETWEEN %s AND %s
+        AND site_id = %s
         GROUP BY member_id
         HAVING SUM(valid_bet_amount) = 0
         """
-        return pd.read_sql(query, self.engine)
+        return pd.read_sql(query, self.engine, params=(self.start_date, self.end_date, self.site_id))
 
     def query_betting_members(self) -> pd.DataFrame:
         """查询投注金额大于10000的会员"""
-        query = f"""
+        query = """
         SELECT member_id AS '会员ID'
         FROM bigdata.member_daily_statics
-        WHERE statics_date BETWEEN '{self.start_date}' AND '{self.end_date}'
+        WHERE statics_date BETWEEN %s AND %s
+        AND site_id = %s
         GROUP BY member_id
         HAVING SUM(valid_bet_amount) > 10000
         """
-        return pd.read_sql(query, self.engine)
+        return pd.read_sql(query, self.engine, params=(self.start_date, self.end_date, self.site_id))
 
     def query_losing_members(self) -> pd.DataFrame:
         """查询输钱大于3000的会员"""
-        query = f"""
+        query = """
         SELECT member_id AS '会员ID'
         FROM bigdata.member_daily_statics
-        WHERE statics_date BETWEEN '{self.start_date}' AND '{self.end_date}'
+        WHERE statics_date BETWEEN %s AND %s
+        AND site_id = %s
         GROUP BY member_id
         HAVING SUM(profit) > 3000
         """
-        return pd.read_sql(query, self.engine)
+        return pd.read_sql(query, self.engine, params=(self.start_date, self.end_date, self.site_id))
 
     def query_winning_members(self) -> pd.DataFrame:
         """查询赢钱大于3000的会员"""
-        query = f"""
+        query = """
         SELECT member_id AS '会员ID'
         FROM bigdata.member_daily_statics
-        WHERE statics_date BETWEEN '{self.start_date}' AND '{self.end_date}'
+        WHERE statics_date BETWEEN %s AND %s
+        AND site_id = %s
         GROUP BY member_id
         HAVING SUM(profit) < -3000
         """
-        return pd.read_sql(query, self.engine)
+        return pd.read_sql(query, self.engine, params=(self.start_date, self.end_date, self.site_id))
 
     def query_frequent_depositors(self) -> pd.DataFrame:
         """查询存款次数大于3的会员"""
-        query = f"""
+        query = """
         SELECT member_id AS '会员ID'
         FROM bigdata.member_daily_statics
-        WHERE statics_date BETWEEN '{self.start_date}' AND '{self.end_date}'
+        WHERE statics_date BETWEEN %s AND %s
+        AND site_id = %s
         GROUP BY member_id
         HAVING SUM(draw_count) > 3
         """
-        return pd.read_sql(query, self.engine)
+        return pd.read_sql(query, self.engine, params=(self.start_date, self.end_date, self.site_id))
 
     def query_high_depositors(self) -> pd.DataFrame:
         """查询存款金额大于5000的会员"""
-        query = f"""
+        query = """
         SELECT member_id AS '会员ID'
         FROM bigdata.member_daily_statics
-        WHERE statics_date BETWEEN '{self.start_date}' AND '{self.end_date}'
+        WHERE statics_date BETWEEN %s AND %s
+        AND site_id = %s
         GROUP BY member_id
         HAVING SUM(draw) > 5000
         """
-        return pd.read_sql(query, self.engine)
-
+        return pd.read_sql(query, self.engine, params=(self.start_date, self.end_date, self.site_id))
 
 def save_to_excel(df: pd.DataFrame, filename: str):
     """保存 DataFrame 到 Excel 文件"""
@@ -125,14 +162,12 @@ def save_to_excel(df: pd.DataFrame, filename: str):
         worksheet.freeze_panes(1, 0)
         worksheet.autofilter(0, 0, 0, len(df.columns) - 1)
 
-
 def work(db_query: DatabaseQuery) -> pd.DataFrame:
     """执行查询并合并结果"""
     result_df = (db_query.query_promotion()
-                 .merge(db_query.query_login_members(), on='会员ID', how='inner')
+                 .merge(db_query.query_recent_login_members(), on='会员ID', how='left')
                  )
     return result_df
-
 
 def main():
     start_time = datetime.now()
@@ -144,8 +179,6 @@ def main():
         port=3366,
         user='bigdata',
         password='uvb5SOSmLH8sCoSU',
-        start_date='2025-03-01',  # 统一日期，可修改
-        end_date='2025-03-31'     # 统一日期，可修改
     )
 
     # 执行查询

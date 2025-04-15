@@ -16,8 +16,7 @@ import whois
 
 # 关键词和域名列表
 KEYWORDS = '''
-涉嫌开设赌场罪一般拘留多久
-捕鱼大作战微信版
+959娱乐3.0最新版本更新内容
 '''
 keywords = [keyword.strip() for keyword in KEYWORDS.split('\n') if keyword.strip()]
 domains = """
@@ -122,8 +121,8 @@ def extract_main_site(url):
 async def search_keyword(page, keyword, all_results):
     search_url = f"https://m.baidu.com/s?wd={keyword}"
     try:
-        await page.goto(search_url, timeout=5000)
-        await page.wait_for_selector("div.result", timeout=5000)
+        await page.goto(search_url, timeout=15000)
+        await page.wait_for_selector("div.result", timeout=15000)
         html = await page.content()
         soup = BeautifulSoup(html, 'html.parser')
         related_searches = extract_related_searches(soup)
