@@ -3,30 +3,44 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 from datetime import datetime
 from dateutil.relativedelta import relativedelta
+import pymongo
+from tqdm import tqdm
 
 
 class DatabaseQuery:
-    def __init__(self, host: str, port: int, user: str, password: str, site_id: int = 1000,
-                 start_date: str = '2025-03-01', end_date: str = '2025-03-31',
+    def __init__(self, host: str, port: int, user: str, password: str,
+                 mongo_host: str, mongo_port: int, mongo_user: str, mongo_password: str,
+                 site_id: int = 1000, start_date: str = '2025-03-31', end_date: str = '2025-03-31',
                  agent_1000: str = 'agent_1000', u1_1000: str = 'u1_1000',
                  bigdata: str = 'bigdata', control_1000: str = 'control_1000'):
         """初始化数据库连接参数"""
+        # MySQL 连接
         connection_string = f"mysql+mysqlconnector://{user}:{password}@{host}:{port}/"
         self.engine = create_engine(connection_string)
         self.Session = sessionmaker(bind=self.engine)
         self.session = self.Session()
+
+        # MongoDB 连接
+        self.mongo_client = pymongo.MongoClient(f"mongodb://{mongo_user}:{mongo_password}@{mongo_host}:{mongo_port}/", maxPoolSize=50)
+        self.mongo_db = self.mongo_client["update_records"]
+
+        # 其他参数
         self.control_1000 = control_1000
         self.bigdata = bigdata
         self.agent_1000 = agent_1000
         self.u1_1000 = u1_1000
-        self.site_id = site_id  # 站点ID
-        self.start_date = start_date  # 开始日期
-        self.end_date = end_date  # 结束日期
+        self.site_id = site_id
+        self.start_date = start_date
+        self.end_date = end_date
+        self.start_time = f"{start_date} 00:00:00"
+        self.end_time = f"{end_date} 23:59:59"
 
-    def close_session(self):
-        """关闭当前会话"""
+    def close_connections(self):
+        """关闭 MySQL 和 MongoDB 连接"""
         if self.session:
             self.session.close()
+        if self.mongo_client:
+            self.mongo_client.close()
 
     def Custom(self) -> pd.DataFrame:
         """查询登入注会员"""
@@ -80,7 +94,7 @@ class DatabaseQuery:
             ON a1_ad_4.pid = a1_ad_3.id
         LEFT JOIN {self.agent_1000}.agent_dept_member a1_adm
             ON a1_adm.dept_id = COALESCE(a1_ad_4.id, a1_ad_3.id, a1_ad_2.id, a1_ad.id)
-        LEFT JOIN u1_1000.member_info u1_mi
+        LEFT JOIN {self.u1_1000}.member_info u1_mi
             ON u1_mi.top_name = a1_adm.agent_name
         WHERE
             a1_ad.group_name = '推广部'
@@ -192,6 +206,115 @@ class DatabaseQuery:
         """
         return pd.read_sql(query, self.engine)
 
+    def query_mongo_betting_stats(self) -> pd.DataFrame:
+        collections = [col for col in self.mongo_db.list_collection_names() if col.startswith('pull_order')]
+        aggregation_results = []
+
+        pipeline = [
+            {
+                "$match": {
+                    "flag": 1,
+                    "settle_time": {"$gte": self.start_time, "$lte": self.end_time},
+                    "site_id": self.site_id
+                }
+            },
+            {
+                "$group": {
+                    "_id": {
+                        "date": {"$substr": ["$settle_time", 0, 10]},
+                        "member_id": "$member_id",
+                        "game_type": "$game_type"
+                    },
+                    "betting_count": {"$sum": 1},
+                    "total_valid_bet_amount": {"$sum": "$valid_bet_amount"},
+                    "total_net_amount": {"$sum": "$net_amount"}
+                }
+            },
+            {
+                "$project": {
+                    "date": "$_id.date",
+                    "member_id": "$_id.member_id",
+                    "game_type": "$_id.game_type",
+                    "betting_count": 1,
+                    "total_valid_bet_amount": 1,
+                    "total_net_amount": 1,
+                    "_id": 0
+                }
+            },
+            {"$sort": {"date": 1}}
+        ]
+
+        for col_name in tqdm(collections, desc="Processing collections"):
+            collection = self.mongo_db[col_name]
+            for doc in collection.aggregate(pipeline):
+                aggregation_results.append({
+                    "date": doc["date"],
+                    "member_id": doc["member_id"],
+                    "game_type": doc["game_type"],
+                    "betting_count": doc["betting_count"],
+                    "total_valid_bet_amount": doc["total_valid_bet_amount"],
+                    "total_net_amount": doc["total_net_amount"]
+                })
+
+        # 转换为 DataFrame 并优化数据类型
+        type_data = pd.DataFrame(aggregation_results)
+        if type_data.empty:
+            return pd.DataFrame(columns=['date', 'member_id', '投注次数', '有效投注', '会员输赢'])
+
+        type_data = type_data.astype({
+            'date': 'category',
+            'member_id': 'category',
+            'game_type': 'int8',
+            'betting_count': 'int32',
+            'total_valid_bet_amount': 'float32',
+            'total_net_amount': 'float32'
+        })
+
+        # 按日期和会员ID汇总
+        member_daily_bet = type_data.groupby(['date', 'member_id'], observed=True).agg({
+            'betting_count': 'sum',
+            'total_valid_bet_amount': 'sum',
+            'total_net_amount': 'sum'
+        }).reset_index()
+
+        member_daily_bet.rename(columns={
+            'betting_count': '投注次数',
+            'total_valid_bet_amount': '有效投注',
+            'total_net_amount': '会员输赢'
+        }, inplace=True)
+
+        # 按 game_type 透视有效投注金额
+        game_type_mapping = {
+            1: '体育有效投注', 2: '电竞有效投注', 3: '真人有效投注',
+            4: '彩票有效投注', 5: '棋牌有效投注', 6: '电子有效投注',
+            7: '捕鱼有效投注'
+        }
+        type_data_valid_pivot = type_data.pivot_table(
+            index=['date', 'member_id'],
+            columns='game_type',
+            values='total_valid_bet_amount',
+            aggfunc='sum',
+            fill_value=0
+        ).reset_index()
+
+        new_columns = type_data_valid_pivot.columns[:2].tolist() + [
+            game_type_mapping.get(col, col) for col in type_data_valid_pivot.columns[2:]
+        ]
+        type_data_valid_pivot.columns = new_columns
+
+        # 合并数据
+        daily_data = pd.merge(
+            member_daily_bet,
+            type_data_valid_pivot,
+            on=['date', 'member_id'],
+            how='outer'
+        )
+
+        # 过滤有效投注大于0的记录
+        daily_data = daily_data[daily_data['有效投注'] > 0]
+        return daily_data
+
+
 def save_to_excel(df: pd.DataFrame, filename: str):
     """保存 DataFrame 到 Excel 文件"""
     with pd.ExcelWriter(filename, engine='xlsxwriter') as writer:
@@ -201,25 +324,35 @@ def save_to_excel(df: pd.DataFrame, filename: str):
         worksheet.freeze_panes(1, 0)
         worksheet.autofilter(0, 0, 0, len(df.columns) - 1)
 
+
 def work(db_query: DatabaseQuery) -> pd.DataFrame:
     """执行查询并合并结果"""
     result_df = (db_query._10_query_promotion()
                  .merge(db_query._1_query_member_stats(), on='会员ID', how='inner')
-                 )
+                 .merge(db_query.query_mongo_betting_stats(), left_on='会员ID', right_on='member_id', how='inner'))
     return result_df
+
 
 def main():
     start_time = datetime.now()
     print(f"运行开始时间: {start_time.strftime('%Y-%m-%d %H:%M')}")
     db_query = DatabaseQuery(
-        host='18.178.159.230',port=3366,user='bigdata',password='uvb5SOSmLH8sCoSU',)
+        host='18.178.159.230',
+        port=3366,
+        user='bigdata',
+        password='uvb5SOSmLH8sCoSU',
+        mongo_host='18.178.159.230',
+        mongo_port=27217,
+        mongo_user='biddata',
+        mongo_password='uvb5SOSmLH8sCoSU'
+    )
     try:
         result = work(db_query)
         excel_filename = f"query_result_{start_time.strftime('%Y-%m-%d_%H.%M')}.xlsx"
         save_to_excel(result, excel_filename)
         print(f"结果已保存到: {excel_filename}")
     finally:
-        db_query.close_session()
+        db_query.close_connections()
         end_time = datetime.now()
         print(f"运行结束时间: {end_time.strftime('%Y-%m-%d %H:%M')}")
         print(f"总运行时间: {str(end_time - start_time).split('.')[0]}")
