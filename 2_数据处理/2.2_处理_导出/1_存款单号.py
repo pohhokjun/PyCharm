@@ -5,8 +5,8 @@ import os
 from sqlalchemy import create_engine
 
 # 时间范围（便于修改）
-START_TIME = '2025-04-16 00:00:00'  # 开始时间
-END_TIME = '2025-04-16 23:59:59'    # 结束时间
+START_TIME = '2025-04-17 00:00:00'  # 开始时间
+END_TIME = '2025-04-17 23:59:59'    # 结束时间
 
 # 全局映射字典
 PAY_METHODS = {
