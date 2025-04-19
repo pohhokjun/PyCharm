@@ -101,10 +101,14 @@ class DatabaseQuery:
             GROUP_CONCAT(c1_sv.dict_value ORDER BY c1_sv.code SEPARATOR ',') AS '标签',
             u1_mi.created_at AS '注册时间',
             u1_mi.last_login_time AS '最后登录时间',
-            COALESCE(SUM(b_mds.deposit), 0) AS '历史累计存款',
-            COALESCE(SUM(b_mds.draw), 0) AS '历史累计取款',
+            COALESCE(SUM(b_mds.deposit_count), 0) AS '历史存款笔数',
+            COALESCE(SUM(b_mds.deposit), 0) AS '历史存款',
+            COALESCE(SUM(b_mds.draw_count), 0) AS '历史取款笔数',
+            COALESCE(SUM(b_mds.draw), 0) AS '历史取款',
             COALESCE(SUM(b_mds.bets), 0) AS '历史有效投注金额',
-            COALESCE(-SUM(b_mds.profit), 0) AS '历史总输赢'
+            COALESCE(-SUM(b_mds.profit), 0) AS '历史总输赢',
+            COALESCE(SUM(b_mds.promo), 0) AS '历史红利',
+            COALESCE(SUM(b_mds.rebate), 0) AS '历史返水'
         FROM {self.u1_1000}.member_info u1_mi
         LEFT JOIN {self.control_1000}.sys_dict_value c1_sv
             ON FIND_IN_SET(c1_sv.code, u1_mi.tag_id)
@@ -413,7 +417,6 @@ def work(db_query: DatabaseQuery) -> pd.DataFrame:
                  .merge(db_query._1_member_stats(), on='会员ID', how='inner')
                  .merge(db_query.mongo_last_bet_time(), on='会员ID', how='inner')
                  .merge(db_query.mongo_betting_stats(), on='会员ID', how='inner')
-                 .merge(db_query.mongo_betting_details(), on='会员ID', how='left')
                  )
     return result_df
 
