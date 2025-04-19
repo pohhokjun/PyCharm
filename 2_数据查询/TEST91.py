@@ -60,7 +60,7 @@ class DatabaseQuery:
         self.end_time = f"{end_date} 23:59:59"
 
     def _process_mongo_collections(self, collections: list, pipeline: list) -> pd.DataFrame:
-        """使用多进程处理 MongoDB 集合的通用方法"""
+        """使用多进程处理 MongoDB **的通用方法"""
         processes = min(4, os.cpu_count() or 1)
         with Pool(processes=processes) as pool:
             partial_process = partial(
@@ -85,12 +85,18 @@ class DatabaseQuery:
         """
         return pd.read_sql(query, self.engine)
 
-    def _1_query_member_stats(self) -> pd.DataFrame:
+    def _1_member_stats(self) -> pd.DataFrame:
         """查询会员历史累计统计信息"""
         query = f"""
         SELECT
             u1_mi.id AS '会员ID',
             u1_mi.name AS '会员账号',
+            CASE u1_mi.status
+                WHEN 1 THEN '启用'
+                WHEN 0 THEN '禁用'
+                ELSE CAST(u1_mi.status AS CHAR)
+            END AS '状态',
+            u1_mi.is_agent AS '是否代理',            
             u1_mi.vip_grade AS 'VIP等级',
             GROUP_CONCAT(c1_sv.dict_value ORDER BY c1_sv.code SEPARATOR ',') AS '标签',
             u1_mi.created_at AS '注册时间',
@@ -110,7 +116,7 @@ class DatabaseQuery:
         """
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
-    def _10_query_promotion(self) -> pd.DataFrame:
+    def _10_promotion(self) -> pd.DataFrame:
         """查询推广部相关信息"""
         query = f"""
         SELECT
@@ -139,7 +145,7 @@ class DatabaseQuery:
         """
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
-    def _11_query_login_members(self) -> pd.DataFrame:
+    def _11_login_members(self) -> pd.DataFrame:
         """查询登入注会员"""
         query = f"""
         SELECT DISTINCT u1_mi.id AS '会员ID'
@@ -149,7 +155,7 @@ class DatabaseQuery:
         """
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
-    def _12_query_active_low_depositors(self) -> pd.DataFrame:
+    def _12_active_low_depositors(self) -> pd.DataFrame:
         """查询在指定日期范围内登录且存款金额大于5000的会员"""
         query = f"""
         SELECT DISTINCT b_mds.member_id AS '会员ID'
@@ -164,7 +170,7 @@ class DatabaseQuery:
         """
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
-    def _14_query_recent_login_members(self) -> pd.DataFrame:
+    def _14_recent_login_members(self) -> pd.DataFrame:
         """查询VIP等级>=3且在开始日期前一个月从1号开始登录的会员"""
         start_date_obj = datetime.strptime(self.start_date, '%Y-%m-%d')
         one_month_before = start_date_obj - relativedelta(months=1, day=1)
@@ -179,7 +185,7 @@ class DatabaseQuery:
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
     def _15_merge_login_non_betting_members(self) -> pd.DataFrame:
-        """使用 SQL INNER JOIN 合并登录会员和未投注会员查询，获取同时满足条件的会员ID"""
+        """使用 SQL INNER JOIN 合并登录会员和 antecede会员查询，获取同时满足条件的会员ID"""
         query = f"""
         SELECT DISTINCT u1_mi.id AS '会员ID'
         FROM {self.u1_1000}.member_info u1_mi
@@ -194,7 +200,7 @@ class DatabaseQuery:
         """
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
-    def _16_query_bería_members(self) -> pd.DataFrame:
+    def _16_bería_members(self) -> pd.DataFrame:
         """查询投注金额大于10000的会员"""
         query = f"""
         SELECT b_mds.member_id AS '会员ID'
@@ -206,7 +212,7 @@ class DatabaseQuery:
         """
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
-    def _17_query_high_profit_members(self) -> pd.DataFrame:
+    def _17_high_profit_members(self) -> pd.DataFrame:
         """查询输钱或赢钱大于3000的会员"""
         query = f"""
         SELECT b_mds.member_id AS '会员ID'
@@ -218,7 +224,7 @@ class DatabaseQuery:
         """
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
-    def _18_query_frequent_depositors(self) -> pd.DataFrame:
+    def _18_frequent_depositors(self) -> pd.DataFrame:
         """查询存款次数大于3的会员"""
         query = f"""
         SELECT b_mds.member_id AS '会员ID'
@@ -230,7 +236,7 @@ class DatabaseQuery:
         """
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
-    def _19_query_high_depositors(self) -> pd.DataFrame:
+    def _19_high_depositors(self) -> pd.DataFrame:
         """查询存款金额大于5000的会员"""
         query = f"""
         SELECT b_mds.member_id AS '会员ID'
@@ -242,84 +248,105 @@ class DatabaseQuery:
         """
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
-    def query_mongo_betting_stats(self) -> pd.DataFrame:
+    def mongo_last_bet_time(self) -> pd.DataFrame:
+        """查询每个会员的最后下注时间"""
+        collections = [col for col in self.db.list_collection_names() if col.startswith(self.mongo_collection_prefix)]
+        if not collections:
+            return pd.DataFrame(columns=['会员ID', '最后下注时间'])
+
+        pipeline = [
+            {"$match": {
+                "flag": self.flag_value,
+                "settle_time": {"$gte": self.start_time, "$lte": self.end_time},
+                "site_id": self.site_id
+            }},
+            {"$group": {
+                "_id": "$member_id",
+                "last_bet_time": {"$max": "$bet_time"}
+            }},
+            {"$project": {
+                "_id": 0,
+                "会员ID": "$_id",
+                "最后下注时间": "$last_bet_time"
+            }}
+        ]
+
+        df = self._process_mongo_collections(collections, pipeline)
+        return df.astype({'会员ID': 'category'}) if not df.empty else pd.DataFrame(columns=['会员ID', '最后下注时间'])
+
+    def mongo_betting_stats(self) -> pd.DataFrame:
         """查询 MongoDB 投注统计数据"""
         collections = [col for col in self.db.list_collection_names() if col.startswith(self.mongo_collection_prefix)]
         if not collections:
             return pd.DataFrame(columns=['会员ID', '投注次数', '有效投注', '会员输赢'])
 
         pipeline = [
-            {"$match": {"flag": 1, "settle_time": {"$gte": self.start_time, "$lte": self.end_time},
-                        "site_id": self.site_id}},
-            {"$sort": {"settle_time": 1}},
-            {
-                "$group": {
-                    "_id": {
-                        "member_id": "$member_id",
-                        "game_type": "$game_type"
-                    },
-                    "betting_count": {"$sum": 1},
-                    "total_valid_bet_amount": {"$sum": "$valid_bet_amount"},
-                    "total_net_amount": {"$sum": "$net_amount"}
-                }
-            },
-            {
-                "$project": {
-                    "member_id": "$_id.member_id",
-                    "game_type": "$_id.game_type",
-                    "betting_count": 1,
-                    "total_valid_bet_amount": 1,
-                    "total_net_amount": 1,
-                    "_id": 0
-                }
-            }
+            {"$match": {
+                "flag": 1,
+                "settle_time": {"$gte": self.start_time, "$lte": self.end_time},
+                "site_id": self.site_id
+            }},
+            {"$group": {
+                "_id": {"member_id": "$member_id", "game_type": "$game_type"},
+                "betting_count": {"$sum": 1},
+                "valid_bet": {"$sum": "$valid_bet_amount"},
+                "net_amount": {"$sum": "$net_amount"}
+            }},
+            {"$project": {
+                "_id": 0,
+                "会员ID": "$_id.member_id",
+                "game_type": "$_id.game_type",
+                "betting_count": 1,
+                "valid_bet": 1,
+                "net_amount": 1
+            }}
         ]
 
-        type_data = self._process_mongo_collections(collections, pipeline)
-        if type_data.empty:
+        df = self._process_mongo_collections(collections, pipeline)
+        if df.empty:
             return pd.DataFrame(columns=['会员ID', '投注次数', '有效投注', '会员输赢'])
 
-        type_data = type_data.astype({
-            'member_id': 'category',
-            'game_type': 'int8',
-            'betting_count': 'int32',
-            'total_valid_bet_amount': 'float32',
-            'total_net_amount': 'float32'
-        })
+        df = df.astype({'会员ID': 'category', 'game_type': 'int8', 'betting_count': 'int32', 'valid_bet': 'float32',
+                        'net_amount': 'float32'})
 
-        member_bet = type_data.groupby(['member_id'], observed=True).agg({
+        # 聚合会员统计
+        member_stats = df.groupby('会员ID', observed=True).agg({
             'betting_count': 'sum',
-            'total_valid_bet_amount': 'sum',
-            'total_net_amount': 'sum'
+            'valid_bet': 'sum',
+            'net_amount': 'sum'
         }).reset_index().rename(columns={
-            'member_id': '会员ID',
             'betting_count': '投注次数',
-            'total_valid_bet_amount': '有效投注',
-            'total_net_amount': '会员输赢'
+            'valid_bet': '有效投注',
+            'net_amount': '会员输赢'
         })
 
-        game_type_mapping = {1: '体育有效投注', 2: '电竞有效投注', 3: '真人有效投注',
-                             4: '彩票有效投注', 5: '棋牌有效投注', 6: '电子有效投注', 7: '捕鱼有效投注'}
-        type_data_valid_pivot = type_data.pivot_table(
-            index=['member_id'],
-            columns='game_type',
-            values='total_valid_bet_amount',
-            aggfunc='sum',
-            fill_value=0
-        ).reset_index().rename(columns={'member_id': '会员ID'})
-        type_data_valid_pivot.columns = type_data_valid_pivot.columns[:1].tolist() + [
-            game_type_mapping.get(col, col) for col in type_data_valid_pivot.columns[1:]
-        ]
+        # 游戏类型映射
+        game_types = {
+            1: ('体育有效投注', '体育会员输赢'),
+            2: ('电竞有效投注', '电竞会员输赢'),
+            3: ('真人有效投注', '真人会员输赢'),
+            4: ('彩票有效投注', '彩票会员输赢'),
+            5: ('棋牌有效投注', '棋牌会员输赢'),
+            6: ('电子有效投注', '电子会员输赢'),
+            7: ('捕鱼有效投注', '捕鱼会员输赢')
+        }
 
-        daily_data = pd.merge(member_bet, type_data_valid_pivot, on=['会员ID'], how='outer')
-        return daily_data[daily_data['有效投注'] > 0]
+        # 有效投注和输赢透视表
+        valid_pivot = df.pivot_table(index='会员ID', columns='game_type', values='valid_bet', aggfunc='sum',
+                                     fill_value=0)
+        valid_pivot.columns = [game_types.get(col, (str(col),))[0] for col in valid_pivot.columns]
+        net_pivot = df.pivot_table(index='会员ID', columns='game_type', values='net_amount', aggfunc='sum',
+                                   fill_value=0)
+        net_pivot.columns = [game_types.get(col, (str(col),))[1] for col in net_pivot.columns]
 
-    def query_mongo_betting_details(self) -> pd.DataFrame:
+        # 合并结果
+        result = member_stats.merge(valid_pivot, on='会员ID', how='outer').merge(net_pivot, on='会员ID', how='outer')
+        return result[result['有效投注'] > 0]
+
+    def mongo_betting_details(self) -> pd.DataFrame:
         """查询 MongoDB 投注详细记录"""
-        collections = [
-            col for col in self.db.list_collection_names()
-            if col.startswith(self.mongo_collection_prefix) and col.endswith(self.venue)
-        ]
+        collections = [col for col in self.db.list_collection_names() if
+                       col.startswith(self.mongo_collection_prefix) and col.endswith(self.venue)]
         if not collections:
             return pd.DataFrame(columns=[
                 '会员ID', '结算日期', '会员账号', '场馆名称', '游戏名称', '赛事ID', '注单号',
@@ -328,73 +355,46 @@ class DatabaseQuery:
             ])
 
         pipeline = [
-            {
-                "$match": {
-                    "flag": self.flag_value,
-                    "settle_time": {"$gte": self.start_time, "$lte": self.end_time},
-                    "site_id": self.site_id
-                }
-            },
+            {"$match": {
+                "flag": self.flag_value,
+                "settle_time": {"$gte": self.start_time, "$lte": self.end_time},
+                "site_id": self.site_id
+            }},
             {"$sort": {"bet_time": 1}},
-            {
-                "$project": {
-                    "member_id": "$member_id",
-                    "settle_date": {"$substr": ["$settle_time", 0, 10]},
-                    "member_name": "$member_name",
-                    "venue_name": "$venue_name",
-                    "game_name": "$game_name",
-                    "match_id": "$match_id",
-                    "id": "$id",
-                    "odds_type": "$odds_type",
-                    "odds": "$odds",
-                    "bet_amount": "$bet_amount",
-                    "valid_bet_amount": "$valid_bet_amount",
-                    "net_amount": "$net_amount",
-                    "early_settle_flag": "$early_settle_flag",
-                    "bet_time": "$bet_time",
-                    "start_time": "$start_time",
-                    "settle_time": "$settle_time",
-                    "play_info": "$play_info",
-                    "_id": 0
-                }
-            }
+            {"$project": {
+                "_id": 0,
+                "会员ID": "$member_id",
+                "结算日期": {"$substr": ["$settle_time", 0, 10]},
+                "会员账号": "$member_name",
+                "场馆名称": "$venue_name",
+                "游戏名称": "$game_name",
+                "赛事ID": "$match_id",
+                "注单号": "$id",
+                "赔率类型": "$odds_type",
+                "赔率": "$odds",
+                "投注额": "$bet_amount",
+                "有效投注": "$valid_bet_amount",
+                "会员输赢": "$net_amount",
+                "是否提前结算": "$early_settle_flag",
+                "投注时间": "$bet_time",
+                "开始时间": "$start_time",
+                "结算时间": "$settle_time",
+                "游戏详情": "$play_info"
+            }}
         ]
 
-        detail_data = self._process_mongo_collections(collections, pipeline)
-        if detail_data.empty:
-            return pd.DataFrame(columns=[
-                '会员ID', '结算日期', '会员账号', '场馆名称', '游戏名称', '赛事ID', '注单号',
-                '赔率类型', '赔率', '投注额', '有效投注', '会员输赢', '是否提前结算',
-                '投注时间', '开始时间', '结算时间', '游戏详情'
-            ])
-
-        detail_data = detail_data.rename(columns={
-            'member_id': '会员ID',
-            'settle_date': '结算日期',
-            'member_name': '会员账号',
-            'venue_name': '场馆名称',
-            'game_name': '游戏名称',
-            'match_id': '赛事ID',
-            'id': '注单号',
-            'odds_type': '赔率类型',
-            'odds': '赔率',
-            'bet_amount': '投注额',
-            'valid_bet_amount': '有效投注',
-            'net_amount': '会员输赢',
-            'early_settle_flag': '是否提前结算',
-            'bet_time': '投注时间',
-            'start_time': '开始时间',
-            'settle_time': '结算时间',
-            'play_info': '游戏详情'
-        }).astype({
+        df = self._process_mongo_collections(collections, pipeline)
+        return df.astype({
             '会员ID': 'category',
             '投注额': 'float32',
             '有效投注': 'float32',
             '会员输赢': 'float32',
             '赔率': 'float32'
-        })
-
-        return detail_data
+        }) if not df.empty else pd.DataFrame(columns=[
+            '会员ID', '结算日期', '会员账号', '场馆名称', '游戏名称', '赛事ID', '注单号',
+            '赔率类型', '赔率', '投注额', '有效投注', '会员输赢', '是否提前结算',
+            '投注时间', '开始时间', '结算时间', '游戏详情'
+        ])
 
 
 def save_to_excel(df: pd.DataFrame, filename: str):
@@ -409,10 +409,11 @@ def save_to_excel(df: pd.DataFrame, filename: str):
 
 def work(db_query: DatabaseQuery) -> pd.DataFrame:
     """执行查询并合并结果"""
-    result_df = (db_query._10_query_promotion()
-                 .merge(db_query._1_query_member_stats(), on='会员ID', how='inner')
-                 .merge(db_query.query_mongo_betting_stats(), on='会员ID', how='inner')
-                 .merge(db_query.query_mongo_betting_details(), on='会员ID', how='left')
+    result_df = (db_query._10_promotion()
+                 .merge(db_query._1_member_stats(), on='会员ID', how='inner')
+                 .merge(db_query.mongo_last_bet_time(), on='会员ID', how='inner')
+                 .merge(db_query.mongo_betting_stats(), on='会员ID', how='inner')
+                 .merge(db_query.mongo_betting_details(), on='会员ID', how='left')
                  )
     return result_df
 
@@ -432,7 +433,7 @@ def main():
     )
     try:
         result = work(db_query)
-        excel_filename = f"query_result_{start_time.strftime('%Y-%m-%d_%H.%M')}.xlsx"
+        excel_filename = f"Ultimate_{start_time.strftime('%Y-%m-%d_%H.%M')}.xlsx"
         save_to_excel(result, excel_filename)
         print(f"结果已保存到: {excel_filename}")
     except Exception as e:
@@ -446,3 +447,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
