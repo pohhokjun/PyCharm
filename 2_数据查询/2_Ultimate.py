@@ -1,4 +1,3 @@
-
 import pandas as pd
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -27,7 +26,7 @@ def execute_mongo_aggregation(collection_name: str, pipeline: list, mongo_uri: s
 class DatabaseQuery:
    def __init__(self, host: str, port: int, user: str, password: str,
                 mongo_host: str, mongo_port: int, mongo_user: str, mongo_password: str,
-                site_id: int = 1000, start_date: str = '2025-03-01', end_date: str = '2025-03-31',
+                site_id: int = 1000, start_date: str = '2025-04-14', end_date: str = '2025-04-20',
                 agent_1000: str = 'agent_1000', u1_1000: str = 'u1_1000',
                 bigdata: str = 'bigdata', control_1000: str = 'control_1000',
                 finance_1000: str = 'finance_1000',
@@ -81,99 +80,106 @@ class DatabaseQuery:
            self.session.close()
        self.client.close()
 
-   def Custom(self) -> pd.DataFrame:
-       """查询登入注会员"""
-       query = """
-       """
-       return pd.read_sql(query, self.engine)
-
-   def _1_member_stats_history(self) -> pd.DataFrame:
-       """查询会员历史累计统计信息"""
+   def _1_member_basic_info(self) -> pd.DataFrame:
+       """查询会员基本信息"""
        query = f"""
        SELECT
            u1_mi.top_name AS '代理名称',
            u1_mi.id AS '会员ID',
            u1_mi.name AS '会员账号',
-           CASE u1_mi.status
-               WHEN 1 THEN '启用'
-               WHEN 0 THEN '禁用'
-               ELSE CAST(u1_mi.status AS CHAR)
-           END AS '状态',
-           u1_mi.is_agent AS '是否代理',            
+           CASE u1_mi.status WHEN 1 THEN '启用' WHEN 0 THEN '禁用' ELSE CAST(u1_mi.status AS CHAR) END AS '状态',
+           u1_mi.is_agent AS '是否代理',
            u1_mi.vip_grade AS 'VIP等级',
-           GROUP_CONCAT(DISTINCT c1_sv.dict_value ORDER BY c1_sv.code SEPARATOR ',') AS '标签',
+           (SELECT GROUP_CONCAT(DISTINCT c1_sv.dict_value ORDER BY c1_sv.code SEPARATOR ',')
+            FROM {self.control_1000}.sys_dict_value c1_sv
+            WHERE FIND_IN_SET(c1_sv.code, u1_mi.tag_id)
+            AND (c1_sv.initial_flag IS NULL OR c1_sv.initial_flag <> 1)) AS '标签',
            u1_mi.created_at AS '注册时间',
-           u1_mi.last_login_time AS '最后登录时间',
-           COALESCE(SUM(b_mds.deposit_count), 0) AS '历史存款笔数',
-           COALESCE(SUM(b_mds.deposit), 0) AS '历史存款',
-           COALESCE(SUM(b_mds.draw_count), 0) AS '历史取款笔数',
-           COALESCE(SUM(b_mds.draw), 0) AS '历史取款',
-           COALESCE(SUM(b_mds.bets), 0) AS '历史有效投注金额',
-           COALESCE(-SUM(b_mds.profit), 0) AS '历史会员输赢',
-           COALESCE(SUM(b_mds.promo), 0) AS '历史红利',
-           COALESCE(SUM(b_mds.rebate), 0) AS '历史返水'
+           u1_mi.last_login_time AS '最后登录时间'
        FROM {self.u1_1000}.member_info u1_mi
-       LEFT JOIN {self.control_1000}.sys_dict_value c1_sv
-           ON FIND_IN_SET(c1_sv.code, u1_mi.tag_id)
-       LEFT JOIN {self.bigdata}.member_daily_statics b_mds
-           ON u1_mi.id = b_mds.member_id
        WHERE u1_mi.status <> 0
-           AND (c1_sv.initial_flag IS NULL OR c1_sv.initial_flag <> 1)
-       GROUP BY u1_mi.id,u1_mi.name,u1_mi.vip_grade,u1_mi.created_at,u1_mi.last_login_time
+       GROUP BY u1_mi.id
        """
        return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
-   def _2_member_stats(self) -> pd.DataFrame:
+   def _2_member_stats_history(self) -> pd.DataFrame:
        """查询会员历史累计统计信息"""
        query = f"""
        SELECT
-           u1_mi.top_name AS '代理名称',
-           u1_mi.id AS '会员ID',
-           u1_mi.name AS '会员账号',
-           CASE u1_mi.status
-               WHEN 1 THEN '启用'
-               WHEN 0 THEN '禁用'
-               ELSE CAST(u1_mi.status AS CHAR)
-           END AS '状态',
-           u1_mi.is_agent AS '是否代理',            
-           u1_mi.vip_grade AS 'VIP等级',
-           GROUP_CONCAT(DISTINCT c1_sv.dict_value ORDER BY c1_sv.code SEPARATOR ',') AS '标签',
-           u1_mi.created_at AS '注册时间',
-           u1_mi.last_login_time AS '最后登录时间',
-           COALESCE(SUM(b_mds.deposit_count), 0) AS '存款笔数',
-           COALESCE(SUM(b_mds.deposit), 0) AS '存款',
-           COALESCE(SUM(b_mds.draw_count), 0) AS '取款笔数',
-           COALESCE(SUM(b_mds.draw), 0) AS '取款',
-           COALESCE(SUM(b_mds.bets), 0) AS '有效投注金额',
-           COALESCE(-SUM(b_mds.profit), 0) AS '会员输赢',
-           COALESCE(SUM(b_mds.promo), 0) AS '红利',
-           COALESCE(SUM(b_mds.rebate), 0) AS '返水'
-       FROM {self.u1_1000}.member_info u1_mi
-       LEFT JOIN {self.control_1000}.sys_dict_value c1_sv
-           ON FIND_IN_SET(c1_sv.code, u1_mi.tag_id)
-       LEFT JOIN {self.bigdata}.member_daily_statics b_mds
-           ON u1_mi.id = b_mds.member_id
-       WHERE u1_mi.status <> 0
-        AND b_mds.statics_date BETWEEN '{self.start_date}' AND '{self.end_date}'
-           AND (c1_sv.initial_flag IS NULL OR c1_sv.initial_flag <> 1)
-       GROUP BY u1_mi.id,u1_mi.name,u1_mi.vip_grade,u1_mi.created_at,u1_mi.last_login_time
+           member_id AS '会员ID',
+           COALESCE(SUM(deposit_count), 0) AS '历史存款笔数',
+           COALESCE(SUM(deposit), 0) AS '历史存款',
+           COALESCE(SUM(draw_count), 0) AS '历史取款笔数',
+           COALESCE(SUM(draw), 0) AS '历史取款',
+           COALESCE(SUM(bets), 0) AS '历史有效投注金额',
+           COALESCE(-SUM(profit), 0) AS '历史会员输赢',
+           COALESCE(SUM(promo), 0) AS '历史红利',
+           COALESCE(SUM(rebate), 0) AS '历史返水'
+       FROM {self.bigdata}.member_daily_statics
+       GROUP BY member_id
        """
        return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
    def _3_first_deposit(self) -> pd.DataFrame:
        """查询会员首存信息"""
        query = f"""
-       SELECT
-           member_id AS '会员ID',
-           order_amount AS '首存金额',
-           confirm_at AS '首存确认时间'
-       FROM {self.finance_1000}.finance_pay_records
-       WHERE is_first_deposit <> 0
+        SELECT
+            member_id AS '会员ID',
+            order_amount AS '首存金额',
+            confirm_at AS '首存确认时间'
+        FROM (
+            SELECT
+                member_id,
+                order_amount,
+                confirm_at,
+                ROW_NUMBER() OVER (PARTITION BY member_id ORDER BY confirm_at ASC) AS rn
+            FROM {self.finance_1000}.finance_pay_records
+            WHERE is_first_deposit = 1
+        ) t
+        WHERE rn = 1
        """
+       return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
+
+   def _6_member_stats_period(self, use_date_column: bool = False) -> pd.DataFrame:
+       """查询会员指定时间段的统计信息 True False """
+       if use_date_column:
+           query = f"""
+           SELECT
+               statics_date AS '日期',
+               member_id AS '会员ID',
+               COALESCE(SUM(deposit_count), 0) AS '存款笔数',
+               COALESCE(SUM(deposit), 0) AS '存款',
+               COALESCE(SUM(draw_count), 0) AS '取款笔数',
+               COALESCE(SUM(draw), 0) AS '取款',
+               COALESCE(SUM(bets), 0) AS '有效投注金额',
+               COALESCE(-SUM(profit), 0) AS '会员输赢',
+               COALESCE(SUM(promo), 0) AS '红利',
+               COALESCE(SUM(rebate), 0) AS '返水'
+           FROM {self.bigdata}.member_daily_statics
+           WHERE statics_date BETWEEN '{self.start_date}' AND '{self.end_date}'
+           GROUP BY member_id, statics_date
+           """
+       else:
+           query = f"""
+           SELECT
+               member_id AS '会员ID',
+               COALESCE(SUM(deposit_count), 0) AS '存款笔数',
+               COALESCE(SUM(deposit), 0) AS '存款',
+               COALESCE(SUM(draw_count), 0) AS '取款笔数',
+               COALESCE(SUM(draw), 0) AS '取款',
+               COALESCE(SUM(bets), 0) AS '有效投注金额',
+               COALESCE(-SUM(profit), 0) AS '会员输赢',
+               COALESCE(SUM(promo), 0) AS '红利',
+               COALESCE(SUM(rebate), 0) AS '返水'
+           FROM {self.bigdata}.member_daily_statics
+           WHERE statics_date BETWEEN '{self.start_date}' AND '{self.end_date}'
+           GROUP BY member_id
+           """
        return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
    def _10_promotion(self) -> pd.DataFrame:
        """查询推广部相关信息"""
+       # AND a1_adm.agent_name IN ('admin1', 'admin2', 'admin3')
        query = f"""
        SELECT
            a1_ad.site_id AS '站点ID',
@@ -304,7 +310,7 @@ class DatabaseQuery:
        """
        return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
-   def _1_mongo_last_bet_time(self) -> pd.DataFrame:
+   def _3_mongo_last_bet_time(self) -> pd.DataFrame:
        """查询每个会员的最后下注时间"""
        collections = [col for col in self.db.list_collection_names() if col.startswith(self.mongo_collection_prefix)]
        if not collections:
@@ -334,11 +340,12 @@ class DatabaseQuery:
            df = df.astype({'会员ID': 'category'})
        return df if not df.empty else pd.DataFrame(columns=['会员ID', '最后下注时间'])
 
-   def mongo_betting_stats(self) -> pd.DataFrame:
-       """查询 MongoDB 投注统计数据"""
+   def mongo_betting_stats(self, use_date_column: bool = False) -> pd.DataFrame:
+       """查询 MongoDB 投注统计数据 True False """
        collections = [col for col in self.db.list_collection_names() if col.startswith(self.mongo_collection_prefix)]
        if not collections:
-           return pd.DataFrame(columns=['会员ID', '投注次数', '有效投注', '会员输赢'])
+           return pd.DataFrame(
+               columns=['日期', '会员ID', '投注次数', '有效投注', '会员输赢'] if use_date_column else ['会员ID','投注次数','有效投注','会员输赢'])
 
        pipeline = [
            {"$match": {
@@ -346,14 +353,21 @@ class DatabaseQuery:
                "settle_time": {"$gte": self.start_time, "$lte": self.end_time},
                "site_id": self.site_id
            }},
+           {"$sort": {"settle_time": 1}},
            {"$group": {
-               "_id": {"member_id": "$member_id", "game_type": "$game_type"},
+               "_id": {
+                   "member_id": "$member_id",
+                   "game_type": "$game_type",
+                   "date": {"$dateToString": {"format": "%Y-%m-%d",
+                                              "date": {"$toDate": "$settle_time"}}} if use_date_column else None
+               },
                "betting_count": {"$sum": 1},
                "valid_bet": {"$sum": "$valid_bet_amount"},
                "net_amount": {"$sum": "$net_amount"}
            }},
            {"$project": {
                "_id": 0,
+               "日期": "$_id.date" if use_date_column else None,
                "会员ID": "$_id.member_id",
                "game_type": "$_id.game_type",
                "betting_count": 1,
@@ -361,16 +375,22 @@ class DatabaseQuery:
                "net_amount": 1
            }}
        ]
+       # 移除 None 值
+       pipeline = [{k: v for k, v in stage.items() if v is not None} for stage in pipeline]
 
        df = self._process_mongo_collections(collections, pipeline)
        if df.empty:
-           return pd.DataFrame(columns=['会员ID', '投注次数', '有效投注', '会员输赢'])
+           return pd.DataFrame(
+               columns=['日期', '会员ID', '投注次数', '有效投注', '会员输赢'] if use_date_column else ['会员ID','投注次数','有效投注','会员输赢'])
 
-       df = df.astype({'会员ID': 'category', 'game_type': 'int8', 'betting_count': 'int32', 'valid_bet': 'float32',
-                       'net_amount': 'float32'})
+       df = df.astype({'会员ID': 'category', 'game_type': 'int8', 'betting_count': 'int32',
+                       'valid_bet': 'float32', 'net_amount': 'float32'})
+       if use_date_column:
+           df['日期'] = df['日期'].astype('string')
 
        # 聚合会员统计
-       member_stats = df.groupby('会员ID', observed=True).agg({
+       group_cols = ['日期', '会员ID'] if use_date_column else ['会员ID']
+       member_stats = df.groupby(group_cols, observed=True).agg({
            'betting_count': 'sum',
            'valid_bet': 'sum',
            'net_amount': 'sum'
@@ -392,12 +412,15 @@ class DatabaseQuery:
        }
 
        # 有效投注和输赢透视表
-       valid_pivot = df.pivot_table(index='会员ID', columns='game_type', values='valid_bet', aggfunc='sum',
-                                    fill_value=0)
-       valid_pivot.columns = [game_types.get(col, (str(col),))[0] for col in valid_pivot.columns]
-       net_pivot = df.pivot_table(index='会员ID', columns='game_type', values='net_amount', aggfunc='sum',
-                                  fill_value=0)
-       net_pivot.columns = [game_types.get(col, (str(col),))[1] for col in net_pivot.columns]
+       pivot_index = ['日期', '会员ID'] if use_date_column else ['会员ID']
+       valid_pivot = df.pivot_table(index=pivot_index, columns='game_type', values='valid_bet',
+                                    aggfunc='sum', fill_value=0, observed=False).reset_index()
+       valid_pivot.columns = pivot_index + [game_types.get(col, (str(col),))[0] for col in
+                                            valid_pivot.columns[len(pivot_index):]]
+       net_pivot = df.pivot_table(index=pivot_index, columns='game_type', values='net_amount',
+                                  aggfunc='sum', fill_value=0, observed=False).reset_index()
+       net_pivot.columns = pivot_index + [game_types.get(col, (str(col),))[1] for col in
+                                          net_pivot.columns[len(pivot_index):]]
 
        # 修改排序：按场馆顺序合并有效投注和会员输赢
        result = member_stats
@@ -405,9 +428,15 @@ class DatabaseQuery:
            valid_col = game_types[game_type][0]
            net_col = game_types[game_type][1]
            if valid_col in valid_pivot.columns:
-               result = result.merge(valid_pivot[[valid_col]], on='会员ID', how='outer')
+               result = result.merge(valid_pivot[pivot_index + [valid_col]], on=pivot_index, how='outer')
            if net_col in net_pivot.columns:
-               result = result.merge(net_pivot[[net_col]], on='会员ID', how='outer')
+               result = result.merge(net_pivot[pivot_index + [net_col]], on=pivot_index, how='outer')
+
+       # 确保最终列顺序
+       final_columns = (['日期', '会员ID', '投注次数', '有效投注', '会员输赢'] if use_date_column else ['会员ID','投注次数','有效投注','会员输赢']) + \
+                       [col for col in result.columns if col not in (
+                           ['日期', '会员ID', '投注次数', '有效投注', '会员输赢'] if use_date_column else ['会员ID','投注次数','有效投注','会员输赢'])]
+       result = result.reindex(columns=final_columns)
 
        return result[result['有效投注'] > 0]
 
@@ -493,10 +522,15 @@ def send_to_telegram(file_path: str, bot_token: str, chat_id: str) -> bool:
 
 def work(db_query: DatabaseQuery) -> pd.DataFrame:
    """执行查询并合并结果"""
-   result_df = (db_query._10_promotion()[['会员ID', '站点ID', '1级', '2级', '3级', '4级']]
-                .merge(db_query._11_login_members(), on='会员ID', how='inner')
-                .merge(db_query._1_member_stats_history(), on='会员ID', how='inner')
-                .merge(db_query._1_mongo_last_bet_time(), on='会员ID', how='inner')
+   # db_query._10_promotion()[['会员ID', '站点ID', '1级', '2级', '3级', '4级']]
+   # .merge(db_query._1_member_basic_info(), on='会员ID', how='inner')
+   # .merge(db_query._3_first_deposit(), on='会员ID', how='inner')
+   # .merge(db_query._3_mongo_last_bet_time(), on='会员ID', how='inner')
+   # .merge(db_query._6_member_stats_period(use_date_column=True False), on='会员ID', how='inner')
+   # .merge(db_query.mongo_betting_stats(use_date_column=True False), on=['会员ID', '日期'], how='inner')
+   result_df = (db_query._1_member_basic_info()
+                .merge(db_query._6_member_stats_period(), on='会员ID', how='inner')
+                .merge(db_query.mongo_betting_stats(), on='会员ID', how='inner')
                 )
    return result_df
 
