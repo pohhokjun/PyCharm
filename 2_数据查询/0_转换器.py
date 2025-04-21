@@ -12,7 +12,10 @@ member_ids_list = member_ids_input.strip().split('\n')
 formatted_ids = ", ".join([f"'{id.replace(' ', '').lower()}'" for id in member_ids_list])
 
 # 生成最终的 SQL 查询字符串
-query = f"WHERE member_id IN ({formatted_ids})"
+agent = f"AND a1_adm.agent_name IN ({formatted_ids})"
+member = f"WHERE member_id IN ({formatted_ids})"
 
 # 打印结果
-print(query)
+print(agent)
+print(member)
+
