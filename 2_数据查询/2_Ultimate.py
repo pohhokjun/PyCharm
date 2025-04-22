@@ -493,8 +493,8 @@ class DatabaseQuery:
            ])
 
        # 替换游戏详情和游戏完整详情中的 为空格
-       df['游戏详情'] = df['游戏详情'].astype(str).str.replace(' ', ' ', regex=False)
-       df['游戏完整详情'] = df['游戏完整详情'].astype(str).str.replace(' ', ' ', regex=False)
+       df['游戏详情'] = df['游戏详情'].astype(str).str.replace('&nbsp;', ' ', regex=False)
+       df['游戏完整详情'] = df['游戏完整详情'].astype(str).str.replace('&nbsp;', ' ', regex=False)
 
        # 解析联赛、球队、玩法
        def parse_details(row):
