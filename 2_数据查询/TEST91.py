@@ -27,7 +27,7 @@ def execute_mongo_aggregation(collection_name: str, pipeline: list, mongo_uri: s
 class DatabaseQuery:
    def __init__(self, host: str, port: int, user: str, password: str,
                 mongo_host: str, mongo_port: int, mongo_user: str, mongo_password: str,
-                site_id: int = 4000, start_date: str = '2025-04-21', end_date: str = '2025-04-21',
+                site_id: int = 1000, start_date: str = '2025-04-21', end_date: str = '2025-04-21',
                 agent_1000: str = 'agent_1000', u1_1000: str = 'u1_1000',
                 bigdata: str = 'bigdata', control_1000: str = 'control_1000',
                 finance_1000: str = 'finance_1000',
@@ -98,7 +98,6 @@ class DatabaseQuery:
            u1_mi.created_at AS '注册时间',
            u1_mi.last_login_time AS '最后登录时间'
        FROM {self.u1_1000}.member_info u1_mi
-       WHERE u1_mi.status <> 0
        GROUP BY u1_mi.id
        """
        return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
@@ -544,9 +543,9 @@ class DatabaseQuery:
            '有效投注': 'float32',
            '会员输赢': 'float32',
            '是否提前结算': 'string',
-           '投注时间': 'string',
-           '开始时间': 'string',
-           '结算时间': 'string',
+           '投注时间': 'datetime64[ns]',
+           '开始时间': 'datetime64[ns]',
+           '结算时间': 'datetime64[ns]',
            '游戏详情': 'string',
            '游戏完整详情': 'string',
            '站点ID': 'string',
@@ -600,7 +599,7 @@ def work(db_query: DatabaseQuery) -> pd.DataFrame:
    # .merge(db_query.mongo_betting_stats(use_date_column=True False), on=['会员ID', '日期'], how='inner')
    result_df = (db_query._1_member_basic_info()
                 .merge(db_query._6_member_stats_period(), on='会员ID', how='inner')
-                .merge(db_query.mongo_betting_details(), on='会员ID', how='inner')
+                .merge(db_query.mongo_betting_stats(), on='会员ID', how='inner')
                 )
    return result_df
 
