@@ -27,7 +27,7 @@ def execute_mongo_aggregation(collection_name: str, pipeline: list, mongo_uri: s
 class DatabaseQuery:
    def __init__(self, host: str, port: int, user: str, password: str,
                 mongo_host: str, mongo_port: int, mongo_user: str, mongo_password: str,
-                site_id: int = 4000, start_date: str = '2025-04-21', end_date: str = '2025-04-21',
+                site_id: int = 1000, start_date: str = '2025-04-21', end_date: str = '2025-04-21',
                 agent_1000: str = 'agent_1000', u1_1000: str = 'u1_1000',
                 bigdata: str = 'bigdata', control_1000: str = 'control_1000',
                 finance_1000: str = 'finance_1000',
@@ -286,7 +286,7 @@ class DatabaseQuery:
        """
        return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
-   def _18_depositors_less_then_3_times(self) -> pd.DataFrame:
+   def _18_depositors_more_then_3_times(self) -> pd.DataFrame:
        """查询存款次数大于3的会员"""
        query = f"""
        SELECT b_mds.member_id AS '会员ID'

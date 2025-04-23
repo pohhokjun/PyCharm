@@ -19,8 +19,8 @@ TELEGRAM_BOT_TOKEN = '7750313084:AAGci5ANeeyEacKJUESQuDHYyy8tLdl9m7Q'
 CHAT_ID = '7523061850'
 
 QUERY_PARAMS = {
-    'start_time': '2023-05-31 00:00:00',
-    'end_time': '2024-06-30 23:59:59',
+    'start_time': '2025-04-01 00:00:00',
+    'end_time': '2025-04-30 23:59:59',
     'site_id': '1000',
     'top_list': ['agtest2', 'agtest1', 'ceshidl1', 'ceshidl2', 'ceshimark1', 'luv1230']
 }

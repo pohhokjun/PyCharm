@@ -330,7 +330,7 @@ def get_time_until(target_hour, target_minute):
 # 定时任务：存款、提款、会员数据
 async def schedule_cunkuan_qukuan():
     while True:
-        await asyncio.sleep(get_time_until(13, 2))
+        await asyncio.sleep(get_time_until(11, 20))
         try:
             export_data_from_database_cunkuan()
             export_data_from_database_qukuan()
