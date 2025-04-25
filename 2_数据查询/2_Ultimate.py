@@ -27,11 +27,11 @@ def execute_mongo_aggregation(collection_name: str, pipeline: list, mongo_uri: s
 class DatabaseQuery:
    def __init__(self, host: str, port: int, user: str, password: str,
                 mongo_host: str, mongo_port: int, mongo_user: str, mongo_password: str,
-                site_id: int = 1000, start_date: str = '2025-04-21', end_date: str = '2025-04-21',
+                site_id: int = 1000, start_date: str = '2025-04-24', end_date: str = '2025-04-24',
                 agent_1000: str = 'agent_1000', u1_1000: str = 'u1_1000',
                 bigdata: str = 'bigdata', control_1000: str = 'control_1000',
                 finance_1000: str = 'finance_1000',
-                mongo_collection_prefix: str = 'pull_order_game_', venue: str = 'DBDJ'):
+                mongo_collection_prefix: str = 'pull_order_game_', venue: str = 'AGZR'):
        """初始化数据库连接参数"""
        # MySQL 连接
        connection_string = f"mysql+mysqlconnector://{user}:{password}@{host}:{port}/"
@@ -84,21 +84,31 @@ class DatabaseQuery:
    def _1_member_basic_info(self) -> pd.DataFrame:
        """查询会员基本信息"""
        query = f"""
-       SELECT
-           u1_mi.top_name AS '代理名称',
-           u1_mi.id AS '会员ID',
-           u1_mi.name AS '会员账号',
-           CASE u1_mi.status WHEN 1 THEN '启用' WHEN 0 THEN '禁用' ELSE CAST(u1_mi.status AS CHAR) END AS '状态',
-           u1_mi.is_agent AS '是否代理',
-           u1_mi.vip_grade AS 'VIP等级',
-           (SELECT GROUP_CONCAT(DISTINCT c1_sv.dict_value ORDER BY c1_sv.code SEPARATOR ',')
-            FROM {self.control_1000}.sys_dict_value c1_sv
-            WHERE FIND_IN_SET(c1_sv.code, u1_mi.tag_id)
-            AND (c1_sv.initial_flag IS NULL OR c1_sv.initial_flag <> 1)) AS '标签',
-           u1_mi.created_at AS '注册时间',
-           u1_mi.last_login_time AS '最后登录时间'
-       FROM {self.u1_1000}.member_info u1_mi
-       GROUP BY u1_mi.id
+        SELECT
+            u1_mi.top_name AS '代理名称',
+            u1_mi.id AS '会员ID',
+            u1_mi.name AS '会员账号',
+            CASE u1_mi.status WHEN 1 THEN '启用' WHEN 0 THEN '禁用' ELSE CAST(u1_mi.status AS CHAR) END AS '状态',
+            u1_mi.is_agent AS '是否代理',
+            u1_mi.vip_grade AS 'VIP等级',
+            (SELECT GROUP_CONCAT(DISTINCT c1_sv.dict_value ORDER BY c1_sv.code SEPARATOR ',')
+             FROM control_1000.sys_dict_value c1_sv
+             WHERE FIND_IN_SET(c1_sv.code, u1_mi.tag_id)
+             AND (c1_sv.initial_flag IS NULL OR c1_sv.initial_flag <> 1)) AS '标签',
+            u1_mofr.remark AS '备注',
+            u1_mi.created_at AS '注册时间',
+            u1_mi.last_login_time AS '最后登录时间'
+        FROM u1_1000.member_info u1_mi
+        LEFT JOIN (
+            SELECT member_id, remark
+            FROM (
+                SELECT member_id, remark,
+                       ROW_NUMBER() OVER (PARTITION BY member_id ORDER BY updated_at DESC) AS rn
+                FROM u1_1000.member_open_forbid_record
+                WHERE remark_type = 1
+            ) t
+            WHERE t.rn = 1
+        ) u1_mofr ON u1_mi.id = u1_mofr.member_id
        """
        return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
@@ -441,16 +451,18 @@ class DatabaseQuery:
        return result[result['有效投注'] > 0]
 
    def mongo_betting_details(self) -> pd.DataFrame:
-       """查询 MongoDB 投注详细记录，优化字段并添加解析逻辑，替换游戏详情中的 为空格"""
-       collections = [col for col in self.db.list_collection_names() if
-                      col.startswith(self.mongo_collection_prefix) and col.endswith(self.venue)]
+       """查询 MongoDB 投注详细记录，替换游戏详情中的特殊字符，仅保留结算日期"""
+       columns = [
+           '会员ID', '结算日期', '会员账号', '场馆', '游戏', '赛事ID', '注单号', '赔率',
+           '投注额', '有效投注', '会员输赢', '是否提前结算', '投注时间', '开始时间',
+           '结算时间', '游戏详情', '游戏完整详情', '站点ID', '联赛', '球队', '玩法'
+       ]
+       collections = [
+           col for col in self.db.list_collection_names()
+           if col.startswith(self.mongo_collection_prefix) and col.endswith(self.venue)
+       ]
        if not collections:
-           return pd.DataFrame(columns=[
-               '会员ID', '结算日期', '会员账号', '场馆', '游戏', '赛事ID', '注单号',
-               '赔率', '投注额', '有效投注', '会员输赢', '是否提前结算',
-               '投注时间', '开始时间', '结算时间', '游戏详情', '游戏完整详情', '站点ID',
-               '联赛', '球队', '玩法'
-           ])
+           return pd.DataFrame(columns=columns)
 
        pipeline = [
            {"$match": {
@@ -484,83 +496,48 @@ class DatabaseQuery:
 
        df = self._process_mongo_collections(collections, pipeline)
        if df.empty:
-           return pd.DataFrame(columns=[
-               '会员ID', '结算日期', '会员账号', '场馆', '游戏', '赛事ID', '注单号',
-               '赔率', '投注额', '有效投注', '会员输赢', '是否提前结算',
-               '投注时间', '开始时间', '结算时间', '游戏详情', '游戏完整详情', '站点ID',
-               '联赛', '球队', '玩法'
-           ])
+           return pd.DataFrame(columns=columns)
 
-       # 替换游戏详情和游戏完整详情中的 为空格
-       df['游戏详情'] = df['游戏详情'].astype(str).str.replace('&nbsp;', ' ', regex=False)
-       df['游戏完整详情'] = df['游戏完整详情'].astype(str).str.replace('&nbsp;', ' ', regex=False)
+       # 替换游戏详情中的特殊字符
+       df['游戏详情'] = df['游戏详情'].astype(str).str.replace(' ', ' ')
+       df['游戏完整详情'] = df['游戏完整详情'].astype(str).str.replace(' ', ' ')
 
        # 解析联赛、球队、玩法
        def parse_details(row):
+           details = str(row['游戏完整详情' if row['场馆'] == 'LHDJ' else '游戏详情']).split('\n')
            if 'TY' in row['场馆']:
-               details = str(row['游戏详情']).split('\n')
                return pd.Series({
                    '联赛': details[1] if len(details) > 1 else '',
                    '球队': details[2] if len(details) > 2 else '',
                    '玩法': details[3] if len(details) > 3 else ''
                })
            elif 'DJ' in row['场馆']:
-               if row['场馆'] == 'LHDJ':
-                   details = str(row['游戏完整详情']).split('\n')
-                   return pd.Series({
-                       '联赛': details[0] if len(details) > 0 else '',
-                       '球队': details[4] if len(details) > 4 else '',
-                       '玩法': details[8] if len(details) > 8 else ''
-                   })
-               else:
-                   details = str(row['游戏详情']).split('\n')
-                   return pd.Series({
-                       '联赛': details[1] if len(details) > 1 else '',
-                       '球队': details[2] if len(details) > 2 else '',
-                       '玩法': details[3] if len(details) > 3 else ''
-                   })
-           return pd.Series({
-               '联赛': '',
-               '球队': '',
-               '玩法': ''
-           })
+               return pd.Series({
+                   '联赛': details[0] if len(details) > 0 else '',
+                   '球队': details[4] if len(details) > 4 and row['场馆'] == 'LHDJ' else details[2] if len(
+                       details) > 2 else '',
+                   '玩法': details[8] if len(details) > 8 and row['场馆'] == 'LHDJ' else details[3] if len(
+                       details) > 3 else ''
+               })
+           return pd.Series({'联赛': '', '球队': '', '玩法': ''})
 
-       # 应用解析逻辑
-       parsed_cols = df.apply(parse_details, axis=1)
-       df = pd.concat([df, parsed_cols], axis=1)
+       df = pd.concat([df, df.apply(parse_details, axis=1)], axis=1)
+
+       # 仅保留结算日期（无时间）
+       df['结算日期'] = pd.to_datetime(df['结算日期']).dt.date
 
        # 类型优化
        df = df.astype({
-           '会员ID': 'category',
-           '结算日期': 'datetime64[ns]',
-           '会员账号': 'string',
-           '场馆': 'string',
-           '游戏': 'string',
-           '赛事ID': 'string',
-           '注单号': 'string',
-           '赔率': 'float32',
-           '投注额': 'float32',
-           '有效投注': 'float32',
-           '会员输赢': 'float32',
-           '是否提前结算': 'string',
-           '投注时间': 'datetime64[ns]',
-           '开始时间': 'datetime64[ns]',
-           '结算时间': 'datetime64[ns]',
-           '游戏详情': 'string',
-           '游戏完整详情': 'string',
-           '站点ID': 'string',
-           '联赛': 'string',
-           '球队': 'string',
-           '玩法': 'string'
+           '会员ID': 'category', '结算日期': 'object', '会员账号': 'string', '场馆': 'string',
+           '游戏': 'string', '赛事ID': 'string', '注单号': 'string', '赔率': 'float32',
+           '投注额': 'float32', '有效投注': 'float32', '会员输赢': 'float32', '是否提前结算': 'string',
+           '投注时间': 'datetime64[ns]', '开始时间': 'datetime64[ns]', '结算时间': 'datetime64[ns]',
+           '游戏详情': 'string', '游戏完整详情': 'string', '站点ID': 'string', '联赛': 'string',
+           '球队': 'string', '玩法': 'string'
        })
 
-       # 确保输出字段顺序
-       final_columns = [
-           '会员ID', '结算日期', '站点ID', '会员账号', '赛事ID', '注单号', '游戏详情', '游戏完整详情',
-           '游戏', '场馆', '联赛', '球队', '玩法', '赔率', '投注时间', '开始时间',
-           '结算时间', '投注额', '有效投注', '会员输赢', '是否提前结算'
-       ]
-       return df[final_columns]
+       # 确保字段顺序
+       return df[columns]
 
 def save_to_excel(df: pd.DataFrame, filename: str):
    """保存 DataFrame 到 Excel 文件"""
