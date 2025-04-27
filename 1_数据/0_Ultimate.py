@@ -87,6 +87,7 @@ class DatabaseQuery:
         """查询会员基本信息"""
         query = f"""
         SELECT
+            u1_mi.site_id AS '站点ID',
             u1_mi.top_name AS '代理名称',
             u1_mi.id AS '会员ID',
             u1_mi.name AS '会员账号',
@@ -205,7 +206,6 @@ class DatabaseQuery:
         # AND a1_adm.agent_name IN ('admin1', 'admin2', 'admin3')
         query = f"""
        SELECT
-           a1_ad.site_id AS '站点ID',
            a1_ad.group_name AS '1级',
            a1_ad_2.group_name AS '2级',
            a1_ad_3.group_name AS '3级',
