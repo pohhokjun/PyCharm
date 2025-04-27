@@ -14,7 +14,7 @@ from telegram import Bot
 from telegram.error import TelegramError
 
 # --- 配置 ---
-TEMPLATE_PATH = "C:/Henvita/模版.xlsx"
+TEMPLATE_PATH = 'C:/Users/Administrator/Desktop/PyCharm/3_定时/template.xlsx'
 OUTPUT_FOLDER = 'C:/Henvita/1_定时注单导出/收费站/'
 DB_HOST = '18.178.159.230'
 DB_PORT = 3366
