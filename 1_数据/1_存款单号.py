@@ -5,8 +5,8 @@ import os
 from sqlalchemy import create_engine
 
 # 时间范围
-START_TIME = '2025-04-27 00:00:00'
-END_TIME = '2025-04-27 23:59:59'
+START_TIME = '2025-04-28 00:00:00'
+END_TIME = '2025-04-28 23:59:59'
 
 def save_excel_with_freeze(df, file_path):
     """保存 Excel 并冻结首行"""

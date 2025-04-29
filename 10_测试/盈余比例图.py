@@ -113,7 +113,7 @@ def create_line_chart(sub_df, x_axis, type_name, dates):
         title_opts=opts.TitleOpts(title=f"{type_name}场馆 盈余比例趋势"),
         tooltip_opts=opts.TooltipOpts(trigger="axis"),
         legend_opts=opts.LegendOpts(pos_top='5%', type_='scroll'),
-        datazoom_opts=[opts.DataZoomOpts(type_='slider', range_start=0, range_end=100)]
+        datazoom_opts=[opts.DataZoomOpts(type_='inside', range_start=0, range_end=100)]
     )
     return line
 

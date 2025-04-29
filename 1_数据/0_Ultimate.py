@@ -29,11 +29,11 @@ def execute_mongo_aggregation(collection_name: str, pipeline: list, mongo_uri: s
 class DatabaseQuery:
     def __init__(self, host: str, port: int, user: str, password: str,
                  mongo_host: str, mongo_port: int, mongo_user: str, mongo_password: str,
-                 site_id: int = 1000, start_date: str = '2025-04-24', end_date: str = '2025-04-24',
+                 site_id: int = 1000, start_date: str = '2025-04-28', end_date: str = '2025-04-28',
                  agent_1000: str = 'agent_1000', u1_1000: str = 'u1_1000',
                  bigdata: str = 'bigdata', control_1000: str = 'control_1000',
                  finance_1000: str = 'finance_1000',
-                 mongo_collection_prefix: str = 'pull_order_game_', venue: str = 'DJ'):
+                 mongo_collection_prefix: str = 'pull_order_game_', venue: str = 'TY'):
         """初始化数据库连接参数"""
         # MySQL 连接
         connection_string = f"mysql+mysqlconnector://{user}:{password}@{host}:{port}/"
@@ -440,9 +440,9 @@ class DatabaseQuery:
     def mongo_betting_details(self) -> pd.DataFrame:
         """查询 MongoDB 投注详细记录，替换游戏详情中的特殊字符，仅保留结算日期"""
         columns = [
-            '会员ID', '结算日期', '会员账号', '场馆', '游戏', '赛事ID', '注单号', '赔率',
+            '站点ID', '会员ID', '结算日期', '会员账号', '场馆', '游戏', '赛事ID', '注单号', '赔率',
             '投注额', '有效投注', '会员输赢', '是否提前结算', '投注时间', '开始时间',
-            '结算时间', '游戏详情', '游戏完整详情', '站点ID', '联赛', '球队', '玩法'
+            '结算时间', '游戏详情', '游戏完整详情', '联赛', '球队', '玩法'
         ]
         collections = [
             col for col in self.db.list_collection_names()
@@ -460,6 +460,7 @@ class DatabaseQuery:
             {"$sort": {"bet_time": 1}},
             {"$project": {
                 "_id": 0,
+                "站点ID": "$site_id",
                 "会员ID": "$member_id",
                 "结算日期": "$settle_time",
                 "会员账号": "$member_name",
@@ -477,7 +478,6 @@ class DatabaseQuery:
                 "结算时间": "$settle_time",
                 "游戏详情": "$play_info",
                 "游戏完整详情": "$game_play_info",
-                "站点ID": "$site_id"
             }}
         ]
 
@@ -486,25 +486,26 @@ class DatabaseQuery:
             return pd.DataFrame(columns=columns)
 
         # 替换游戏详情中的特殊字符
-        df['游戏详情'] = df['游戏详情'].astype(str).str.replace(' ', ' ')
-        df['游戏完整详情'] = df['游戏完整详情'].astype(str).str.replace(' ', ' ')
+        df['游戏详情'] = df['游戏详情'].astype(str).str.replace('&nbsp;', ' ')
+        df['游戏完整详情'] = df['游戏完整详情'].astype(str).str.replace('&nbsp;', ' ')
 
         # 解析联赛、球队、玩法
         def parse_details(row):
             details = str(row['游戏完整详情' if row['场馆'] == 'LHDJ' else '游戏详情']).split('\n')
             if 'TY' in row['场馆']:
                 return pd.Series({
-                    '联赛': details[1] if len(details) > 1 else '',
-                    '球队': details[2] if len(details) > 2 else '',
-                    '玩法': details[3] if len(details) > 3 else ''
+                    '联赛': details[1] if len(details) > 0 else '',
+                    '球队': details[2] if len(details) > 0 else '',
+                    '玩法': details[3] if len(details) > 0 else ''
                 })
             elif 'DJ' in row['场馆']:
                 return pd.Series({
-                    '联赛': details[0] if len(details) > 0 else '',
-                    '球队': details[4] if len(details) > 4 and row['场馆'] == 'LHDJ' else details[2] if len(
-                        details) > 2 else '',
-                    '玩法': details[8] if len(details) > 8 and row['场馆'] == 'LHDJ' else details[3] if len(
-                        details) > 3 else ''
+                    '联赛': details[0] if len(details) > 0 and row['场馆'] == 'LHDJ' else details[1] if len(
+                        details) > 0 else '',
+                    '球队': details[2] if len(details) > 0 and row['场馆'] == 'LHDJ' else details[2] if len(
+                        details) > 0 else '',
+                    '玩法': details[4] if len(details) > 0 and row['场馆'] == 'LHDJ' else details[3] if len(
+                        details) > 0 else ''
                 })
             return pd.Series({'联赛': '', '球队': '', '玩法': ''})
 
@@ -515,11 +516,11 @@ class DatabaseQuery:
 
         # 类型优化
         df = df.astype({
-            '会员ID': 'category', '结算日期': 'object', '会员账号': 'string', '场馆': 'string',
+            '站点ID': 'string', '会员ID': 'category', '结算日期': 'object', '会员账号': 'string', '场馆': 'string',
             '游戏': 'string', '赛事ID': 'string', '注单号': 'string', '赔率': 'float32',
             '投注额': 'float32', '有效投注': 'float32', '会员输赢': 'float32', '是否提前结算': 'string',
             '投注时间': 'datetime64[ns]', '开始时间': 'datetime64[ns]', '结算时间': 'datetime64[ns]',
-            '游戏详情': 'string', '游戏完整详情': 'string', '站点ID': 'string', '联赛': 'string',
+            '游戏详情': 'string', '游戏完整详情': 'string', '联赛': 'string',
             '球队': 'string', '玩法': 'string'
         })
 
