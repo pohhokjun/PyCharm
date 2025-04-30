@@ -10,6 +10,7 @@ from functools import partial
 import os
 import requests
 import traceback
+import re
 
 
 def execute_mongo_aggregation(collection_name: str, pipeline: list, mongo_uri: str, db_name: str) -> pd.DataFrame:
@@ -29,7 +30,7 @@ def execute_mongo_aggregation(collection_name: str, pipeline: list, mongo_uri: s
 class DatabaseQuery:
     def __init__(self, host: str, port: int, user: str, password: str,
                  mongo_host: str, mongo_port: int, mongo_user: str, mongo_password: str,
-                 site_id: int = 1000, start_date: str = '2025-04-28', end_date: str = '2025-04-28',
+                 site_id: int = None, start_date: str = '2025-04-28', end_date: str = '2025-04-28',
                  agent_1000: str = 'agent_1000', u1_1000: str = 'u1_1000',
                  bigdata: str = 'bigdata', control_1000: str = 'control_1000',
                  finance_1000: str = 'finance_1000',
@@ -83,7 +84,7 @@ class DatabaseQuery:
             self.session.close()
         self.client.close()
 
-    def _1_member_basic_info(self) -> pd.DataFrame:
+    def _1_member_basic_dates(self) -> pd.DataFrame:
         """查询会员基本信息"""
         query = f"""
         SELECT
@@ -203,7 +204,6 @@ class DatabaseQuery:
 
     def _10_promotion(self) -> pd.DataFrame:
         """查询推广部相关信息"""
-        # AND a1_adm.agent_name IN ('admin1', 'admin2', 'admin3')
         query = f"""
        SELECT
            a1_ad.group_name AS '1级',
@@ -225,13 +225,11 @@ class DatabaseQuery:
            ON u1_mi.top_name = a1_adm.agent_name
        WHERE
            a1_ad.level = 1
-           AND a1_ad.site_id = {self.site_id}
            AND a1_ad.group_name = '推广部'
            AND a1_ad_2.group_name IN ('推广1部', '推广3部', '推广5部', '推广6部', '推广7部', '推广9部', '推广11部')
        """
-        # AND a1_ad.group_name = '推广部'
-        # AND a1_ad_2.group_name IN ('推广1部', '推广3部', '推广5部', '推广6部', '推广7部', '推广9部', '推广11部')
-        # AND a1_adm.agent_name IN ('admin1', 'admin2', 'admin3')
+        if self.site_id is not None:
+            query += f" AND a1_ad.site_id = {self.site_id}"
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
     def _11_login_members(self) -> pd.DataFrame:
@@ -240,8 +238,9 @@ class DatabaseQuery:
        SELECT DISTINCT u1_mi.id AS '会员ID'
        FROM {self.u1_1000}.member_info u1_mi
        WHERE u1_mi.last_login_time > '{self.start_date}'
-       AND u1_mi.site_id = {self.site_id}
        """
+        if self.site_id is not None:
+            query += f" AND u1_mi.site_id = {self.site_id}"
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
     def _12_depositors_less_then_500(self) -> pd.DataFrame:
@@ -253,10 +252,10 @@ class DatabaseQuery:
            ON b_mds.member_id = u1_mi.id
        WHERE b_mds.statics_date BETWEEN '{self.start_date}' AND '{self.end_date}'
            AND u1_mi.last_login_time > '{self.start_date}'
-           AND b_mds.site_id = {self.site_id}
-       GROUP BY b_mds.member_id
-       HAVING SUM(b_mds.draw) < 500
        """
+        if self.site_id is not None:
+            query += f" AND b_mds.site_id = {self.site_id}"
+        query += " GROUP BY b_mds.member_id HAVING SUM(b_mds.draw) < 500"
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
     def _14_recent_members_v3(self) -> pd.DataFrame:
@@ -269,8 +268,9 @@ class DatabaseQuery:
        FROM {self.u1_1000}.member_info u1_mi
        WHERE u1_mi.vip_grade >= 3
        AND u1_mi.last_login_time BETWEEN '{one_month_before.strftime('%Y-%m-%d')}' AND '{day_before_start_date.strftime('%Y-%m-%d')}'
-       AND u1_mi.site_id = {self.site_id}
        """
+        if self.site_id is not None:
+            query += f" AND u1_mi.site_id = {self.site_id}"
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
     def _15_login_members_non_bet(self) -> pd.DataFrame:
@@ -281,12 +281,11 @@ class DatabaseQuery:
        INNER JOIN {self.bigdata}.member_daily_statics b_mds
        ON u1_mi.id = b_mds.member_id
        WHERE u1_mi.last_login_time > '{self.start_date}'
-       AND u1_mi.site_id = {self.site_id}
        AND b_mds.statics_date BETWEEN '{self.start_date}' AND '{self.end_date}'
-       AND b_mds.site_id = {self.site_id}
-       GROUP BY u1_mi.id
-       HAVING SUM(b_mds.valid_bet_amount) = 0
        """
+        if self.site_id is not None:
+            query += f" AND u1_mi.site_id = {self.site_id} AND b_mds.site_id = {self.site_id}"
+        query += " GROUP BY u1_mi.id HAVING SUM(b_mds.valid_bet_amount) = 0"
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
     def _16_bet_more_then_10000(self) -> pd.DataFrame:
@@ -295,10 +294,10 @@ class DatabaseQuery:
        SELECT b_mds.member_id AS '会员ID'
        FROM {self.bigdata}.member_daily_statics b_mds
        WHERE b_mds.statics_date BETWEEN '{self.start_date}' AND '{self.end_date}'
-       AND b_mds.site_id = {self.site_id}
-       GROUP BY b_mds.member_id
-       HAVING SUM(b_mds.valid_bet_amount) > 10000
        """
+        if self.site_id is not None:
+            query += f" AND b_mds.site_id = {self.site_id}"
+        query += " GROUP BY b_mds.member_id HAVING SUM(b_mds.valid_bet_amount) > 10000"
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
     def _17_profit_rise_and_fall_more_then_3000(self) -> pd.DataFrame:
@@ -307,10 +306,10 @@ class DatabaseQuery:
        SELECT b_mds.member_id AS '会员ID'
        FROM {self.bigdata}.member_daily_statics b_mds
        WHERE b_mds.statics_date BETWEEN '{self.start_date}' AND '{self.end_date}'
-       AND b_mds.site_id = {self.site_id}
-       GROUP BY b_mds.member_id
-       HAVING SUM(b_mds.profit) > 3000 OR SUM(b_mds.profit) < -3000
        """
+        if self.site_id is not None:
+            query += f" AND b_mds.site_id = {self.site_id}"
+        query += " GROUP BY b_mds.member_id HAVING SUM(b_mds.profit) > 3000 OR SUM(b_mds.profit) < -3000"
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
     def _18_depositors_more_then_3_times(self) -> pd.DataFrame:
@@ -319,10 +318,10 @@ class DatabaseQuery:
        SELECT b_mds.member_id AS '会员ID'
        FROM {self.bigdata}.member_daily_statics b_mds
        WHERE b_mds.statics_date BETWEEN '{self.start_date}' AND '{self.end_date}'
-       AND b_mds.site_id = {self.site_id}
-       GROUP BY b_mds.member_id
-       HAVING SUM(b_mds.draw_count) > 3
        """
+        if self.site_id is not None:
+            query += f" AND b_mds.site_id = {self.site_id}"
+        query += " GROUP BY b_mds.member_id HAVING SUM(b_mds.draw_count) > 3"
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
     def _19_depositors_more_then_5000(self) -> pd.DataFrame:
@@ -331,10 +330,10 @@ class DatabaseQuery:
        SELECT b_mds.member_id AS '会员ID'
        FROM {self.bigdata}.member_daily_statics b_mds
        WHERE b_mds.statics_date BETWEEN '{self.start_date}' AND '{self.end_date}'
-       AND b_mds.site_id = {self.site_id}
-       GROUP BY b_mds.member_id
-       HAVING SUM(b_mds.draw) > 5000
        """
+        if self.site_id is not None:
+            query += f" AND b_mds.site_id = {self.site_id}"
+        query += " GROUP BY b_mds.member_id HAVING SUM(b_mds.draw) > 5000"
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
     def mongo_betting_stats(self, use_date_column: bool = False) -> pd.DataFrame:
@@ -347,8 +346,7 @@ class DatabaseQuery:
         pipeline = [
             {"$match": {
                 "flag": 1,
-                "settle_time": {"$gte": self.start_time, "$lte": self.end_time},
-                "site_id": self.site_id
+                "settle_time": {"$gte": self.start_time, "$lte": self.end_time}
             }},
             {"$sort": {"settle_time": 1}},
             {"$group": {
@@ -372,6 +370,8 @@ class DatabaseQuery:
                 "net_amount": 1
             }}
         ]
+        if self.site_id is not None:
+            pipeline[0]["$match"]["site_id"] = self.site_id
         # 移除 None 值
         pipeline = [{k: v for k, v in stage.items() if v is not None} for stage in pipeline]
 
@@ -454,8 +454,7 @@ class DatabaseQuery:
         pipeline = [
             {"$match": {
                 "flag": self.flag_value,
-                "settle_time": {"$gte": self.start_time, "$lte": self.end_time},
-                "site_id": self.site_id
+                "settle_time": {"$gte": self.start_time, "$lte": self.end_time}
             }},
             {"$sort": {"bet_time": 1}},
             {"$project": {
@@ -480,7 +479,8 @@ class DatabaseQuery:
                 "游戏完整详情": "$game_play_info",
             }}
         ]
-
+        if self.site_id is not None:
+            pipeline[0]["$match"]["site_id"] = self.site_id
         df = self._process_mongo_collections(collections, pipeline)
         if df.empty:
             return pd.DataFrame(columns=columns)
@@ -510,7 +510,23 @@ class DatabaseQuery:
             return pd.Series({'联赛': '', '球队': '', '玩法': ''})
 
         df = pd.concat([df, df.apply(parse_details, axis=1)], axis=1)
-
+        # ----------------------------------------------------------------------------------------------------
+        # # 定义目标联赛
+        # target_leagues = [
+        #     "英格兰超级联赛", "西班牙甲级联赛", "法国甲级联赛", "德国甲级联赛", "意大利甲级联赛",
+        #     "西班牙甲组联赛", "意大利甲组联赛", "法国甲组联赛", "德国甲组联赛"
+        # ]
+        #
+        # # 筛选数据
+        # df = df[
+        #     # 游戏列包含 "足球"
+        #     df['游戏'].str.contains('足球', na=False) &
+        #     # 排除游戏详情包含 "独家" 或 "虚拟"
+        #     ~df['游戏详情'].str.contains('独家|虚拟', na=False) &
+        #     # 联赛在目标联赛列表中
+        #     df['联赛'].str.contains('|'.join(re.escape(l) for l in target_leagues), na=False, regex=True)
+        #     ]
+        # ----------------------------------------------------------------------------------------------------
         # 仅保留结算日期（无时间）
         df['结算日期'] = pd.to_datetime(df['结算日期']).dt.date
 
@@ -596,7 +612,7 @@ def main():
             date_str = datetime.strptime(db_query.start_date, '%Y-%m-%d').strftime('%#m-%#d')
         else:
             date_str = f"{datetime.strptime(db_query.start_date, '%Y-%m-%d').strftime('%#m-%#d')}-{datetime.strptime(db_query.end_date, '%Y-%m-%d').strftime('%#m-%#d')}"
-        excel_filename = f"【{db_query.site_id}_{date_str}_{db_query.venue}】{start_time.strftime('%#m-%#d_%H.%M')}.xlsx"
+        excel_filename = f"【{db_query.site_id if db_query.site_id is not None else 'ALL'}_{date_str}_{db_query.venue}】{start_time.strftime('%#m-%#d_%H.%M')}.xlsx"
         save_to_excel(result, excel_filename)
         print(f"结果已保存到: {excel_filename}")
         # send_to_telegram(excel_filename, TELEGRAM_BOT_TOKEN, CHAT_ID)
@@ -612,4 +628,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-
