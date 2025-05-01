@@ -30,7 +30,7 @@ def execute_mongo_aggregation(collection_name: str, pipeline: list, mongo_uri: s
 class DatabaseQuery:
     def __init__(self, host: str, port: int, user: str, password: str,
                  mongo_host: str, mongo_port: int, mongo_user: str, mongo_password: str,
-                 site_id: int = None, start_date: str = '2025-04-28', end_date: str = '2025-04-28',
+                 site_id: int = 1000, start_date: str = '2025-04-01', end_date: str = '2025-04-30',
                  agent_1000: str = 'agent_1000', u1_1000: str = 'u1_1000',
                  bigdata: str = 'bigdata', control_1000: str = 'control_1000',
                  finance_1000: str = 'finance_1000',
@@ -84,7 +84,7 @@ class DatabaseQuery:
             self.session.close()
         self.client.close()
 
-    def _1_member_basic_dates(self) -> pd.DataFrame:
+    def _1_member_basic_info(self) -> pd.DataFrame:
         """查询会员基本信息"""
         query = f"""
         SELECT
@@ -113,7 +113,8 @@ class DatabaseQuery:
             ) t
             WHERE t.rn = 1
         ) u1_mofr ON u1_mi.id = u1_mofr.member_id
-       """
+        WHERE u1_mi.site_id = {self.site_id}
+        """
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
     def _2_first_deposit(self) -> pd.DataFrame:
@@ -243,21 +244,6 @@ class DatabaseQuery:
             query += f" AND u1_mi.site_id = {self.site_id}"
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
-    def _12_depositors_less_then_500(self) -> pd.DataFrame:
-        """查询在指定日期范围内登录且存款金额大于5000的会员"""
-        query = f"""
-       SELECT DISTINCT b_mds.member_id AS '会员ID'
-       FROM {self.bigdata}.member_daily_statics b_mds
-       INNER JOIN {self.u1_1000}.member_info u1_mi
-           ON b_mds.member_id = u1_mi.id
-       WHERE b_mds.statics_date BETWEEN '{self.start_date}' AND '{self.end_date}'
-           AND u1_mi.last_login_time > '{self.start_date}'
-       """
-        if self.site_id is not None:
-            query += f" AND b_mds.site_id = {self.site_id}"
-        query += " GROUP BY b_mds.member_id HAVING SUM(b_mds.draw) < 500"
-        return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
-
     def _14_recent_members_v3(self) -> pd.DataFrame:
         """查询VIP等级>=3且在开始日期前一个月从1号开始登录的会员"""
         start_date_obj = datetime.strptime(self.start_date, '%Y-%m-%d')
@@ -271,69 +257,6 @@ class DatabaseQuery:
        """
         if self.site_id is not None:
             query += f" AND u1_mi.site_id = {self.site_id}"
-        return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
-
-    def _15_login_members_non_bet(self) -> pd.DataFrame:
-        """使用 SQL INNER JOIN 合并登录会员和 antecede会员查询，获取同时满足条件的会员ID"""
-        query = f"""
-       SELECT DISTINCT u1_mi.id AS '会员ID'
-       FROM {self.u1_1000}.member_info u1_mi
-       INNER JOIN {self.bigdata}.member_daily_statics b_mds
-       ON u1_mi.id = b_mds.member_id
-       WHERE u1_mi.last_login_time > '{self.start_date}'
-       AND b_mds.statics_date BETWEEN '{self.start_date}' AND '{self.end_date}'
-       """
-        if self.site_id is not None:
-            query += f" AND u1_mi.site_id = {self.site_id} AND b_mds.site_id = {self.site_id}"
-        query += " GROUP BY u1_mi.id HAVING SUM(b_mds.valid_bet_amount) = 0"
-        return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
-
-    def _16_bet_more_then_10000(self) -> pd.DataFrame:
-        """查询投注金额大于10000的会员"""
-        query = f"""
-       SELECT b_mds.member_id AS '会员ID'
-       FROM {self.bigdata}.member_daily_statics b_mds
-       WHERE b_mds.statics_date BETWEEN '{self.start_date}' AND '{self.end_date}'
-       """
-        if self.site_id is not None:
-            query += f" AND b_mds.site_id = {self.site_id}"
-        query += " GROUP BY b_mds.member_id HAVING SUM(b_mds.valid_bet_amount) > 10000"
-        return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
-
-    def _17_profit_rise_and_fall_more_then_3000(self) -> pd.DataFrame:
-        """查询输钱或赢钱大于3000的会员"""
-        query = f"""
-       SELECT b_mds.member_id AS '会员ID'
-       FROM {self.bigdata}.member_daily_statics b_mds
-       WHERE b_mds.statics_date BETWEEN '{self.start_date}' AND '{self.end_date}'
-       """
-        if self.site_id is not None:
-            query += f" AND b_mds.site_id = {self.site_id}"
-        query += " GROUP BY b_mds.member_id HAVING SUM(b_mds.profit) > 3000 OR SUM(b_mds.profit) < -3000"
-        return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
-
-    def _18_depositors_more_then_3_times(self) -> pd.DataFrame:
-        """查询存款次数大于3的会员"""
-        query = f"""
-       SELECT b_mds.member_id AS '会员ID'
-       FROM {self.bigdata}.member_daily_statics b_mds
-       WHERE b_mds.statics_date BETWEEN '{self.start_date}' AND '{self.end_date}'
-       """
-        if self.site_id is not None:
-            query += f" AND b_mds.site_id = {self.site_id}"
-        query += " GROUP BY b_mds.member_id HAVING SUM(b_mds.draw_count) > 3"
-        return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
-
-    def _19_depositors_more_then_5000(self) -> pd.DataFrame:
-        """查询存款金额大于5000的会员"""
-        query = f"""
-       SELECT b_mds.member_id AS '会员ID'
-       FROM {self.bigdata}.member_daily_statics b_mds
-       WHERE b_mds.statics_date BETWEEN '{self.start_date}' AND '{self.end_date}'
-       """
-        if self.site_id is not None:
-            query += f" AND b_mds.site_id = {self.site_id}"
-        query += " GROUP BY b_mds.member_id HAVING SUM(b_mds.draw) > 5000"
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
     def mongo_betting_stats(self, use_date_column: bool = False) -> pd.DataFrame:
@@ -575,7 +498,7 @@ def send_to_telegram(file_path: str, bot_token: str, chat_id: str) -> bool:
 
 def work(db_query: DatabaseQuery) -> pd.DataFrame:
     """执行查询并合并结果"""
-    # db_query._10_promotion()[['会员ID', '站点ID', '1级', '2级', '3级', '4级']]
+    # db_query._10_promotion()
 
     # .merge(db_query._1_member_basic_info(), on='会员ID', how='inner')
     # .merge(db_query._2_first_deposit(), on='会员ID', how='left')
@@ -605,7 +528,7 @@ def main():
         mongo_password='uvb5SOSmLH8sCoSU'
     )
     TELEGRAM_BOT_TOKEN = '7750313084:AAGci5ANeeyEacKJUESQuDHYyy8tLdl9m7Q'
-    CHAT_ID = '-1002415614868'
+    CHAT_ID = '7523061850'
     try:
         result = work(db_query)
         if db_query.start_date == db_query.end_date:

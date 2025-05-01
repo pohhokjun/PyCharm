@@ -13,7 +13,7 @@ from openpyxl.styles import PatternFill, Font, Alignment
 # 配置常量
 FOLDER_PATH = 'C:/Henvita/1_定时注单导出/收费站'
 TELEGRAM_BOT_TOKEN = '7750313084:AAGci5ANeeyEacKJUESQuDHYyy8tLdl9m7Q'
-CHAT_ID = '7523061850'
+CHAT_ID = '-1002415614868'
 DB_CONFIG = {
    'host': '18.178.159.230',
    'port': 3366,
@@ -204,7 +204,7 @@ async def main():
    bot = Bot(token=TELEGRAM_BOT_TOKEN)
    while True:
        await job(bot)
-       await asyncio.sleep(21600)
+       await asyncio.sleep(3600)
 
 if __name__ == "__main__":
    asyncio.run(main())
