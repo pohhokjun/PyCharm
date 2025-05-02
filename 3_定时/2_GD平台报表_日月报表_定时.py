@@ -200,7 +200,7 @@ async def main():
    bot = Bot(token=TELEGRAM_BOT_TOKEN)
    while True:
        await job(bot)
-       await asyncio.sleep(21600)
+       await asyncio.sleep(7200)
 
 if __name__ == "__main__":
    asyncio.run(main())
