@@ -13,7 +13,7 @@ from openpyxl.styles import PatternFill, Font, Alignment
 # 配置常量
 FOLDER_PATH = 'C:/Henvita/1_定时注单导出/收费站'
 TELEGRAM_BOT_TOKEN = '7750313084:AAGci5ANeeyEacKJUESQuDHYyy8tLdl9m7Q'
-CHAT_ID = '-1002415614868'
+CHAT_ID = '7523061850'
 DB_CONFIG = {
    'host': '18.178.159.230',
    'port': 3366,
@@ -24,7 +24,7 @@ DB_CONFIG = {
 SITE_MAPPING = {
    1000: "好博体育", 2000: "黄金体育", 3000: "宾利体育", 4000: "HOME体育",
    5000: "亚洲之星", 6000: "玖博体育", 7000: "蓝火体育", 8000: "A7体育",
-   9000: "K9体育", 9001: "摩根体育", 9002: "幸运体育"
+   9000: "K9体育", 9001: "摩根体育", 9002: "友博体育"
 }
 
 def to_thousands(number):
@@ -37,69 +37,6 @@ def delete_files(directory):
            os.remove(file_path)
            print(f"删除文件: {file_path}")
 
-def process_dataframe(df, period='daily'):
-   group_key = '日期' if period == 'daily' else '月份'
-   columns = ['id', group_key, '站点ID', '渠道类型', '存款调整上分金额', '存款调整下分金额',
-              '充值金额', '提款金额', '注册人数', '首存人数', '首存金额', '首次有效充值会员数',
-              '首次有效充值金额', '存款人数', '提款人数', '投注人数', '有效投注', '投注额',
-              '公司输赢含提前结算', '红利', '返水', '个人佣金金额', '团队佣金金额',
-              '提前结算净额', '账号调整', '首次充值注册比例', '人均首次充值', '存提差',
-              '提款充值比例', '净投注金额比例', '公司输赢', '集团分成', '团队金额比例',
-              '场馆费', '投注人数(结算)', '有效投注(结算)', '投注额(结算)',
-              '公司输赢含提前结算(结算)', '提前结算(结算)', '公司输赢(结算)',
-              '盈余比例(结算)', '场馆费(结算)', '打赏金额', '集团分成(结算)',
-              '存款手续费', '提款手续费', '分成比例']
-   df.columns = columns
-
-   # 仅保留需要的字段
-   required_cols = ['站点ID', group_key, '注册人数', '首存人数', '首存金额', '存款人数',
-                   '充值金额', '提款人数', '提款金额', '存提差', '账号调整', '投注人数',
-                   '投注额', '有效投注', '公司输赢含提前结算', '红利', '返水',
-                   '个人佣金金额', '团队佣金金额']
-   df = df[required_cols]
-
-   agg_cols = {
-       '注册人数': 'sum', '首存人数': 'sum', '首存金额': 'sum', '存款人数': 'sum',
-       '充值金额': 'sum', '提款人数': 'sum', '提款金额': 'sum', '存提差': 'sum',
-       '账号调整': 'sum', '投注人数': 'sum', '投注额': 'sum', '有效投注': 'sum',
-       '公司输赢含提前结算': 'sum', '红利': 'sum', '返水': 'sum',
-       '个人佣金金额': 'sum', '团队佣金金额': 'sum'
-   }
-   grouped = df.groupby(['站点ID', group_key])[list(agg_cols.keys())].sum().reset_index()
-
-   # 计算集团分成、代理佣金、公司净收入
-   grouped['集团分成'] = (grouped['公司输赢含提前结算'] + grouped['账号调整']) * 0.12
-   grouped['代理佣金'] = grouped['个人佣金金额'] + grouped['团队佣金金额']
-   grouped['公司净收入'] = (grouped['公司输赢含提前结算'] + grouped['账号调整'] -
-                            grouped['红利'] - grouped['返水'] - grouped['代理佣金'] -
-                            grouped['集团分成'])
-
-   # 删除不需要的中间字段
-   grouped.drop(columns=['个人佣金金额', '团队佣金金额'], inplace=True)
-
-   # 过滤当前月份数据
-   current_month = datetime.datetime.now().strftime("%Y-%m")
-   grouped = grouped[grouped[group_key].str.startswith(current_month)]
-
-   # 格式化数字为千位分隔（除了站点ID和日期/月份列）
-   numeric_cols = ['注册人数', '首存人数', '首存金额', '存款人数', '充值金额',
-                   '提款人数', '提款金额', '存提差', '账号调整', '投注人数',
-                   '投注额', '有效投注', '公司输赢含提前结算', '红利', '返水',
-                   '集团分成', '代理佣金', '公司净收入']
-   for col in numeric_cols:
-       grouped[col] = grouped[col].apply(to_thousands)
-
-   # 映射站点ID为站点名称
-   grouped['站点ID'] = grouped['站点ID'].map(SITE_MAPPING)
-
-   # 重命名列以匹配要求
-   grouped.columns = ['站点ID', group_key, '注册人数', '首存人数', '首存金额', '存款人数',
-                      '存款金额', '提款人数', '提款金额', '存提差', '账户调整', '投注人数',
-                      '投注额', '有效投注', '公司输赢含提前结算', '红利', '返水',
-                      '集团分成', '代理佣金', '公司净收入']
-
-   return grouped
-
 async def job(bot):
    print(f"当前时间: {datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')}")
 
@@ -107,14 +44,73 @@ async def job(bot):
 
    with pymysql.connect(**DB_CONFIG) as conn:
        # 处理月报数据
-       df_monthly = pd.read_sql_query(f"SELECT * FROM bigdata.platform_month_report;", conn)
-       monthly_data = process_dataframe(df_monthly, period='monthly')
-       all_data['月报'] = monthly_data
+       monthly_query = """
+       SELECT
+           site_id AS 站点,
+           statics_month AS 月份,
+           FORMAT(SUM(register_member_count), 0) AS 注册人数,
+           FORMAT(SUM(first_recharge_member_count), 0) AS 首存人数,
+           FORMAT(SUM(first_recharge_amount), 0) AS 首存金额,
+           FORMAT(SUM(recharge_member_count), 0) AS 存款人数,
+           FORMAT(SUM(recharge_amount), 0) AS 存款金额,
+           FORMAT(SUM(drawing_member_count), 0) AS 提款人数,
+           FORMAT(SUM(drawing_amount), 0) AS 提款金额,
+           FORMAT(SUM(recharge_drawing_sub), 0) AS 存提差,
+           FORMAT(SUM(deposit_adjust_amount), 0) AS 账户调整,
+           FORMAT(SUM(bet_member_count), 0) AS 投注人数,
+           FORMAT(SUM(bet_amount), 0) AS 投注额,
+           FORMAT(SUM(valid_bet_amount), 0) AS 有效投注,
+           FORMAT(SUM(net_amount_settle), 0) AS 公司输赢含提前结算,
+           FORMAT(SUM(dividend_amount), 0) AS 红利,
+           FORMAT(SUM(rebate_amount), 0) AS 返水,
+           FORMAT(SUM(net_amount_settle + deposit_adjust_amount) * 0.12, 0) AS 集团分成,
+           FORMAT(SUM(per_commission_amount + team_commission_amount), 0) AS 代理佣金,
+           FORMAT(
+               SUM(net_amount_settle + deposit_adjust_amount - dividend_amount - rebate_amount - (per_commission_amount + team_commission_amount) - (net_amount_settle + deposit_adjust_amount) * 0.12),
+               0
+           ) AS 公司净收入
+       FROM bigdata.platform_month_report
+       WHERE statics_month LIKE CONCAT(DATE_FORMAT(CURDATE(), '%Y-%m'), '%')
+       GROUP BY site_id, statics_month
+       ORDER BY site_id;
+       """
+       df_monthly = pd.read_sql_query(monthly_query, conn)
+       df_monthly['站点'] = df_monthly['站点'].map(SITE_MAPPING)
+       all_data['月报'] = df_monthly
 
        # 处理日报数据
-       df_daily = pd.read_sql_query(f"SELECT * FROM bigdata.platform_daily_report;", conn)
-       daily_data = process_dataframe(df_daily, period='daily')
-       daily_grouped = daily_data.groupby('站点ID')
+       daily_query = """
+       SELECT
+           site_id AS 站点,
+           statics_date AS 日期,
+           FORMAT(SUM(register_member_count), 0) AS 注册人数,
+           FORMAT(SUM(first_recharge_member_count), 0) AS 首存人数,
+           FORMAT(SUM(first_recharge_amount), 0) AS 首存金额,
+           FORMAT(SUM(recharge_member_count), 0) AS 存款人数,
+           FORMAT(SUM(recharge_amount), 0) AS 存款金额,
+           FORMAT(SUM(drawing_member_count), 0) AS 提款人数,
+           FORMAT(SUM(drawing_amount), 0) AS 提款金额,
+           FORMAT(SUM(recharge_drawing_sub), 0) AS 存提差,
+           FORMAT(SUM(deposit_adjust_amount), 0) AS 账户调整,
+           FORMAT(SUM(bet_member_count), 0) AS 投注人数,
+           FORMAT(SUM(bet_amount), 0) AS 投注额,
+           FORMAT(SUM(valid_bet_amount), 0) AS 有效投注,
+           FORMAT(SUM(net_amount_settle), 0) AS 公司输赢含提前结算,
+           FORMAT(SUM(dividend_amount), 0) AS 红利,
+           FORMAT(SUM(rebate_amount), 0) AS 返水,
+           FORMAT(SUM(net_amount_settle + deposit_adjust_amount) * 0.12, 0) AS 集团分成,
+           FORMAT(SUM(per_commission_amount + team_commission_amount), 0) AS 代理佣金,
+           FORMAT(
+               SUM(net_amount_settle + deposit_adjust_amount - dividend_amount - rebate_amount - (per_commission_amount + team_commission_amount) - (net_amount_settle + deposit_adjust_amount) * 0.12),
+               0
+           ) AS 公司净收入
+       FROM bigdata.platform_daily_report
+       WHERE statics_date LIKE CONCAT(DATE_FORMAT(CURDATE(), '%Y-%m'), '%')
+       GROUP BY site_id, statics_date;
+       """
+       df_daily = pd.read_sql_query(daily_query, conn)
+       df_daily['站点'] = df_daily['站点'].map(SITE_MAPPING)
+       daily_grouped = df_daily.groupby('站点')
 
        for site_id, site_df in daily_grouped:
            site_name = SITE_MAPPING.get(site_id, str(site_id))
@@ -204,7 +200,7 @@ async def main():
    bot = Bot(token=TELEGRAM_BOT_TOKEN)
    while True:
        await job(bot)
-       await asyncio.sleep(3600)
+       await asyncio.sleep(21600)
 
 if __name__ == "__main__":
    asyncio.run(main())
