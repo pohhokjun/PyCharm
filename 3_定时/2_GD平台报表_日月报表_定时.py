@@ -13,7 +13,7 @@ from openpyxl.styles import PatternFill, Font, Alignment
 # 配置常量
 FOLDER_PATH = 'C:/Henvita/1_定时注单导出/收费站'
 TELEGRAM_BOT_TOKEN = '7750313084:AAGci5ANeeyEacKJUESQuDHYyy8tLdl9m7Q'
-CHAT_ID = '7523061850'
+CHAT_ID = '-1002415614868'
 DB_CONFIG = {
    'host': '18.178.159.230',
    'port': 3366,
@@ -93,8 +93,8 @@ async def job(bot):
            FORMAT(SUM(recharge_drawing_sub), 0) AS 存提差,
            FORMAT(SUM(deposit_adjust_amount), 0) AS 账户调整,
            FORMAT(SUM(bet_member_count), 0) AS 投注人数,
-           FORMAT(SUM(bet_amount), 0) AS 投注额,
-           FORMAT(SUM(valid_bet_amount), 0) AS 有效投注,
+           FORMAT(SUM(bet_amount_settle), 0) AS 投注额,
+           FORMAT(SUM(valid_bet_amount_settle), 0) AS 有效投注,
            FORMAT(SUM(net_amount_settle), 0) AS 公司输赢含提前结算,
            FORMAT(SUM(dividend_amount), 0) AS 红利,
            FORMAT(SUM(rebate_amount), 0) AS 返水,
@@ -200,7 +200,7 @@ async def main():
    bot = Bot(token=TELEGRAM_BOT_TOKEN)
    while True:
        await job(bot)
-       await asyncio.sleep(7200)
+       await asyncio.sleep(86400)
 
 if __name__ == "__main__":
    asyncio.run(main())
