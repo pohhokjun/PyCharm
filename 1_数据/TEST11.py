@@ -30,7 +30,7 @@ def execute_mongo_aggregation(collection_name: str, pipeline: list, mongo_uri: s
 class DatabaseQuery:
     def __init__(self, host: str, port: int, user: str, password: str,
                  mongo_host: str, mongo_port: int, mongo_user: str, mongo_password: str,
-                 site_id: int = 1000, start_date: str = '2025-04-01', end_date: str = '2025-04-30',
+                 site_id: int = 1000, start_date: str = '2025-05-01', end_date: str = '2025-05-31',
                  agent_1000: str = 'agent_1000', u1_1000: str = 'u1_1000',
                  bigdata: str = 'bigdata', control_1000: str = 'control_1000',
                  finance_1000: str = 'finance_1000',
@@ -88,31 +88,36 @@ class DatabaseQuery:
         """查询会员基本信息"""
         query = f"""
         SELECT
-            u1_mi.site_id AS '站点ID',
-            u1_mi.top_name AS '代理名称',
-            u1_mi.id AS '会员ID',
-            u1_mi.name AS '会员账号',
-            CASE u1_mi.status WHEN 1 THEN '启用' WHEN 0 THEN '禁用' ELSE CAST(u1_mi.status AS CHAR) END AS '状态',
-            u1_mi.is_agent AS '是否代理',
-            u1_mi.vip_grade AS 'VIP等级',
-            (SELECT GROUP_CONCAT(DISTINCT c1_sv.dict_value ORDER BY c1_sv.code SEPARATOR ',')
-             FROM control_1000.sys_dict_value c1_sv
-             WHERE FIND_IN_SET(c1_sv.code, u1_mi.tag_id)
-             AND (c1_sv.initial_flag IS NULL OR c1_sv.initial_flag <> 1)) AS '标签',
-            u1_mofr.remark AS '备注',
-            u1_mi.created_at AS '注册时间',
-            u1_mi.last_login_time AS '最后登录时间'
+           u1_mi.site_id AS '站点ID',
+           u1_mi.top_name AS '代理名称',
+           u1_mi.id AS '会员ID',
+           u1_mi.name AS '会员账号',
+           CASE u1_mi.status WHEN 1 THEN '启用' WHEN 0 THEN '禁用' ELSE CAST(u1_mi.status AS CHAR) END AS '状态',
+           u1_mi.is_agent AS '是否代理',
+           u1_mi.vip_grade AS 'VIP等级',
+           (SELECT GROUP_CONCAT(DISTINCT c1_sv.dict_value ORDER BY c1_sv.code SEPARATOR ',')
+            FROM control_1000.sys_dict_value c1_sv
+            WHERE FIND_IN_SET(c1_sv.code, u1_mi.tag_id)
+            AND (c1_sv.initial_flag IS NULL OR c1_sv.initial_flag <> 1)) AS '标签',
+           u1_mofr.remark AS '备注',
+           CASE WHEN u1_mbi.member_info_id IS NOT NULL THEN '是' ELSE '否' END AS '是否已绑卡',
+           u1_mi.created_at AS '注册时间',
+           u1_mi.last_login_time AS '最后登录时间'
         FROM u1_1000.member_info u1_mi
         LEFT JOIN (
-            SELECT member_id, remark
-            FROM (
-                SELECT member_id, remark,
-                       ROW_NUMBER() OVER (PARTITION BY member_id ORDER BY updated_at DESC) AS rn
-                FROM u1_1000.member_open_forbid_record
-                WHERE remark_type = 1
-            ) t
-            WHERE t.rn = 1
+           SELECT member_id, remark
+           FROM (
+               SELECT member_id, remark,
+                      ROW_NUMBER() OVER (PARTITION BY member_id ORDER BY updated_at DESC) AS rn
+               FROM u1_1000.member_open_forbid_record
+               WHERE remark_type = 1
+           ) t
+           WHERE t.rn = 1
         ) u1_mofr ON u1_mi.id = u1_mofr.member_id
+        LEFT JOIN (
+           SELECT DISTINCT member_info_id
+           FROM u1_1000.member_banks_info
+        ) u1_mbi ON u1_mi.id = u1_mbi.member_info_id
         WHERE u1_mi.site_id = {self.site_id}
         """
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
@@ -231,32 +236,6 @@ class DatabaseQuery:
        """
         if self.site_id is not None:
             query += f" AND a1_ad.site_id = {self.site_id}"
-        return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
-
-    def _11_login_members(self) -> pd.DataFrame:
-        """查询登入注会员"""
-        query = f"""
-       SELECT DISTINCT u1_mi.id AS '会员ID'
-       FROM {self.u1_1000}.member_info u1_mi
-       WHERE u1_mi.last_login_time > '{self.start_date}'
-       """
-        if self.site_id is not None:
-            query += f" AND u1_mi.site_id = {self.site_id}"
-        return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
-
-    def _14_recent_members_v3(self) -> pd.DataFrame:
-        """查询VIP等级>=3且在开始日期前一个月从1号开始登录的会员"""
-        start_date_obj = datetime.strptime(self.start_date, '%Y-%m-%d')
-        one_month_before = start_date_obj - relativedelta(months=1, day=1)
-        day_before_start_date = start_date_obj - relativedelta(days=1)
-        query = f"""
-       SELECT DISTINCT u1_mi.id AS '会员ID'
-       FROM {self.u1_1000}.member_info u1_mi
-       WHERE u1_mi.vip_grade >= 3
-       AND u1_mi.last_login_time BETWEEN '{one_month_before.strftime('%Y-%m-%d')}' AND '{day_before_start_date.strftime('%Y-%m-%d')}'
-       """
-        if self.site_id is not None:
-            query += f" AND u1_mi.site_id = {self.site_id}"
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
     def mongo_betting_stats(self, use_date_column: bool = False) -> pd.DataFrame:

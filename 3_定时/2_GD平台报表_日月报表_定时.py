@@ -13,7 +13,7 @@ from openpyxl.styles import PatternFill, Font, Alignment
 # 配置常量
 FOLDER_PATH = 'C:/Henvita/1_定时注单导出/收费站'
 TELEGRAM_BOT_TOKEN = '7750313084:AAGci5ANeeyEacKJUESQuDHYyy8tLdl9m7Q'
-CHAT_ID = '-1002415614868'
+CHAT_ID = '7523061850'
 DB_CONFIG = {
    'host': '18.178.159.230',
    'port': 3366,
@@ -43,7 +43,7 @@ async def job(bot):
    all_data = {}
 
    with pymysql.connect(**DB_CONFIG) as conn:
-       # 处理月报数据
+       # 处理月报数据（保持不变）
        monthly_query = """
        SELECT
            site_id AS 站点,
@@ -114,6 +114,9 @@ async def job(bot):
 
        for site_id, site_df in daily_grouped:
            site_name = SITE_MAPPING.get(site_id, str(site_id))
+           # 如果是“好博体育”，删除有效投注为0的行
+           if site_name == "好博体育":
+               site_df = site_df[site_df['有效投注'] != '0']
            all_data[site_name] = site_df
 
    file_name = f"{FOLDER_PATH}/平台报表-月日报表.xlsx"
@@ -200,7 +203,7 @@ async def main():
    bot = Bot(token=TELEGRAM_BOT_TOKEN)
    while True:
        await job(bot)
-       await asyncio.sleep(86400)
+       await asyncio.sleep(7200)
 
 if __name__ == "__main__":
    asyncio.run(main())
