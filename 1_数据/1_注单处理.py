@@ -1,3 +1,4 @@
+
 import pandas as pd
 import os
 import numpy as np
@@ -10,7 +11,11 @@ import shutil
 # 导出Excel文件，冻结首行并启用筛选功能
 def excel_out_oversize(df, file_name, date_suffix, output_dir=r'C:\Henvita\0_数据导出'):
     subsets = [df.iloc[i:i + 1000000] for i in range(0, len(df), 1000000)]
-    dated_file_name = f"【{file_name.split(' ', 1)[0]}】{file_name.split(' ', 1)[1]} {date_suffix}"
+    # 获取结算日期范围并格式化为 MM.DD-MM.DD
+    min_date = pd.to_datetime(df['结算日期']).min().strftime('%m.%d')
+    max_date = pd.to_datetime(df['结算日期']).max().strftime('%m.%d')
+    date_range = f'{min_date}-{max_date}'
+    dated_file_name = f"【{file_name.split(' ', 1)[0]}】{file_name.split(' ', 1)[1]} {date_range}"
     output_path = os.path.join(output_dir, f'{dated_file_name}.xlsx')
     writer = pd.ExcelWriter(output_path, engine='xlsxwriter')
 
@@ -53,20 +58,6 @@ def process_sports_data(df, filter_leagues=False):
     sports_df.loc[:, '球队'] = sports_df['游戏详情'].str.split('\n', expand=True)[2]
     sports_df.loc[:, '玩法'] = sports_df['游戏详情'].str.split('\n', expand=True)[3]
     result = sports_df.drop(columns=['赔率', '赔率类型'])
-
-    if filter_leagues:
-        leagues = [
-            "英格兰超级联赛", "西班牙甲级联赛", "法国甲级联赛", "德国甲级联赛", "意大利甲级联赛",
-            "*英格兰超级联赛", "*西班牙甲级联赛", "*法国甲级联赛", "*德国甲级联赛", "*意大利甲级联赛",
-            "西班牙甲组联赛", "意大利甲组联赛", "法国甲组联赛", "德国甲组联赛",
-            "*西班牙甲组联赛", "*意大利甲组联赛", "*法国甲组联赛", "*德国甲组联赛"
-        ]
-        pattern = '|'.join(re.escape(l) for l in leagues)
-        result = result[
-            result['游戏详情'].str.contains(pattern, na=False, regex=True) &
-            ~result['游戏详情'].str.contains('独家|虚拟', na=False) &
-            result['游戏名称'].str.contains('足球', na=False)
-            ]
     return result
 
 
@@ -112,18 +103,15 @@ def main():
     # 数据类型和过滤条件
     data_types = {
         '体育注单数据': (lambda df: process_sports_data(df, filter_leagues=False), None),
-        '五大联赛注单': (lambda df: process_sports_data(df, filter_leagues=True), None),
         'GFQP注单数据': (lambda df: df[df['场馆名称'].str.contains('GFQP', na=False)], None),
-        'GFDZ注单数据': (
-            lambda df: df[df['场馆名称'].str.contains('GFDZ', na=False) & (df['结算日期'].dt.date == yesterday_date)],
-            None),
+        'GFDZ注单数据': (lambda df: df[df['场馆名称'].str.contains('GFDZ', na=False)],None),
         '电竞注单数据': (process_esports_data, None),
         '棋牌注单数据': (lambda df: df[df['场馆名称'].str.contains('QP', na=False)], None),
         '真人注单数据': (lambda df: df[df['场馆名称'].str.contains('ZR', na=False)], None),
         '捕鱼注单数据': (lambda df: df[df['场馆名称'].str.endswith('BY', na=False)], None),
         '电子注单数据': (lambda df: df[df['场馆名称'].str.contains('DZ|HX', na=False)], None),
-        '已结算的AG真人场馆注单数据': (
-            lambda df: df[df['场馆名称'].str.contains('AGZR', na=False) & (df['站点ID'] == 2000)], {2000})
+        '彩票注单数据': (lambda df: df[df['场馆名称'].str.contains('CP|GGL', na=False)], None),
+        '已结算的AG真人场馆注单数据': (lambda df: df[df['场馆名称'].str.contains('AGZR', na=False) & (df['站点ID'] == 2000)], {2000})
     }
 
     # 处理并导出数据
@@ -138,3 +126,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

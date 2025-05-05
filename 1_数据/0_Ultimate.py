@@ -423,8 +423,8 @@ class DatabaseQuery:
         # df = df[
         #     # 游戏列包含 "足球"
         #     df['游戏'].str.contains('足球', na=False) &
-        #     # 排除游戏详情包含 "独家" 或 "虚拟"
-        #     ~df['游戏详情'].str.contains('独家|虚拟', na=False) &
+        #     # 排除游戏详情
+        #     ~df['游戏详情'].str.contains('独家|虚拟|VR', na=False) &
         #     # 联赛在目标联赛列表中
         #     df['联赛'].str.contains('|'.join(re.escape(l) for l in target_leagues), na=False, regex=True)
         #     ]
