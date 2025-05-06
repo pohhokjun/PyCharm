@@ -34,7 +34,7 @@ class DatabaseQuery:
                  agent_1000: str = 'agent_1000', u1_1000: str = 'u1_1000',
                  bigdata: str = 'bigdata', control_1000: str = 'control_1000',
                  finance_1000: str = 'finance_1000',
-                 mongo_collection_prefix: str = 'pull_order_game_', venue: str = 'TY'):
+                 mongo_collection_prefix: str = 'pull_order_game_', venue: str = ''):
         """初始化数据库连接参数"""
         # MySQL 连接
         connection_string = f"mysql+mysqlconnector://{user}:{password}@{host}:{port}/"
@@ -118,8 +118,9 @@ class DatabaseQuery:
            SELECT DISTINCT member_info_id
            FROM u1_1000.member_banks_info
         ) u1_mbi ON u1_mi.id = u1_mbi.member_info_id
-        WHERE u1_mi.site_id = {self.site_id}
         """
+        if self.site_id is not None:
+            query += f" WHERE u1_mi.site_id = {self.site_id}"
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
     def _2_first_deposit(self) -> pd.DataFrame:
