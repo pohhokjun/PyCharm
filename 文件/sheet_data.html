@@ -1,0 +1,115 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Google Sheet Data</title>
+    <style>
+body { font-family: sans-serif; margin: 0; padding: 0; background-color: #000; color: #fff; display: flex; min-height: 100vh; }
+* { scrollbar-width: none; -ms-overflow-style: none; }
+*::-webkit-scrollbar { display: none; }
+.sidebar { width: 133px; background-color: #222; color: #fff; padding: 20px; border-right: 1px solid #444; display: flex; flex-direction: column; position: fixed; top: 0; bottom: 0; overflow-y: auto; }
+.sidebar h2 { color: #eee; margin-top: 0; margin-bottom: 15px; }
+.sidebar ul { list-style: none; padding: 0; margin: 0; }
+.sidebar li a { display: block; padding: 10px 15px; text-decoration: none; color: #ddd; border-radius: 5px; margin-bottom: 5px; cursor: pointer; }
+.sidebar li a:hover { background-color: #555; color: #fff; }
+.sidebar li a.active { background-color: #777; color: #fff; }
+.content { flex-grow: 1; padding: 20px; background-color: #111; margin-left: 173px; }
+.table-container { width: 100%; background-color: #333; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); padding: 10px; box-sizing: border-box; margin-bottom: 20px; display: none; }
+.table-container.active { display: block; }
+.table-container table { width: 100%; border-collapse: collapse; color: #eee; }
+.table-container th, .table-container td { border: 1px solid #555; padding: 8px; text-align: left; }
+.table-container th { background-color: #444; }
+@media (max-width: 768px) {
+    .sidebar { width: 100px; }
+    .content { margin-left: 140px; }
+}
+</style>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const links = document.querySelectorAll('.sidebar li a');
+    const containers = document.querySelectorAll('.table-container');
+
+    links.forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElement = document.getElementById(targetId);
+            if (targetElement) {
+                containers.forEach(container => container.classList.remove('active'));
+                targetElement.classList.add('active');
+                links.forEach(l => l.classList.remove('active'));
+                this.classList.add('active');
+            }
+        });
+    });
+
+    // Set first sheet as active on load
+    if (links.length > 0 && containers.length > 0) {
+        links[0].classList.add('active');
+        containers[0].classList.add('active');
+    }
+});
+</script>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>简历</h2>
+        <ul><li><a href="#-------0" class="active">个人基本情况</a></li>
+<li><a href="#-----1" >工作经历</a></li>
+<li><a href="#---2" >技能</a></li>
+<li><a href="#-----3" >工作步骤</a></li>
+<li><a href="#-----4" >求职目标</a></li></ul>
+    </div>
+    <div class="content">
+        
+<div id="-------0" class="table-container active">
+    <h2>个人基本情况</h2>
+    <table>
+        <thead><tr><th>姓名</th><th>Henvita</th></tr></thead>
+        <tbody><tr><td>性别</td><td>男</td></tr><tr><td>年龄</td><td>30</td></tr><tr><td>出生日期</td><td>1996年7月8日</td></tr><tr><td>国际</td><td>马来西亚</td></tr><tr><td>语言</td><td>中文，英文</td></tr><tr><td>学历</td><td>高中</td></tr><tr><td>学校</td><td>育才独中</td></tr><tr><td>纸飞机</td><td>@pohhokjun</td></tr><tr><td>电子邮件</td><td>pohhokjun@gmail.com</td></tr><tr><td>电话</td><td>+60 1121832880</td></tr><tr><td>身高</td><td>176cm</td></tr><tr><td>体重</td><td>60KG</td></tr><tr><td>优点</td><td>学习能力强，逻辑思维能力强，数学类是强项，擅长研究</td></tr><tr><td>缺点</td><td>性格腼腆，对于营销，推广系的方面比较弱势</td></tr></tbody>
+    </table>
+</div>
+
+
+<div id="-----1" class="table-container">
+    <h2>工作经历</h2>
+    <table>
+        <thead><tr><th>开始时间</th><th>结束时间</th><th>时长</th><th>地点</th><th>公司</th><th>官网</th><th>职务</th><th>主要工作内容</th></tr></thead>
+        <tbody><tr><td>2015-05</td><td>2019-01</td><td>3年8月</td><td>马来西亚</td><td>云顶集团</td><td>https://www.rwgenting.com</td><td>荷官</td><td>操作桌面游戏，百家乐，德州等</td></tr><tr><td>2019-02</td><td>2020-10</td><td>1年8月</td><td>菲律宾</td><td>泛亚集团</td><td></td><td>客服/财务</td><td>了解公司结构以便更好的为客户处理问题
+协助充值与提款，以及核实第三方支付通道账目</td></tr><tr><td>2020-11</td><td>2021-12</td><td>1年1月</td><td>菲律宾</td><td>DB</td><td>https://dbgaming.com</td><td>操盘手</td><td>根据形势操作盘口赔率，封盘等操作，已达到货量的平衡</td></tr><tr><td>2021-12</td><td>2023-12</td><td>2年</td><td>菲律宾</td><td>DB</td><td>https://dbgaming.com</td><td>风控/数据分析</td><td>以MySQL方式链接数据库分析
+评估玩法逻辑，盘口，赔率的潜在风险
+避免潜在的协议赛</td></tr><tr><td>2024-09</td><td>2024-11</td><td>2月</td><td>菲律宾</td><td>KY</td><td></td><td>用户维护</td><td>维护客户长期保持活跃
+与客户打好关系，赠送福利等</td></tr><tr><td>2024-11</td><td>2025-03</td><td>4月</td><td>菲律宾/泰国</td><td>KY</td><td></td><td>数据专员</td><td>收集数据，验证数据，数据清洗，报告与可视化</td></tr><tr><td>2024-11</td><td></td><td></td><td>柬埔寨</td><td>GD</td><td></td><td>数据分析</td><td></td></tr></tbody>
+    </table>
+</div>
+
+
+<div id="---2" class="table-container">
+    <h2>技能</h2>
+    <table>
+        <thead><tr><th>接触时间起</th><th>技能</th><th>经验</th></tr></thead>
+        <tbody><tr><td>2019-02</td><td>Microsoft Excel</td><td></td></tr><tr><td>2022-01</td><td>Tableau</td><td></td></tr><tr><td>2022-06</td><td>Python</td><td></td></tr><tr><td>2023-03</td><td>PowerPoint</td><td></td></tr><tr><td>2023-06</td><td>PowerBI</td><td></td></tr><tr><td>2024-11</td><td>Power Query</td><td></td></tr><tr><td>2025-03</td><td>Structured Query Language</td><td></td></tr></tbody>
+    </table>
+</div>
+
+
+<div id="-----3" class="table-container">
+    <h2>工作步骤</h2>
+    <table>
+        <thead><tr><th>定义问题</th><th>基于业务需求和目标，提出初步的假设问题</th></tr></thead>
+        <tbody><tr><td>收集数据</td><td>确定数据的来源，例如公司数据库、SQL链接、API，excel等</td></tr><tr><td>数据清洗</td><td>处理缺失，重复数据，转换数据格式等</td></tr><tr><td>数据建模</td><td>按照定义的问题，可利用公式化，计算或筛选找出问题点</td></tr><tr><td>分析数据</td><td>验证假设问题， 从数据中识别出潜在的模式、趋势和关系</td></tr><tr><td>报告与可视化</td><td>编写详细的数据分析报告，使用图表、仪表板展示分析结果</td></tr></tbody>
+    </table>
+</div>
+
+
+<div id="-----4" class="table-container">
+    <h2>求职目标</h2>
+    <table>
+        <thead><tr><th>我对数学充满了浓厚的兴趣，对数据背后的模式的探索深感兴奋。最初，我开始接触Python是因为我意识到自己需要对数据进行统计分析，而电脑自动化统计给了我这样的可能性。这个经历让我深刻意识到科技的强大和无限可能性。我渴望有更多的机会接触和探索这个领域，希望能够在工作中不断学习和成长，发挥我的潜力，为企业带来新的洞见和价值。</th></tr></thead>
+        <tbody></tbody>
+    </table>
+</div>
+
+    </div>
+</body>
+</html>
