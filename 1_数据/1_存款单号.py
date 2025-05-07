@@ -154,9 +154,10 @@ class DataExporter:
                 SELECT 
                     code, 
                     dict_value,
+                    dict_code,
                     ROW_NUMBER() OVER (PARTITION BY code ORDER BY code) AS rn
                 FROM control_1000.sys_dict_value
-                WHERE (initial_flag IS NULL OR initial_flag <> 1)
+                WHERE dict_code = 'withdraw_type'
             ) t
             WHERE rn = 1
         ) sv ON f.pay_type = sv.code
@@ -172,13 +173,8 @@ class DataExporter:
         else:
             start_time, end_time = self.get_yesterday_time()
 
-        # 格式化时间
         date_range_str = self.format_date_range(start_time, end_time)
-
-        # 选择 SQL 查询
         query = self.query_base(start_time, end_time) if query_type == 'base' else self.query_with_pay_type(start_time, end_time)
-
-        # 查询数据
         df = pd.read_sql(query, self.engine)
 
         # 为每个站点生成文件

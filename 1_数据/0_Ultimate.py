@@ -148,7 +148,7 @@ class DatabaseQuery:
         query = f"""
         SELECT 
             member_id AS '会员ID',
-            MAX(CASE WHEN bets > 0 THEN statics_date ELSE NULL END) AS '最后投注日期'
+            MAX(CASE WHEN valid_bet_amount > 0 THEN statics_date ELSE NULL END) AS '最后投注日期'
         FROM {self.bigdata}.member_daily_statics
         GROUP BY member_id
        """

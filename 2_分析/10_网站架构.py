@@ -121,8 +121,8 @@ def generate_excel_pivot_view_html():
                         'fill': False
                     })
         elif sheet == "金额":
-            y_left_cols = ["存提差", "公司输赢", "公司净收入", "代理佣金"]
-            y_right_cols = ["提前结算", "账户调整", "红利", "返水", "集团分成"]
+            y_left_cols = ["公司输赢", "公司净收入", "代理佣金"]
+            y_right_cols = ["账户调整", "红利", "返水", "集团分成"]
             for i, column in enumerate(y_left_cols):
                 if column in value_columns:
                     data = sheet_df.groupby(x_axis_col)[column].sum().reindex(sheet_date_labels).fillna(0).tolist()

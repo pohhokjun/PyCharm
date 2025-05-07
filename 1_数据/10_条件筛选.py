@@ -61,7 +61,7 @@ def v4_above_no_bet_3_days(self) -> pd.DataFrame:
         mds.member_id AS '会员ID'
     FROM {self.bigdata}.member_daily_statics mds
     JOIN {self.u1_1000}.member_info mi ON mds.member_id = mi.id
-    WHERE mi.vip_grade IN ('4', '5', '6', '7', '8', '9')
+    WHERE mi.vip_grade IN ('4', '5', '6', '7', '8', '9', '10')
     GROUP BY mds.member_id
     HAVING MAX(CASE WHEN mds.bets > 0 THEN mds.statics_date ELSE NULL END) < DATE_SUB(CURDATE(), INTERVAL 3 DAY)
     """

@@ -1,106 +1,145 @@
-import pymysql
 import pandas as pd
 from openpyxl import load_workbook
 import os
+from sqlalchemy import create_engine
+from datetime import datetime, timedelta
 
-# 时间范围（便于修改）
-START_TIME = '2025-04-01 00:00:00'  # 开始时间
-END_TIME = '2025-04-02 23:59:59'    # 结束时间
 
-# 全局映射字典
-WITHDRAW_STATUS = {
-    101: "发起，已扣款", 200: "风控计算流水中", 201: "自动风控不过，等待人工风控",
-    202: "人工审核挂起", 300: "已风控,待付款", 401: "自动出款中",
-    402: "已付款，提款成功", 403: "已对账，提款成功", 500: "已拒绝", 501: "出款失败"
-}
+class DataExporter:
+    def __init__(self):
+        self.db_config = {
+            'host': '18.178.159.230', 'port': 3366,
+            'user': 'bigdata', 'password': 'uvb5SOSmLH8sCoSU',
+            'database': 'finance_1000'
+        }
+        self.save_path = r'C:\Henvita\0_数据导出'
+        self.engine = create_engine(
+            f"mysql+pymysql://{self.db_config['user']}:{self.db_config['password']}@{self.db_config['host']}:{self.db_config['port']}/{self.db_config['database']}")
+        os.makedirs(self.save_path, exist_ok=True)
 
-CATEGORIES = {
-    1: "会员中心钱包提款", 3: "代理钱包提款", 5: "虚拟币钱包提款",
-    11: "手动下分", 12: "代客下分"
-}
+    def save_excel_with_freeze(self, df, file_path):
+        """保存 Excel 并冻结首行"""
+        df.to_excel(file_path, index=False, engine='openpyxl')
+        wb = load_workbook(file_path)
+        wb.active.freeze_panes = 'A2'
+        wb.save(file_path)
 
-WITHDRAW_TYPES = {
-    2001: "提款至银行卡", 20202: "提款至中心钱包", 20203: "佣金转账",
-    20204: "额度转账", 20205: "额度代存", 20206: "佣金代存",
-    20207: "额度手动下分", 2002: "提款至虚拟币账户", 20209: "代客提款",
-    1006: "Mpay钱包", 1008: "IPAY钱包", 1018: "EBPAY钱包",
-    1021: "988钱包", 1022: "JD钱包", 1023: "C币钱包",
-    1024: "K豆钱包", 1025: "钱能钱包", 1026: "TG钱包",
-    1027: "FPAY钱包", 1028: "OKPAY钱包", 1029: "TOPAY钱包",
-    1030: "GOPAY钱包", 1031: "808钱包", 1033: "万币钱包",
-    1034: "365钱包", 1035: "ABPAY钱包", 1002: "支付宝提款",
-    0: "手动下分"
-}
+    def format_date_range(self, start, end):
+        """格式化时间范围为文件名字符串"""
+        if start is None or end is None:
+            return "所有时间"
+        start_dt = datetime.strptime(start, '%Y-%m-%d %H:%M:%S')
+        end_dt = datetime.strptime(end, '%Y-%m-%d %H:%M:%S')
+        return f"{start_dt.strftime('%m.%d')}-{end_dt.strftime('%m.%d')}"
 
-SITES = {
-    1000: '好博体育', 2000: '黄金体育', 3000: '宾利体育', 4000: 'HOME体育',
-    5000: '亚洲之星', 6000: '玖博体育', 7000: '蓝火体育', 8000: 'A7体育'
-}
+    def get_manual_time(self, start_time, end_time):
+        """手动输入时间范围"""
+        return start_time, end_time
 
-SELECTED_COLUMNS = ['站点ID', '会员ID', '会员用户名', '会员等级', '账单号', '通用支付订单号',
-                   '订单金额', '实际支付金额', '预存款', '预存款时间', '预存款成功次数',
-                   '类别', '提现状态', '风控管理员ID', '风控确认时间', '提现备注', '确认时间',
-                   '上级ID', '创建时间', '更新时间', '自动风控结果', '风控备注', '拒绝原因',
-                   '拒绝内容', '暂扣原因', '暂扣时间', '支付渠道', '提现类型', '支付渠道索引',
-                   '支付时间', '订单状态', '发货次数', '银行创建时间', '风控管理员姓名',
-                   '风控操作员', '财务备注', '商户号', '设备号', '风控接收时间',
-                   '兑换汇率', '预期币种', '手续费', '信用评级', '信用等级', '提醒',
-                   '请求来源', '系统类型', '系统类型信息', '支付组名称', '预提现',
-                   '操作员', '支付管理员ID', '奖励金额', '转账会员ID', '转账会员姓名']
+    def get_yesterday_time(self):
+        """自动获取昨天时间范围"""
+        yesterday = datetime.now() - timedelta(days=1)
+        start = yesterday.replace(hour=0, minute=0, second=0, microsecond=0).strftime('%Y-%m-%d %H:%M:%S')
+        end = yesterday.replace(hour=23, minute=59, second=59, microsecond=999999).strftime('%Y-%m-%d %H:%M:%S')
+        return start, end
 
-def save_excel_with_freeze(df, file_path):
-    """保存Excel并冻结首行"""
-    df.to_excel(file_path, index=False)
-    wb = load_workbook(file_path)
-    ws = wb.active
-    ws.freeze_panes = 'A2'
-    wb.save(file_path)
+    def query_base(self, start_time_str, end_time_str):
+        """使用提供的 SQL 导出提现数据"""
+        query = f"""
+        SELECT
+            fw.site_id AS '站点ID',
+            fw.member_id AS '会员ID',
+            fw.member_username AS '会员用户名',
+            fw.member_grade AS '会员等级',
+            fw.top_id AS '上级ID',
+            CASE fw.category
+                WHEN 1 THEN '会员中心钱包提款'
+                WHEN 3 THEN '代理钱包提款'
+                WHEN 5 THEN '虚拟币钱包提款'
+                WHEN 11 THEN '手动下分'
+                WHEN 12 THEN '代客下分'
+                ELSE fw.category
+            END AS '类别',
+            COALESCE(sv.dict_value, fw.withdraw_type) AS '提现类型',
+            CASE fw.draw_status
+                WHEN 101 THEN '发起，已扣款'
+                WHEN 200 THEN '风控计算流水中'
+                WHEN 201 THEN '自动风控不过，等待人工风控'
+                WHEN 202 THEN '人工审核挂起'
+                WHEN 300 THEN '已风控,待付款'
+                WHEN 401 THEN '自动出款中'
+                WHEN 402 THEN '已付款，提款成功'
+                WHEN 403 THEN '已对账，提款成功'
+                WHEN 500 THEN '已拒绝'
+                WHEN 501 THEN '出款失败'
+                ELSE fw.draw_status
+            END AS '提现状态',
+            fw.bill_no AS '账单号',
+            fw.typay_order_id AS '通用支付订单号',
+            fw.amount AS '订单金额',
+            fw.usdt_amount AS '实际支付金额',
+            fw.handling_fee AS '手续费',
+            fw.created_at AS '创建时间',
+            fw.confirm_at AS '确认时间',
+            fw.payment_time AS '支付时间',
+            fw.finance_remark AS '财务备注',
+            fw.operator AS '操作员'
+        FROM finance_1000.finance_withdraw fw
+        LEFT JOIN (
+            SELECT code, dict_value
+            FROM (
+                SELECT
+                    code,
+                    dict_value,
+                    dict_code,
+                    ROW_NUMBER() OVER (PARTITION BY code ORDER BY code) AS rn
+                FROM control_1000.sys_dict_value
+                WHERE dict_code = 'withdraw_type'
+            ) t
+            WHERE rn = 1
+        ) sv ON fw.withdraw_type = sv.code
+        WHERE fw.draw_status IN (402, 403)
+        AND fw.confirm_at BETWEEN '{start_time_str}' AND '{end_time_str}';
+        """
+        return query
+
+    def export_data(self, time_mode='yesterday', start_time=None, end_time=None):
+        """导出提现数据，允许选择时间筛选方式"""
+        # 选择时间筛选方式
+        if time_mode == 'manual' and start_time and end_time:
+            start_time, end_time = self.get_manual_time(start_time, end_time)
+        else:
+            start_time, end_time = self.get_yesterday_time()
+
+        date_range_str = self.format_date_range(start_time, end_time)
+        query = self.query_base(start_time, end_time)
+        df = pd.read_sql(query, self.engine)
+
+        # 为每个站点生成文件
+        for site_id, site_name in {
+            1000: '好博体育', 2000: '黄金体育', 3000: '宾利体育', 4000: 'HOME体育',
+            5000: '亚洲之星', 6000: '玖博体育', 7000: '蓝火体育', 8000: 'A7体育',
+            9000: 'K9体育', 9001: '摩根体育', 9002: '友博体育'
+        }.items():
+            site_df = df[df['站点ID'] == site_id]
+            file_name = f"【{site_name}】提款单号 {date_range_str}.xlsx"
+            self.save_excel_with_freeze(site_df, os.path.join(self.save_path, file_name))
+
+        print(f"所有站点提现数据已导出到 {self.save_path} 并冻结了首行")
+
 
 def main():
-    # 数据库连接
-    connection = pymysql.connect(
-        host='18.178.159.230',
-        port=3366,
-        user='bigdata',
-        password='uvb5SOSmLH8sCoSU',
-        database='finance_1000'
-    )
+    exporter = DataExporter()
 
-    # 查询数据
-    query = f"SELECT * FROM finance_1000.finance_withdraw WHERE draw_status IN (402, 403) AND confirm_at BETWEEN '{START_TIME}' AND '{END_TIME}';"
-    df = pd.read_sql_query(query, connection)
-    connection.close()
+    # 示例：使用昨天时间导出提现数据
+    exporter.export_data(time_mode='yesterday')
 
-    # 重命名列
-    df.columns = ['ID', '站点ID', '会员ID', '会员用户名', '手机号', '会员等级', '客户端类型', '客户端IP',
-                  '账单号', '通用支付订单号', '订单金额', '实际支付金额', '预存款', '预存款时间', '预存款成功次数',
-                  '银行代码', '银行卡号', '银行真实姓名', '类别', '提现状态', '风控管理员ID', '风控确认时间',
-                  '提现备注', '确认时间', '上级ID', '创建时间', '更新时间', '银行地址', '自动风控结果',
-                  '风控备注', '拒绝原因', '拒绝内容', '暂扣原因', '暂扣时间', '支付渠道', '提现类型',
-                  '支付渠道索引', '支付时间', '订单状态', '发货次数', '银行创建时间', '风控管理员姓名',
-                  '暂扣姓名', '会员真实姓名', '风控操作员', '财务备注', '商户号', '数据路由', '设备号',
-                  '风控接收时间', '协议', '兑换汇率', '预期币种', '手续费', '扩展字段0', '扩展字段1',
-                  '扩展字段2', '扩展字段3', '扩展字段4', '扩展字段8', '信用评级', '信用等级', '提醒',
-                  '请求来源', '系统类型', '系统类型信息', '支付组名称', '预提现', '操作员', '支付管理员ID',
-                  '奖励金额', '转账会员ID', '转账会员姓名', '风控C管理员ID']
-
-    # 选择需要的列并应用映射
-    df = df[SELECTED_COLUMNS]
-    df['提现状态'] = df['提现状态'].map(WITHDRAW_STATUS)
-    df['类别'] = df['类别'].map(CATEGORIES)
-    df['提现类型'] = df['提现类型'].map(WITHDRAW_TYPES)
-
-    # 保存路径
-    save_path = r'C:\Henvita\0_数据导出'
-    os.makedirs(save_path, exist_ok=True)
-
-    # 为每个站点生成文件
-    for site_id, site_name in SITES.items():
-        file_path = f'{save_path}\\{site_name}提款单号.xlsx'
-        site_df = df[df['站点ID'] == site_id]
-        save_excel_with_freeze(site_df, file_path)
-
-    print(f"所有站点的数据已导出到 {save_path} 并冻结了首行")
+    # 示例：使用指定时间导出提现数据
+    # exporter.export_data(
+    #     time_mode='manual',
+    #     start_time='2025-04-01 00:00:00',
+    #     end_time='2025-04-02 23:59:59'
+    # )
 
 if __name__ == "__main__":
     main()

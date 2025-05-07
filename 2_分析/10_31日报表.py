@@ -71,9 +71,7 @@ def get_amount_report_sql(db, table):
         SUM(recharge_amount) AS 存款金额,
         SUM(drawing_amount) AS 取款金额,
         SUM(valid_bet_amount_settle) AS 投注金额,
-        SUM(recharge_drawing_sub) AS 存提差,
-        SUM(net_amount_settle) AS 公司输赢,
-        SUM(early_settle_net_amount_settle) AS 提前结算,
+        (SUM(net_amount_settle) + SUM(early_settle_net_amount_settle)) AS 公司输赢,
         SUM(deposit_adjust_amount) AS 账户调整,
         -SUM(dividend_amount) AS 红利,
         -SUM(rebate_amount) AS 返水,
@@ -157,7 +155,7 @@ def get_payment_report_sql(db, table):
                 WHEN confirm_at >= DATE_SUB(CURDATE(), INTERVAL 3 DAY) THEN '近3日'
                 WHEN confirm_at >= DATE_SUB(CURDATE(), INTERVAL 7 DAY) THEN '近7日'
                 WHEN confirm_at >= DATE_SUB(CURDATE(), INTERVAL 15 DAY) THEN '近15日'
-                WHEN confirm_at >= DATE_SUB(CURDATE(), INTERVAL 31 DAY) THEN '近31日'
+                WHEN confirm_at >= DATE_SUB(CURDATE(), INTERVAL 30 DAY) THEN '近30日'
             END AS 时间段,
             pay_type,
             pay_status,
@@ -167,7 +165,7 @@ def get_payment_report_sql(db, table):
         FROM {db}.{table}
         WHERE category = 1
           AND pay_status IN (2, 4)
-          AND confirm_at >= DATE_SUB(CURDATE(), INTERVAL 31 DAY)
+          AND confirm_at >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)
           AND confirm_at <= CURDATE()
     )
     SELECT 
@@ -238,7 +236,7 @@ def get_withdraw_report_sql(db, table):
                 WHEN confirm_at >= DATE_SUB(CURDATE(), INTERVAL 3 DAY) THEN '近3日'
                 WHEN confirm_at >= DATE_SUB(CURDATE(), INTERVAL 7 DAY) THEN '近7日'
                 WHEN confirm_at >= DATE_SUB(CURDATE(), INTERVAL 15 DAY) THEN '近15日'
-                WHEN confirm_at >= DATE_SUB(CURDATE(), INTERVAL 31 DAY) THEN '近31日'
+                WHEN confirm_at >= DATE_SUB(CURDATE(), INTERVAL 30 DAY) THEN '近30日'
             END AS 时间段,
             withdraw_type,
             draw_status,
@@ -249,7 +247,7 @@ def get_withdraw_report_sql(db, table):
         WHERE site_id = 2000
           AND category = 1
           AND draw_status IN (402, 501)
-          AND confirm_at >= DATE_SUB(CURDATE(), INTERVAL 31 DAY)
+          AND confirm_at >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)
           AND confirm_at <= CURDATE()
     )
     SELECT 
