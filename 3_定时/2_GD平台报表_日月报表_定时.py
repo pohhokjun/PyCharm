@@ -1,4 +1,3 @@
-
 import os
 import asyncio
 import datetime
@@ -8,7 +7,7 @@ from telegram import Bot
 from telegram.error import TelegramError
 from openpyxl import Workbook
 from openpyxl.utils import get_column_letter
-from openpyxl.styles import PatternFill, Font, Alignment
+from openpyxl.styles import PatternFill, Font, Alignment, numbers
 
 # 配置常量
 FOLDER_PATH = 'C:/Henvita/1_定时注单导出/收费站'
@@ -110,6 +109,8 @@ async def job(bot):
        """
        df_daily = pd.read_sql_query(daily_query, conn)
        df_daily['站点'] = df_daily['站点'].map(SITE_MAPPING)
+       # 按日期升序排序
+       df_daily = df_daily.sort_values(by='日期', ascending=True)
        daily_grouped = df_daily.groupby('站点')
 
        for site_id, site_df in daily_grouped:
@@ -164,6 +165,11 @@ async def job(bot):
                        else:
                            cell.fill = odd_row_fill
 
+           # 设置日期列格式（第2列）
+           for row in ws.iter_rows(min_row=2, min_col=2, max_col=2):
+               for cell in row:
+                   cell.number_format = 'yyyy-mm-dd'
+
            # 模拟 Excel 双击自适应列宽
            for col_idx in range(1, len(data.columns) + 1):
                column_letter = get_column_letter(col_idx)
@@ -207,4 +213,3 @@ async def main():
 
 if __name__ == "__main__":
    asyncio.run(main())
-

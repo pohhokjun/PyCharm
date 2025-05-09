@@ -11,7 +11,7 @@ formatted_ids = ", ".join([f"'{id.replace(' ', '').lower()}'" for id in member_i
 
 # 生成最终的 SQL 查询字符串
 agent = f"AND a1_adm.agent_name IN ({formatted_ids})"
-memberID = f"WHERE u1_mi.id IN ({formatted_ids})"
+memberID = f"AND u1_mi.id IN ({formatted_ids})"
 memberName = f"WHERE u1_mi.name IN ({formatted_ids})"
 
 # 打印结果

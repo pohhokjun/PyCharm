@@ -22,6 +22,7 @@ class DataExporter:
         df.to_excel(file_path, index=False, engine='openpyxl')
         wb = load_workbook(file_path)
         wb.active.freeze_panes = 'A2'
+        wb.active.auto_filter.ref = wb.active.dimensions
         wb.save(file_path)
 
     def format_date_range(self, start, end):
@@ -154,10 +155,9 @@ class DataExporter:
                 SELECT 
                     code, 
                     dict_value,
-                    dict_code,
                     ROW_NUMBER() OVER (PARTITION BY code ORDER BY code) AS rn
                 FROM control_1000.sys_dict_value
-                WHERE dict_code = 'withdraw_type'
+                WHERE (initial_flag IS NULL OR initial_flag <> 1)
             ) t
             WHERE rn = 1
         ) sv ON f.pay_type = sv.code

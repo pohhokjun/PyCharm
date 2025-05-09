@@ -84,6 +84,38 @@ class DatabaseQuery:
             self.session.close()
         self.client.close()
 
+    def _0_promotion(self) -> pd.DataFrame:
+        """查询推广部相关信息"""
+        query = f"""
+       SELECT
+           a1_ad.group_name AS '1级',
+           a1_ad_2.group_name AS '2级',
+           a1_ad_3.group_name AS '3级',
+           a1_ad_4.group_name AS '4级',
+           a1_adm.agent_name AS '代理名称',
+           u1_mi.id AS '会员ID'
+       FROM {self.agent_1000}.agent_department a1_ad
+       LEFT JOIN {self.agent_1000}.agent_department a1_ad_2
+           ON a1_ad_2.pid = a1_ad.id
+       LEFT JOIN {self.agent_1000}.agent_department a1_ad_3
+           ON a1_ad_3.pid = a1_ad_2.id
+       LEFT JOIN {self.agent_1000}.agent_department a1_ad_4
+           ON a1_ad_4.pid = a1_ad_3.id
+       LEFT JOIN {self.agent_1000}.agent_dept_member a1_adm
+           ON a1_adm.dept_id = COALESCE(a1_ad_4.id, a1_ad_3.id, a1_ad_2.id, a1_ad.id)
+       LEFT JOIN {self.u1_1000}.member_info u1_mi
+           ON u1_mi.top_name = a1_adm.agent_name
+       WHERE
+           a1_ad.level = 1
+       """
+        # AND a1_ad.group_name = '推广部'
+        # AND a1_ad_2.group_name IN ('推广1部', '推广3部', '推广5部', '推广6部', '推广7部', '推广9部', '推广11部')
+        # AND a1_adm.agent_name IN ('qq7236345', 's2009s', 'wang1246141')
+        # AND u1_mi.id IN ('qq7236345', 's2009s', 'wang1246141')
+        if self.site_id is not None:
+            query += f" AND a1_ad.site_id = {self.site_id}"
+        return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
+
     def _1_member_basic_info(self) -> pd.DataFrame:
         """查询会员基本信息"""
         query = f"""
@@ -119,6 +151,7 @@ class DatabaseQuery:
            FROM u1_1000.member_banks_info
         ) u1_mbi ON u1_mi.id = u1_mbi.member_info_id
         """
+        # WHERE u1_mi.name IN ('qq7236345', 's2009s', 'wang1246141')
         if self.site_id is not None:
             query += f" WHERE u1_mi.site_id = {self.site_id}"
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
@@ -207,36 +240,6 @@ class DatabaseQuery:
        FROM {self.bigdata}.member_daily_statics
        GROUP BY member_id
        """
-        return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
-
-    def _10_promotion(self) -> pd.DataFrame:
-        """查询推广部相关信息"""
-        query = f"""
-       SELECT
-           a1_ad.group_name AS '1级',
-           a1_ad_2.group_name AS '2级',
-           a1_ad_3.group_name AS '3级',
-           a1_ad_4.group_name AS '4级',
-           a1_adm.agent_name AS '代理名称',
-           u1_mi.id AS '会员ID'
-       FROM {self.agent_1000}.agent_department a1_ad
-       LEFT JOIN {self.agent_1000}.agent_department a1_ad_2
-           ON a1_ad_2.pid = a1_ad.id
-       LEFT JOIN {self.agent_1000}.agent_department a1_ad_3
-           ON a1_ad_3.pid = a1_ad_2.id
-       LEFT JOIN {self.agent_1000}.agent_department a1_ad_4
-           ON a1_ad_4.pid = a1_ad_3.id
-       LEFT JOIN {self.agent_1000}.agent_dept_member a1_adm
-           ON a1_adm.dept_id = COALESCE(a1_ad_4.id, a1_ad_3.id, a1_ad_2.id, a1_ad.id)
-       LEFT JOIN {self.u1_1000}.member_info u1_mi
-           ON u1_mi.top_name = a1_adm.agent_name
-       WHERE
-           a1_ad.level = 1
-           AND a1_ad.group_name = '推广部'
-           AND a1_ad_2.group_name IN ('推广1部', '推广3部', '推广5部', '推广6部', '推广7部', '推广9部', '推广11部')
-       """
-        if self.site_id is not None:
-            query += f" AND a1_ad.site_id = {self.site_id}"
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
     def mongo_betting_stats(self, use_date_column: bool = False) -> pd.DataFrame:
@@ -446,6 +449,65 @@ class DatabaseQuery:
         # 确保字段顺序
         return df[columns]
 
+    def _11_member_dividend(self) -> pd.DataFrame:
+        """查询会员历史累计统计信息，筛选指定 site_id"""
+        query = f"""
+        SELECT
+            a1_md.site_id AS 站点ID,
+            a1_md.activity_title AS 活动标题,
+            a1_oci.title AS 标题,
+            a1_md.member_id AS 会员ID,
+            a1_md.member_name AS 会员账号,
+            a1_md.member_grade AS 会员等级,
+            a1_md.bill_no AS 订单号,
+            CASE
+                WHEN a1_md.wallet_category = 1 THEN '中心钱包'
+                WHEN a1_md.wallet_category = 2 THEN '场馆钱包'
+                ELSE a1_md.wallet_category
+            END AS 钱包类别,
+            a1_md.flow_times AS 流水倍数,
+            a1_md.money AS 红利金额,
+            CASE
+                WHEN a1_md.status = 1 THEN '处理中'
+                WHEN a1_md.status = 2 THEN '成功'
+                WHEN a1_md.status = 3 THEN '失败'
+                ELSE a1_md.status
+            END AS 状态,
+            CASE
+                WHEN a1_md.issue_type = 1 THEN '手动发放'
+                WHEN a1_md.issue_type = 2 THEN '自动发放'
+                ELSE a1_md.issue_type
+            END AS 发行类型,
+            COALESCE(sv.dict_value, a1_md.activity_type) AS '活动类型',
+            a1_md.created_at AS 申请时间,
+            a1_md.applicant_remark AS 申请备注,
+            a1_md.updated_at AS 发放时间,
+            a1_md.check_user AS 审核用户,
+            a1_md.check_remark AS 审核备注,
+            a1_md.applicant AS 操作人
+        FROM activity_1000.member_dividend a1_md
+        LEFT JOIN activity_1000.operation_activity_info a1_oci
+            ON a1_md.activity_id = a1_oci.id
+        LEFT JOIN (
+            SELECT code, dict_value
+            FROM (
+                SELECT
+                    code,
+                    dict_value,
+                    dict_code,
+                    ROW_NUMBER() OVER (PARTITION BY code ORDER BY code) AS rn
+                FROM control_1000.sys_dict_value
+                WHERE dict_code IN ('activity_type')
+            ) t
+            WHERE rn = 1
+        ) sv ON a1_md.activity_type = sv.code
+        WHERE a1_md.updated_at BETWEEN '{self.start_time}' AND '{self.end_time}'
+        AND a1_md.category NOT IN (999555)
+        """
+        if self.site_id is not None:
+            query += f" AND a1_md.site_id = {self.site_id}"
+        return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
+
 
 def save_to_excel(df: pd.DataFrame, filename: str):
     """保存 DataFrame 到 Excel 文件"""
@@ -478,15 +540,15 @@ def send_to_telegram(file_path: str, bot_token: str, chat_id: str) -> bool:
 
 def work(db_query: DatabaseQuery) -> pd.DataFrame:
     """执行查询并合并结果"""
-    # db_query._10_promotion()
-
-    # .merge(db_query._1_member_basic_info(), on='会员ID', how='inner')
-    # .merge(db_query._2_first_deposit(), on='会员ID', how='left')
-    # .merge(db_query._3_last_bet_date(), on='会员ID', how='left')
-    # .merge(db_query._6_member_stats_period(use_date_column=True False), on='会员ID', how='inner')
-    # .merge(db_query._7_member_stats_history(), on='会员ID', how='inner')
-    # .merge(db_query.mongo_betting_stats(use_date_column=True False), on=['会员ID', '日期'], how='inner')
-    # .merge(db_query.mongo_betting_details(), on=['会员ID', '日期'], how='inner')
+    #推广架构 db_query._0_promotion()
+    #会员信息 .merge(db_query._1_member_basic_info(), on='会员ID', how='inner')
+    #首存 .merge(db_query._2_first_deposit(), on='会员ID', how='left')
+    #最后投注 .merge(db_query._3_last_bet_date(), on='会员ID', how='left')
+    #会员数据（时间段） .merge(db_query._6_member_stats_period(use_date_column=True False), on='会员ID', how='inner')
+    #会员数据（历史） .merge(db_query._7_member_stats_history(), on='会员ID', how='inner')
+    #游戏场馆 .merge(db_query.mongo_betting_stats(use_date_column=True False), on=['会员ID', '日期'], how='inner')
+    #注单 .merge(db_query.mongo_betting_details(), on=['会员ID', '日期'], how='inner')
+    #红利 .merge(db_query._11_member_dividend(), on='会员ID', how='inner')
     result_df = (db_query._1_member_basic_info()
                  .merge(db_query._2_first_deposit(), on='会员ID', how='left')
                  .merge(db_query._3_last_bet_date(), on='会员ID', how='left')

@@ -140,13 +140,21 @@ async def main():
 
   # 每小时执行一次
   while True:
-      await asyncio.sleep(86400)
-      try:
-          output_file, summary_text = export_data()
-          await send_file(bot, output_file, CHAT_ID, summary_text)
-          delete_files(FOLDER_PATH)
-      except Exception as e:
-          print(f"主程序执行出错: {e}")
+      seconds_until = get_time_until(13, 0)
+      await asyncio.sleep(seconds_until)
+      retries = 5  # 设置最大重试次数
+      for attempt in range(retries):
+          try:
+              output_file, summary_text = export_data()
+              await send_file(bot, output_file, CHAT_ID, summary_text)
+              delete_files(FOLDER_PATH)
+              break  # 成功后退出重试循环
+          except Exception as e:
+              print(f"主程序执行出错 (尝试 {attempt + 1}/{retries}): {e}")
+              if attempt < retries - 1:
+                  await asyncio.sleep(60)  # 失败后等待60秒再重试
+              else:
+                  print("达到最大重试次数，等待下一次定时任务")
 
 if __name__ == "__main__":
   asyncio.run(main())

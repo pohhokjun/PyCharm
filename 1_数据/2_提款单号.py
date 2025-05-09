@@ -22,6 +22,7 @@ class DataExporter:
         df.to_excel(file_path, index=False, engine='openpyxl')
         wb = load_workbook(file_path)
         wb.active.freeze_panes = 'A2'
+        wb.active.auto_filter.ref = wb.active.dimensions
         wb.save(file_path)
 
     def format_date_range(self, start, end):
@@ -51,7 +52,13 @@ class DataExporter:
             fw.member_id AS '会员ID',
             fw.member_username AS '会员用户名',
             fw.member_grade AS '会员等级',
-            fw.top_id AS '上级ID',
+            fw.bill_no AS '账单号',
+            fw.typay_order_id AS '通用支付订单号',
+            fw.amount AS '订单金额',
+            fw.usdt_amount AS '实际支付金额',
+            fw.preview_deposit AS '预存款',
+            fw.preview_deposit_time AS '预存款时间',
+            fw.preview_success_num AS '预存款成功次数',
             CASE fw.category
                 WHEN 1 THEN '会员中心钱包提款'
                 WHEN 3 THEN '代理钱包提款'
@@ -60,7 +67,6 @@ class DataExporter:
                 WHEN 12 THEN '代客下分'
                 ELSE fw.category
             END AS '类别',
-            COALESCE(sv.dict_value, fw.withdraw_type) AS '提现类型',
             CASE fw.draw_status
                 WHEN 101 THEN '发起，已扣款'
                 WHEN 200 THEN '风控计算流水中'
@@ -74,16 +80,34 @@ class DataExporter:
                 WHEN 501 THEN '出款失败'
                 ELSE fw.draw_status
             END AS '提现状态',
-            fw.bill_no AS '账单号',
-            fw.typay_order_id AS '通用支付订单号',
-            fw.amount AS '订单金额',
-            fw.usdt_amount AS '实际支付金额',
-            fw.handling_fee AS '手续费',
-            fw.created_at AS '创建时间',
+            fw.risk_admin_id AS '风控管理员ID',
+            fw.risk_confirm_at AS '风控确认时间',
+            fw.draw_comment AS '提现备注',
             fw.confirm_at AS '确认时间',
-            fw.payment_time AS '支付时间',
+            fw.top_id AS '上级ID',
+            fw.created_at AS '创建时间',
+            fw.updated_at AS '更新时间',
+            fw.auto_risk_result AS '自动风控结果',
+            fw.hold_reason AS '暂扣原因',
+            fw.hold_at AS '暂扣时间',
+            COALESCE(sv.dict_value, fw.withdraw_type) AS '提现类型',
+            fw.send_count AS '发货次数',
+            fw.bank_created_at AS '银行创建时间',
+            fw.risk_admin_name AS '风控管理员姓名',
+            fw.risk_operater AS '风控操作员',
             fw.finance_remark AS '财务备注',
-            fw.operator AS '操作员'
+            fw.merchant_no AS '商户号',
+            fw.device_no AS '设备号',
+            fw.risk_receive_at AS '风控接收时间',
+            fw.exchange_rate AS '兑换汇率',
+            fw.expected_digiccy AS '预期币种',
+            fw.handling_fee AS '手续费',
+            fw.credit_rating AS '信用评级',
+            fw.credit_level AS '信用等级',
+            fw.pre_withdraw AS '预提现',
+            fw.operator AS '操作员',
+            fw.transfer_member_id AS '转账会员ID',
+            fw.transfer_member_name AS '转账会员姓名'
         FROM finance_1000.finance_withdraw fw
         LEFT JOIN (
             SELECT code, dict_value
@@ -94,7 +118,7 @@ class DataExporter:
                     dict_code,
                     ROW_NUMBER() OVER (PARTITION BY code ORDER BY code) AS rn
                 FROM control_1000.sys_dict_value
-                WHERE dict_code = 'withdraw_type'
+                WHERE dict_code IN ('withdraw_type', 'member_withdraw_type')
             ) t
             WHERE rn = 1
         ) sv ON fw.withdraw_type = sv.code
