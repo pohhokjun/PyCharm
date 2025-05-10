@@ -86,17 +86,11 @@ class DataExporter:
            f.is_first_deposit AS '是否首次存款'
        FROM finance_1000.finance_pay_records f
        LEFT JOIN (
-           SELECT code, dict_value
-           FROM (
-               SELECT 
-                   code, 
-                   dict_value,
-                   ROW_NUMBER() OVER (PARTITION BY code ORDER BY code) AS rn
-               FROM control_1000.sys_dict_value
-               WHERE (initial_flag IS NULL OR initial_flag <> 1)
-           ) t
-           WHERE rn = 1
-       ) sv ON f.pay_type = sv.code
+            SELECT code, dict_value
+            FROM control_1000.sys_dict_value
+            WHERE initial_flag = 0
+            AND dict_code = 'payment_method'
+        ) sv ON f.pay_type = sv.code
        WHERE f.pay_status IN (2, 3)
        AND f.confirm_at BETWEEN '{start_time}' AND '{end_time}'
        """
@@ -151,15 +145,9 @@ class DataExporter:
         ) f
         LEFT JOIN (
             SELECT code, dict_value
-            FROM (
-                SELECT 
-                    code, 
-                    dict_value,
-                    ROW_NUMBER() OVER (PARTITION BY code ORDER BY code) AS rn
-                FROM control_1000.sys_dict_value
-                WHERE (initial_flag IS NULL OR initial_flag <> 1)
-            ) t
-            WHERE rn = 1
+            FROM control_1000.sys_dict_value
+            WHERE initial_flag = 0
+            AND dict_code = 'payment_method'
         ) sv ON f.pay_type = sv.code
         WHERE f.rn = 1
         AND f.confirm_at BETWEEN '{start_time}' AND '{end_time}'
@@ -193,10 +181,8 @@ class DataExporter:
 def main():
     exporter = DataExporter()
 
-    # 示例：使用昨天时间和基础查询
     exporter.export_data(time_mode='yesterday', query_type='base')
 
-    # 示例：使用手动时间和带 pay_type 限制的查询
     # exporter.export_data(
     #     time_mode='manual',
     #     start_time='2025-05-02 00:00:00',

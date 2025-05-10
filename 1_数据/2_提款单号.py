@@ -111,16 +111,9 @@ class DataExporter:
         FROM finance_1000.finance_withdraw fw
         LEFT JOIN (
             SELECT code, dict_value
-            FROM (
-                SELECT
-                    code,
-                    dict_value,
-                    dict_code,
-                    ROW_NUMBER() OVER (PARTITION BY code ORDER BY code) AS rn
-                FROM control_1000.sys_dict_value
-                WHERE dict_code IN ('withdraw_type', 'member_withdraw_type')
-            ) t
-            WHERE rn = 1
+            FROM control_1000.sys_dict_value
+            WHERE initial_flag = 0
+            AND dict_code IN ('payment_method','withdraw_type')
         ) sv ON fw.withdraw_type = sv.code
         WHERE fw.draw_status IN (402, 403)
         AND fw.confirm_at BETWEEN '{start_time_str}' AND '{end_time_str}';
@@ -155,10 +148,8 @@ class DataExporter:
 def main():
     exporter = DataExporter()
 
-    # 示例：使用昨天时间导出提现数据
     exporter.export_data(time_mode='yesterday')
 
-    # 示例：使用指定时间导出提现数据
     # exporter.export_data(
     #     time_mode='manual',
     #     start_time='2025-04-01 00:00:00',

@@ -49,12 +49,19 @@ class DataExporter:
         query = f"""
         SELECT 
             a1_md.site_id AS 站点ID,
-            a1_md.activity_title AS 活动标题,
-            a1_oci.title AS 标题,
             a1_md.member_id AS 会员ID,
             a1_md.member_name AS 会员账号,
             a1_md.member_grade AS 会员等级,
             a1_md.bill_no AS 订单号,
+            a1_md.category AS 红利类型,
+            a1_md.activity_title AS 活动标题,
+            a1_oci.title AS 标题,
+            COALESCE(sv.dict_value, a1_md.activity_type) AS '活动类型',
+            CASE 
+                WHEN a1_md.issue_type = 1 THEN '手动发放'
+                WHEN a1_md.issue_type = 2 THEN '自动发放'
+                ELSE a1_md.issue_type
+            END AS 发行方式,
             CASE 
                 WHEN a1_md.wallet_category = 1 THEN '中心钱包'
                 WHEN a1_md.wallet_category = 2 THEN '场馆钱包'
@@ -62,39 +69,24 @@ class DataExporter:
             END AS 钱包类别,
             a1_md.flow_times AS 流水倍数,
             a1_md.money AS 红利金额,
+            a1_md.created_at AS 申请时间,
+            a1_md.applicant_remark AS 申请备注,
+            a1_md.updated_at AS 发放时间,
+            a1_md.check_remark AS 审核备注,
+            a1_md.applicant AS 操作人,
             CASE 
                 WHEN a1_md.status = 1 THEN '处理中'
                 WHEN a1_md.status = 2 THEN '成功'
                 WHEN a1_md.status = 3 THEN '失败'
                 ELSE a1_md.status
-            END AS 状态,
-            CASE 
-                WHEN a1_md.issue_type = 1 THEN '手动发放'
-                WHEN a1_md.issue_type = 2 THEN '自动发放'
-                ELSE a1_md.issue_type
-            END AS 发行类型,
-            COALESCE(sv.dict_value, a1_md.activity_type) AS '活动类型',
-            a1_md.created_at AS 申请时间,
-            a1_md.applicant_remark AS 申请备注,
-            a1_md.updated_at AS 发放时间,
-            a1_md.check_user AS 审核用户,
-            a1_md.check_remark AS 审核备注,
-            a1_md.applicant AS 操作人
+            END AS 状态
         FROM activity_1000.member_dividend a1_md
         LEFT JOIN activity_1000.operation_activity_info a1_oci 
             ON a1_md.activity_id = a1_oci.id
         LEFT JOIN (
             SELECT code, dict_value
-            FROM (
-                SELECT
-                    code,
-                    dict_value,
-                    dict_code,
-                    ROW_NUMBER() OVER (PARTITION BY code ORDER BY code) AS rn
-                FROM control_1000.sys_dict_value
-                WHERE dict_code IN ('activity_type')
-            ) t
-            WHERE rn = 1
+            FROM control_1000.sys_dict_value
+            WHERE dict_code IN ('activity_type')
         ) sv ON a1_md.activity_type = sv.code
         WHERE a1_md.updated_at BETWEEN '{start_time_str}' AND '{end_time_str}'
         AND a1_md.category NOT IN (999555)
@@ -129,15 +121,13 @@ class DataExporter:
 def main():
     exporter = DataExporter()
 
-    # 示例：使用昨天时间导出提现数据
-    # exporter.export_data(time_mode='yesterday')
+    exporter.export_data(time_mode='yesterday')
 
-    # 示例：使用指定时间导出提现数据
-    exporter.export_data(
-        time_mode='manual',
-        start_time='2025-04-01 00:00:00',
-        end_time='2025-04-30 23:59:59'
-    )
+    # exporter.export_data(
+    #     time_mode='manual',
+    #     start_time='2025-04-01 00:00:00',
+    #     end_time='2025-04-30 23:59:59'
+    # )
 
 if __name__ == "__main__":
     main()
