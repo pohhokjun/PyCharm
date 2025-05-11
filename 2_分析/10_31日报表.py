@@ -1,3 +1,4 @@
+
 import pandas as pd
 import datetime
 from sqlalchemy import create_engine
@@ -8,6 +9,7 @@ from multiprocessing import Pool
 import logging
 import pymysql
 import multiprocessing
+import uuid
 
 # 配置日志
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -26,7 +28,8 @@ REPORTS = {
     '金额': {'db': 'bigdata', 'table': 'platform_daily_report', 'date_as_text': True},
     '留存': {'db': 'bigdata', 'table': 'member_daily_statics', 'date_as_text': True},
     '存款': {'db': 'finance_1000', 'table': 'finance_pay_records', 'date_as_text': True},
-    '取款': {'db': 'finance_1000', 'table': 'finance_withdraw', 'date_as_text': True}
+    '取款': {'db': 'finance_1000', 'table': 'finance_withdraw', 'date_as_text': True},
+    '红利': {'db': 'activity_1000', 'table': 'member_dividend', 'date_as_text': True}
 }
 
 # 站点ID到站点名称的映射
@@ -298,13 +301,63 @@ def get_withdraw_report_sql(db, table):
     ORDER BY 订单数 DESC
     """
 
+def get_dividend_report_sql(db, table):
+    return f"""
+    SELECT 
+        a1_md.site_id AS 站点,
+        DATE_FORMAT(a1_md.updated_at, '%%Y-%%m-%%d') AS 日期,
+        CASE 
+            WHEN a1_md.issue_type = 1 THEN '手动发放'
+            WHEN a1_md.issue_type = 2 THEN '自动发放'
+            ELSE a1_md.issue_type
+        END AS 发行方式,
+        COALESCE(sv_bonus.dict_value, a1_md.category) AS 红利类型,
+        CASE 
+            WHEN COALESCE(sv_activity.dict_value, a1_md.activity_type) = '99' THEN '邀请好友'
+            ELSE COALESCE(sv_activity.dict_value, a1_md.activity_type)
+        END AS 活动类型,
+        COUNT(DISTINCT a1_md.member_id) AS 人数,
+        SUM(a1_md.money) AS 红利金额
+     FROM activity_1000.member_dividend a1_md
+     LEFT JOIN activity_1000.operation_activity_info a1_oci 
+        ON a1_md.activity_id = a1_oci.id
+     LEFT JOIN (
+        SELECT code, dict_value
+        FROM control_1000.sys_dict_value
+        WHERE dict_code = 'activity_type'
+     ) sv_activity ON a1_md.activity_type = sv_activity.code
+     LEFT JOIN (
+        SELECT code, dict_value
+        FROM control_1000.sys_dict_value
+        WHERE dict_code = 'bonus_type'
+     ) sv_bonus ON a1_md.category = sv_bonus.code
+     WHERE a1_md.status = 2
+      AND a1_md.category NOT IN (999555)
+      AND a1_md.created_at >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)
+      AND a1_md.created_at <= CURDATE()
+     GROUP BY a1_md.site_id, 
+              DATE_FORMAT(a1_md.updated_at, '%%Y-%%m-%%d'),
+              CASE 
+                  WHEN a1_md.issue_type = 1 THEN '手动发放'
+                  WHEN a1_md.issue_type = 2 THEN '自动发放'
+                  ELSE a1_md.issue_type
+              END,
+              COALESCE(sv_bonus.dict_value, a1_md.category),
+              CASE 
+                  WHEN COALESCE(sv_activity.dict_value, a1_md.activity_type) = '99' THEN '邀请好友'
+                  ELSE COALESCE(sv_activity.dict_value, a1_md.activity_type)
+              END
+     ORDER BY a1_md.site_id ASC, 红利金额 DESC
+    """
+
 # SQL 函数映射
 SQL_FUNCTIONS = {
     '人数': get_platform_report_sql,
     '金额': get_amount_report_sql,
     '留存': get_retention_report_sql,
     '存款': get_payment_report_sql,
-    '取款': get_withdraw_report_sql
+    '取款': get_withdraw_report_sql,
+    '红利': get_dividend_report_sql
 }
 
 def process_report(args):
@@ -328,10 +381,10 @@ def process_report(args):
                 # 替换站点ID为站点名称
                 if '站点' in chunk.columns:
                     chunk['站点'] = chunk['站点'].map(SITE_MAPPING).fillna(chunk['站点'])
-                # 识别数值列，处理除“成功率”外的列为整数
+                # 识别数值列，处理为整数（除了特定列）
                 for col in chunk.select_dtypes(include=['float64', 'int64']).columns:
-                    if col == '成功率':
-                        continue  # 保留“成功率”列的小数
+                    if col in ['成功率', '红利金额']:  # 保留小数
+                        continue
                     chunk[col] = chunk[col].round(0).astype('Int64')  # 其他数值列转为整数，处理空值
                 data.extend(chunk.values.tolist())
             return sheet_name, columns, data, True
@@ -366,7 +419,7 @@ def main():
     logging.info(f"开始: {start_time.strftime('%Y-%m-%d %H:%M')}")
 
     script_name = os.path.splitext(os.path.basename(__file__))[0]
-    excel_filename = f"{script_name}.xlsx"
+    excel_filename = "Ultimate Analysis.xlsx"
 
     pool_size = min(len(REPORTS), multiprocessing.cpu_count())
     with Pool(processes=pool_size) as pool:
@@ -380,3 +433,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+

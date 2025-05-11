@@ -132,7 +132,10 @@ class DatabaseQuery:
             WHERE FIND_IN_SET(c1_sv.code, u1_mi.tag_id)
             AND (c1_sv.initial_flag IS NULL OR c1_sv.initial_flag <> 1)) AS '标签',
            u1_mofr.remark AS '备注',
-           CASE WHEN u1_mbi.member_info_id IS NOT NULL THEN '是' ELSE '否' END AS '是否已绑卡',
+           CASE WHEN u1_mi.real_name_desensitization <> '' THEN '已绑定' ELSE '' END AS '实名状态',
+           CASE WHEN u1_mi.phone_desensitization <> '' THEN '已绑定' ELSE '' END AS '手机状态',
+           CASE WHEN u1_mi.email_desensitization <> '' THEN '已绑定' ELSE '' END AS '邮箱状态',
+           CASE WHEN u1_mbi.member_info_id IS NOT NULL THEN '已绑定' ELSE '' END AS '银行卡状态',
            u1_mi.created_at AS '注册时间',
            u1_mi.last_login_time AS '最后登录时间'
         FROM u1_1000.member_info u1_mi

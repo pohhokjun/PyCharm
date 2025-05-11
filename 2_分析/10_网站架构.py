@@ -1,3 +1,4 @@
+
 import pandas as pd
 import os
 import json
@@ -58,7 +59,7 @@ def load_all_sheets(file_path):
 
 
 def generate_excel_pivot_view_html():
-    sheets_data = load_all_sheets("10_31日报表.xlsx")
+    sheets_data = load_all_sheets("Ultimate Analysis.xlsx")
     if sheets_data is None:
         return "<h1>错误：数据加载失败</h1>"
 
@@ -81,6 +82,8 @@ def generate_excel_pivot_view_html():
             x_axis_col = "存款类型"
         elif sheet == "取款":
             x_axis_col = "取款类型"
+        elif sheet == "红利":
+            x_axis_col = "发行方式"
         else:
             x_axis_col = "日期"
         if x_axis_col not in sheet_df.columns:
@@ -121,8 +124,8 @@ def generate_excel_pivot_view_html():
                         'fill': False
                     })
         elif sheet == "金额":
-            y_left_cols = ["公司输赢", "公司净收入", "代理佣金"]
-            y_right_cols = ["账户调整", "红利", "返水", "集团分成"]
+            y_left_cols = ["存提差", "公司输赢", "公司净收入"]
+            y_right_cols = ["提前结算", "账户调整", "红利", "返水", "代理佣金", "集团分成"]
             for i, column in enumerate(y_left_cols):
                 if column in value_columns:
                     data = sheet_df.groupby(x_axis_col)[column].sum().reindex(sheet_date_labels).fillna(0).tolist()
@@ -194,6 +197,36 @@ def generate_excel_pivot_view_html():
                     'yAxisID': 'y-right',
                     'fill': False
                 })
+        elif sheet == "红利":
+            y_left_cols = ["红利金额"]
+            y_right_cols = ["人数"]
+            for i, column in enumerate(y_left_cols):
+                if column in value_columns:
+                    data = sheet_df.groupby(x_axis_col)[column].sum().reindex(sheet_date_labels).fillna(0).tolist()
+                    color_idx = i % len(colors)
+                    sheet_datasets.append({
+                        'label': column,
+                        'data': data,
+                        'backgroundColor': colors[color_idx][0],
+                        'borderColor': colors[color_idx][1],
+                        'borderWidth': 1,
+                        'type': 'bar',
+                        'yAxisID': 'y-left'
+                    })
+            for i, column in enumerate(y_right_cols):
+                if column in value_columns:
+                    data = sheet_df.groupby(x_axis_col)[column].sum().reindex(sheet_date_labels).fillna(0).tolist()
+                    color_idx = (i + len(y_left_cols)) % len(colors)
+                    sheet_datasets.append({
+                        'label': column,
+                        'data': data,
+                        'backgroundColor': colors[color_idx][0],
+                        'borderColor': colors[color_idx][1],
+                        'borderWidth': 2,
+                        'type': 'line',
+                        'yAxisID': 'y-right',
+                        'fill': False
+                    })
 
         # 筛选选项
         filter_col = "时间段" if sheet in ["存款", "取款"] else "站点"
@@ -263,11 +296,7 @@ function formatSeconds(seconds) {
     var hours = Math.floor(seconds / 3600);
     var minutes = Math.floor((seconds % 3600) / 60);
     var secs = Math.floor(seconds % 60);
-    return [
-        hours.toString().padStart(2, '0'),
-        minutes.toString().padStart(2, '0'),
-        secs.toString().padStart(2, '0')
-    ].join(':');
+    return [        hours.toString().padStart(2, '0'),        minutes.toString().padStart(2, '0'),        secs.toString().padStart(2, '0')    ].join(':');
 }
 
 function formatSecondsToMMSS(seconds) {
@@ -322,7 +351,7 @@ function createChart(canvasId, data, type) {
             legend: { display: false }
         }
     };
-    if (canvasId === '存款-chart' || canvasId === '取款-chart' || canvasId === '人数-chart' || canvasId === '金额-chart') {
+    if (canvasId === '存款-chart' || canvasId === '取款-chart' || canvasId === '人数-chart' || canvasId === '金额-chart' || canvasId === '红利-chart') {
         options.scales['y-right'] = {
             beginAtZero: true,
             position: 'right',
@@ -466,11 +495,7 @@ function filterData(filterKey, element) {
     var filterCol = allData[currentSheet].filter_col;
     var filteredData = rawDf;
 
-    if (currentSheet === '人数' || currentSheet === '金额' || currentSheet === '留存') {
-        if (filterKey !== '汇总') {
-            filteredData = rawDf.filter(row => String(row[filterCol]) === String(filterKey));
-        }
-    } else if (currentSheet === '存款' || currentSheet === '取款') {
+    if (filterKey !== '汇总') {
         filteredData = rawDf.filter(row => String(row[filterCol]) === String(filterKey));
     }
 
@@ -587,15 +612,14 @@ document.addEventListener('DOMContentLoaded', function() {
         )
 
         filter_buttons = "\n".join(
-            [f'<button onclick="filterData(\'{site_id}\', this)">{site_id}</button>' for site_id in
-             all_data[default_sheet]['site_ids']]
+            [f'<button onclick="filterData(\'{site_id}\', this)">{site_id}</button>' for site_id in             all_data[default_sheet]['site_ids']]
         )
 
         html = f"""
 <!DOCTYPE html>
 <html>
 <head>
-    <title>数据透视图</title>
+    <title>灰灰分析报告</title>
     <style>
 {css}
     </style>
@@ -648,3 +672,4 @@ document.addEventListener('DOMContentLoaded', function() {
 
 if __name__ == "__main__":
     generate_excel_pivot_view_html()
+

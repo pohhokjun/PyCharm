@@ -53,15 +53,17 @@ class DataExporter:
             a1_md.member_name AS 会员账号,
             a1_md.member_grade AS 会员等级,
             a1_md.bill_no AS 订单号,
-            a1_md.category AS 红利类型,
-            a1_md.activity_title AS 活动标题,
-            a1_oci.title AS 标题,
-            COALESCE(sv.dict_value, a1_md.activity_type) AS '活动类型',
             CASE 
                 WHEN a1_md.issue_type = 1 THEN '手动发放'
                 WHEN a1_md.issue_type = 2 THEN '自动发放'
                 ELSE a1_md.issue_type
             END AS 发行方式,
+            COALESCE(sv_bonus.dict_value, a1_md.category) AS 红利类型,
+            CASE 
+                WHEN COALESCE(sv_activity.dict_value, a1_md.activity_type) = '99' THEN '邀请好友'
+                ELSE COALESCE(sv_activity.dict_value, a1_md.activity_type)
+            END AS 活动类型,
+            COALESCE(a1_oci.title, a1_md.activity_title) AS 活动标题,
             CASE 
                 WHEN a1_md.wallet_category = 1 THEN '中心钱包'
                 WHEN a1_md.wallet_category = 2 THEN '场馆钱包'
@@ -86,10 +88,16 @@ class DataExporter:
         LEFT JOIN (
             SELECT code, dict_value
             FROM control_1000.sys_dict_value
-            WHERE dict_code IN ('activity_type')
-        ) sv ON a1_md.activity_type = sv.code
+            WHERE dict_code = 'activity_type'
+        ) sv_activity ON a1_md.activity_type = sv_activity.code
+        LEFT JOIN (
+            SELECT code, dict_value
+            FROM control_1000.sys_dict_value
+            WHERE dict_code = 'bonus_type'
+        ) sv_bonus ON a1_md.category = sv_bonus.code
         WHERE a1_md.updated_at BETWEEN '{start_time_str}' AND '{end_time_str}'
         AND a1_md.category NOT IN (999555)
+        AND a1_md.status = 2
         """
         return query
 
