@@ -1,9 +1,7 @@
-
 import pandas as pd
 import os
 import json
 from pandas import Timestamp
-
 
 # 自定义 JSON 编码器
 class TimestampEncoder(json.JSONEncoder):
@@ -11,25 +9,6 @@ class TimestampEncoder(json.JSONEncoder):
         if isinstance(obj, Timestamp):
             return obj.isoformat()
         return super().default(obj)
-
-
-def time_to_seconds(time_str):
-    """将时间字符串转换为秒数"""
-    try:
-        if isinstance(time_str, str):
-            parts = time_str.split(':')
-            if len(parts) == 3:
-                hours, minutes, seconds = map(float, parts)
-                return hours * 3600 + minutes * 60 + seconds
-            elif len(parts) == 2:
-                minutes, seconds = map(float, parts)
-                return minutes * 60 + seconds
-            elif len(parts) == 1:
-                return float(parts[0])
-        return 0
-    except (ValueError, TypeError):
-        return 0
-
 
 def load_all_sheets(file_path):
     """加载所有 sheet 数据"""
@@ -57,7 +36,6 @@ def load_all_sheets(file_path):
         print(f"错误：读取 Excel 文件时发生问题 - {e}")
         return None
 
-
 def generate_excel_pivot_view_html():
     sheets_data = load_all_sheets("Ultimate Analysis.xlsx")
     if sheets_data is None:
@@ -67,11 +45,21 @@ def generate_excel_pivot_view_html():
     print(f"加载的 sheet：{sheets}")
     default_sheet = sheets[0] if sheets else ""
     colors = [
-        ('rgba(54, 162, 235, 0.6)', 'rgba(54, 162, 235, 1)'),
-        ('rgba(255, 99, 132, 0.6)', 'rgba(255, 99, 132, 1)'),
-        ('rgba(255, 206, 86, 0.6)', 'rgba(255, 206, 86, 1)'),
-        ('rgba(75, 192, 192, 0.6)', 'rgba(75, 192, 192, 1)'),
-        ('rgba(153, 102, 255, 0.6)', 'rgba(153, 102, 255, 1)')
+        ('rgba(54, 162, 235, 0.6)', 'rgba(54, 162, 235, 1)'),  # 蓝色
+        ('rgba(255, 99, 132, 0.6)', 'rgba(255, 99, 132, 1)'),  # 红色
+        ('rgba(255, 206, 86, 0.6)', 'rgba(255, 206, 86, 1)'),  # 黄色
+        ('rgba(75, 192, 192, 0.6)', 'rgba(75, 192, 192, 1)'),  # 青色
+        ('rgba(153, 102, 255, 0.6)', 'rgba(153, 102, 255, 1)'),  # 紫色
+        ('rgba(255, 159, 64, 0.6)', 'rgba(255, 159, 64, 1)'),  # 橙色
+        ('rgba(128, 128, 128, 0.6)', 'rgba(128, 128, 128, 1)'),  # 灰色
+        ('rgba(0, 255, 127, 0.6)', 'rgba(0, 255, 127, 1)'),  # 春绿色
+        ('rgba(199, 21, 133, 0.6)', 'rgba(199, 21, 133, 1)'),  # 洋红色
+        ('rgba(50, 205, 50, 0.6)', 'rgba(50, 205, 50, 1)'),  # 酸橙色
+        ('rgba(255, 105, 180, 0.6)', 'rgba(255, 105, 180, 1)'),  # 粉红色
+        ('rgba(139, 69, 19, 0.6)', 'rgba(139, 69, 19, 1)'),  # 棕色
+        ('rgba(30, 144, 255, 0.6)', 'rgba(30, 144, 255, 1)'),  # 道奇蓝
+        ('rgba(255, 215, 0, 0.6)', 'rgba(255, 215, 0, 1)'),  # 金色
+        ('rgba(0, 206, 209, 0.6)', 'rgba(0, 206, 209, 1)')  # 碧绿色
     ]
 
     all_data = {}
@@ -82,8 +70,6 @@ def generate_excel_pivot_view_html():
             x_axis_col = "存款类型"
         elif sheet == "取款":
             x_axis_col = "取款类型"
-        elif sheet == "红利":
-            x_axis_col = "发行方式"
         else:
             x_axis_col = "日期"
         if x_axis_col not in sheet_df.columns:
@@ -124,8 +110,8 @@ def generate_excel_pivot_view_html():
                         'fill': False
                     })
         elif sheet == "金额":
-            y_left_cols = ["存提差", "公司输赢", "公司净收入"]
-            y_right_cols = ["提前结算", "账户调整", "红利", "返水", "代理佣金", "集团分成"]
+            y_left_cols = ["公司输赢", "公司净收入", "代理佣金"]
+            y_right_cols = ["提前结算", "账户调整", "红利", "返水", "集团分成"]
             for i, column in enumerate(y_left_cols):
                 if column in value_columns:
                     data = sheet_df.groupby(x_axis_col)[column].sum().reindex(sheet_date_labels).fillna(0).tolist()
@@ -170,7 +156,7 @@ def generate_excel_pivot_view_html():
                     })
         elif sheet in ["存款", "取款"]:
             y_left_cols = ["订单数", "成功数量"]
-            time_col = "处理时间"
+            success_rate_col = "成功率"
             for i, column in enumerate(y_left_cols):
                 if column in value_columns:
                     data = sheet_df.groupby(x_axis_col)[column].sum().reindex(sheet_date_labels).fillna(0).tolist()
@@ -184,11 +170,10 @@ def generate_excel_pivot_view_html():
                         'type': 'bar',
                         'yAxisID': 'y-left'
                     })
-            if time_col in sheet_df.columns:
-                sheet_df[time_col] = sheet_df[time_col].apply(time_to_seconds)
-                data = sheet_df.groupby(x_axis_col)[time_col].mean().reindex(sheet_date_labels).fillna(0).tolist()
+            if success_rate_col in sheet_df.columns:
+                data = sheet_df.groupby(x_axis_col)[success_rate_col].mean().reindex(sheet_date_labels).fillna(0).tolist()
                 sheet_datasets.append({
-                    'label': time_col,
+                    'label': success_rate_col,
                     'data': data,
                     'backgroundColor': 'rgba(255, 159, 64, 0.6)',
                     'borderColor': 'rgba(255, 159, 64, 1)',
@@ -198,12 +183,16 @@ def generate_excel_pivot_view_html():
                     'fill': False
                 })
         elif sheet == "红利":
-            y_left_cols = ["红利金额"]
-            y_right_cols = ["人数"]
+            y_left_cols = [col for col in sheet_df.columns if col.endswith('_金额')]
+            y_right_cols = [col for col in sheet_df.columns if col.endswith('_人数')]
+            # 创建字段到颜色索引的映射
+            field_to_color = {}
             for i, column in enumerate(y_left_cols):
+                field = column.replace('_金额', '')  # 提取字段名
+                field_to_color[field] = i % len(colors)  # 为字段分配颜色索引
                 if column in value_columns:
                     data = sheet_df.groupby(x_axis_col)[column].sum().reindex(sheet_date_labels).fillna(0).tolist()
-                    color_idx = i % len(colors)
+                    color_idx = field_to_color[field]
                     sheet_datasets.append({
                         'label': column,
                         'data': data,
@@ -214,9 +203,13 @@ def generate_excel_pivot_view_html():
                         'yAxisID': 'y-left'
                     })
             for i, column in enumerate(y_right_cols):
+                field = column.replace('_人数', '')  # 提取字段名
+                if field in field_to_color:  # 确保使用相同的颜色索引
+                    color_idx = field_to_color[field]
+                else:
+                    color_idx = (i + len(y_left_cols)) % len(colors)  # 备用颜色
                 if column in value_columns:
                     data = sheet_df.groupby(x_axis_col)[column].sum().reindex(sheet_date_labels).fillna(0).tolist()
-                    color_idx = (i + len(y_left_cols)) % len(colors)
                     sheet_datasets.append({
                         'label': column,
                         'data': data,
@@ -264,7 +257,6 @@ body { font-family: sans-serif; margin: 0; padding: 0; background-color: #000; c
 .filter-container button.active { background-color: #999; color: #fff; }
 .chart-container { width: 100%; background-color: #333; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); padding: 10px; box-sizing: border-box; display: none; margin-top: 60px; }
 .chart-container.active { display: block; }
- -webkit-box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); }
 .chart-container h2 { color: #eee; margin-top: 0; }
 .chart-container canvas { width: 100%; max-height: 400px; }
 .table-container { width: 100%; max-width: 100%; background-color: #333; border-radius: 5px; box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3); padding: 10px; box-sizing: border-box; font-size: 12px; position: relative; }
@@ -290,27 +282,11 @@ body { font-family: sans-serif; margin: 0; padding: 0; background-color: #000; c
 .chart-legend .legend-color { width: 15px; height: 15px; border-radius: 3px; }
 """
 
-    # JavaScript 逻辑（修改部分）
+    # JavaScript 逻辑
     js = """
-function formatSeconds(seconds) {
-    var hours = Math.floor(seconds / 3600);
-    var minutes = Math.floor((seconds % 3600) / 60);
-    var secs = Math.floor(seconds % 60);
-    return [        hours.toString().padStart(2, '0'),        minutes.toString().padStart(2, '0'),        secs.toString().padStart(2, '0')    ].join(':');
-}
-
-function formatSecondsToMMSS(seconds) {
-    var minutes = Math.floor(seconds / 60);
-    var secs = Math.floor(seconds % 60);
-    return minutes.toString().padStart(2, '0') + ':' + secs.toString().padStart(2, '0');
-}
-
-function formatNumber(value, isSuccessRate, isTime) {
-    if (isTime) {
-        return formatSecondsToMMSS(value);
-    }
+function formatNumber(value, isSuccessRate) {
     if (isSuccessRate) {
-        return (Number(value)*100).toFixed(2) + '%';
+        return (Number(value) * 100).toFixed(2) + '%';
     }
     return Number(value).toLocaleString('en-US');
 }
@@ -359,7 +335,7 @@ function createChart(canvasId, data, type) {
                 color: '#fff',
                 callback: function(value) {
                     if (canvasId === '存款-chart' || canvasId === '取款-chart') {
-                        return formatSecondsToMMSS(value);
+                        return (value * 100).toFixed(2) + '%';
                     }
                     return value.toLocaleString('en-US');
                 }
@@ -367,7 +343,7 @@ function createChart(canvasId, data, type) {
             grid: { display: false },
             title: { 
                 display: true, 
-                text: canvasId === '存款-chart' || canvasId === '取款-chart' ? '处理时间 (MM:SS)' : '数值', 
+                text: canvasId === '存款-chart' || canvasId === '取款-chart' ? '成功率 (%)' : '数值', 
                 color: '#fff' 
             }
         };
@@ -421,45 +397,40 @@ function updateTable(data, filteredData) {
     var filterCol = allData[currentSheet].filter_col;
     var columns = Object.keys(filteredData[0] || {}).filter(col => col !== xAxisCol && col !== filterCol);
 
-    tableBody.innerHTML = '';
+    // 设置表头
     headerRow.innerHTML = '<th>' + xAxisCol + '</th>' + columns.map(col => '<th>' + col + '</th>').join('');
+    tableBody.innerHTML = '';
 
-    var groupedData = {};
+    // 按 xAxisCol 排序（可选，确保顺序一致）
+    filteredData.sort((a, b) => String(a[xAxisCol]).localeCompare(String(b[xAxisCol])));
+
+    // 直接渲染 filteredData
     filteredData.forEach(row => {
-        var xAxis = row[xAxisCol];
-        if (!groupedData[xAxis]) groupedData[xAxis] = {};
-        columns.forEach(col => {
-            var value = row[col];
-            if (col === '处理时间') {
-                value = value !== undefined ? parseFloat(value) : 0;
-                groupedData[xAxis][col] = (groupedData[xAxis][col] || []).concat([value]);
-            } else {
-                value = value !== undefined ? parseFloat(value) : 0;
-                groupedData[xAxis][col] = (groupedData[xAxis][col] || 0) + value;
-            }
-        });
-    });
-
-    data.labels.forEach((label, index) => {
-        var row = document.createElement('tr');
+        var tr = document.createElement('tr');
         var dateCell = document.createElement('td');
-        dateCell.textContent = label;
-        row.appendChild(dateCell);
+        dateCell.textContent = row[xAxisCol] || '';
+        tr.appendChild(dateCell);
+
         columns.forEach(col => {
             var cell = document.createElement('td');
-            var value = groupedData[label] && groupedData[label][col] !== undefined ? groupedData[label][col] : 0;
-            if (col === '处理时间' && groupedData[label]) {
-                var values = groupedData[label][col] || [];
-                value = values.length ? values.reduce((a, b) => a + b, 0) / values.length : 0;
+            var value = row[col] !== undefined ? row[col] : '';
+            if (col === '成功率' && (currentSheet === '存款' || currentSheet === '取款')) {
+                // 成功率格式：百分比，保留两位小数
+                value = Number(value) ? (Number(value) * 100).toFixed(2) + '%' : '0.00%';
+            } else if (typeof value === 'number' && !isNaN(value)) {
+                // 数值列：一千分位分隔
+                value = value.toLocaleString('en-US');
+            } else {
+                // 文本列或其他：直接显示
+                value = String(value);
             }
-            var isSuccessRate = col === '成功率' && (currentSheet === '存款' || currentSheet === '取款');
-            var isTime = col === '处理时间';
-            cell.textContent = formatNumber(value, isSuccessRate, isTime);
-            row.appendChild(cell);
+            cell.textContent = value;
+            tr.appendChild(cell);
         });
-        tableBody.appendChild(row);
+        tableBody.appendChild(tr);
     });
 
+    // 同步滚动
     var headerScroll = document.querySelector('.table-header-scroll');
     var bodyScroll = document.querySelector('.table-body-scroll');
     headerScroll.onscroll = function () {
@@ -505,7 +476,7 @@ function filterData(filterKey, element) {
         if (!groupedData[xAxis]) groupedData[xAxis] = {};
         allData[currentSheet].datasets.forEach(dataset => {
             var value = row[dataset.label];
-            if (dataset.label === '处理时间') {
+            if (dataset.label === '成功率') {
                 value = value !== undefined ? parseFloat(value) : 0;
                 groupedData[xAxis][dataset.label] = (groupedData[xAxis][dataset.label] || []).concat([value]);
             } else {
@@ -518,7 +489,7 @@ function filterData(filterKey, element) {
     allData[currentSheet].datasets.forEach(dataset => {
         var data = allData[currentSheet].labels.map(xAxis => {
             if (groupedData[xAxis]) {
-                if (dataset.label === '处理时间') {
+                if (dataset.label === '成功率') {
                     var values = groupedData[xAxis][dataset.label] || [];
                     return values.length ? values.reduce((a, b) => a + b, 0) / values.length : 0;
                 }
@@ -599,8 +570,7 @@ document.addEventListener('DOMContentLoaded', function() {
     # HTML 生成函数
     def generate_html(sheets, all_data, default_sheet, css, js):
         sidebar_items = "\n".join(
-            [f'<li><a href="#" onclick="toggleDataView(\'{sheet}-container\', this)">{sheet}</a></li>' for sheet in
-             sheets]
+            [f'<li><a href="#" onclick="toggleDataView(\'{sheet}-container\', this)">{sheet}</a></li>' for sheet in sheets]
         )
 
         chart_containers = "\n".join(
@@ -612,7 +582,7 @@ document.addEventListener('DOMContentLoaded', function() {
         )
 
         filter_buttons = "\n".join(
-            [f'<button onclick="filterData(\'{site_id}\', this)">{site_id}</button>' for site_id in             all_data[default_sheet]['site_ids']]
+            [f'<button onclick="filterData(\'{site_id}\', this)">{site_id}</button>' for site_id in all_data[default_sheet]['site_ids']]
         )
 
         html = f"""
@@ -669,7 +639,5 @@ document.addEventListener('DOMContentLoaded', function() {
 
     return html_content
 
-
 if __name__ == "__main__":
     generate_excel_pivot_view_html()
-

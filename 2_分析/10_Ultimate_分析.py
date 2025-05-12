@@ -44,7 +44,7 @@ SITE_MAPPING = {
     8000: 'A7体育',
     9000: 'K9体育',
     9001: '摩根体育',
-    9002: '幸运体育'
+    9002: '友博体育'
 }
 
 # SQL 查询函数
@@ -150,6 +150,7 @@ def get_retention_report_sql(db, table):
     ORDER BY 站点, d.statics_date ASC
     """
 
+
 def get_payment_report_sql(db, table):
     return f"""
     WITH date_buckets AS (
@@ -173,49 +174,7 @@ def get_payment_report_sql(db, table):
     )
     SELECT 
         时间段,
-        CASE 
-            WHEN pay_type = 1001 THEN '银行卡转账'
-            WHEN pay_type = 1002 THEN '支付宝'
-            WHEN pay_type = 1003 THEN '虚拟币扫码'
-            WHEN pay_type = 10205 THEN '财务手动上分'
-            WHEN pay_type = 891 THEN '站点代客充值'
-            WHEN pay_type = 49999 THEN '额度代存'
-            WHEN pay_type = 39999 THEN '佣金代存'
-            WHEN pay_type = 890 THEN '代客充值'
-            WHEN pay_type = 1004 THEN '数字人民币'
-            WHEN pay_type = 1005 THEN '微信'
-            WHEN pay_type = 1006 THEN 'MPay'
-            WHEN pay_type = 1007 THEN '银联快捷'
-            WHEN pay_type = 1008 THEN 'IPay'
-            WHEN pay_type = 1009 THEN '银联扫码'
-            WHEN pay_type = 1010 THEN '云闪付扫码'
-            WHEN pay_type = 1011 THEN '极速支付宝'
-            WHEN pay_type = 1012 THEN '极速数字人民币'
-            WHEN pay_type = 1013 THEN '支付宝转卡'
-            WHEN pay_type = 1014 THEN '云闪付转卡'
-            WHEN pay_type = 1015 THEN '大额充值'
-            WHEN pay_type = 1016 THEN '京东支付'
-            WHEN pay_type = 1020 THEN '支付宝h5'
-            WHEN pay_type = 1027 THEN 'FPAY钱包'
-            WHEN pay_type = 1028 THEN 'OKPAY钱包'
-            WHEN pay_type = 1029 THEN 'TOPAY钱包'
-            WHEN pay_type = 1030 THEN 'GOPAY钱包'
-            WHEN pay_type = 1031 THEN '808钱包'
-            WHEN pay_type = 1017 THEN '支付宝小荷包'
-            WHEN pay_type = 1018 THEN 'EBPay'
-            WHEN pay_type = 1019 THEN '极速微信'
-            WHEN pay_type = 1021 THEN '988钱包'
-            WHEN pay_type = 1022 THEN 'JD钱包'
-            WHEN pay_type = 1023 THEN 'C币钱包'
-            WHEN pay_type = 1024 THEN 'K豆钱包'
-            WHEN pay_type = 1025 THEN '钱能钱包'
-            WHEN pay_type = 1026 THEN 'TG钱包'
-            WHEN pay_type = 1032 THEN '网银转账'
-            WHEN pay_type = 1033 THEN '万币钱包'
-            WHEN pay_type = 1034 THEN '365钱包'
-            WHEN pay_type = 1035 THEN 'ABPAY钱包'
-            ELSE pay_type
-        END AS 存款类型,
+        COALESCE(sv.dict_value, f.pay_type) AS 存款类型,
         COUNT(*) AS 订单数,
         SUM(CASE WHEN pay_status = 2 THEN 1 ELSE 0 END) AS 成功数量,
         IF(COUNT(*) = 0, 0, SUM(CASE WHEN pay_status = 2 THEN 1 ELSE 0 END) / COUNT(*)) AS 成功率,
@@ -225,9 +184,15 @@ def get_payment_report_sql(db, table):
             LPAD(FLOOR((AVG(CASE WHEN pay_status = 2 THEN TIMESTAMPDIFF(SECOND, created_at, confirm_at) ELSE NULL END) MOD 3600) / 60), 2, '0'), ':',
             LPAD(FLOOR(AVG(CASE WHEN pay_status = 2 THEN TIMESTAMPDIFF(SECOND, created_at, confirm_at) ELSE NULL END) MOD 60), 2, '0')
         ) AS 处理时间
-    FROM date_buckets
+    FROM date_buckets f
+    LEFT JOIN (
+        SELECT code, dict_value
+        FROM control_1000.sys_dict_value
+        WHERE initial_flag = 0
+        AND dict_code = 'payment_method'
+    ) sv ON f.pay_type = sv.code
     WHERE 时间段 IS NOT NULL
-    GROUP BY 时间段, pay_type
+    GROUP BY 时间段, f.pay_type, sv.dict_value
     ORDER BY 订单数 DESC
     """
 
@@ -246,46 +211,15 @@ def get_withdraw_report_sql(db, table):
             amount,
             created_at,
             confirm_at
-        FROM {db}.{table}
-        WHERE site_id = 2000
-          AND category = 1
+        FROM finance_1000.finance_withdraw
+        WHERE category = 1
           AND draw_status IN (402, 501)
           AND confirm_at >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)
           AND confirm_at <= CURDATE()
     )
     SELECT 
         时间段,
-        CASE
-            WHEN withdraw_type = 2001 THEN '提款至银行卡'
-            WHEN withdraw_type = 20202 THEN '提款至中心钱包'
-            WHEN withdraw_type = 20203 THEN '佣金转账'
-            WHEN withdraw_type = 20204 THEN '额度转账'
-            WHEN withdraw_type = 20205 THEN '额度代存'
-            WHEN withdraw_type = 20206 THEN '佣金代存'
-            WHEN withdraw_type = 20207 THEN '额度手动下分'
-            WHEN withdraw_type = 2002 THEN '提款至虚拟币账户'
-            WHEN withdraw_type = 20209 THEN '代客提款'
-            WHEN withdraw_type = 1006 THEN 'Mpay钱包'
-            WHEN withdraw_type = 1008 THEN 'IPAY钱包'
-            WHEN withdraw_type = 1018 THEN 'EBPAY钱包'
-            WHEN withdraw_type = 1021 THEN '988钱包'
-            WHEN withdraw_type = 1022 THEN 'JD钱包'
-            WHEN withdraw_type = 1023 THEN 'C币钱包'
-            WHEN withdraw_type = 1024 THEN 'K豆钱包'
-            WHEN withdraw_type = 1025 THEN '钱能钱包'
-            WHEN withdraw_type = 1026 THEN 'TG钱包'
-            WHEN withdraw_type = 1027 THEN 'FPAY钱包'
-            WHEN withdraw_type = 1028 THEN 'OKPAY钱包'
-            WHEN withdraw_type = 1029 THEN 'TOPAY钱包'
-            WHEN withdraw_type = 1030 THEN 'GOPAY钱包'
-            WHEN withdraw_type = 1031 THEN '808钱包'
-            WHEN withdraw_type = 1033 THEN '万币钱包'
-            WHEN withdraw_type = 1034 THEN '365钱包'
-            WHEN withdraw_type = 1035 THEN 'ABPAY钱包'
-            WHEN withdraw_type = 1002 THEN '支付宝提款'
-            WHEN withdraw_type = 0 THEN '手动下分'
-            ELSE '未知'
-        END AS 取款类型,
+        COALESCE(sv.dict_value, fw.withdraw_type) AS 取款类型,
         COUNT(*) AS 订单数,
         SUM(CASE WHEN draw_status = 402 THEN 1 ELSE 0 END) AS 成功数量,
         IF(COUNT(*) = 0, 0, SUM(CASE WHEN draw_status = 402 THEN 1 ELSE 0 END) / COUNT(*)) AS 成功率,
@@ -295,9 +229,15 @@ def get_withdraw_report_sql(db, table):
             LPAD(FLOOR((AVG(CASE WHEN draw_status = 402 THEN TIMESTAMPDIFF(SECOND, created_at, confirm_at) ELSE NULL END) MOD 3600) / 60), 2, '0'), ':',
             LPAD(FLOOR(AVG(CASE WHEN draw_status = 402 THEN TIMESTAMPDIFF(SECOND, created_at, confirm_at) ELSE NULL END) MOD 60), 2, '0')
         ) AS 处理时间
-    FROM date_buckets
+    FROM date_buckets fw
+    LEFT JOIN (
+        SELECT code, dict_value
+        FROM control_1000.sys_dict_value
+        WHERE initial_flag = 0
+        AND dict_code IN ('payment_method', 'withdraw_type')
+    ) sv ON fw.withdraw_type = sv.code
     WHERE 时间段 IS NOT NULL
-    GROUP BY 时间段, withdraw_type
+    GROUP BY 时间段, fw.withdraw_type, sv.dict_value
     ORDER BY 订单数 DESC
     """
 
@@ -306,48 +246,32 @@ def get_dividend_report_sql(db, table):
     SELECT 
         a1_md.site_id AS 站点,
         DATE_FORMAT(a1_md.updated_at, '%%Y-%%m-%%d') AS 日期,
-        CASE 
-            WHEN a1_md.issue_type = 1 THEN '手动发放'
-            WHEN a1_md.issue_type = 2 THEN '自动发放'
-            ELSE a1_md.issue_type
-        END AS 发行方式,
-        COALESCE(sv_bonus.dict_value, a1_md.category) AS 红利类型,
-        CASE 
-            WHEN COALESCE(sv_activity.dict_value, a1_md.activity_type) = '99' THEN '邀请好友'
-            ELSE COALESCE(sv_activity.dict_value, a1_md.activity_type)
-        END AS 活动类型,
-        COUNT(DISTINCT a1_md.member_id) AS 人数,
-        SUM(a1_md.money) AS 红利金额
-     FROM activity_1000.member_dividend a1_md
-     LEFT JOIN activity_1000.operation_activity_info a1_oci 
+        SUM(CASE WHEN COALESCE(sv_bonus.dict_value, a1_md.category) = '升级红利' THEN 1 ELSE 0 END) AS 升级红利_人数,
+        SUM(CASE WHEN COALESCE(sv_bonus.dict_value, a1_md.category) = '升级红利' THEN a1_md.money ELSE 0 END) AS 升级红利_金额,
+        SUM(CASE WHEN COALESCE(sv_bonus.dict_value, a1_md.category) = '存款优惠' THEN 1 ELSE 0 END) AS 存款优惠_人数,
+        SUM(CASE WHEN COALESCE(sv_bonus.dict_value, a1_md.category) = '存款优惠' THEN a1_md.money ELSE 0 END) AS 存款优惠_金额,
+        SUM(CASE WHEN COALESCE(sv_bonus.dict_value, a1_md.category) = '每周红利' THEN 1 ELSE 0 END) AS 每周红利_人数,
+        SUM(CASE WHEN COALESCE(sv_bonus.dict_value, a1_md.category) = '每周红利' THEN a1_md.money ELSE 0 END) AS 每周红利_金额,
+        SUM(CASE WHEN COALESCE(sv_bonus.dict_value, a1_md.category) = '活动红利' THEN 1 ELSE 0 END) AS 活动红利_人数,
+        SUM(CASE WHEN COALESCE(sv_bonus.dict_value, a1_md.category) = '活动红利' THEN a1_md.money ELSE 0 END) AS 活动红利_金额,
+        SUM(CASE WHEN COALESCE(sv_bonus.dict_value, a1_md.category) = '豪礼红利' THEN 1 ELSE 0 END) AS 豪礼红利_人数,
+        SUM(CASE WHEN COALESCE(sv_bonus.dict_value, a1_md.category) = '豪礼红利' THEN a1_md.money ELSE 0 END) AS 豪礼红利_金额,
+        SUM(CASE WHEN COALESCE(sv_bonus.dict_value, a1_md.category) IN ('代理红利', '代理红利(代理后台-推广红利)') THEN 1 ELSE 0 END) AS 代理红利_人数,
+        SUM(CASE WHEN COALESCE(sv_bonus.dict_value, a1_md.category) IN ('代理红利', '代理红利(代理后台-推广红利)') THEN a1_md.money ELSE 0 END) AS 代理红利_金额
+    FROM activity_1000.member_dividend a1_md
+    LEFT JOIN activity_1000.operation_activity_info a1_oci 
         ON a1_md.activity_id = a1_oci.id
-     LEFT JOIN (
-        SELECT code, dict_value
-        FROM control_1000.sys_dict_value
-        WHERE dict_code = 'activity_type'
-     ) sv_activity ON a1_md.activity_type = sv_activity.code
-     LEFT JOIN (
+    LEFT JOIN (
         SELECT code, dict_value
         FROM control_1000.sys_dict_value
         WHERE dict_code = 'bonus_type'
-     ) sv_bonus ON a1_md.category = sv_bonus.code
-     WHERE a1_md.status = 2
-      AND a1_md.category NOT IN (999555)
-      AND a1_md.created_at >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)
-      AND a1_md.created_at <= CURDATE()
-     GROUP BY a1_md.site_id, 
-              DATE_FORMAT(a1_md.updated_at, '%%Y-%%m-%%d'),
-              CASE 
-                  WHEN a1_md.issue_type = 1 THEN '手动发放'
-                  WHEN a1_md.issue_type = 2 THEN '自动发放'
-                  ELSE a1_md.issue_type
-              END,
-              COALESCE(sv_bonus.dict_value, a1_md.category),
-              CASE 
-                  WHEN COALESCE(sv_activity.dict_value, a1_md.activity_type) = '99' THEN '邀请好友'
-                  ELSE COALESCE(sv_activity.dict_value, a1_md.activity_type)
-              END
-     ORDER BY a1_md.site_id ASC, 红利金额 DESC
+    ) sv_bonus ON a1_md.category = sv_bonus.code
+    WHERE a1_md.status = 2
+        AND a1_md.category NOT IN (999555)
+        AND a1_md.created_at >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)
+        AND a1_md.created_at <= CURDATE()
+    GROUP BY a1_md.site_id, 
+             DATE_FORMAT(a1_md.updated_at, '%%Y-%%m-%%d')
     """
 
 # SQL 函数映射
