@@ -150,96 +150,91 @@ def get_retention_report_sql(db, table):
     ORDER BY 站点, d.statics_date ASC
     """
 
-
 def get_payment_report_sql(db, table):
-    return f"""
-    WITH date_buckets AS (
-        SELECT 
-            CASE 
-                WHEN confirm_at >= DATE_SUB(CURDATE(), INTERVAL 3 DAY) THEN '近3日'
-                WHEN confirm_at >= DATE_SUB(CURDATE(), INTERVAL 7 DAY) THEN '近7日'
-                WHEN confirm_at >= DATE_SUB(CURDATE(), INTERVAL 15 DAY) THEN '近15日'
-                WHEN confirm_at >= DATE_SUB(CURDATE(), INTERVAL 30 DAY) THEN '近30日'
-            END AS 时间段,
-            pay_type,
-            pay_status,
-            order_amount,
-            created_at,
-            confirm_at
-        FROM {db}.{table}
-        WHERE category = 1
-          AND pay_status IN (2, 4)
-          AND confirm_at >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)
-          AND confirm_at <= CURDATE()
-    )
-    SELECT 
-        时间段,
-        COALESCE(sv.dict_value, f.pay_type) AS 存款类型,
-        COUNT(*) AS 订单数,
-        SUM(CASE WHEN pay_status = 2 THEN 1 ELSE 0 END) AS 成功数量,
-        IF(COUNT(*) = 0, 0, SUM(CASE WHEN pay_status = 2 THEN 1 ELSE 0 END) / COUNT(*)) AS 成功率,
-        SUM(CASE WHEN pay_status = 2 THEN order_amount ELSE 0 END) AS 成功金额,
-        CONCAT(
-            LPAD(FLOOR(AVG(CASE WHEN pay_status = 2 THEN TIMESTAMPDIFF(SECOND, created_at, confirm_at) ELSE NULL END) / 3600), 2, '0'), ':',
-            LPAD(FLOOR((AVG(CASE WHEN pay_status = 2 THEN TIMESTAMPDIFF(SECOND, created_at, confirm_at) ELSE NULL END) MOD 3600) / 60), 2, '0'), ':',
-            LPAD(FLOOR(AVG(CASE WHEN pay_status = 2 THEN TIMESTAMPDIFF(SECOND, created_at, confirm_at) ELSE NULL END) MOD 60), 2, '0')
-        ) AS 处理时间
-    FROM date_buckets f
-    LEFT JOIN (
-        SELECT code, dict_value
-        FROM control_1000.sys_dict_value
-        WHERE initial_flag = 0
-        AND dict_code = 'payment_method'
-    ) sv ON f.pay_type = sv.code
-    WHERE 时间段 IS NOT NULL
-    GROUP BY 时间段, f.pay_type, sv.dict_value
-    ORDER BY 订单数 DESC
-    """
+   return f"""
+   WITH date_buckets AS (
+       SELECT 
+           site_id,
+           pay_type,
+           pay_status,
+           order_amount,
+           created_at,
+           confirm_at,
+           CASE 
+               WHEN confirm_at >= DATE_SUB(CURDATE(), INTERVAL 7 DAY) THEN '近7日'
+               WHEN confirm_at >= DATE_SUB(CURDATE(), INTERVAL 30 DAY) THEN '近30日'
+           END AS 时间段
+       FROM {db}.{table}
+       WHERE category = 1
+         AND pay_status IN (2, 4)
+         AND confirm_at >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)
+         AND confirm_at <= CURDATE()
+   )
+   SELECT 
+       f.site_id AS 站点,
+       COALESCE(sv.dict_value, f.pay_type) AS 存款类型,
+       SUM(CASE WHEN 时间段 = '近7日' THEN 1 ELSE 0 END) AS `7日订单数`,
+       SUM(CASE WHEN 时间段 = '近7日' AND pay_status = 2 THEN 1 ELSE 0 END) AS `7日成功数量`,
+       SUM(CASE WHEN 时间段 = '近7日' THEN order_amount ELSE 0 END) AS `7日订单金额`,
+       SUM(CASE WHEN 时间段 = '近7日' AND pay_status = 2 THEN order_amount ELSE 0 END) AS `7日成功金额`,
+       SUM(CASE WHEN 时间段 = '近30日' THEN 1 ELSE 0 END) AS `30日订单数`,
+       SUM(CASE WHEN 时间段 = '近30日' AND pay_status = 2 THEN 1 ELSE 0 END) AS `30日成功数量`,
+       SUM(CASE WHEN 时间段 = '近30日' THEN order_amount ELSE 0 END) AS `30日订单金额`,
+       SUM(CASE WHEN 时间段 = '近30日' AND pay_status = 2 THEN order_amount ELSE 0 END) AS `30日成功金额`
+   FROM date_buckets f
+   LEFT JOIN (
+       SELECT code, dict_value
+       FROM control_1000.sys_dict_value
+       WHERE initial_flag = 0
+       AND dict_code = 'payment_method'
+   ) sv ON f.pay_type = sv.code
+   WHERE 时间段 IS NOT NULL
+   GROUP BY f.site_id, f.pay_type, sv.dict_value
+   ORDER BY f.site_id ASC
+   """
 
 def get_withdraw_report_sql(db, table):
-    return f"""
-    WITH date_buckets AS (
-        SELECT 
-            CASE 
-                WHEN confirm_at >= DATE_SUB(CURDATE(), INTERVAL 3 DAY) THEN '近3日'
-                WHEN confirm_at >= DATE_SUB(CURDATE(), INTERVAL 7 DAY) THEN '近7日'
-                WHEN confirm_at >= DATE_SUB(CURDATE(), INTERVAL 15 DAY) THEN '近15日'
-                WHEN confirm_at >= DATE_SUB(CURDATE(), INTERVAL 30 DAY) THEN '近30日'
-            END AS 时间段,
-            withdraw_type,
-            draw_status,
-            amount,
-            created_at,
-            confirm_at
-        FROM finance_1000.finance_withdraw
-        WHERE category = 1
-          AND draw_status IN (402, 501)
-          AND confirm_at >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)
-          AND confirm_at <= CURDATE()
-    )
-    SELECT 
-        时间段,
-        COALESCE(sv.dict_value, fw.withdraw_type) AS 取款类型,
-        COUNT(*) AS 订单数,
-        SUM(CASE WHEN draw_status = 402 THEN 1 ELSE 0 END) AS 成功数量,
-        IF(COUNT(*) = 0, 0, SUM(CASE WHEN draw_status = 402 THEN 1 ELSE 0 END) / COUNT(*)) AS 成功率,
-        SUM(CASE WHEN draw_status = 402 THEN amount ELSE 0 END) AS 成功金额,
-        CONCAT(
-            LPAD(FLOOR(AVG(CASE WHEN draw_status = 402 THEN TIMESTAMPDIFF(SECOND, created_at, confirm_at) ELSE NULL END) / 3600), 2, '0'), ':',
-            LPAD(FLOOR((AVG(CASE WHEN draw_status = 402 THEN TIMESTAMPDIFF(SECOND, created_at, confirm_at) ELSE NULL END) MOD 3600) / 60), 2, '0'), ':',
-            LPAD(FLOOR(AVG(CASE WHEN draw_status = 402 THEN TIMESTAMPDIFF(SECOND, created_at, confirm_at) ELSE NULL END) MOD 60), 2, '0')
-        ) AS 处理时间
-    FROM date_buckets fw
-    LEFT JOIN (
-        SELECT code, dict_value
-        FROM control_1000.sys_dict_value
-        WHERE initial_flag = 0
-        AND dict_code IN ('payment_method', 'withdraw_type')
-    ) sv ON fw.withdraw_type = sv.code
-    WHERE 时间段 IS NOT NULL
-    GROUP BY 时间段, fw.withdraw_type, sv.dict_value
-    ORDER BY 订单数 DESC
-    """
+   return f"""
+   WITH date_buckets AS (
+       SELECT 
+           site_id,
+           withdraw_type,
+           draw_status,
+           amount,
+           created_at,
+           confirm_at,
+           CASE 
+               WHEN confirm_at >= DATE_SUB(CURDATE(), INTERVAL 7 DAY) THEN '近7日'
+               WHEN confirm_at >= DATE_SUB(CURDATE(), INTERVAL 30 DAY) THEN '近30日'
+           END AS 时间段
+       FROM {db}.{table}
+       WHERE category = 1
+         AND draw_status IN (402, 501)
+         AND confirm_at >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)
+         AND confirm_at <= CURDATE()
+   )
+   SELECT 
+       fw.site_id AS 站点,
+       COALESCE(sv.dict_value, fw.withdraw_type) AS 取款类型,
+       SUM(CASE WHEN 时间段 = '近7日' THEN 1 ELSE 0 END) AS `7日订单数`,
+       SUM(CASE WHEN 时间段 = '近7日' AND draw_status = 402 THEN 1 ELSE 0 END) AS `7日成功数量`,
+       SUM(CASE WHEN 时间段 = '近7日' THEN amount ELSE 0 END) AS `7日订单金额`,
+       SUM(CASE WHEN 时间段 = '近7日' AND draw_status = 402 THEN amount ELSE 0 END) AS `7日成功金额`,
+       SUM(CASE WHEN 时间段 = '近30日' THEN 1 ELSE 0 END) AS `30日订单数`,
+       SUM(CASE WHEN 时间段 = '近30日' AND draw_status = 402 THEN 1 ELSE 0 END) AS `30日成功数量`,
+       SUM(CASE WHEN 时间段 = '近30日' THEN amount ELSE 0 END) AS `30日订单金额`,
+       SUM(CASE WHEN 时间段 = '近30日' AND draw_status = 402 THEN amount ELSE 0 END) AS `30日成功金额`
+   FROM date_buckets fw
+   LEFT JOIN (
+       SELECT code, dict_value
+       FROM control_1000.sys_dict_value
+       WHERE initial_flag = 0
+       AND dict_code IN ('payment_method', 'withdraw_type')
+   ) sv ON fw.withdraw_type = sv.code
+   WHERE 时间段 IS NOT NULL
+   GROUP BY fw.site_id, fw.withdraw_type, sv.dict_value
+   ORDER BY fw.site_id ASC
+   """
 
 def get_dividend_report_sql(db, table):
     return f"""
@@ -284,6 +279,7 @@ SQL_FUNCTIONS = {
     '红利': get_dividend_report_sql
 }
 
+
 def process_report(args):
     """处理单个报表的查询和返回结果"""
     sheet_name, config, report_config = args
@@ -305,11 +301,12 @@ def process_report(args):
                 # 替换站点ID为站点名称
                 if '站点' in chunk.columns:
                     chunk['站点'] = chunk['站点'].map(SITE_MAPPING).fillna(chunk['站点'])
-                # 识别数值列，处理为整数（除了特定列）
+                # 识别数值列，处理小数或整数
                 for col in chunk.select_dtypes(include=['float64', 'int64']).columns:
-                    if col in ['成功率', '红利金额']:  # 保留小数
-                        continue
-                    chunk[col] = chunk[col].round(0).astype('Int64')  # 其他数值列转为整数，处理空值
+                    if '成功率' in col:  # 保留包含“成功率”的字段为两位小数
+                        chunk[col] = chunk[col].round(2)
+                    else:  # 其他数值列转为整数
+                        chunk[col] = chunk[col].round(0).astype('Int64')
                 data.extend(chunk.values.tolist())
             return sheet_name, columns, data, True
         finally:
