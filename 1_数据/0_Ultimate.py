@@ -180,7 +180,7 @@ class DatabaseQuery:
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
     def _3_last_bet_date(self) -> pd.DataFrame:
-        """查询会员首存信息"""
+        """查询会员最后投注日期信息"""
         query = f"""
         SELECT 
             member_id AS '会员ID',
@@ -250,7 +250,10 @@ class DatabaseQuery:
         collections = [col for col in self.db.list_collection_names() if col.startswith(self.mongo_collection_prefix)]
         if not collections:
             return pd.DataFrame(
-                columns=['日期', '会员ID', '投注次数', '有效投注', '会员输赢'] if use_date_column else ['会员ID','投注次数','有效投注','会员输赢'])
+                columns=['日期', '会员ID', '投注次数', '有效投注', '会员输赢'] if use_date_column else ['会员ID',
+                                                                                                        '投注次数',
+                                                                                                        '有效投注',
+                                                                                                        '会员输赢'])
 
         pipeline = [
             {"$match": {
@@ -287,7 +290,10 @@ class DatabaseQuery:
         df = self._process_mongo_collections(collections, pipeline)
         if df.empty:
             return pd.DataFrame(
-                columns=['日期', '会员ID', '投注次数', '有效投注', '会员输赢'] if use_date_column else ['会员ID','投注次数','有效投注','会员输赢'])
+                columns=['日期', '会员ID', '投注次数', '有效投注', '会员输赢'] if use_date_column else ['会员ID',
+                                                                                                        '投注次数',
+                                                                                                        '有效投注',
+                                                                                                        '会员输赢'])
 
         df = df.astype({'会员ID': 'category', 'game_type': 'int8', 'betting_count': 'int32',
                         'valid_bet': 'float32', 'net_amount': 'float32'})
@@ -339,10 +345,97 @@ class DatabaseQuery:
                 result = result.merge(net_pivot[pivot_index + [net_col]], on=pivot_index, how='outer')
 
         # 确保最终列顺序
-        final_columns = (['日期', '会员ID', '投注次数', '有效投注', '会员输赢'] if use_date_column else ['会员ID','投注次数','有效投注','会员输赢']) + \
+        final_columns = (['日期', '会员ID', '投注次数', '有效投注', '会员输赢'] if use_date_column else ['会员ID',
+                                                                                                         '投注次数',
+                                                                                                         '有效投注',
+                                                                                                         '会员输赢']) + \
                         [col for col in result.columns if col not in (
-                            ['日期', '会员ID', '投注次数', '有效投注', '会员输赢'] if use_date_column else ['会员ID','投注次数','有效投注','会员输赢'])]
+                            ['日期', '会员ID', '投注次数', '有效投注', '会员输赢'] if use_date_column else ['会员ID',
+                                                                                                            '投注次数',
+                                                                                                            '有效投注',
+                                                                                                            '会员输赢'])]
         result = result.reindex(columns=final_columns)
+
+        return result[result['有效投注'] > 0]
+
+    def mongo_betting_venue(self, use_date_column: bool = False) -> pd.DataFrame:
+        """查询 MongoDB 投注统计数据，按 venue 分组"""
+        collections = [col for col in self.db.list_collection_names() if col.startswith(self.mongo_collection_prefix)]
+        if not collections:
+            return pd.DataFrame(
+                columns=['日期', '会员ID', '场馆', '投注次数', '有效投注', '会员输赢'] if use_date_column else [
+                    '会员ID', '场馆', '投注次数', '有效投注', '会员输赢'])
+
+        # 构建聚合管道
+        pipeline = [
+            {"$match": {
+                "flag": 1,
+                "settle_time": {"$gte": self.start_time, "$lte": self.end_time}
+            }},
+            {"$sort": {"settle_time": 1}},
+            {"$group": {
+                "_id": {
+                    "member_id": "$member_id",
+                    "date": {"$dateToString": {"format": "%Y-%m-%d",
+                                               "date": {"$toDate": "$settle_time"}}} if use_date_column else None,
+                    "venue": "$venue_name"  # 假设 MongoDB 文档有 venue_name 字段
+                },
+                "betting_count": {"$sum": 1},
+                "valid_bet": {"$sum": "$valid_bet_amount"},
+                "net_amount": {"$sum": "$net_amount"}
+            }},
+            {"$project": {
+                "_id": 0,
+                "日期": "$_id.date" if use_date_column else None,
+                "会员ID": "$_id.member_id",
+                "场馆": "$_id.venue",
+                "betting_count": 1,
+                "valid_bet": 1,
+                "net_amount": 1
+            }}
+        ]
+        if self.site_id is not None:
+            pipeline[0]["$match"]["site_id"] = self.site_id
+        # 移除 None 值
+        pipeline = [{k: v for k, v in stage.items() if v is not None} for stage in pipeline]
+
+        # 处理集合并提取 venue
+        dfs = []
+        for col in collections:
+            venue = col[len(self.mongo_collection_prefix):]  # 提取 pull_order_game_ 后的字段
+            pipeline_copy = pipeline.copy()
+            df = self._process_mongo_collections([col], pipeline_copy)
+            if not df.empty:
+                df['场馆'] = venue  # 添加 venue 列
+                dfs.append(df)
+
+        df = pd.concat(dfs, ignore_index=True) if dfs else pd.DataFrame(
+            columns=['日期', '会员ID', '场馆', '投注次数', '有效投注', '会员输赢'] if use_date_column else ['会员ID',
+                                                                                                            '场馆',
+                                                                                                            '投注次数',
+                                                                                                            '有效投注',
+                                                                                                            '会员输赢'])
+
+        if df.empty:
+            return df
+
+        # 类型优化
+        df = df.astype({'会员ID': 'category', '场馆': 'string', 'betting_count': 'int32',
+                        'valid_bet': 'float32', 'net_amount': 'float32'})
+        if use_date_column:
+            df['日期'] = df['日期'].astype('string')
+
+        # 聚合会员统计
+        group_cols = ['日期', '会员ID', '场馆'] if use_date_column else ['会员ID', '场馆']
+        result = df.groupby(group_cols, observed=True).agg({
+            'betting_count': 'sum',
+            'valid_bet': 'sum',
+            'net_amount': 'sum'
+        }).reset_index().rename(columns={
+            'betting_count': '投注次数',
+            'valid_bet': '有效投注',
+            'net_amount': '会员输赢'
+        })
 
         return result[result['有效投注'] > 0]
 
@@ -543,15 +636,16 @@ def send_to_telegram(file_path: str, bot_token: str, chat_id: str) -> bool:
 
 def work(db_query: DatabaseQuery) -> pd.DataFrame:
     """执行查询并合并结果"""
-    #推广架构 db_query._0_promotion()
-    #会员信息 .merge(db_query._1_member_basic_info(), on='会员ID', how='inner')
-    #首存 .merge(db_query._2_first_deposit(), on='会员ID', how='left')
-    #最后投注 .merge(db_query._3_last_bet_date(), on='会员ID', how='left')
-    #会员数据（时间段） .merge(db_query._6_member_stats_period(use_date_column=True False), on='会员ID', how='inner')
-    #会员数据（历史） .merge(db_query._7_member_stats_history(), on='会员ID', how='inner')
-    #游戏场馆 .merge(db_query.mongo_betting_stats(use_date_column=True False), on=['会员ID', '日期'], how='inner')
-    #注单 .merge(db_query.mongo_betting_details(), on=['会员ID', '日期'], how='inner')
-    #红利 .merge(db_query._11_member_dividend(), on='会员ID', how='inner')
+    # 推广架构 db_query._0_promotion()
+    # 会员信息 .merge(db_query._1_member_basic_info(), on='会员ID', how='inner')
+    # 首存 .merge(db_query._2_first_deposit(), on='会员ID', how='left')
+    # 最后投注 .merge(db_query._3_last_bet_date(), on='会员ID', how='left')
+    # 会员数据（时间段） .merge(db_query._6_member_stats_period(use_date_column=True False), on='会员ID', how='inner')
+    # 会员数据（历史） .merge(db_query._7_member_stats_history(), on='会员ID', how='inner')
+    # 游戏 .merge(db_query.mongo_betting_stats(use_date_column=True False), on=['会员ID', '日期'], how='inner')
+    # 场馆 .merge(db_query.mongo_betting_venue(use_date_column=True False), on=['会员ID', '日期'], how='inner')
+    # 注单 .merge(db_query.mongo_betting_details(), on=['会员ID', '日期'], how='inner')
+    # 红利 .merge(db_query._11_member_dividend(), on='会员ID', how='inner')
     result_df = (db_query._1_member_basic_info()
                  .merge(db_query._2_first_deposit(), on='会员ID', how='left')
                  .merge(db_query._3_last_bet_date(), on='会员ID', how='left')
