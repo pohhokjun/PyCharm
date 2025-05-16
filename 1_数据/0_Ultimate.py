@@ -203,6 +203,7 @@ class DatabaseQuery:
                COALESCE(SUM(draw), 0) AS '取款',
                COALESCE(SUM(bets), 0) AS '有效投注金额',
                COALESCE(-SUM(profit), 0) AS '会员输赢',
+               COALESCE(-SUM(profit), 0)/COALESCE(SUM(all_bets), 0) AS '会员盈利率',
                COALESCE(SUM(promo), 0) AS '红利',
                COALESCE(SUM(rebate), 0) AS '返水'
            FROM {self.bigdata}.member_daily_statics
@@ -219,6 +220,7 @@ class DatabaseQuery:
                COALESCE(SUM(draw), 0) AS '取款',
                COALESCE(SUM(bets), 0) AS '有效投注金额',
                COALESCE(-SUM(profit), 0) AS '会员输赢',
+               COALESCE(-SUM(profit), 0)/COALESCE(SUM(all_bets), 0) AS '会员盈利率',
                COALESCE(SUM(promo), 0) AS '红利',
                COALESCE(SUM(rebate), 0) AS '返水'
            FROM {self.bigdata}.member_daily_statics
@@ -250,10 +252,7 @@ class DatabaseQuery:
         collections = [col for col in self.db.list_collection_names() if col.startswith(self.mongo_collection_prefix)]
         if not collections:
             return pd.DataFrame(
-                columns=['日期', '会员ID', '投注次数', '有效投注', '会员输赢'] if use_date_column else ['会员ID',
-                                                                                                        '投注次数',
-                                                                                                        '有效投注',
-                                                                                                        '会员输赢'])
+                columns=['日期', '会员ID', '投注次数', '有效投注', '会员输赢', '会员投注喜好'] if use_date_column else ['会员ID','投注次数','有效投注','会员输赢','会员投注喜好'])
 
         pipeline = [
             {"$match": {
@@ -290,10 +289,7 @@ class DatabaseQuery:
         df = self._process_mongo_collections(collections, pipeline)
         if df.empty:
             return pd.DataFrame(
-                columns=['日期', '会员ID', '投注次数', '有效投注', '会员输赢'] if use_date_column else ['会员ID',
-                                                                                                        '投注次数',
-                                                                                                        '有效投注',
-                                                                                                        '会员输赢'])
+                columns=['日期', '会员ID', '投注次数', '有效投注', '会员输赢', '会员投注喜好'] if use_date_column else ['会员ID','投注次数','有效投注','会员输赢','会员投注喜好'])
 
         df = df.astype({'会员ID': 'category', 'game_type': 'int8', 'betting_count': 'int32',
                         'valid_bet': 'float32', 'net_amount': 'float32'})
@@ -334,8 +330,25 @@ class DatabaseQuery:
         net_pivot.columns = pivot_index + [game_types.get(col, (str(col),))[1] for col in
                                            net_pivot.columns[len(pivot_index):]]
 
+        # 计算会员投注喜好
+        game_valid_cols = [col for col in valid_pivot.columns if col.endswith('有效投注')]
+        if game_valid_cols: # 确保有游戏有效投注列
+            valid_pivot['max_valid_bet_value'] = valid_pivot[game_valid_cols].max(axis=1)
+            valid_pivot['会员投注喜好'] = valid_pivot[game_valid_cols].idxmax(axis=1)
+            # 如果最大有效投注为0，则喜好为'无'
+            valid_pivot['会员投注喜好'] = valid_pivot.apply(
+                lambda row: row['会员投注喜好'] if row['max_valid_bet_value'] > 0 else '无', axis=1
+            )
+            valid_pivot = valid_pivot.drop(columns=['max_valid_bet_value'])
+        else:
+             valid_pivot['会员投注喜好'] = '无' # 如果没有游戏有效投注列，则喜好为'无'
+
+
         # 修改排序：按场馆顺序合并有效投注和会员输赢
         result = member_stats
+        # 合并投注喜好
+        result = result.merge(valid_pivot[pivot_index + ['会员投注喜好']], on=pivot_index, how='left')
+
         for game_type in sorted(game_types.keys()):
             valid_col = game_types[game_type][0]
             net_col = game_types[game_type][1]
@@ -344,98 +357,12 @@ class DatabaseQuery:
             if net_col in net_pivot.columns:
                 result = result.merge(net_pivot[pivot_index + [net_col]], on=pivot_index, how='outer')
 
+
         # 确保最终列顺序
-        final_columns = (['日期', '会员ID', '投注次数', '有效投注', '会员输赢'] if use_date_column else ['会员ID',
-                                                                                                         '投注次数',
-                                                                                                         '有效投注',
-                                                                                                         '会员输赢']) + \
-                        [col for col in result.columns if col not in (
-                            ['日期', '会员ID', '投注次数', '有效投注', '会员输赢'] if use_date_column else ['会员ID',
-                                                                                                            '投注次数',
-                                                                                                            '有效投注',
-                                                                                                            '会员输赢'])]
+        final_columns_base = ['日期', '会员ID', '投注次数', '有效投注', '会员输赢'] if use_date_column else ['会员ID','投注次数','有效投注','会员输赢']
+        final_columns = final_columns_base + ['会员投注喜好'] + \
+                        [col for col in result.columns if col not in (final_columns_base + ['会员投注喜好'])]
         result = result.reindex(columns=final_columns)
-
-        return result[result['有效投注'] > 0]
-
-    def mongo_betting_venue(self, use_date_column: bool = False) -> pd.DataFrame:
-        """查询 MongoDB 投注统计数据，按 venue 分组"""
-        collections = [col for col in self.db.list_collection_names() if col.startswith(self.mongo_collection_prefix)]
-        if not collections:
-            return pd.DataFrame(
-                columns=['日期', '会员ID', '场馆', '投注次数', '有效投注', '会员输赢'] if use_date_column else [
-                    '会员ID', '场馆', '投注次数', '有效投注', '会员输赢'])
-
-        # 构建聚合管道
-        pipeline = [
-            {"$match": {
-                "flag": 1,
-                "settle_time": {"$gte": self.start_time, "$lte": self.end_time}
-            }},
-            {"$sort": {"settle_time": 1}},
-            {"$group": {
-                "_id": {
-                    "member_id": "$member_id",
-                    "date": {"$dateToString": {"format": "%Y-%m-%d",
-                                               "date": {"$toDate": "$settle_time"}}} if use_date_column else None,
-                    "venue": "$venue_name"  # 假设 MongoDB 文档有 venue_name 字段
-                },
-                "betting_count": {"$sum": 1},
-                "valid_bet": {"$sum": "$valid_bet_amount"},
-                "net_amount": {"$sum": "$net_amount"}
-            }},
-            {"$project": {
-                "_id": 0,
-                "日期": "$_id.date" if use_date_column else None,
-                "会员ID": "$_id.member_id",
-                "场馆": "$_id.venue",
-                "betting_count": 1,
-                "valid_bet": 1,
-                "net_amount": 1
-            }}
-        ]
-        if self.site_id is not None:
-            pipeline[0]["$match"]["site_id"] = self.site_id
-        # 移除 None 值
-        pipeline = [{k: v for k, v in stage.items() if v is not None} for stage in pipeline]
-
-        # 处理集合并提取 venue
-        dfs = []
-        for col in collections:
-            venue = col[len(self.mongo_collection_prefix):]  # 提取 pull_order_game_ 后的字段
-            pipeline_copy = pipeline.copy()
-            df = self._process_mongo_collections([col], pipeline_copy)
-            if not df.empty:
-                df['场馆'] = venue  # 添加 venue 列
-                dfs.append(df)
-
-        df = pd.concat(dfs, ignore_index=True) if dfs else pd.DataFrame(
-            columns=['日期', '会员ID', '场馆', '投注次数', '有效投注', '会员输赢'] if use_date_column else ['会员ID',
-                                                                                                            '场馆',
-                                                                                                            '投注次数',
-                                                                                                            '有效投注',
-                                                                                                            '会员输赢'])
-
-        if df.empty:
-            return df
-
-        # 类型优化
-        df = df.astype({'会员ID': 'category', '场馆': 'string', 'betting_count': 'int32',
-                        'valid_bet': 'float32', 'net_amount': 'float32'})
-        if use_date_column:
-            df['日期'] = df['日期'].astype('string')
-
-        # 聚合会员统计
-        group_cols = ['日期', '会员ID', '场馆'] if use_date_column else ['会员ID', '场馆']
-        result = df.groupby(group_cols, observed=True).agg({
-            'betting_count': 'sum',
-            'valid_bet': 'sum',
-            'net_amount': 'sum'
-        }).reset_index().rename(columns={
-            'betting_count': '投注次数',
-            'valid_bet': '有效投注',
-            'net_amount': '会员输赢'
-        })
 
         return result[result['有效投注'] > 0]
 
@@ -545,65 +472,6 @@ class DatabaseQuery:
         # 确保字段顺序
         return df[columns]
 
-    def _11_member_dividend(self) -> pd.DataFrame:
-        """查询会员历史累计统计信息，筛选指定 site_id"""
-        query = f"""
-        SELECT
-            a1_md.site_id AS 站点ID,
-            a1_md.activity_title AS 活动标题,
-            a1_oci.title AS 标题,
-            a1_md.member_id AS 会员ID,
-            a1_md.member_name AS 会员账号,
-            a1_md.member_grade AS 会员等级,
-            a1_md.bill_no AS 订单号,
-            CASE
-                WHEN a1_md.wallet_category = 1 THEN '中心钱包'
-                WHEN a1_md.wallet_category = 2 THEN '场馆钱包'
-                ELSE a1_md.wallet_category
-            END AS 钱包类别,
-            a1_md.flow_times AS 流水倍数,
-            a1_md.money AS 红利金额,
-            CASE
-                WHEN a1_md.status = 1 THEN '处理中'
-                WHEN a1_md.status = 2 THEN '成功'
-                WHEN a1_md.status = 3 THEN '失败'
-                ELSE a1_md.status
-            END AS 状态,
-            CASE
-                WHEN a1_md.issue_type = 1 THEN '手动发放'
-                WHEN a1_md.issue_type = 2 THEN '自动发放'
-                ELSE a1_md.issue_type
-            END AS 发行类型,
-            COALESCE(sv.dict_value, a1_md.activity_type) AS '活动类型',
-            a1_md.created_at AS 申请时间,
-            a1_md.applicant_remark AS 申请备注,
-            a1_md.updated_at AS 发放时间,
-            a1_md.check_user AS 审核用户,
-            a1_md.check_remark AS 审核备注,
-            a1_md.applicant AS 操作人
-        FROM activity_1000.member_dividend a1_md
-        LEFT JOIN activity_1000.operation_activity_info a1_oci
-            ON a1_md.activity_id = a1_oci.id
-        LEFT JOIN (
-            SELECT code, dict_value
-            FROM (
-                SELECT
-                    code,
-                    dict_value,
-                    dict_code,
-                    ROW_NUMBER() OVER (PARTITION BY code ORDER BY code) AS rn
-                FROM control_1000.sys_dict_value
-                WHERE dict_code IN ('activity_type')
-            ) t
-            WHERE rn = 1
-        ) sv ON a1_md.activity_type = sv.code
-        WHERE a1_md.updated_at BETWEEN '{self.start_time}' AND '{self.end_time}'
-        AND a1_md.category NOT IN (999555)
-        """
-        if self.site_id is not None:
-            query += f" AND a1_md.site_id = {self.site_id}"
-        return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
-
 
 def save_to_excel(df: pd.DataFrame, filename: str):
     """保存 DataFrame 到 Excel 文件"""
@@ -643,9 +511,7 @@ def work(db_query: DatabaseQuery) -> pd.DataFrame:
     # 会员数据（时间段） .merge(db_query._6_member_stats_period(use_date_column=True False), on='会员ID', how='inner')
     # 会员数据（历史） .merge(db_query._7_member_stats_history(), on='会员ID', how='inner')
     # 游戏 .merge(db_query.mongo_betting_stats(use_date_column=True False), on=['会员ID', '日期'], how='inner')
-    # 场馆 .merge(db_query.mongo_betting_venue(use_date_column=True False), on=['会员ID', '日期'], how='inner')
     # 注单 .merge(db_query.mongo_betting_details(), on=['会员ID', '日期'], how='inner')
-    # 红利 .merge(db_query._11_member_dividend(), on='会员ID', how='inner')
     result_df = (db_query._1_member_basic_info()
                  .merge(db_query._2_first_deposit(), on='会员ID', how='left')
                  .merge(db_query._3_last_bet_date(), on='会员ID', how='left')

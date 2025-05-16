@@ -5,7 +5,7 @@ import pandas as pd
 
 # 设置 Google Sheets API 凭证
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-creds = ServiceAccountCredentials.from_json_keyfile_name(r"C:\Henvita\hokjun-5080e816b6a3.json", scope)
+creds = ServiceAccountCredentials.from_json_keyfile_name(r"C:\Henvita\hokjun-4e20d0ae306b.json", scope)
 client = gspread.authorize(creds)
 
 # 打开 Google Sheet
