@@ -234,6 +234,7 @@ class DatabaseQuery:
         query = f"""
        SELECT
            member_id AS '会员ID',
+           COUNT(DISTINCT CASE WHEN deposit_count > 0 THEN statics_date ELSE NULL END) AS '存款天数',
            COALESCE(SUM(deposit_count), 0) AS '历史存款笔数',
            COALESCE(SUM(deposit), 0) AS '历史存款',
            COALESCE(SUM(draw_count), 0) AS '历史取款笔数',
@@ -251,8 +252,9 @@ class DatabaseQuery:
         """查询 MongoDB 投注统计数据 True False """
         collections = [col for col in self.db.list_collection_names() if col.startswith(self.mongo_collection_prefix)]
         if not collections:
+            # 修改：移除 '有效投注' 和 '会员输赢'
             return pd.DataFrame(
-                columns=['日期', '会员ID', '投注次数', '有效投注', '会员输赢', '会员投注喜好'] if use_date_column else ['会员ID','投注次数','有效投注','会员输赢','会员投注喜好'])
+                columns=['日期', '会员ID', '投注次数', '会员投注喜好'] if use_date_column else ['会员ID', '投注次数','会员投注喜好'])
 
         pipeline = [
             {"$match": {
@@ -288,8 +290,9 @@ class DatabaseQuery:
 
         df = self._process_mongo_collections(collections, pipeline)
         if df.empty:
+            # 修改：移除 '有效投注' 和 '会员输赢'
             return pd.DataFrame(
-                columns=['日期', '会员ID', '投注次数', '有效投注', '会员输赢', '会员投注喜好'] if use_date_column else ['会员ID','投注次数','有效投注','会员输赢','会员投注喜好'])
+                columns=['日期', '会员ID', '投注次数', '会员投注喜好'] if use_date_column else ['会员ID', '投注次数','会员投注喜好'])
 
         df = df.astype({'会员ID': 'category', 'game_type': 'int8', 'betting_count': 'int32',
                         'valid_bet': 'float32', 'net_amount': 'float32'})
@@ -298,14 +301,14 @@ class DatabaseQuery:
 
         # 聚合会员统计
         group_cols = ['日期', '会员ID'] if use_date_column else ['会员ID']
+        # 保留 valid_bet 和 net_amount 用于后续过滤和计算喜好，但不重命名为“有效投注”和“会员输赢”
         member_stats = df.groupby(group_cols, observed=True).agg({
             'betting_count': 'sum',
-            'valid_bet': 'sum',
-            'net_amount': 'sum'
+            'valid_bet': 'sum',  # 保留原始列名
+            'net_amount': 'sum'  # 保留原始列名
         }).reset_index().rename(columns={
-            'betting_count': '投注次数',
-            'valid_bet': '有效投注',
-            'net_amount': '会员输赢'
+            'betting_count': '投注次数'
+            # 不重命名 valid_bet 和 net_amount
         })
 
         # 游戏类型映射
@@ -332,17 +335,18 @@ class DatabaseQuery:
 
         # 计算会员投注喜好
         game_valid_cols = [col for col in valid_pivot.columns if col.endswith('有效投注')]
-        if game_valid_cols: # 确保有游戏有效投注列
+        if game_valid_cols:  # 确保有游戏有效投注列
             valid_pivot['max_valid_bet_value'] = valid_pivot[game_valid_cols].max(axis=1)
             valid_pivot['会员投注喜好'] = valid_pivot[game_valid_cols].idxmax(axis=1)
+            # 移除 '有效投注' 后缀
+            valid_pivot['会员投注喜好'] = valid_pivot['会员投注喜好'].str.replace('有效投注', '', regex=False)
             # 如果最大有效投注为0，则喜好为'无'
             valid_pivot['会员投注喜好'] = valid_pivot.apply(
                 lambda row: row['会员投注喜好'] if row['max_valid_bet_value'] > 0 else '无', axis=1
             )
             valid_pivot = valid_pivot.drop(columns=['max_valid_bet_value'])
         else:
-             valid_pivot['会员投注喜好'] = '无' # 如果没有游戏有效投注列，则喜好为'无'
-
+            valid_pivot['会员投注喜好'] = '无'  # 如果没有游戏有效投注列，则喜好为'无'
 
         # 修改排序：按场馆顺序合并有效投注和会员输赢
         result = member_stats
@@ -357,14 +361,17 @@ class DatabaseQuery:
             if net_col in net_pivot.columns:
                 result = result.merge(net_pivot[pivot_index + [net_col]], on=pivot_index, how='outer')
 
-
-        # 确保最终列顺序
-        final_columns_base = ['日期', '会员ID', '投注次数', '有效投注', '会员输赢'] if use_date_column else ['会员ID','投注次数','有效投注','会员输赢']
+        # 修改：移除 '有效投注' 和 '会员输赢' 从最终列基础列表
+        final_columns_base = ['日期', '会员ID', '投注次数'] if use_date_column else ['会员ID', '投注次数']
+        # 过滤掉原始的 valid_bet 和 net_amount 列，因为它们不应出现在最终结果中
+        internal_cols_to_exclude = ['valid_bet', 'net_amount']
         final_columns = final_columns_base + ['会员投注喜好'] + \
-                        [col for col in result.columns if col not in (final_columns_base + ['会员投注喜好'])]
-        result = result.reindex(columns=final_columns)
+                        [col for col in result.columns if
+                         col not in (final_columns_base + ['会员投注喜好'] + internal_cols_to_exclude)]
 
-        return result[result['有效投注'] > 0]
+        result = result[result['valid_bet'] > 0]
+        result = result.reindex(columns=final_columns)
+        return result
 
     def mongo_betting_details(self) -> pd.DataFrame:
         """查询 MongoDB 投注详细记录，替换游戏详情中的特殊字符，仅保留结算日期"""

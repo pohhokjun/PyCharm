@@ -205,6 +205,7 @@ class DatabaseQuery:
                member_id AS '会员ID',
                COALESCE(SUM(deposit), 0) AS '存款',
                COALESCE(SUM(draw), 0) AS '取款',
+               COALESCE(SUM(all_bets), 0) AS '投注金额',
                COALESCE(SUM(bets), 0) AS '有效投注金额',
                COALESCE(SUM(profit), 0) AS '公司输赢',
                COALESCE(SUM(promo), 0) AS '红利',
@@ -552,8 +553,7 @@ def work(db_query: DatabaseQuery) -> pd.DataFrame:
                  .merge(db_query._3_last_bet_date(), on='会员ID', how='left')
                  .merge(db_query._0_promotion(), on='会员ID', how='left')
                  .merge(db_query._6_member_stats_period(use_date_column=False), on='会员ID', how='inner')
-                 .merge(db_query.mongo_betting_stats(use_date_column=False), on=['会员ID'], how='left')
-                 .merge(db_query.mongo_betting_venue_column(use_date_column=False), on=['会员ID'], how='left')
+                 .merge(db_query.mongo_betting_stats(use_date_column=False), on = ['会员ID'], how = 'left')
                  .merge(db_query.mongo_betting_venue_ranking(), on='会员ID', how='left')
                  )
     return result_df
