@@ -18,7 +18,7 @@ spreadsheet = client.open_by_key("1TmrAmohUtGBdtZXythGHCLA1U7tZIo8MU6xza_2ZquU")
 # 生成动态文件名
 script_name = os.path.basename(__file__).replace('.py', '') # 获取脚本文件名（不含扩展名）
 now = datetime.datetime.now()
-time_str = now.strftime('%Y-%m-%d_%H.%M')
+time_str = now.strftime('%m-%d_%H.%M')
 excel_filename = f"{script_name}_{time_str}.xlsx"
 
 print(f"准备将数据导出到文件: {excel_filename}")
