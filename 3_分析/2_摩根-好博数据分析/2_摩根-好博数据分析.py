@@ -1,3 +1,4 @@
+
 import os
 from concurrent.futures import ThreadPoolExecutor, ProcessPoolExecutor, as_completed
 from datetime import datetime, timedelta, date
@@ -512,8 +513,12 @@ def merge_period(start_date: str, end_date: str) -> pd.DataFrame:
 # --------------- 主执行逻辑 ---------------
 if __name__ == '__main__':
     # 确保输出目录存在
-    output_dir = Path(r".\好博体育")
-    output_dir.mkdir(parents=True, exist_ok=True)
+    output_dir_member = Path(r".\好博体育\会员数据")
+    output_dir_member.mkdir(parents=True, exist_ok=True)
+    output_dir_dept = Path(r".\好博体育\部门数据")
+    output_dir_dept.mkdir(parents=True, exist_ok=True)
+    output_dir_platform = Path(r".\好博体育\平台数据")
+    output_dir_platform.mkdir(parents=True, exist_ok=True)
 
     # --- 会员数据部分 ---
     today = date.today()
@@ -610,7 +615,7 @@ if __name__ == '__main__':
     df_final_member = df_final_member[final_cols_member_order]
 
     df_final_member.to_excel(
-        output_dir / "会员数据.xlsx",
+        output_dir_member / "会员数据.xlsx",
         index=False,
         engine="openpyxl",
     )
@@ -675,7 +680,7 @@ if __name__ == '__main__':
     final_dept = final_dept.drop(columns=['月', '部门排序'])
 
     final_dept.to_excel(
-        output_dir / "部门数据.xlsx",
+        output_dir_dept / "部门数据.xlsx",
         index=False,
         engine="openpyxl",
     )
@@ -781,7 +786,7 @@ if __name__ == '__main__':
 
 
     final_platform.to_excel(
-        output_dir / "平台数据.xlsx",
+        output_dir_platform / "平台数据.xlsx",
         index=False,
         engine="openpyxl",
     )

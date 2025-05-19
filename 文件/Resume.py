@@ -9,7 +9,7 @@ import re
 
 # Google Sheets setup
 scope = ["https://spreadsheets.google.com/feeds", "https://www.googleapis.com/auth/drive"]
-creds_path = r"C:\Henvita\hokjun-5080e816b6a3.json"
+creds_path = r"C:\Henvita\hokjun-4e20d0ae306b.json"
 creds = ServiceAccountCredentials.from_json_keyfile_name(creds_path, scope)
 client = gspread.authorize(creds)
 

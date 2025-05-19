@@ -8,7 +8,7 @@ import xlsxwriter # 确保安装了 xlsxwriter
 
 class DatabaseQuery:
     def __init__(self, host: str, port: int, user: str, password: str,
-                 site_id: int = 9001, start_date: str = '2025-04-01', end_date: str = '2025-04-30',
+                 site_id: int = 2000, start_date: str = '2024-10-01', end_date: str = '2025-04-30',
                  agent_1000: str = 'agent_1000', u1_1000: str = 'u1_1000',
                  bigdata: str = 'bigdata', control_1000: str = 'control_1000',
                  finance_1000: str = 'finance_1000'):
