@@ -428,22 +428,34 @@ class DatabaseQuery:
         # 解析联赛、球队、玩法
         def parse_details(row):
             details = str(row['游戏完整详情' if row['场馆'] == 'LHDJ' else '游戏详情']).split('\n')
+            league = ''
+            team = ''
+            play = ''
+
             if 'TY' in row['场馆']:
-                return pd.Series({
-                    '联赛': details[1] if len(details) > 0 else '',
-                    '球队': details[2] if len(details) > 0 else '',
-                    '玩法': details[3] if len(details) > 0 else ''
-                })
+                if len(details) > 1:
+                    league = details[1]
+                if len(details) > 2:
+                    team = details[2]
+                if len(details) > 3:
+                    play = details[3]
             elif 'DJ' in row['场馆']:
-                return pd.Series({
-                    '联赛': details[0] if len(details) > 0 and row['场馆'] == 'LHDJ' else details[1] if len(
-                        details) > 0 else '',
-                    '球队': details[2] if len(details) > 0 and row['场馆'] == 'LHDJ' else details[2] if len(
-                        details) > 0 else '',
-                    '玩法': details[4] if len(details) > 0 and row['场馆'] == 'LHDJ' else details[3] if len(
-                        details) > 0 else ''
-                })
-            return pd.Series({'联赛': '', '球队': '', '玩法': ''})
+                if row['场馆'] == 'LHDJ':
+                    if len(details) > 0:
+                        league = details[0]
+                    if len(details) > 2:
+                        team = details[2]
+                    if len(details) > 4:
+                        play = details[4]
+                else:  # Other DJ venues
+                    if len(details) > 1:
+                        league = details[1]
+                    if len(details) > 2:
+                        team = details[2]
+                    if len(details) > 3:
+                        play = details[3]
+
+            return pd.Series({'联赛': league, '球队': team, '玩法': play})
 
         df = pd.concat([df, df.apply(parse_details, axis=1)], axis=1)
         # ----------------------------------------------------------------------------------------------------
