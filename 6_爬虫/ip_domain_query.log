@@ -1,0 +1,1204 @@
+2025-05-22 12:32:39,585 - ERROR - 查询失败 156.235.135.0: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://ipchaxun.com/156.235.135.0", waiting until "load"
+
+2025-05-22 12:32:44,141 - ERROR - 访问 https://查询失败 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--zssz55ay90a7bb/
+Call log:
+  - navigating to "https://xn--zssz55ay90a7bb/", waiting until "load"
+
+2025-05-22 12:32:46,413 - ERROR - 访问 http://查询失败 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--zssz55ay90a7bb/
+Call log:
+  - navigating to "http://xn--zssz55ay90a7bb/", waiting until "load"
+
+2025-05-22 12:32:56,533 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:32:58,827 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:33:06,258 - ERROR - 访问 https://sqjt.net 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://sqjt.net/", waiting until "load"
+
+2025-05-22 12:33:06,714 - INFO - sqjt.net - title: 404 Not Found, keywords: , description: 
+2025-05-22 12:33:11,716 - ERROR - 访问 https://www.sqjt.net 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://www.sqjt.net/", waiting until "load"
+
+2025-05-22 12:33:11,782 - INFO - www.sqjt.net - title: 404 Not Found, keywords: , description: 
+2025-05-22 12:33:19,172 - ERROR - 访问 https://www.sdxingshan.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://www.sdxingshan.cn/", waiting until "load"
+
+2025-05-22 12:33:19,956 - INFO - www.sdxingshan.cn - title: 没有找到站点, keywords: , description: 
+2025-05-22 12:33:25,638 - ERROR - 访问 https://9043cy.cn 失败: Page.goto: net::ERR_CONNECTION_REFUSED at https://9043cy.cn/
+Call log:
+  - navigating to "https://9043cy.cn/", waiting until "load"
+
+2025-05-22 12:33:26,405 - ERROR - 访问 http://9043cy.cn 失败: Page.goto: net::ERR_EMPTY_RESPONSE at http://9043cy.cn/
+Call log:
+  - navigating to "http://9043cy.cn/", waiting until "load"
+
+2025-05-22 12:33:26,488 - ERROR - 访问 https://stcm789.com 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://stcm789.com/
+Call log:
+  - navigating to "https://stcm789.com/", waiting until "load"
+
+2025-05-22 12:33:26,493 - ERROR - 访问 http://stcm789.com 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://stcm789.com/
+Call log:
+  - navigating to "http://stcm789.com/", waiting until "load"
+
+2025-05-22 12:33:35,571 - ERROR - 访问 https://jmkxp.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://jmkxp.com/", waiting until "load"
+
+2025-05-22 12:33:36,297 - INFO - jmkxp.com - title: 没有找到站点, keywords: , description: 
+2025-05-22 12:33:43,191 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:33:45,482 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:33:52,393 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:33:54,676 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:34:01,958 - ERROR - 访问 https://gzyuanbao.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://gzyuanbao.com/", waiting until "load"
+
+2025-05-22 12:34:03,070 - INFO - gzyuanbao.com - title: DB电竞.(中国)官方网站, keywords: DB电竞,DB电竞官网,db电竞官网入口,db电竞平台, description: DB电竞.(中国)官方网站"♥『@seogoudan』♥是最信誉的体育大平台,网页版登录入口,全站app下载,竞猜,电子,电竞,真人,体育,彩票,捕鱼,各种游戏等您来!")
+2025-05-22 12:34:10,039 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:34:12,308 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:34:16,761 - INFO - pissingpussy.net - title: 读书族小说网 - 最好看的免费小说阅读网, keywords: 小说网,小说阅读网,小说排行榜,好看的小说,免费小说,言情小说,玄幻小说,官场小说,都市小说,同人小说,网络小说,热门小说,读书族小说网,全本小说,最新章节,txt下载, description: 读书族小说网最快更新热门网络小说最新章节，推荐最好看的网络小说排行榜，全站阅读无弹窗广告，全本小说免费阅读，最好看的网络小说，尽在读书族小说网。
+2025-05-22 12:34:24,383 - ERROR - 访问 https://hnhengzhitong.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://hnhengzhitong.com/", waiting until "load"
+
+2025-05-22 12:34:26,552 - INFO - hnhengzhitong.com - title: tyc1286太阳成集团(澳门)股份有限公司, keywords: tyc1286太阳成,tyc1286太阳成集团,tyc1286太阳成集团官网,太阳成tyc1286, description: tyc1286太阳成集团(澳门)股份有限公司♥『@seogoudan』♥是最信誉的体育大平台,网页版登录入口,全站app下载,竞猜,电子,电竞,真人,体育,彩票,捕鱼,各种游戏等您来!
+2025-05-22 12:34:33,361 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:34:35,644 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:34:42,543 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:34:44,819 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:34:51,821 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:34:54,081 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:35:00,934 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:35:03,212 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:35:10,062 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:35:12,327 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:35:16,807 - INFO - jxxlg.com - title: 9001cc金沙以诚为本(中国)有限9001cc金沙以诚为本公司, keywords: 9001诚信金沙,9001诚信金沙官网,9001cc金沙首页,金沙9001cx会员登录入口, description: 9001cc金沙以诚为本(中国)有限9001cc金沙以诚为本公司♥『@seogoudan』♥是最信誉的体育大平台,网页版登录入口,全站app下载,竞猜,电子,电竞,真人,体育,彩票,捕鱼,各种游戏等您来!
+2025-05-22 12:35:23,606 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:35:25,894 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:35:32,745 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:35:35,019 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:35:41,898 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:35:44,165 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:35:47,208 - WARNING - yumangeduan.com 无元信息，HTML: <html><head></head><body></body></html>
+2025-05-22 12:35:54,179 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:35:56,460 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:36:02,268 - INFO - nbxll.net - title: 必发7790(中国区)电子集团-线上平台登录入口, keywords: 必发7790电子游戏登录,7790必发集团,必发电子游戏官网,必发7790电子登录入口, description: 必发7790(中国区)电子集团-线上平台登录入口♥『@seogoudan』♥是最信誉的体育大平台,网页版登录入口,全站app下载,竞猜,电子,电竞,真人,体育,彩票,捕鱼,各种游戏等您来!
+2025-05-22 12:36:05,972 - ERROR - 访问 https://jichengdp.cn 失败: Page.goto: net::ERR_CONNECTION_REFUSED at https://jichengdp.cn/
+Call log:
+  - navigating to "https://jichengdp.cn/", waiting until "load"
+
+2025-05-22 12:36:06,751 - ERROR - 访问 http://jichengdp.cn 失败: Page.goto: Navigation to "http://jichengdp.cn/" is interrupted by another navigation to "chrome-error://chromewebdata/"
+Call log:
+  - navigating to "http://jichengdp.cn/", waiting until "load"
+
+2025-05-22 12:36:07,444 - ERROR - 查询失败 156.235.135.24: Page.goto: Navigation to "https://ipchaxun.com/156.235.135.24" is interrupted by another navigation to "http://jichengdp.cn/"
+Call log:
+  - navigating to "https://ipchaxun.com/156.235.135.24", waiting until "load"
+
+2025-05-22 12:36:11,993 - ERROR - 访问 https://查询失败 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--zssz55ay90a7bb/
+Call log:
+  - navigating to "https://xn--zssz55ay90a7bb/", waiting until "load"
+
+2025-05-22 12:36:14,272 - ERROR - 访问 http://查询失败 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--zssz55ay90a7bb/
+Call log:
+  - navigating to "http://xn--zssz55ay90a7bb/", waiting until "load"
+
+2025-05-22 12:36:21,545 - ERROR - 访问 https://sdjgjs99.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://sdjgjs99.com/", waiting until "load"
+
+2025-05-22 12:36:22,284 - INFO - sdjgjs99.com - title: 9999js金沙老品牌(中国)有限公司, keywords: 9999js金沙老品牌,9999js金沙老品牌集团,9999js金沙老品牌官网,9999js金沙老品牌登录入口, description: 9999js金沙老品牌(中国)有限公司♥『@seogoudan』♥是最信誉的体育大平台,网页版登录入口,全站app下载,竞猜,电子,电竞,真人,体育,彩票,捕鱼,各种游戏等您来!
+2025-05-22 12:36:29,116 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:36:31,400 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:36:38,186 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:36:40,464 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:36:45,316 - INFO - www.bxdjzx.com - title: 拉斯维加斯官方网站-(中国)有限公司, keywords: 拉斯维加斯,拉斯维加斯官网,拉斯维加斯官方网站,拉斯维加斯网址, description: 拉斯维加斯官方网站-(中国)有限公司♥『@seogoudan』♥是最信誉的体育大平台,网页版登录入口,全站app下载,竞猜,电子,电竞,真人,体育,彩票,捕鱼,各种游戏等您来!
+2025-05-22 12:36:50,322 - ERROR - 访问 https://sailewei.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://sailewei.cn/", waiting until "load"
+
+2025-05-22 12:36:55,749 - ERROR - 访问 http://sailewei.cn 失败: Page.wait_for_selector: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("body") to be visible
+  -     15 × locator resolved to hidden <body></body>
+
+2025-05-22 12:37:02,908 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:37:05,196 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:37:12,411 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:37:14,694 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:37:20,712 - INFO - www.whbspj.com - title: 3133拉斯维加斯网页版(China)官方网站-Unique Platform, keywords: 拉斯维加斯网页版,3133拉斯维加斯,3133拉斯维加斯官网,3133拉斯维加斯网站welcome, description: 3133拉斯维加斯网页版(China)官方网站-Unique Platform♥『@seogoudan』♥是最信誉的体育大平台,网页版登录入口,全站app下载,竞猜,电子,电竞,真人,体育,彩票,捕鱼,各种游戏等您来!
+2025-05-22 12:37:26,049 - INFO - yxp2p.com - title: 金沙(31399·Sand认证)娱场城-Official website, keywords: 金沙娱场城,31399金沙娱场城,31399金沙娱场城在官网,31399金沙娱场城网址, description: 金沙(31399·Sand认证)娱场城-Official website♥『@seogoudan』♥是最信誉的体育大平台,网页版登录入口,全站app下载,竞猜,电子,电竞,真人,体育,彩票,捕鱼,各种游戏等您来!
+2025-05-22 12:37:32,932 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:37:35,214 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:37:42,079 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:37:44,362 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:37:50,026 - INFO - 0935ly.com - title: 首页--竞技宝-竞技宝官网DOTA2,LOL,CSGO电竞赛事及体育赛事平台, keywords: 竞技宝官网,竞技宝平台官网入口,竞技宝平台官方,竞技宝平台, description: 首页--竞技宝-竞技宝官网DOTA2,LOL,CSGO电竞赛事及体育赛事平台♥『@seogoudan』♥是最信誉的体育大平台,网页版登录入口,全站app下载,竞猜,电子,电竞,真人,体育,彩票,捕鱼,各种游戏等您来!")
+2025-05-22 12:37:50,118 - ERROR - 访问 https://www.gc1h7.cn 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.gc1h7.cn/
+Call log:
+  - navigating to "https://www.gc1h7.cn/", waiting until "load"
+
+2025-05-22 12:37:50,893 - ERROR - 访问 http://www.gc1h7.cn 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://www.gc1h7.cn/
+Call log:
+  - navigating to "http://www.gc1h7.cn/", waiting until "load"
+
+2025-05-22 12:38:01,346 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:38:03,627 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:38:11,001 - ERROR - 访问 https://xansymzs.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://xansymzs.com/", waiting until "load"
+
+2025-05-22 12:38:13,392 - INFO - xansymzs.com - title: 优发国际-随优而动,一触即发, keywords: 优发国际网站官网,优发国际一触即发,优发国际网站,优发国际注册平台, description: 优发国际-随优而动,一触即发♥『@seogoudan』♥是最信誉的体育大平台,网页版登录入口,全站app下载,竞猜,电子,电竞,真人,体育,彩票,捕鱼,各种游戏等您来!")
+2025-05-22 12:38:13,483 - ERROR - 访问 https://jianfeihang.com 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://jianfeihang.com/
+Call log:
+  - navigating to "https://jianfeihang.com/", waiting until "load"
+
+2025-05-22 12:38:14,224 - ERROR - 访问 http://jianfeihang.com 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://jianfeihang.com/
+Call log:
+  - navigating to "http://jianfeihang.com/", waiting until "load"
+
+2025-05-22 12:38:21,145 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:38:23,427 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:38:29,552 - ERROR - 访问 https://www.ppdesign.com.cn 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.ppdesign.com.cn/
+Call log:
+  - navigating to "https://www.ppdesign.com.cn/", waiting until "load"
+
+2025-05-22 12:38:30,280 - ERROR - 访问 http://www.ppdesign.com.cn 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://www.ppdesign.com.cn/
+Call log:
+  - navigating to "http://www.ppdesign.com.cn/", waiting until "load"
+
+2025-05-22 12:38:37,423 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:38:39,704 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:38:46,589 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:38:48,869 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:38:55,690 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:38:57,976 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:39:03,512 - INFO - jnky88.com - title: 必一·运动(B-Sports)官方网站, keywords: 必一运动,bsports必一登录入口,bsports必一体育,bsports官网, description: 必一·运动(B-Sports)官方网站♥『@seogoudan』♥是最信誉的体育大平台,网页版登录入口,全站app下载,竞猜,电子,电竞,真人,体育,彩票,捕鱼,各种游戏等您来!
+2025-05-22 12:39:08,518 - ERROR - 访问 https://www.hellotuzi.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://www.hellotuzi.com/", waiting until "load"
+
+2025-05-22 12:39:13,528 - ERROR - 访问 http://www.hellotuzi.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://www.hellotuzi.com/", waiting until "load"
+
+2025-05-22 12:39:13,617 - ERROR - 访问 https://gdian34.cn 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://gdian34.cn/
+Call log:
+  - navigating to "https://gdian34.cn/", waiting until "load"
+
+2025-05-22 12:39:14,276 - ERROR - 访问 http://gdian34.cn 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://gdian34.cn/
+Call log:
+  - navigating to "http://gdian34.cn/", waiting until "load"
+
+2025-05-22 12:39:14,365 - ERROR - 访问 https://www.hnslztc.com 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.hnslztc.com/
+Call log:
+  - navigating to "https://www.hnslztc.com/", waiting until "load"
+
+2025-05-22 12:39:14,370 - ERROR - 访问 http://www.hnslztc.com 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://www.hnslztc.com/
+Call log:
+  - navigating to "http://www.hnslztc.com/", waiting until "load"
+
+2025-05-22 12:39:23,064 - ERROR - 访问 https://www.77sn.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://www.77sn.cn/", waiting until "load"
+
+2025-05-22 12:39:23,558 - WARNING - www.77sn.cn 无元信息，HTML: <html><head></head><body></body></html>
+2025-05-22 12:39:28,561 - ERROR - 访问 https://77sn.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://77sn.cn/", waiting until "load"
+
+2025-05-22 12:39:28,977 - WARNING - 77sn.cn 无元信息，HTML: <html><head></head><body></body></html>
+2025-05-22 12:39:36,344 - ERROR - 访问 https://jxsp888.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://jxsp888.com/", waiting until "load"
+
+2025-05-22 12:39:37,051 - WARNING - jxsp888.com 无元信息，HTML: <html><head></head><body></body></html>
+2025-05-22 12:39:42,063 - ERROR - 访问 https://www.jxsp888.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://www.jxsp888.com/", waiting until "load"
+
+2025-05-22 12:39:42,821 - WARNING - www.jxsp888.com 无元信息，HTML: <html><head></head><body></body></html>
+2025-05-22 12:39:49,703 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:39:51,983 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:39:59,220 - ERROR - 访问 https://cqdunyue.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://cqdunyue.com/", waiting until "load"
+
+2025-05-22 12:40:04,237 - ERROR - 访问 http://cqdunyue.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://cqdunyue.com/", waiting until "load"
+
+2025-05-22 12:40:11,016 - ERROR - 访问 https://shhanji88.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://shhanji88.com/", waiting until "load"
+
+2025-05-22 12:40:16,027 - ERROR - 访问 http://shhanji88.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://shhanji88.com/", waiting until "load"
+
+2025-05-22 12:40:22,360 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:40:24,641 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:40:31,429 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:40:33,710 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:40:36,739 - INFO - www.hubotong.com - title: 足球投注网站官网, keywords: , description: 
+2025-05-22 12:40:40,960 - ERROR - 访问 https://lc-ti.cn 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://lc-ti.cn/
+Call log:
+  - navigating to "https://lc-ti.cn/", waiting until "load"
+
+2025-05-22 12:40:41,664 - ERROR - 访问 http://lc-ti.cn 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://lc-ti.cn/
+Call log:
+  - navigating to "http://lc-ti.cn/", waiting until "load"
+
+2025-05-22 12:40:46,671 - ERROR - 访问 https://qymjjwx.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://qymjjwx.com/", waiting until "load"
+
+2025-05-22 12:40:51,683 - ERROR - 访问 http://qymjjwx.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://qymjjwx.com/", waiting until "load"
+
+2025-05-22 12:40:56,698 - ERROR - 访问 https://www.qymjjwx.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://www.qymjjwx.com/", waiting until "load"
+
+2025-05-22 12:41:01,700 - ERROR - 访问 http://www.qymjjwx.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://www.qymjjwx.com/", waiting until "load"
+
+2025-05-22 12:41:08,435 - ERROR - 访问 https://nicemixclub.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://nicemixclub.com/", waiting until "load"
+
+2025-05-22 12:41:09,133 - INFO - nicemixclub.com - title: 老板，赚钱了建大别野, keywords: , description: 
+2025-05-22 12:41:14,138 - ERROR - 访问 https://dagejixie.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://dagejixie.com/", waiting until "load"
+
+2025-05-22 12:41:14,460 - WARNING - dagejixie.com 无元信息，HTML: <html><head></head><body></body></html>
+2025-05-22 12:41:20,469 - INFO - www.yngrny.com - title: yngrny.com - yngrny Resources and Information., keywords: , description: yngrny.com is your first and best source for all of the information you’re looking for. From general topics to more of what you would expect to find here, yngrny.com has it all. We hope you find what you are searching for!
+2025-05-22 12:41:24,009 - INFO - yngrny.com - title: yngrny.com, keywords: , description: 
+2025-05-22 12:41:31,240 - ERROR - 访问 https://66r.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://66r.cn/", waiting until "load"
+
+2025-05-22 12:41:31,797 - INFO - 66r.cn - title: 66r.cn, keywords: , description: 
+2025-05-22 12:41:31,878 - ERROR - 访问 https://miaowang331.com 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://miaowang331.com/
+Call log:
+  - navigating to "https://miaowang331.com/", waiting until "load"
+
+2025-05-22 12:41:32,582 - ERROR - 访问 http://miaowang331.com 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://miaowang331.com/
+Call log:
+  - navigating to "http://miaowang331.com/", waiting until "load"
+
+2025-05-22 12:41:35,289 - ERROR - 访问 https://www.gxpgoldfx.com 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.gxpgoldfx.com/
+Call log:
+  - navigating to "https://www.gxpgoldfx.com/", waiting until "load"
+
+2025-05-22 12:41:36,025 - ERROR - 访问 http://www.gxpgoldfx.com 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://www.gxpgoldfx.com/
+Call log:
+  - navigating to "http://www.gxpgoldfx.com/", waiting until "load"
+
+2025-05-22 12:41:36,208 - ERROR - 访问 https://gxpgoldfx.com 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://gxpgoldfx.com/
+Call log:
+  - navigating to "https://gxpgoldfx.com/", waiting until "load"
+
+2025-05-22 12:41:36,213 - ERROR - 访问 http://gxpgoldfx.com 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://gxpgoldfx.com/
+Call log:
+  - navigating to "http://gxpgoldfx.com/", waiting until "load"
+
+2025-05-22 12:41:41,227 - ERROR - 查询失败 156.235.135.57: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://ipchaxun.com/156.235.135.57", waiting until "load"
+
+2025-05-22 12:41:45,801 - ERROR - 访问 https://查询失败 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--zssz55ay90a7bb/
+Call log:
+  - navigating to "https://xn--zssz55ay90a7bb/", waiting until "load"
+
+2025-05-22 12:41:48,081 - ERROR - 访问 http://查询失败 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--zssz55ay90a7bb/
+Call log:
+  - navigating to "http://xn--zssz55ay90a7bb/", waiting until "load"
+
+2025-05-22 12:41:54,957 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:41:57,245 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:41:59,735 - ERROR - 访问 https://sinokay.com 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://sinokay.com/
+Call log:
+  - navigating to "https://sinokay.com/", waiting until "load"
+
+2025-05-22 12:42:00,441 - ERROR - 访问 http://sinokay.com 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://sinokay.com/
+Call log:
+  - navigating to "http://sinokay.com/", waiting until "load"
+
+2025-05-22 12:42:05,135 - ERROR - 访问 https://www.nblianshang.com 失败: Page.goto: net::ERR_CONNECTION_REFUSED at https://www.nblianshang.com/
+Call log:
+  - navigating to "https://www.nblianshang.com/", waiting until "load"
+
+2025-05-22 12:42:05,813 - ERROR - 访问 http://www.nblianshang.com 失败: Page.goto: Navigation to "http://www.nblianshang.com/" is interrupted by another navigation to "chrome-error://chromewebdata/"
+Call log:
+  - navigating to "http://www.nblianshang.com/", waiting until "load"
+
+2025-05-22 12:42:06,526 - ERROR - 查询失败 156.235.135.61: Page.goto: Navigation to "https://ipchaxun.com/156.235.135.61" is interrupted by another navigation to "http://www.nblianshang.com/"
+Call log:
+  - navigating to "https://ipchaxun.com/156.235.135.61", waiting until "load"
+
+2025-05-22 12:42:11,080 - ERROR - 访问 https://查询失败 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--zssz55ay90a7bb/
+Call log:
+  - navigating to "https://xn--zssz55ay90a7bb/", waiting until "load"
+
+2025-05-22 12:42:13,369 - ERROR - 访问 http://查询失败 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--zssz55ay90a7bb/
+Call log:
+  - navigating to "http://xn--zssz55ay90a7bb/", waiting until "load"
+
+2025-05-22 12:42:20,714 - ERROR - 访问 https://xzdxjt.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://xzdxjt.com/", waiting until "load"
+
+2025-05-22 12:42:25,717 - ERROR - 访问 http://xzdxjt.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://xzdxjt.com/", waiting until "load"
+
+2025-05-22 12:42:26,109 - WARNING - www.batengxinxikeji.com 无元信息，HTML: <html><head></head><body></body></html>
+2025-05-22 12:42:26,482 - WARNING - batengxinxikeji.com 无元信息，HTML: <html><head></head><body></body></html>
+2025-05-22 12:42:33,363 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:42:35,654 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:42:42,518 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:42:44,810 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:42:51,673 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:42:53,968 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:43:01,236 - ERROR - 访问 https://yinzhu.longyanhb.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://yinzhu.longyanhb.com/", waiting until "load"
+
+2025-05-22 12:43:06,244 - ERROR - 访问 http://yinzhu.longyanhb.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://yinzhu.longyanhb.com/", waiting until "load"
+
+2025-05-22 12:43:08,669 - ERROR - 访问 https://www.jzszhonghe.com 失败: Page.goto: net::ERR_CONNECTION_REFUSED at https://www.jzszhonghe.com/
+Call log:
+  - navigating to "https://www.jzszhonghe.com/", waiting until "load"
+
+2025-05-22 12:43:09,375 - ERROR - 访问 http://www.jzszhonghe.com 失败: Page.goto: Navigation to "http://www.jzszhonghe.com/" is interrupted by another navigation to "chrome-error://chromewebdata/"
+Call log:
+  - navigating to "http://www.jzszhonghe.com/", waiting until "load"
+
+2025-05-22 12:43:11,746 - ERROR - 访问 https://jzszhonghe.com 失败: Page.goto: net::ERR_CONNECTION_REFUSED at https://jzszhonghe.com/
+Call log:
+  - navigating to "https://jzszhonghe.com/", waiting until "load"
+
+2025-05-22 12:43:12,466 - ERROR - 访问 http://jzszhonghe.com 失败: Page.goto: Navigation to "http://jzszhonghe.com/" is interrupted by another navigation to "chrome-error://chromewebdata/"
+Call log:
+  - navigating to "http://jzszhonghe.com/", waiting until "load"
+
+2025-05-22 12:43:13,146 - ERROR - 查询失败 156.235.135.67: Page.goto: Navigation to "https://ipchaxun.com/156.235.135.67" is interrupted by another navigation to "http://jzszhonghe.com/"
+Call log:
+  - navigating to "https://ipchaxun.com/156.235.135.67", waiting until "load"
+
+2025-05-22 12:43:17,721 - ERROR - 访问 https://查询失败 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--zssz55ay90a7bb/
+Call log:
+  - navigating to "https://xn--zssz55ay90a7bb/", waiting until "load"
+
+2025-05-22 12:43:20,000 - ERROR - 访问 http://查询失败 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--zssz55ay90a7bb/
+Call log:
+  - navigating to "http://xn--zssz55ay90a7bb/", waiting until "load"
+
+2025-05-22 12:43:27,322 - ERROR - 访问 https://zhonghuashaiwang.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://zhonghuashaiwang.com/", waiting until "load"
+
+2025-05-22 12:43:32,332 - ERROR - 访问 http://zhonghuashaiwang.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://zhonghuashaiwang.com/", waiting until "load"
+
+2025-05-22 12:43:37,344 - ERROR - 访问 https://qwenkan.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://qwenkan.com/", waiting until "load"
+
+2025-05-22 12:43:42,346 - ERROR - 访问 http://qwenkan.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://qwenkan.com/", waiting until "load"
+
+2025-05-22 12:43:42,539 - ERROR - 访问 https://chezhuodian.cn 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://chezhuodian.cn/
+Call log:
+  - navigating to "https://chezhuodian.cn/", waiting until "load"
+
+2025-05-22 12:43:43,216 - ERROR - 访问 http://chezhuodian.cn 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://chezhuodian.cn/
+Call log:
+  - navigating to "http://chezhuodian.cn/", waiting until "load"
+
+2025-05-22 12:43:48,270 - ERROR - 访问 https://www.bgxyd.com 失败: Page.goto: net::ERR_CONNECTION_REFUSED at https://www.bgxyd.com/
+Call log:
+  - navigating to "https://www.bgxyd.com/", waiting until "load"
+
+2025-05-22 12:43:48,906 - ERROR - 访问 http://www.bgxyd.com 失败: Page.goto: Navigation to "http://www.bgxyd.com/" is interrupted by another navigation to "chrome-error://chromewebdata/"
+Call log:
+  - navigating to "http://www.bgxyd.com/", waiting until "load"
+
+2025-05-22 12:43:51,657 - ERROR - 访问 https://bgxyd.com 失败: Page.goto: net::ERR_CONNECTION_REFUSED at https://bgxyd.com/
+Call log:
+  - navigating to "https://bgxyd.com/", waiting until "load"
+
+2025-05-22 12:43:52,376 - ERROR - 访问 http://bgxyd.com 失败: Page.goto: Navigation to "http://bgxyd.com/" is interrupted by another navigation to "chrome-error://chromewebdata/"
+Call log:
+  - navigating to "http://bgxyd.com/", waiting until "load"
+
+2025-05-22 12:43:53,085 - ERROR - 查询失败 156.235.135.70: Page.goto: Navigation to "https://ipchaxun.com/156.235.135.70" is interrupted by another navigation to "http://bgxyd.com/"
+Call log:
+  - navigating to "https://ipchaxun.com/156.235.135.70", waiting until "load"
+
+2025-05-22 12:43:57,662 - ERROR - 访问 https://查询失败 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--zssz55ay90a7bb/
+Call log:
+  - navigating to "https://xn--zssz55ay90a7bb/", waiting until "load"
+
+2025-05-22 12:43:59,936 - ERROR - 访问 http://查询失败 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--zssz55ay90a7bb/
+Call log:
+  - navigating to "http://xn--zssz55ay90a7bb/", waiting until "load"
+
+2025-05-22 12:44:09,229 - ERROR - 访问 https://hbheran.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://hbheran.com/", waiting until "load"
+
+2025-05-22 12:44:14,242 - ERROR - 访问 http://hbheran.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://hbheran.com/", waiting until "load"
+
+2025-05-22 12:44:19,257 - ERROR - 访问 https://sez.cc 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://sez.cc/", waiting until "load"
+
+2025-05-22 12:44:24,270 - ERROR - 访问 http://sez.cc 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://sez.cc/", waiting until "load"
+
+2025-05-22 12:44:29,273 - ERROR - 访问 https://www.sez.cc 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://www.sez.cc/", waiting until "load"
+
+2025-05-22 12:44:34,277 - ERROR - 访问 http://www.sez.cc 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://www.sez.cc/", waiting until "load"
+
+2025-05-22 12:44:39,287 - ERROR - 访问 https://11503331.zm.net.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://11503331.zm.net.cn/", waiting until "load"
+
+2025-05-22 12:44:44,293 - ERROR - 访问 http://11503331.zm.net.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://11503331.zm.net.cn/", waiting until "load"
+
+2025-05-22 12:44:49,306 - ERROR - 访问 https://10890381.zm.net.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://10890381.zm.net.cn/", waiting until "load"
+
+2025-05-22 12:44:54,317 - ERROR - 访问 http://10890381.zm.net.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://10890381.zm.net.cn/", waiting until "load"
+
+2025-05-22 12:44:59,335 - ERROR - 访问 https://10906707.zm.net.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://10906707.zm.net.cn/", waiting until "load"
+
+2025-05-22 12:45:04,340 - ERROR - 访问 http://10906707.zm.net.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://10906707.zm.net.cn/", waiting until "load"
+
+2025-05-22 12:45:09,345 - ERROR - 访问 https://www.xqyvip.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://www.xqyvip.com/", waiting until "load"
+
+2025-05-22 12:45:14,357 - ERROR - 访问 http://www.xqyvip.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://www.xqyvip.com/", waiting until "load"
+
+2025-05-22 12:45:19,371 - ERROR - 访问 https://xqyvip.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://xqyvip.com/", waiting until "load"
+
+2025-05-22 12:45:24,375 - ERROR - 访问 http://xqyvip.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://xqyvip.com/", waiting until "load"
+
+2025-05-22 12:45:31,642 - ERROR - 访问 https://www.lnnaturalspace.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://www.lnnaturalspace.com/", waiting until "load"
+
+2025-05-22 12:45:36,648 - ERROR - 访问 http://www.lnnaturalspace.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://www.lnnaturalspace.com/", waiting until "load"
+
+2025-05-22 12:45:41,654 - ERROR - 访问 https://lnnaturalspace.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://lnnaturalspace.com/", waiting until "load"
+
+2025-05-22 12:45:46,666 - ERROR - 访问 http://lnnaturalspace.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://lnnaturalspace.com/", waiting until "load"
+
+2025-05-22 12:45:53,394 - ERROR - 访问 https://www.xrlmk.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://www.xrlmk.com/", waiting until "load"
+
+2025-05-22 12:45:53,521 - WARNING - www.xrlmk.com 无元信息，HTML: <html><head></head><body></body></html>
+2025-05-22 12:45:58,537 - ERROR - 访问 https://xrlmk.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://xrlmk.com/", waiting until "load"
+
+2025-05-22 12:45:58,653 - WARNING - xrlmk.com 无元信息，HTML: <html><head></head><body></body></html>
+2025-05-22 12:46:06,025 - ERROR - 访问 https://henangoogle.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://henangoogle.com/", waiting until "load"
+
+2025-05-22 12:46:11,039 - ERROR - 访问 http://henangoogle.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://henangoogle.com/", waiting until "load"
+
+2025-05-22 12:46:16,047 - ERROR - 访问 https://scjjf.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://scjjf.com/", waiting until "load"
+
+2025-05-22 12:46:21,053 - ERROR - 访问 http://scjjf.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://scjjf.com/", waiting until "load"
+
+2025-05-22 12:46:21,141 - ERROR - 访问 https://www.xjunhe.com 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.xjunhe.com/
+Call log:
+  - navigating to "https://www.xjunhe.com/", waiting until "load"
+
+2025-05-22 12:46:21,807 - ERROR - 访问 http://www.xjunhe.com 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://www.xjunhe.com/
+Call log:
+  - navigating to "http://www.xjunhe.com/", waiting until "load"
+
+2025-05-22 12:46:29,206 - ERROR - 访问 https://w4d084.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://w4d084.cn/", waiting until "load"
+
+2025-05-22 12:46:34,216 - ERROR - 访问 http://w4d084.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://w4d084.cn/", waiting until "load"
+
+2025-05-22 12:46:39,222 - ERROR - 访问 https://renzhilvyou.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://renzhilvyou.com/", waiting until "load"
+
+2025-05-22 12:46:44,232 - ERROR - 访问 http://renzhilvyou.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://renzhilvyou.com/", waiting until "load"
+
+2025-05-22 12:46:49,240 - ERROR - 访问 https://szdilang.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://szdilang.com/", waiting until "load"
+
+2025-05-22 12:46:54,244 - ERROR - 访问 http://szdilang.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://szdilang.com/", waiting until "load"
+
+2025-05-22 12:47:01,727 - ERROR - 访问 https://wwvv.cfjyjy.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://wwvv.cfjyjy.com/", waiting until "load"
+
+2025-05-22 12:47:06,740 - ERROR - 访问 http://wwvv.cfjyjy.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://wwvv.cfjyjy.com/", waiting until "load"
+
+2025-05-22 12:47:11,745 - ERROR - 访问 https://www.yingshengqipai.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://www.yingshengqipai.com/", waiting until "load"
+
+2025-05-22 12:47:16,761 - ERROR - 访问 http://www.yingshengqipai.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://www.yingshengqipai.com/", waiting until "load"
+
+2025-05-22 12:47:21,767 - ERROR - 访问 https://yingshengqipai.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://yingshengqipai.com/", waiting until "load"
+
+2025-05-22 12:47:26,777 - ERROR - 访问 http://yingshengqipai.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://yingshengqipai.com/", waiting until "load"
+
+2025-05-22 12:47:33,500 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:47:35,789 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:47:42,665 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:47:44,950 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:47:52,250 - ERROR - 访问 https://ngchxx.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://ngchxx.com/", waiting until "load"
+
+2025-05-22 12:47:57,251 - ERROR - 访问 http://ngchxx.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://ngchxx.com/", waiting until "load"
+
+2025-05-22 12:48:02,253 - ERROR - 访问 https://sez.cc 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://sez.cc/", waiting until "load"
+
+2025-05-22 12:48:07,264 - ERROR - 访问 http://sez.cc 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://sez.cc/", waiting until "load"
+
+2025-05-22 12:48:12,266 - ERROR - 访问 https://lifangkangping.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://lifangkangping.com/", waiting until "load"
+
+2025-05-22 12:48:17,278 - ERROR - 访问 http://lifangkangping.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://lifangkangping.com/", waiting until "load"
+
+2025-05-22 12:48:24,995 - ERROR - 访问 https://www.yuanmings.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://www.yuanmings.cn/", waiting until "load"
+
+2025-05-22 12:48:30,383 - ERROR - 访问 http://www.yuanmings.cn 失败: Page.wait_for_selector: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("body") to be visible
+  -     15 × locator resolved to hidden <body></body>
+
+2025-05-22 12:48:35,393 - ERROR - 访问 https://www.yige6.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://www.yige6.com/", waiting until "load"
+
+2025-05-22 12:48:35,863 - WARNING - www.yige6.com 无元信息，HTML: <html><head></head><body></body></html>
+2025-05-22 12:48:36,036 - ERROR - 访问 https://babyatt.com 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://babyatt.com/
+Call log:
+  - navigating to "https://babyatt.com/", waiting until "load"
+
+2025-05-22 12:48:36,708 - ERROR - 访问 http://babyatt.com 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://babyatt.com/
+Call log:
+  - navigating to "http://babyatt.com/", waiting until "load"
+
+2025-05-22 12:48:44,350 - ERROR - 访问 https://hi765.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://hi765.com/", waiting until "load"
+
+2025-05-22 12:48:49,363 - ERROR - 访问 http://hi765.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://hi765.com/", waiting until "load"
+
+2025-05-22 12:48:54,369 - ERROR - 访问 https://www.hi765.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://www.hi765.com/", waiting until "load"
+
+2025-05-22 12:48:59,377 - ERROR - 访问 http://www.hi765.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://www.hi765.com/", waiting until "load"
+
+2025-05-22 12:49:05,715 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:49:08,004 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:49:15,217 - ERROR - 访问 https://www.btzcz.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://www.btzcz.cn/", waiting until "load"
+
+2025-05-22 12:49:20,230 - ERROR - 访问 http://www.btzcz.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://www.btzcz.cn/", waiting until "load"
+
+2025-05-22 12:49:25,236 - ERROR - 访问 https://www.cdaxjz.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://www.cdaxjz.com/", waiting until "load"
+
+2025-05-22 12:49:30,251 - ERROR - 访问 http://www.cdaxjz.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://www.cdaxjz.com/", waiting until "load"
+
+2025-05-22 12:49:35,255 - ERROR - 访问 https://www.fpmmw.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://www.fpmmw.com/", waiting until "load"
+
+2025-05-22 12:49:40,259 - ERROR - 访问 http://www.fpmmw.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://www.fpmmw.com/", waiting until "load"
+
+2025-05-22 12:49:40,342 - ERROR - 访问 https://yzyusheng.com 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://yzyusheng.com/
+Call log:
+  - navigating to "https://yzyusheng.com/", waiting until "load"
+
+2025-05-22 12:49:40,999 - ERROR - 访问 http://yzyusheng.com 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://yzyusheng.com/
+Call log:
+  - navigating to "http://yzyusheng.com/", waiting until "load"
+
+2025-05-22 12:49:49,066 - ERROR - 访问 https://31bn.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://31bn.com/", waiting until "load"
+
+2025-05-22 12:49:54,068 - ERROR - 访问 http://31bn.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://31bn.com/", waiting until "load"
+
+2025-05-22 12:49:59,083 - ERROR - 访问 https://sipum.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://sipum.cn/", waiting until "load"
+
+2025-05-22 12:50:04,092 - ERROR - 访问 http://sipum.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://sipum.cn/", waiting until "load"
+
+2025-05-22 12:50:06,540 - ERROR - 访问 https://by6818.com 失败: Page.goto: net::ERR_CONNECTION_REFUSED at https://by6818.com/
+Call log:
+  - navigating to "https://by6818.com/", waiting until "load"
+
+2025-05-22 12:50:07,232 - ERROR - 访问 http://by6818.com 失败: Page.goto: Navigation to "http://by6818.com/" is interrupted by another navigation to "chrome-error://chromewebdata/"
+Call log:
+  - navigating to "http://by6818.com/", waiting until "load"
+
+2025-05-22 12:50:09,481 - ERROR - 访问 https://www.by6818.com 失败: Page.goto: net::ERR_CONNECTION_REFUSED at https://www.by6818.com/
+Call log:
+  - navigating to "https://www.by6818.com/", waiting until "load"
+
+2025-05-22 12:50:10,149 - ERROR - 访问 http://www.by6818.com 失败: Page.goto: Navigation to "http://www.by6818.com/" is interrupted by another navigation to "chrome-error://chromewebdata/"
+Call log:
+  - navigating to "http://www.by6818.com/", waiting until "load"
+
+2025-05-22 12:50:11,449 - ERROR - 查询失败 156.235.135.85: Page.goto: Navigation to "https://ipchaxun.com/156.235.135.85" is interrupted by another navigation to "http://www.by6818.com/"
+Call log:
+  - navigating to "https://ipchaxun.com/156.235.135.85", waiting until "load"
+
+2025-05-22 12:50:16,016 - ERROR - 访问 https://查询失败 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--zssz55ay90a7bb/
+Call log:
+  - navigating to "https://xn--zssz55ay90a7bb/", waiting until "load"
+
+2025-05-22 12:50:18,299 - ERROR - 访问 http://查询失败 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--zssz55ay90a7bb/
+Call log:
+  - navigating to "http://xn--zssz55ay90a7bb/", waiting until "load"
+
+2025-05-22 12:50:27,773 - ERROR - 访问 https://www.zzht666.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://www.zzht666.com/", waiting until "load"
+
+2025-05-22 12:50:32,788 - ERROR - 访问 http://www.zzht666.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://www.zzht666.com/", waiting until "load"
+
+2025-05-22 12:50:37,801 - ERROR - 访问 https://999tour.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://999tour.cn/", waiting until "load"
+
+2025-05-22 12:50:42,817 - ERROR - 访问 http://999tour.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://999tour.cn/", waiting until "load"
+
+2025-05-22 12:50:47,827 - ERROR - 访问 https://uujsq.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://uujsq.cn/", waiting until "load"
+
+2025-05-22 12:50:52,832 - ERROR - 访问 http://uujsq.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://uujsq.cn/", waiting until "load"
+
+2025-05-22 12:50:53,525 - WARNING - dianpaiming.com 无元信息，HTML: <html><head></head><body><div align="center">友情链接：<a href="http://www.proplogixcdn.com/" target="_blank">九游会j9网址</a>&nbsp;&nbsp;<a href="http://www.cloudheat.net/" target="_blank">j9九游国际站</a>&nbsp;&nbsp;<a href="http://outsourcingsteeldetailing.com/" target="_blank">凯时娱乐官网欢迎您</a>&nbsp;&nbsp;<a href="http://shuntaicnc.com/" target="_blank">九游老哥俱乐部交流</a>&nbsp;&nbsp;<a href="http://www.montagecyborg.com/" target="_blank">AG真人国际官方网站</a>&nbsp;&nbsp;<a href="http://5ijzj.com/" target="_blank">k8凯发体育手机
+2025-05-22 12:51:01,518 - ERROR - 访问 https://www.byy123.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://www.byy123.com/", waiting until "load"
+
+2025-05-22 12:51:06,522 - ERROR - 访问 http://www.byy123.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://www.byy123.com/", waiting until "load"
+
+2025-05-22 12:51:11,524 - ERROR - 访问 https://byy123.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://byy123.com/", waiting until "load"
+
+2025-05-22 12:51:16,532 - ERROR - 访问 http://byy123.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://byy123.com/", waiting until "load"
+
+2025-05-22 12:51:23,224 - ERROR - 访问 https://www.penrithtaekwondo.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://www.penrithtaekwondo.com/", waiting until "load"
+
+2025-05-22 12:51:28,233 - ERROR - 访问 http://www.penrithtaekwondo.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://www.penrithtaekwondo.com/", waiting until "load"
+
+2025-05-22 12:51:31,777 - INFO - 9sysy.com - title: 免费在线看黄片av,国产精品免费一区二区在线观看,东京热 无码Av. 一本道 日韩,公与淫两个荡乱,视频无码小电影, keywords: 免费在线看黄片av,国产精品免费一区二区在线观看,东京热 无码Av. 一本道 日韩,公与淫两个荡乱,视频无码小电影, description: 国产二一二三区不卡视频,欧日韩无码av,无码aukg系列番号,国产又粗又大久久久久久,嗯啊射进来,哭悲恐怖片,草🌿榴地址一地址二地址三,叫小姐无码,古代男女肉嗯哦高h,最近中文字幕2018MV在线
+2025-05-22 12:51:36,790 - ERROR - 访问 https://yuncms.net 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://yuncms.net/", waiting until "load"
+
+2025-05-22 12:51:41,798 - ERROR - 访问 http://yuncms.net 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://yuncms.net/", waiting until "load"
+
+2025-05-22 12:51:46,805 - ERROR - 访问 https://www.yuncms.net 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://www.yuncms.net/", waiting until "load"
+
+2025-05-22 12:51:51,815 - ERROR - 访问 http://www.yuncms.net 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://www.yuncms.net/", waiting until "load"
+
+2025-05-22 12:51:51,907 - ERROR - 访问 https://www.szliyi001.com 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.szliyi001.com/
+Call log:
+  - navigating to "https://www.szliyi001.com/", waiting until "load"
+
+2025-05-22 12:51:52,611 - ERROR - 访问 http://www.szliyi001.com 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://www.szliyi001.com/
+Call log:
+  - navigating to "http://www.szliyi001.com/", waiting until "load"
+
+2025-05-22 12:52:00,239 - ERROR - 访问 https://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "https://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:52:02,529 - ERROR - 访问 http://未找到绑定域名 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://xn--rcr48b29eeze7vk9ihcx8b/
+Call log:
+  - navigating to "http://xn--rcr48b29eeze7vk9ihcx8b/", waiting until "load"
+
+2025-05-22 12:52:09,888 - ERROR - 访问 https://xfxiongan.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://xfxiongan.cn/", waiting until "load"
+
+2025-05-22 12:52:14,894 - ERROR - 访问 http://xfxiongan.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://xfxiongan.cn/", waiting until "load"
+
+2025-05-22 12:52:19,900 - ERROR - 访问 https://www.eq886.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://www.eq886.com/", waiting until "load"
+
+2025-05-22 12:52:24,904 - ERROR - 访问 http://www.eq886.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://www.eq886.com/", waiting until "load"
+
+2025-05-22 12:52:29,908 - ERROR - 访问 https://www.bnwsq.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://www.bnwsq.com/", waiting until "load"
+
+2025-05-22 12:52:34,922 - ERROR - 访问 http://www.bnwsq.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://www.bnwsq.com/", waiting until "load"
+
+2025-05-22 12:52:42,033 - ERROR - 访问 https://aisite.wejianzhan.com.xaqsgs.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://aisite.wejianzhan.com.xaqsgs.cn/", waiting until "load"
+
+2025-05-22 12:52:47,041 - ERROR - 访问 http://aisite.wejianzhan.com.xaqsgs.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://aisite.wejianzhan.com.xaqsgs.cn/", waiting until "load"
+
+2025-05-22 12:52:52,045 - ERROR - 访问 https://wc02.xaqsgs.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://wc02.xaqsgs.cn/", waiting until "load"
+
+2025-05-22 12:52:57,055 - ERROR - 访问 http://wc02.xaqsgs.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://wc02.xaqsgs.cn/", waiting until "load"
+
+2025-05-22 12:53:02,066 - ERROR - 访问 https://lcdoa.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://lcdoa.com/", waiting until "load"
+
+2025-05-22 12:53:07,081 - ERROR - 访问 http://lcdoa.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://lcdoa.com/", waiting until "load"
+
+2025-05-22 12:53:12,092 - ERROR - 访问 https://yuanshenge.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://yuanshenge.com/", waiting until "load"
+
+2025-05-22 12:53:17,107 - ERROR - 访问 http://yuanshenge.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://yuanshenge.com/", waiting until "load"
+
+2025-05-22 12:53:22,122 - ERROR - 访问 https://www.yuanshenge.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://www.yuanshenge.com/", waiting until "load"
+
+2025-05-22 12:53:27,134 - ERROR - 访问 http://www.yuanshenge.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://www.yuanshenge.com/", waiting until "load"
+
+2025-05-22 12:53:27,217 - ERROR - 访问 https://www.qitian16888.com 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://www.qitian16888.com/
+Call log:
+  - navigating to "https://www.qitian16888.com/", waiting until "load"
+
+2025-05-22 12:53:27,883 - ERROR - 访问 http://www.qitian16888.com 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://www.qitian16888.com/
+Call log:
+  - navigating to "http://www.qitian16888.com/", waiting until "load"
+
+2025-05-22 12:53:29,138 - INFO - www.fantoupai.com - title: 纬来体育直播-免费nba直播_篮球_jrs_足球_体育_世界杯高清视频直播在线观看, keywords: 纬来体育直播,NBA直播,篮球直播,足球直播,体育直播,jrs直播,世界杯直播,jrs低调看, description: 找在线观看nba直播的网站？纬来体育直播是球迷们自己的免费体育比赛直播网站，无插件播放NBA、足球、篮球、jrs、英超直播、世界杯高清视频转播。欢迎来纬来体育直播低调观看国际足球和国内篮球直播吧！
+2025-05-22 12:53:36,980 - ERROR - 访问 https://serve56.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://serve56.com/", waiting until "load"
+
+2025-05-22 12:53:41,983 - ERROR - 访问 http://serve56.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://serve56.com/", waiting until "load"
+
+2025-05-22 12:53:46,995 - ERROR - 访问 https://bdsthmyyzx.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://bdsthmyyzx.com/", waiting until "load"
+
+2025-05-22 12:53:52,010 - ERROR - 访问 http://bdsthmyyzx.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://bdsthmyyzx.com/", waiting until "load"
+
+2025-05-22 12:53:52,623 - ERROR - 访问 https://13ba11.com 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://13ba11.com/
+Call log:
+  - navigating to "https://13ba11.com/", waiting until "load"
+
+2025-05-22 12:53:53,304 - ERROR - 访问 http://13ba11.com 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://13ba11.com/
+Call log:
+  - navigating to "http://13ba11.com/", waiting until "load"
+
+2025-05-22 12:53:58,316 - ERROR - 访问 https://sglytzjt.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://sglytzjt.com/", waiting until "load"
+
+2025-05-22 12:53:59,399 - WARNING - sglytzjt.com 无元信息，HTML: <html><head></head><body></body></html>
+2025-05-22 12:54:06,777 - ERROR - 访问 https://sdfxjx.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://sdfxjx.cn/", waiting until "load"
+
+2025-05-22 12:54:11,792 - ERROR - 访问 http://sdfxjx.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://sdfxjx.cn/", waiting until "load"
+
+2025-05-22 12:54:16,805 - ERROR - 访问 https://www.fzrxzx.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://www.fzrxzx.com/", waiting until "load"
+
+2025-05-22 12:54:21,817 - ERROR - 访问 http://www.fzrxzx.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://www.fzrxzx.com/", waiting until "load"
+
+2025-05-22 12:54:22,037 - ERROR - 访问 https://adcpm.cn 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://adcpm.cn/
+Call log:
+  - navigating to "https://adcpm.cn/", waiting until "load"
+
+2025-05-22 12:54:22,740 - ERROR - 访问 http://adcpm.cn 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://adcpm.cn/
+Call log:
+  - navigating to "http://adcpm.cn/", waiting until "load"
+
+2025-05-22 12:54:22,832 - ERROR - 访问 https://aids.adcpm.cn 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at https://aids.adcpm.cn/
+Call log:
+  - navigating to "https://aids.adcpm.cn/", waiting until "load"
+
+2025-05-22 12:54:22,836 - ERROR - 访问 http://aids.adcpm.cn 失败: Page.goto: net::ERR_NAME_NOT_RESOLVED at http://aids.adcpm.cn/
+Call log:
+  - navigating to "http://aids.adcpm.cn/", waiting until "load"
+
+2025-05-22 12:54:27,838 - ERROR - 访问 https://www.zhuosaigroup.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://www.zhuosaigroup.com/", waiting until "load"
+
+2025-05-22 12:54:32,843 - ERROR - 访问 http://www.zhuosaigroup.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "http://www.zhuosaigroup.com/", waiting until "load"
+
+2025-05-22 12:54:37,849 - ERROR - 访问 https://se724.com 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://se724.com/", waiting until "load"
+
+2025-05-22 12:54:41,304 - INFO - se724.com - title: se724.com, keywords: , description: This domain may be for sale!
+2025-05-22 12:54:46,309 - ERROR - 访问 https://www.gg181.cn 失败: Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://www.gg181.cn/", waiting until "load"
+
+2025-05-22 12:54:51,424 - ERROR - 访问 http://www.gg181.cn 失败: Page.wait_for_selector: Timeout 5000ms exceeded.
+Call log:
+  - waiting for locator("body") to be visible
+  -     15 × locator resolved to hidden <body></body>
+

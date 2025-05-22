@@ -13,8 +13,7 @@ from openpyxl import load_workbook
 logging.basicConfig(filename='ip_domain_query.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', encoding='utf-8', filemode='w')
 
 DOMAIN_INPUT = """
-wmihealth.com
-17cn.net
+jnky88.com
 """
 domains = [d.strip() for d in DOMAIN_INPUT.split('\n') if d.strip()]
 if not domains:
