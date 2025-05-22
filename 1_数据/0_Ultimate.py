@@ -190,43 +190,45 @@ class DatabaseQuery:
        """
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
-    def _6_member_stats_period(self, use_date_column: bool = False) -> pd.DataFrame:
-        """查询会员指定时间段的统计信息 True False """
-        if use_date_column:
-            query = f"""
+    def _6_member_stats_period(self, group_by_level: str = None) -> pd.DataFrame:
+        """
+        查询会员指定时间段的统计信息。
+        group_by_level:
+            - None: 无日期汇总
+            - 'day': 按天汇总
+            - 'month': 按月汇总
+        """
+        select_columns = """
+            member_id AS '会员ID',
+            COALESCE(SUM(deposit_count), 0) AS '存款笔数',
+            COALESCE(SUM(deposit), 0) AS '存款',
+            COALESCE(SUM(draw_count), 0) AS '取款笔数',
+            COALESCE(SUM(draw), 0) AS '取款',
+            COALESCE(SUM(bets), 0) AS '有效投注金额',
+            COALESCE(-SUM(profit), 0) AS '会员输赢',
+            COALESCE(-SUM(profit), 0)/COALESCE(SUM(all_bets), 0) AS '会员盈利率',
+            COALESCE(SUM(promo), 0) AS '红利',
+            COALESCE(SUM(rebate), 0) AS '返水'
+        """
+        group_by_columns = "member_id"
+
+        if group_by_level == 'day':
+            select_columns = "statics_date AS '日期'," + select_columns
+            group_by_columns += ", statics_date"
+        elif group_by_level == 'month':
+            select_columns = "DATE_FORMAT(statics_date, '%Y-%m') AS '月份'," + select_columns
+            group_by_columns += ", DATE_FORMAT(statics_date, '%Y-%m')"
+
+        query = f"""
            SELECT
-               statics_date AS '日期',
-               member_id AS '会员ID',
-               COALESCE(SUM(deposit_count), 0) AS '存款笔数',
-               COALESCE(SUM(deposit), 0) AS '存款',
-               COALESCE(SUM(draw_count), 0) AS '取款笔数',
-               COALESCE(SUM(draw), 0) AS '取款',
-               COALESCE(SUM(bets), 0) AS '有效投注金额',
-               COALESCE(-SUM(profit), 0) AS '会员输赢',
-               COALESCE(-SUM(profit), 0)/COALESCE(SUM(all_bets), 0) AS '会员盈利率',
-               COALESCE(SUM(promo), 0) AS '红利',
-               COALESCE(SUM(rebate), 0) AS '返水'
+               {select_columns}
            FROM {self.bigdata}.member_daily_statics
            WHERE statics_date BETWEEN '{self.start_date}' AND '{self.end_date}'
-           GROUP BY member_id, statics_date
            """
-        else:
-            query = f"""
-           SELECT
-               member_id AS '会员ID',
-               COALESCE(SUM(deposit_count), 0) AS '存款笔数',
-               COALESCE(SUM(deposit), 0) AS '存款',
-               COALESCE(SUM(draw_count), 0) AS '取款笔数',
-               COALESCE(SUM(draw), 0) AS '取款',
-               COALESCE(SUM(bets), 0) AS '有效投注金额',
-               COALESCE(-SUM(profit), 0) AS '会员输赢',
-               COALESCE(-SUM(profit), 0)/COALESCE(SUM(all_bets), 0) AS '会员盈利率',
-               COALESCE(SUM(promo), 0) AS '红利',
-               COALESCE(SUM(rebate), 0) AS '返水'
-           FROM {self.bigdata}.member_daily_statics
-           WHERE statics_date BETWEEN '{self.start_date}' AND '{self.end_date}'
-           GROUP BY member_id
-           """
+        if self.site_id is not None:
+            query += f" AND site_id = {self.site_id}"
+        query += f" GROUP BY {group_by_columns}"
+
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
     def _7_member_stats_history(self) -> pd.DataFrame:
@@ -244,17 +246,51 @@ class DatabaseQuery:
            COALESCE(SUM(promo), 0) AS '历史红利',
            COALESCE(SUM(rebate), 0) AS '历史返水'
        FROM {self.bigdata}.member_daily_statics
-       GROUP BY member_id
        """
+        if self.site_id is not None:
+            query += f" WHERE site_id = {self.site_id}"
+        query += f" GROUP BY member_id"
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
-    def mongo_betting_stats(self, use_date_column: bool = False) -> pd.DataFrame:
-        """查询 MongoDB 投注统计数据 True False """
+    def mongo_betting_stats(self, group_by_level: str = None) -> pd.DataFrame:
+        """
+        查询 MongoDB 投注统计数据。
+        group_by_level:
+            - None: 无日期汇总
+            - 'day': 按天汇总
+            - 'month': 按月汇总
+        """
         collections = [col for col in self.db.list_collection_names() if col.startswith(self.mongo_collection_prefix)]
-        if not collections:
-            # 修改：移除 '有效投注' 和 '会员输赢'
-            return pd.DataFrame(
-                columns=['日期', '会员ID', '投注次数', '会员投注喜好'] if use_date_column else ['会员ID', '投注次数','会员投注喜好'])
+
+        # 确定日期格式和输出列名
+        date_format = None
+        date_field_name = None
+        if group_by_level == 'day':
+            date_format = "%Y-%m-%d"
+            date_field_name = "日期"
+        elif group_by_level == 'month':
+            date_format = "%Y-%m"
+            date_field_name = "月份"
+
+        # 根据 group_by_level 构建 _id 字段
+        group_id = {
+            "member_id": "$member_id",
+            "game_type": "$game_type"
+        }
+        if date_field_name:
+            group_id[date_field_name] = {"$dateToString": {"format": date_format, "date": {"$toDate": "$settle_time"}}}
+
+        # 构建 project 阶段
+        project_stage = {
+            "_id": 0,
+            "会员ID": "$_id.member_id",
+            "game_type": "$_id.game_type",
+            "betting_count": 1,
+            "valid_bet": 1,
+            "net_amount": 1
+        }
+        if date_field_name:
+            project_stage[date_field_name] = f"$_id.{date_field_name}"
 
         pipeline = [
             {"$match": {
@@ -263,52 +299,47 @@ class DatabaseQuery:
             }},
             {"$sort": {"settle_time": 1}},
             {"$group": {
-                "_id": {
-                    "member_id": "$member_id",
-                    "game_type": "$game_type",
-                    "date": {"$dateToString": {"format": "%Y-%m-%d",
-                                               "date": {"$toDate": "$settle_time"}}} if use_date_column else None
-                },
+                "_id": group_id,
                 "betting_count": {"$sum": 1},
                 "valid_bet": {"$sum": "$valid_bet_amount"},
                 "net_amount": {"$sum": "$net_amount"}
             }},
-            {"$project": {
-                "_id": 0,
-                "日期": "$_id.date" if use_date_column else None,
-                "会员ID": "$_id.member_id",
-                "game_type": "$_id.game_type",
-                "betting_count": 1,
-                "valid_bet": 1,
-                "net_amount": 1
-            }}
+            {"$project": project_stage}
         ]
+
         if self.site_id is not None:
             pipeline[0]["$match"]["site_id"] = self.site_id
+
         # 移除 None 值
         pipeline = [{k: v for k, v in stage.items() if v is not None} for stage in pipeline]
 
         df = self._process_mongo_collections(collections, pipeline)
+
+        # 定义初始列
+        initial_columns = []
+        if date_field_name:
+            initial_columns.append(date_field_name)
+        initial_columns.extend(['会员ID', '投注次数', '会员投注喜好'])
+
         if df.empty:
-            # 修改：移除 '有效投注' 和 '会员输赢'
-            return pd.DataFrame(
-                columns=['日期', '会员ID', '投注次数', '会员投注喜好'] if use_date_column else ['会员ID', '投注次数','会员投注喜好'])
+            return pd.DataFrame(columns=initial_columns)
 
         df = df.astype({'会员ID': 'category', 'game_type': 'int8', 'betting_count': 'int32',
                         'valid_bet': 'float32', 'net_amount': 'float32'})
-        if use_date_column:
-            df['日期'] = df['日期'].astype('string')
+        if date_field_name:
+            df[date_field_name] = df[date_field_name].astype('string')
 
         # 聚合会员统计
-        group_cols = ['日期', '会员ID'] if use_date_column else ['会员ID']
-        # 保留 valid_bet 和 net_amount 用于后续过滤和计算喜好，但不重命名为“有效投注”和“会员输赢”
+        group_cols = ['会员ID']
+        if date_field_name:
+            group_cols.insert(0, date_field_name)
+
         member_stats = df.groupby(group_cols, observed=True).agg({
             'betting_count': 'sum',
-            'valid_bet': 'sum',  # 保留原始列名
-            'net_amount': 'sum'  # 保留原始列名
+            'valid_bet': 'sum',
+            'net_amount': 'sum'
         }).reset_index().rename(columns={
             'betting_count': '投注次数'
-            # 不重命名 valid_bet 和 net_amount
         })
 
         # 游戏类型映射
@@ -323,7 +354,7 @@ class DatabaseQuery:
         }
 
         # 有效投注和输赢透视表
-        pivot_index = ['日期', '会员ID'] if use_date_column else ['会员ID']
+        pivot_index = group_cols
         valid_pivot = df.pivot_table(index=pivot_index, columns='game_type', values='valid_bet',
                                      aggfunc='sum', fill_value=0, observed=False).reset_index()
         valid_pivot.columns = pivot_index + [game_types.get(col, (str(col),))[0] for col in
@@ -335,22 +366,19 @@ class DatabaseQuery:
 
         # 计算会员投注喜好
         game_valid_cols = [col for col in valid_pivot.columns if col.endswith('有效投注')]
-        if game_valid_cols:  # 确保有游戏有效投注列
+        if game_valid_cols:
             valid_pivot['max_valid_bet_value'] = valid_pivot[game_valid_cols].max(axis=1)
             valid_pivot['会员投注喜好'] = valid_pivot[game_valid_cols].idxmax(axis=1)
-            # 移除 '有效投注' 后缀
             valid_pivot['会员投注喜好'] = valid_pivot['会员投注喜好'].str.replace('有效投注', '', regex=False)
-            # 如果最大有效投注为0，则喜好为'无'
             valid_pivot['会员投注喜好'] = valid_pivot.apply(
                 lambda row: row['会员投注喜好'] if row['max_valid_bet_value'] > 0 else '无', axis=1
             )
             valid_pivot = valid_pivot.drop(columns=['max_valid_bet_value'])
         else:
-            valid_pivot['会员投注喜好'] = '无'  # 如果没有游戏有效投注列，则喜好为'无'
+            valid_pivot['会员投注喜好'] = '无'
 
-        # 修改排序：按场馆顺序合并有效投注和会员输赢
+        # 合并结果
         result = member_stats
-        # 合并投注喜好
         result = result.merge(valid_pivot[pivot_index + ['会员投注喜好']], on=pivot_index, how='left')
 
         for game_type in sorted(game_types.keys()):
@@ -361,9 +389,11 @@ class DatabaseQuery:
             if net_col in net_pivot.columns:
                 result = result.merge(net_pivot[pivot_index + [net_col]], on=pivot_index, how='outer')
 
-        # 修改：移除 '有效投注' 和 '会员输赢' 从最终列基础列表
-        final_columns_base = ['日期', '会员ID', '投注次数'] if use_date_column else ['会员ID', '投注次数']
-        # 过滤掉原始的 valid_bet 和 net_amount 列，因为它们不应出现在最终结果中
+        final_columns_base = []
+        if date_field_name:
+            final_columns_base.append(date_field_name)
+        final_columns_base.extend(['会员ID', '投注次数'])
+
         internal_cols_to_exclude = ['valid_bet', 'net_amount']
         final_columns = final_columns_base + ['会员投注喜好'] + \
                         [col for col in result.columns if
@@ -527,9 +557,9 @@ def work(db_query: DatabaseQuery) -> pd.DataFrame:
     # 会员信息 .merge(db_query._1_member_basic_info(), on='会员ID', how='inner')
     # 首存 .merge(db_query._2_first_deposit(), on='会员ID', how='left')
     # 最后投注 .merge(db_query._3_last_bet_date(), on='会员ID', how='left')
-    # 会员数据（时间段） .merge(db_query._6_member_stats_period(use_date_column=True False), on='会员ID', how='inner')
+    # 会员数据（时间段） .merge(db_query._6_member_stats_period(group_by_level='day'/'month'/None), on='会员ID', how='inner')
     # 会员数据（历史） .merge(db_query._7_member_stats_history(), on='会员ID', how='inner')
-    # 游戏 .merge(db_query.mongo_betting_stats(use_date_column=True False), on=['会员ID', '日期'], how='inner')
+    # 游戏 .merge(db_query.mongo_betting_stats(group_by_level='day'/'month'/None), on=['会员ID', '日期']或['会员ID', '月份']或'会员ID', how='inner')
     # 注单 .merge(db_query.mongo_betting_details(), on=['会员ID', '日期'], how='inner')
     result_df = (db_query._1_member_basic_info()
                  .merge(db_query._2_first_deposit(), on='会员ID', how='left')
