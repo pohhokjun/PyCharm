@@ -1,4 +1,3 @@
-
 import pandas as pd
 import os
 import json
@@ -239,8 +238,8 @@ def generate_0_Ultimate_Analysis_html():
            site_ids = ['汇总']
 
        all_data[sheet] = {
-           'labels': sheet_date_labels,
-           'datasets': sheet_datasets,
+           'labels': sheet_date_labels, # Keep labels for reference
+           'datasets': sheet_datasets, # Data is still list of numbers here, will convert in JS
            'raw_df': sheet_df.to_json(orient='records', date_format='iso'),
            'site_ids': site_ids,
            'x_axis_col': x_axis_col,
@@ -302,11 +301,13 @@ function formatNumber(value, isSuccessRate) {
 var allData = """ + json.dumps(all_data, cls=TimestampEncoder) + """;
 var charts = {};
 var currentSheet = '""" + default_sheet + """';
+var currentFilterKey = '汇总'; // 添加一个变量来存储当前的筛选值
 
 function initCharts() {
    Object.keys(allData).forEach(sheet => {
        var canvasId = sheet + '-chart';
-       createChart(canvasId, allData[sheet], 'bar');
+       // Initial data for chart creation - filterData will update it later
+       createChart(canvasId, { labels: allData[sheet].labels, datasets: [] }, 'bar');
    });
    toggleDataView('""" + default_sheet + """-container');
 }
@@ -317,10 +318,15 @@ function createChart(canvasId, data, type) {
        responsive: true,
        maintainAspectRatio: false,
        scales: {
+           // 使用 'category' 类型来统一处理日期和非日期标签
+           x: {
+               type: 'category',
+               ticks: { color: '#fff' }
+           },
            'y-left': {
                beginAtZero: true,
                position: 'left',
-               ticks: { 
+               ticks: {
                    color: '#fff',
                    callback: function(value) {
                        return value.toLocaleString('en-US');
@@ -328,8 +334,7 @@ function createChart(canvasId, data, type) {
                },
                grid: { display: true },
                title: { display: true, text: '数值', color: '#fff' }
-           },
-           x: { ticks: { color: '#fff' } }
+           }
        },
        plugins: {
            legend: { display: false }
@@ -346,95 +351,89 @@ function createChart(canvasId, data, type) {
                }
            },
            grid: { display: false },
-           title: { 
-               display: true, 
-               text: '数值', 
-               color: '#fff' 
+           title: {
+               display: true,
+               text: '数值',
+               color: '#fff'
            }
        };
    }
 
    charts[canvasId] = new Chart(ctx, {
        type: type,
-       data: data,
+       data: data, // Initial empty data, will be populated by filterData
        options: options
    });
 
-   var chartContainer = document.getElementById(canvasId).parentElement;
-   var legendContainer = document.createElement('div');
-   legendContainer.className = 'chart-legend';
-   var leftGroup = { title: '左侧柱状图', items: [] };
-   var rightGroup = { title: '右侧折线图', items: [] };
-
-   data.datasets.forEach(dataset => {
-       var group = dataset.yAxisID === 'y-right' ? rightGroup : leftGroup;
-       group.items.push({
-           label: dataset.label,
-           color: dataset.backgroundColor
-       });
-   });
-
-   if (leftGroup.items.length > 0) {
-       var leftGroupHtml = '<div class="legend-group"><h4>' + leftGroup.title + '</h4><div class="legend-items">';
-       leftGroup.items.forEach(item => {
-           leftGroupHtml += '<div class="legend-item"><div class="legend-color" style="background-color: ' + item.color + ';"></div>' + item.label + '</div>';
-       });
-       leftGroupHtml += '</div></div>';
-       legendContainer.innerHTML += leftGroupHtml;
-   }
-
-   if (rightGroup.items.length > 0 && canvasId !== '留存-chart') {
-       var rightGroupHtml = '<div class="legend-group"><h4>' + rightGroup.title + '</h4><div class="legend-items">';
-       rightGroup.items.forEach(item => {
-           rightGroupHtml += '<div class="legend-item"><div class="legend-color" style="background-color: ' + item.color + ';"></div>' + item.label + '</div>';
-       });
-       rightGroupHtml += '</div></div>';
-       legendContainer.innerHTML += rightGroupHtml;
-   }
-
-   chartContainer.appendChild(legendContainer);
+   // Legend is added/updated in updateChart
 }
 
 function updateTable(data, filteredData, xAxisCol, filterCol) {
    var tableBody = document.getElementById('data-table').getElementsByTagName('tbody')[0];
    var headerRow = document.getElementById('data-table-header').getElementsByTagName('thead')[0].getElementsByTagName('tr')[0];
-   var columns = Object.keys(filteredData[0] || {}).filter(col => col !== xAxisCol && col !== filterCol);
+   // Use keys from the first data point in the chart data to get columns, excluding x and y if present, and filterCol
+   var columns = data.datasets.length > 0 && data.datasets[0].data.length > 0
+                ? Object.keys(data.datasets[0].data[0]).filter(col => col !== 'x' && col !== 'y')
+                : []; // Fallback if no data
+
+   // Get all unique columns from the raw filtered data for the table header
+   var allFilteredCols = filteredData.length > 0 ? Object.keys(filteredData[0]) : [];
+   var tableColumns = allFilteredCols.filter(col => col !== xAxisCol && col !== filterCol);
+
 
    // 设置表头
-   headerRow.innerHTML = '<th>' + xAxisCol + '</th>' + columns.map(col => '<th>' + col + '</th>').join('');
+   headerRow.innerHTML = '<th>' + xAxisCol + '</th>' + tableColumns.map(col => '<th>' + col + '</th>').join('');
    tableBody.innerHTML = '';
 
-   // 按 xAxisCol 汇总数据
-   var groupedData = {};
+   // 按 xAxisCol 汇总数据 for table
+   var groupedDataForTable = {};
    filteredData.forEach(row => {
        var xAxis = row[xAxisCol];
-       if (!groupedData[xAxis]) groupedData[xAxis] = {};
-       columns.forEach(col => {
-           var value = row[col] !== undefined ? parseFloat(row[col]) || 0 : 0;
-           groupedData[xAxis][col] = (groupedData[xAxis][col] || 0) + value;
+       if (!groupedDataForTable[xAxis]) groupedDataForTable[xAxis] = {};
+        tableColumns.forEach(col => {
+           var value = row[col] !== undefined ? (typeof row[col] === 'number' ? row[col] : parseFloat(row[col]) || 0) : 0;
+           groupedDataForTable[xAxis][col] = (groupedDataForTable[xAxis][col] || 0) + value;
        });
    });
 
-   // 转换为表格数据
-   var tableData = Object.keys(groupedData).map(xAxis => {
-       var row = { [xAxisCol]: xAxis };
-       columns.forEach(col => {
-           row[col] = groupedData[xAxis][col] || 0;
-       });
-       return row;
+    // Use the original labels to ensure all rows are present in the table, even if values are 0
+    var tableData = allData[currentSheet].labels.map(xAxis => {
+        var row = { [xAxisCol]: xAxis };
+        tableColumns.forEach(col => {
+            row[col] = groupedDataForTable[xAxis] ? groupedDataForTable[xAxis][col] || 0 : 0;
+        });
+        return row;
+    });
+
+
+   // 按 xAxisCol 排序 (日期或字符串)
+   tableData.sort((a, b) => {
+       const valA = a[xAxisCol];
+       const valB = b[xAxisCol];
+       // Attempt to sort as dates first if they look like ISO strings
+       const dateA = new Date(valA);
+       const dateB = new Date(valB);
+       if (!isNaN(dateA.getTime()) && !isNaN(dateB.getTime())) {
+           return dateA.getTime() - dateB.getTime();
+       }
+       // Otherwise, sort as strings
+       return String(valA).localeCompare(String(valB));
    });
 
-   // 按 xAxisCol 排序
-   tableData.sort((a, b) => String(a[xAxisCol]).localeCompare(String(b[xAxisCol])));
 
    // 渲染表格
    tableData.forEach(row => {
        var tr = document.createElement('tr');
        var dateCell = document.createElement('td');
-       dateCell.textContent = row[xAxisCol] || '';
+       // Format date if it's a date object or ISO string
+       let displayXAxis = row[xAxisCol];
+        if (displayXAxis && typeof displayXAxis === 'string' && displayXAxis.endsWith('Z') && !isNaN(new Date(displayXAxis).getTime())) {
+             displayXAxis = new Date(displayXAxis).toISOString().split('T')[0]; // Format as YYYY-MM-DD
+        }
+       dateCell.textContent = displayXAxis || '';
        tr.appendChild(dateCell);
 
-       columns.forEach(col => {
+       tableColumns.forEach(col => {
            var cell = document.createElement('td');
            var value = row[col] !== undefined ? row[col] : '';
            if (col.endsWith('率')) {
@@ -469,45 +468,77 @@ function toggleDataView(viewId, element) {
    var sidebarLinks = document.querySelectorAll('.sidebar li a');
    sidebarLinks.forEach(link => link.classList.remove('active'));
    if (element) element.classList.add('active');
+
    currentSheet = viewId.split('-')[0];
-   var defaultFilter = allData[currentSheet].site_ids[0] || '';
-   filterData(defaultFilter, null);
-   document.querySelector('.filter-container').innerHTML = allData[currentSheet].site_ids.map(id =>
-       '<button onclick="filterData(\\'' + id + '\\', this)">' + id + '</button>'
+   var sheetData = allData[currentSheet];
+   var siteIds = sheetData.site_ids;
+
+   // 检查当前筛选值在新 sheet 中是否存在
+   var filterToApply = siteIds.includes(currentFilterKey) ? currentFilterKey : (siteIds[0] || '汇总');
+
+   // 更新筛选按钮
+   var filterContainer = document.querySelector('.filter-container');
+   filterContainer.innerHTML = siteIds.map(id =>
+       // 添加 data-filter-key 属性以便查找按钮
+       '<button data-filter-key="' + id + '" onclick="filterData(\\'' + id + '\\', this)">' + id + '</button>'
    ).join('');
-   var firstButton = document.querySelector('.filter-container button');
-   if (firstButton) firstButton.classList.add('active');
+
+   // 应用筛选并高亮对应的按钮
+   filterData(filterToApply, null); // 传递 null，filterData 会自己找到并高亮按钮
 }
 
 function filterData(filterKey, element) {
-   var newData = { labels: allData[currentSheet].labels, datasets: [] };
-   var rawDf = JSON.parse(allData[currentSheet].raw_df);
-   var xAxisCol = allData[currentSheet].x_axis_col;
-   var filterCol = allData[currentSheet].filter_col;
+   // 更新当前的筛选值
+   currentFilterKey = filterKey;
+
+   var sheetData = allData[currentSheet];
+   var rawDf = JSON.parse(sheetData.raw_df);
+   var xAxisCol = sheetData.x_axis_col;
+   var filterCol = sheetData.filter_col;
    var filteredData = rawDf;
 
    if (filterKey !== '汇总') {
        filteredData = rawDf.filter(row => String(row[filterCol]) === String(filterKey));
    }
 
+   // Group filtered data by the X-axis column
    var groupedData = {};
-   filteredData.forEach(row => {
-       var xAxis = row[xAxisCol];
-       if (!groupedData[xAxis]) groupedData[xAxis] = {};
-       allData[currentSheet].datasets.forEach(dataset => {
-           var value = row[dataset.label];
-           value = value !== undefined ? parseFloat(value) : 0;
-           groupedData[xAxis][dataset.label] = (groupedData[xAxis][dataset.label] || 0) + value;
+   // Initialize groupedData with all original labels and zero values
+   sheetData.labels.forEach(label => {
+       groupedData[label] = {};
+       sheetData.datasets.forEach(dataset => {
+           groupedData[label][dataset.label] = 0; // Initialize with 0
        });
    });
 
-   allData[currentSheet].datasets.forEach(dataset => {
-       var data = allData[currentSheet].labels.map(xAxis => {
-           return groupedData[xAxis] ? groupedData[xAxis][dataset.label] || 0 : 0;
+   // Populate groupedData with filtered data sums
+   filteredData.forEach(row => {
+       var xAxis = row[xAxisCol];
+       // Ensure xAxis exists in groupedData (it should if using original labels)
+       if (groupedData[xAxis]) {
+           sheetData.datasets.forEach(dataset => {
+               var value = row[dataset.label];
+               // Handle potential null/undefined and ensure it's a number
+               value = value !== undefined && value !== null ? parseFloat(value) || 0 : 0;
+               groupedData[xAxis][dataset.label] = (groupedData[xAxis][dataset.label] || 0) + value;
+           });
+       }
+   });
+
+   // Construct the new data structure for Chart.js datasets ({x, y} objects)
+   var newDataDatasets = [];
+   sheetData.datasets.forEach(dataset => {
+       let datasetDataPoints = [];
+       // Iterate through the original labels to ensure all X-axis points are included
+       sheetData.labels.forEach(label => {
+           // Get the summed value for this label and dataset, default to 0
+           let value = groupedData[label] ? groupedData[label][dataset.label] || 0 : 0;
+           // Push the {x, y} object
+           datasetDataPoints.push({ x: label, y: value });
        });
-       newData.datasets.push({
+       newDataDatasets.push({
            label: dataset.label,
-           data: data,
+           data: datasetDataPoints, // This is the array of {x, y} objects
            backgroundColor: dataset.backgroundColor,
            borderColor: dataset.borderColor,
            borderWidth: dataset.borderWidth,
@@ -517,11 +548,34 @@ function filterData(filterKey, element) {
        });
    });
 
+   // Create the newData object structure expected by Chart.js update
+   var newData = {
+       labels: sheetData.labels, // Keep original labels for context, though category scale primarily uses data.x
+       datasets: newDataDatasets
+   };
+
+
    updateChart(currentSheet + '-chart', newData, filteredData);
+
+   // 移除所有筛选按钮的 active 类
    var filterButtons = document.querySelectorAll('.filter-container button');
    filterButtons.forEach(btn => btn.classList.remove('active'));
-   if (element) element.classList.add('active');
+
+   // 找到当前筛选值对应的按钮并添加 active 类
+   // Use data-filter-key to find the button reliably
+   var activeBtn = document.querySelector('.filter-container button[data-filter-key="' + filterKey + '"]');
+   if (activeBtn) {
+       activeBtn.classList.add('active');
+   } else {
+        // Fallback to highlight the first button if the filterKey button wasn't found
+        var firstButton = document.querySelector('.filter-container button');
+        if (firstButton) {
+            firstButton.classList.add('active');
+            currentFilterKey = firstButton.getAttribute('data-filter-key'); // Update filterKey
+        }
+   }
 }
+
 
 function updateChart(canvasId, newData, filteredData) {
    if (charts[canvasId]) {
@@ -554,7 +608,7 @@ function updateChart(canvasId, newData, filteredData) {
            legendContainer.innerHTML += leftGroupHtml;
        }
 
-       if (rightGroup.items.length > 0 && canvasId !== '留存-chart') {
+       if (rightGroup.items.length > 0 && canvasId !== '留存-chart') { // Exclude right legend for "留存"
            var rightGroupHtml = '<div class="legend-group"><h4>' + rightGroup.title + '</h4><div class="legend-items">';
            rightGroup.items.forEach(item => {
                rightGroupHtml += '<div class="legend-item"><div class="legend-color" style="background-color: ' + item.color + ';"></div>' + item.label + '</div>';
@@ -562,7 +616,22 @@ function updateChart(canvasId, newData, filteredData) {
            rightGroupHtml += '</div></div>';
            legendContainer.innerHTML += rightGroupHtml;
        }
+        // Add left legend for "留存" even if right is excluded
+        if (leftGroup.items.length > 0 && canvasId === '留存-chart' && rightGroup.items.length === 0) {
+             var leftGroupHtml = '<div class="legend-group"><h4>图例</h4><div class="legend-items">'; // Simpler title for single group
+             leftGroup.items.forEach(item => {
+                 leftGroupHtml += '<div class="legend-item"><div class="legend-color" style="background-color: ' + item.color + ';"></div>' + item.label + '</div>';
+             });
+             leftGroupHtml += '</div></div>';
+             legendContainer.innerHTML += leftGroupHtml;
+        }
 
+
+       // Clear previous legend before appending
+       var existingLegend = chartContainer.querySelector('.chart-legend');
+       if (existingLegend) {
+           existingLegend.remove();
+       }
        chartContainer.appendChild(legendContainer);
    }
    updateTable(newData, filteredData, allData[currentSheet].x_axis_col, allData[currentSheet].filter_col);
@@ -589,9 +658,8 @@ document.addEventListener('DOMContentLoaded', function() {
 </div>''' for sheet in sheets]
        )
 
-       filter_buttons = "\n".join(
-           [f'<button onclick="filterData(\'{site_id}\', this)">{site_id}</button>' for site_id in all_data[default_sheet]['site_ids']]
-       )
+       # 初始加载时，筛选按钮由 JS 的 initCharts 和 toggleDataView 生成，这里可以留空或放一个占位符
+       filter_buttons_placeholder = ""
 
        html = f"""
 <!DOCTYPE html>
@@ -615,7 +683,7 @@ document.addEventListener('DOMContentLoaded', function() {
    </div>
    <div class="pivot-view">
        <div class="filter-container">
-{filter_buttons}
+{filter_buttons_placeholder}
        </div>
 {chart_containers}
        <div class="table-container">
@@ -649,4 +717,3 @@ document.addEventListener('DOMContentLoaded', function() {
 
 if __name__ == "__main__":
    generate_0_Ultimate_Analysis_html()
-

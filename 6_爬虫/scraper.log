@@ -1,0 +1,162 @@
+2025-05-23 13:47:11,882 - INFO - 运行开始时间 2025-05-23 13:47
+2025-05-23 13:47:32,464 - ERROR - 链接 https://baike.baidu.com/item/%E4%B8%89%E6%98%9FT959V/8045118 访问失败：Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://baike.baidu.com/item/%E4%B8%89%E6%98%9FT959V/8045118", waiting until "load"
+
+2025-05-23 13:47:37,466 - ERROR - 域名 https://baike.baidu.com/item/%E4%B8%89%E6%98%9FT959V/8045118 访问失败：Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://baike.baidu.com/item/%E4%B8%89%E6%98%9FT959V/8045118", waiting until "load"
+
+2025-05-23 13:47:55,355 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-05-23 13:47:55,743 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-05-23 13:48:02,138 - ERROR - 链接 https://sj.zol.com.cn/samsung/t959/detail_50041.shtml 访问失败：Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://sj.zol.com.cn/samsung/t959/detail_50041.shtml", waiting until "load"
+
+2025-05-23 13:48:10,299 - ERROR - 链接 https://m.ali213.net/aznew/609547.html 访问失败：Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://m.ali213.net/aznew/609547.html", waiting until "load"
+
+2025-05-23 13:48:15,312 - ERROR - 域名 https://m.ali213.net/aznew/609547.html 访问失败：Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://m.ali213.net/aznew/609547.html", waiting until "load"
+
+2025-05-23 13:48:31,540 - ERROR - 链接 https://m.pcauto.com.cn/x/959/9592717_all.html 访问失败：Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://m.pcauto.com.cn/x/959/9592717_all.html", waiting until "load"
+
+2025-05-23 13:48:51,908 - ERROR - 链接 https://m.ali213.net/aznew/609541.html 访问失败：Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://m.ali213.net/aznew/609541.html", waiting until "load"
+
+2025-05-23 13:48:56,912 - ERROR - 域名 https://m.ali213.net/aznew/609541.html 访问失败：Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://m.ali213.net/aznew/609541.html", waiting until "load"
+
+2025-05-23 13:48:59,765 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-05-23 13:48:59,768 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-05-23 13:49:05,161 - INFO - 运行结束时间 2025-05-23 13:49
+2025-05-23 14:07:21,661 - INFO - 运行开始时间 2025-05-23 14:07
+2025-05-23 14:07:42,895 - ERROR - 链接 https://baike.baidu.com/item/%E4%B8%89%E6%98%9FT959V/8045118 访问失败：Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://baike.baidu.com/item/%E4%B8%89%E6%98%9FT959V/8045118", waiting until "load"
+
+2025-05-23 14:07:47,902 - ERROR - 域名 https://baike.baidu.com/item/%E4%B8%89%E6%98%9FT959V/8045118 访问失败：Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://baike.baidu.com/item/%E4%B8%89%E6%98%9FT959V/8045118", waiting until "load"
+
+2025-05-23 14:07:58,561 - ERROR - 链接 https://www.ah.gov.cn/zwyw/tzgg/8281231.html 访问失败：Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://www.ah.gov.cn/zwyw/tzgg/8281231.html", waiting until "load"
+
+2025-05-23 14:08:10,868 - ERROR - 链接 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-05-23 14:08:11,276 - ERROR - 域名 http://34689.recommend_list.baidu.com 访问失败：Page.goto: net::ERR_NAME_NOT_RESOLVED at http://34689.recommend_list.baidu.com/
+Call log:
+  - navigating to "http://34689.recommend_list.baidu.com/", waiting until "load"
+
+2025-05-23 14:08:17,682 - ERROR - 链接 https://sj.zol.com.cn/samsung/t959/detail_50041.shtml 访问失败：Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://sj.zol.com.cn/samsung/t959/detail_50041.shtml", waiting until "load"
+
+2025-05-23 14:08:20,835 - ERROR - 链接 https://m.ali213.net/aznew/609547.html 访问失败：Page.goto: net::ERR_EMPTY_RESPONSE at https://m.ali213.net/aznew/609547.html
+Call log:
+  - navigating to "https://m.ali213.net/aznew/609547.html", waiting until "load"
+
+2025-05-23 14:08:21,056 - ERROR - 域名 https://m.ali213.net/aznew/609547.html 访问失败：Page.goto: Navigation to "https://m.ali213.net/aznew/609547.html" is interrupted by another navigation to "chrome-error://chromewebdata/"
+Call log:
+  - navigating to "https://m.ali213.net/aznew/609547.html", waiting until "load"
+
+2025-05-23 14:08:40,380 - ERROR - 链接 https://m.pcauto.com.cn/x/959/9592717_all.html 访问失败：Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://m.pcauto.com.cn/x/959/9592717_all.html", waiting until "load"
+
+2025-05-23 14:08:45,394 - ERROR - 域名 https://m.pcauto.com.cn/x/959/9592717_all.html 访问失败：Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://m.pcauto.com.cn/x/959/9592717_all.html", waiting until "load"
+
+2025-05-23 14:08:52,199 - ERROR - 链接 https://q.stock.sohu.com/cn,gg,601231,2445738479.shtml 访问失败：Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://q.stock.sohu.com/cn,gg,601231,2445738479.shtml", waiting until "load"
+
+2025-05-23 14:08:57,212 - ERROR - 域名 https://q.stock.sohu.com/cn,gg,601231,2445738479.shtml 访问失败：Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://q.stock.sohu.com/cn,gg,601231,2445738479.shtml", waiting until "load"
+
+2025-05-23 14:09:05,275 - ERROR - 链接 https://m.ali213.net/aznew/609541.html 访问失败：Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://m.ali213.net/aznew/609541.html", waiting until "load"
+
+2025-05-23 14:09:10,282 - ERROR - 域名 https://m.ali213.net/aznew/609541.html 访问失败：Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://m.ali213.net/aznew/609541.html", waiting until "load"
+
+2025-05-23 14:09:13,115 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-05-23 14:09:13,117 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-05-23 14:09:18,936 - INFO - 运行结束时间 2025-05-23 14:09
+2025-05-23 14:48:51,249 - INFO - 运行开始时间 2025-05-23 14:48
+2025-05-23 14:49:13,051 - ERROR - 关键词 959娱乐3.0最新版本更新内容 搜索失败：Page.wait_for_selector: Timeout 15000ms exceeded.
+Call log:
+  - waiting for locator("div.result") to be visible
+  -     - waiting for" https://m.baidu.com/s?wd=959%E5%A8%B1%E4%B9%903.0%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0%E5%86%85%E5%AE%B9&p_tk=9220VDVIXZh8Ltzf3ReKQUAohW0BLwM%2BfNcDPRJXP14Lyvym4CvDdm9qzXufldjO5lDVsa…" navigation to finish...
+  -     - navigated to "https://m.baidu.com/s?wd=959%E5%A8%B1%E4%B9%903.0%E6%9C%80%E6%96%B0%E7%89%88%E6%9C%AC%E6%9B%B4%E6%96%B0%E5%86%85%E5%AE%B9&p_tk=9220VDVIXZh8Ltzf3ReKQUAohW0BLwM%2BfNcDPRJXP14Lyvym4CvDdm9qzXufldjO5lDVsa…"
+
+2025-05-23 14:49:19,448 - INFO - 运行结束时间 2025-05-23 14:49
+2025-05-23 14:51:54,312 - INFO - 运行开始时间 2025-05-23 14:51
+2025-05-23 14:52:21,932 - ERROR - 链接 https://sj.zol.com.cn/lg/h959/detail_25497.shtml 访问失败：Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://sj.zol.com.cn/lg/h959/detail_25497.shtml", waiting until "load"
+
+2025-05-23 14:52:32,910 - ERROR - 链接 https://m.ali213.net/aznew/609547.html 访问失败：Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://m.ali213.net/aznew/609547.html", waiting until "load"
+
+2025-05-23 14:52:37,925 - ERROR - 域名 https://m.ali213.net/aznew/609547.html 访问失败：Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://m.ali213.net/aznew/609547.html", waiting until "load"
+
+2025-05-23 14:52:45,455 - ERROR - 链接 https://m.pcauto.com.cn/x/959/9592717_all.html 访问失败：Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://m.pcauto.com.cn/x/959/9592717_all.html", waiting until "load"
+
+2025-05-23 14:52:50,457 - ERROR - 域名 https://m.pcauto.com.cn/x/959/9592717_all.html 访问失败：Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://m.pcauto.com.cn/x/959/9592717_all.html", waiting until "load"
+
+2025-05-23 14:52:57,290 - ERROR - 链接 https://m.ali213.net/aznew/609541.html 访问失败：Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://m.ali213.net/aznew/609541.html", waiting until "load"
+
+2025-05-23 14:53:02,299 - ERROR - 域名 https://m.ali213.net/aznew/609541.html 访问失败：Page.goto: Timeout 5000ms exceeded.
+Call log:
+  - navigating to "https://m.ali213.net/aznew/609541.html", waiting until "load"
+
+2025-05-23 14:53:04,582 - ERROR - 链接  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-05-23 14:53:04,584 - ERROR - 域名  访问失败：Page.goto: Protocol error (Page.navigate): Cannot navigate to invalid URL
+Call log:
+  - navigating to "", waiting until "load"
+
+2025-05-23 14:53:09,736 - INFO - 运行结束时间 2025-05-23 14:53

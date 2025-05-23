@@ -262,8 +262,8 @@ def get_dividend_report_sql(db, table):
     ) sv_bonus ON a1_md.category = sv_bonus.code
     WHERE a1_md.status = 2
         AND a1_md.category NOT IN (999555)
-        AND a1_md.created_at >= DATE_SUB(CURDATE(), INTERVAL 30 DAY)
-        AND a1_md.created_at <= CURDATE()
+        AND a1_md.updated_at >= DATE_SUB(CURDATE(), INTERVAL 31 DAY)
+        AND a1_md.updated_at < CURDATE()
     GROUP BY a1_md.site_id, 
              DATE_FORMAT(a1_md.updated_at, '%%Y-%%m-%%d')
     """

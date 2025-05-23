@@ -24,6 +24,20 @@ http://www.hmc.edu.cn/
 """
 domain_list = [domain.strip() for domain in domains.split('\n') if domain.strip()]
 
+# 需要跳过的域名列表
+SKIP_DOMAINS_STR = '''
+baidu.com
+bilibili.com
+weibo.cn
+lottery.gov.cn
+ximalaya.com
+sohu.com
+chinanews.com.cn
+sina.com.cn
+'''
+SKIP_DOMAINS = [domain.strip() for domain in SKIP_DOMAINS_STR.split('\n') if domain.strip()]
+
+
 # 配置日志
 logging.basicConfig(filename='scraper.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s', encoding='utf-8')
 
@@ -130,10 +144,26 @@ async def search_keyword(page, keyword, all_results):
         for result in results:
             data_log = result.get('data-log', '{}')
             link = eval(data_log.replace("'", '"')).get('mu', '无链接') if data_log else '无链接'
+
+            # --- 添加的跳过逻辑 ---
+            if link != '无链接':
+                try:
+                    parsed_url = tldextract.extract(link)
+                    registered_domain = parsed_url.registered_domain
+                    if registered_domain in SKIP_DOMAINS:
+                        print(f"Skipping link {link} as its domain {registered_domain} is in the skip list.")
+                        continue # 跳过当前循环的剩余部分，处理下一个结果
+                except Exception as e:
+                    logging.error(f"Error extracting domain for {link}: {e}")
+                    # 如果提取域名失败，可以选择跳过或继续，这里选择继续
+                    pass
+            # --- 添加的跳过逻辑结束 ---
+
+
             title_element = result.select_one('h3') or result.select_one('a[class*="title"]')
             title_text = title_element.text.strip() if title_element else ''
             metadata, content_type, site_type = ({'title': '', 'keywords': '', 'description': ''}, '未知', '未知') if link == '无链接' else await fetch_page_data(page, link)
-            uci = await calculate_page_uci(page, link)
+            uci = await calculate_page_uci(page, link) if link != '无链接' else 0 # UCI计算也跳过无链接的
             responsive_type = check_responsive(link) if link != '无链接' else "无链接"
             last_updated = get_domain_last_updated(link) if link != '无链接' else None
             brand_terms = get_brand_terms(link) if link != '无链接' else ""
