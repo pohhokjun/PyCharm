@@ -30,11 +30,12 @@ def execute_mongo_aggregation(collection_name: str, pipeline: list, mongo_uri: s
 class DatabaseQuery:
     def __init__(self, host: str, port: int, user: str, password: str,
                  mongo_host: str, mongo_port: int, mongo_user: str, mongo_password: str,
-                 site_id: int = 1000, start_date: str = '2024-11-01', end_date: str = '2025-04-30',
+                 site_id: int = 1000, start_date: str = '2025-05-01', end_date: str = '2025-05-31',
                  agent_1000: str = 'agent_1000', u1_1000: str = 'u1_1000',
                  bigdata: str = 'bigdata', control_1000: str = 'control_1000',
                  finance_1000: str = 'finance_1000',
-                 mongo_collection_prefix: str = 'pull_order_game_', venue: str = ''):
+                 mongo_collection_prefix: str = 'pull_order_game_', venue: str = '',
+                 enable_league_filter: bool = False): # 新增参数：联赛筛选开关
         """初始化数据库连接参数"""
         # MySQL 连接
         connection_string = f"mysql+mysqlconnector://{user}:{password}@{host}:{port}/"
@@ -63,6 +64,9 @@ class DatabaseQuery:
         self.end_date = end_date
         self.start_time = f"{start_date} 00:00:00"
         self.end_time = f"{end_date} 23:59:59"
+
+        # 联赛筛选开关
+        self.enable_league_filter = enable_league_filter
 
     def _process_mongo_collections(self, collections: list, pipeline: list) -> pd.DataFrame:
         """使用多进程处理 MongoDB 的通用方法"""
@@ -120,8 +124,22 @@ class DatabaseQuery:
         """查询会员基本信息"""
         query = f"""
         SELECT
+           u1_mi.site_id AS '站点ID',
+           u1_mi.top_name AS '代理名称',
            u1_mi.id AS '会员ID',
            u1_mi.name AS '会员账号',
+           CASE u1_mi.status WHEN 1 THEN '启用' WHEN 0 THEN '禁用' ELSE CAST(u1_mi.status AS CHAR) END AS '状态',
+           u1_mi.is_agent AS '是否代理',
+           u1_mi.vip_grade AS 'VIP等级',
+           (SELECT GROUP_CONCAT(DISTINCT c1_sv.dict_value ORDER BY c1_sv.code SEPARATOR ',')
+            FROM control_1000.sys_dict_value c1_sv
+            WHERE FIND_IN_SET(c1_sv.code, u1_mi.tag_id)
+            AND (c1_sv.initial_flag IS NULL OR c1_sv.initial_flag <> 1)) AS '标签',
+           u1_mofr.remark AS '备注',
+           CASE WHEN u1_mi.real_name_desensitization <> '' THEN '已绑定' ELSE '' END AS '实名状态',
+           CASE WHEN u1_mi.phone_desensitization <> '' THEN '已绑定' ELSE '' END AS '手机状态',
+           CASE WHEN u1_mi.email_desensitization <> '' THEN '已绑定' ELSE '' END AS '邮箱状态',
+           CASE WHEN u1_mbi.member_info_id IS NOT NULL THEN '已绑定' ELSE '' END AS '银行卡状态',
            u1_mi.created_at AS '注册时间',
            u1_mi.last_login_time AS '最后登录时间'
         FROM u1_1000.member_info u1_mi
@@ -139,11 +157,41 @@ class DatabaseQuery:
            SELECT DISTINCT member_info_id
            FROM u1_1000.member_banks_info
         ) u1_mbi ON u1_mi.id = u1_mbi.member_info_id
-        WHERE u1_mi.name IN ('yyh0221', 'z13871', 'madrid128', 'tt199227', 'nan880516', 'cr1000', 'jintian199', 'nicaia6', 'yy456569', 'qwe931123', 'jkl1207', 'zybisme8023', 'po688888', 'lzpyy188', 'qq972701231', 'tengwei512', 'aa86607745', 'hb666321', 'ww24049', 'ab17650415', 'aa80460679', 'lb125626', 'nhq123789', 'hy1314520', 'qq772353639', 'qq005005', 'hzk666888', 'gd226261', 'missleng135', 'vip950901', 'wy16677', 'ww804636624', 'liu26801', 'wan134378', 'yw1990', 'qaz321511', 'yejun333', 'dsn188166', 'xwh123456a', 'ab1835953', 'aa878579', 'ylm1117', 'cybcyl888', 'lx8888a', 'aa26139492', 'zz1916363', 'henry0408', 'caidaxia3', 'bc1888', 'zrq12345', 'tll172343', 'jiajian5130', 'zhanglei001', 'xx0529xx', 'kobe198811', 'yang007996', 'ww43182989', 'sy810136', 'zl1995zl', 'arxen520', 'dx199583', 'xxm1799', 'linjian1995', 'hb666999', 'a497893249f', 'bbb348730', 'wutianyu057', 'hao899010', 'hlw2888', 'leborn888', 'kk751216862', 'tao90120', 'yy5974568', 'gj77950659', 'ljn153818', 'zxk520ztt', 'zsx7428', 'yy76299931', 'ss582993557', 'wwss110', 'weimaoda7', 'a2fk62', 'nihaoa123', 'kankan158', 'bbs826464', 'sarapo1991', 'abcd159752', 'hb1234576', 'xcj1029', 'llr123456a1', 'zyx9989', 'li499714123', 'yang8866', 'qq115446851', 'zjh096', 'as241422', 'win998811', 'aa754574', 'quin7788', 'yyysj3595', 'xiaoshun10', 'zhuren888', 'pcdy9328', 'roger517523', 'chj0613', 'king1991hu', 'zitt00', 'abc79164567', 'abb4566', 'qq241414', 'double1', 'xiedewei888', 'qq4672', 'xizhici69', 'mi258979785', 'ly0055', 'qw123068', 'qqwwee789', 'huang87804', 'hb1727942', 'out1369', 'sz211232', 'kazige1103', 'lili2198', 'axx012810', 'jia7758', 'cjdxf258', 'pansiyu521', 'ab1605949', 'mpfour111', 'yangzai97', 'dk198611', 'ac16666', 'hanlinxue1', 'wei2022nian', 'yxh4422', 'wsws1397', 'lv58002159', 'w4s5678', 'ww1472588', 'zxy12047', 'yy2qq', 'haohao0817', 'hb001', 'onion1113', 'xx8568025', 'alin999', 'leiming615', 'haobo22000', 'bsc2024', 'zero351', 'zz821538550', 'led221212', 'hb172626968', 'aa645969', 'whqmnb987', 'dudu15888', 'nmtd0506', 'sag333333', 'wyy354488', 'sky101517', 'gym936520', 'jiege0602', 'lzy123', 'sa6532', 'cdl67220', 'qq166142098', 'ayx369852', 'aa923711', 'taojiliang8', 'a28318571', 'blues112233', 'xx3313', 'hb1869', 'nana661128', 'rxy2k568', 'zhangym1', 'as333', 'cyb11488', 'fun2828', 'vv123884', 'cn060102', 'brking123', 'yveslol819', 'hhhqqqq12', 'aa1536395', 'baa95823695', 'zxc987q', 'lht6669', 'mm783329', 'qqq091', 'l760780144l', 'bb084930', 'lw886688', 'ab193644', 'clara1777', 'yjycom99', 'wei710758', 'kong888888', 'fhu6860', 'qwe6663', 'minjie1989', 'qq534926804', 'lw666888', 'qq115679', 'qq23678', 'qingyi168', 'money555', 'xbj51777888', 'aa437015075', 'qq592790', 'naijian22', 'dd787104577', 'ye506289400', 'asdchen8', 'wang777', 'abc15806587', 'sg1981', 'acac155', 'yy2024', 'qz16888', 'huaduo97', 'ss879727650', 'asdd000a', 'glory2740', 'jm19890914', 'qq77110303', 'a98k123456', 'lc671338', 'qqcc868799', 'aili841129', 'yrc1992aa', 'wo227425315', 'wq20431211', 'qz12345111', 'ycm675', 'qin1280', 'dukang2024', 'yyds627', 'dufeihu2015', 'wl456wl', 'pppttt152', 'aa563298', 'xy990704', 'lxw9707', 'zay999', 'jasmine97', 'zfl2000', 'cjh548210', 'shmily89757', 'gxb188', 'cc1996429', 'xt243410', 'niumabb00', 'qqq5616656', 'ass358', 'hb0248', 'wjyzqt11', 'hhw258011', 'yunpo111', 'z1365183zzz', 'qingtang213', 'hd2288', 'cjl990205', 'lingli2015', 'ccb508201', 'qz3073107', 'lza111111', 'xuwei0718', 'ak94', 'crz666666', 'fu8312', 'zxbzxb1', 'haha1121', 'cc759004245', 'laowang666', 'm6254264m', 'dcy0111', 'yu19981998', 'zhoulei369', 'tokey1314', 'kkll11111', 'jackylove8', 'agyj1688', 'wtc1994333', 'xrt960916', 'mei198801', 'cyl314', 'yang5201324', 'ccikay88', 'wjx19990725', 'hera41', 'ly0220', 'yangling711', 'lengxin1994', 'lk203133', 'aa941837044', 'xiaosi15', 'lanyang1', 'zhou525', 'qq236138652', 'mm8808', 'zhang451090', 'yaa6588', 'lc530863629', 'qaq351612', 'xihu6688', 'zxc88448172', 'zhaoyan987', 'li16888', 'tanyuhui1', 'yang1984', 'xsj888777', 'hqy311013', 'qq8688235', 'zml2cj', 'dqz1231', 'kejugongzi1', 'jr4399', 'll879380202', 'wang38524', 'wa137419598', 'jy199437', 'wwl6666', 'zz14229', 'plb162795', 'liuxiaoao12', 'qqjiahao12', 'douge10', 'ak666888', 'daozai234', 'qq231414', 'wcy345678', 'kk772437415', 'mm980605', 'jee898900', 'lishui319', 'ab987513224', 'xj7117439', 'aa1807088', 'qwer110335', 'wx1896', 'hbcz666666', 'swift1989', 'julia77', 'mzy281107', 'longge10', 'qq790093876', 'jie636591', 'answer00123', 'lfq19900517', 'gfa19940323', 'hbty158', 'wzr7878452', 'zqh124', 'ss625058023', 'xx2023', 'ai9552', 'aaron9066', 'ylmm123', 'lw131453', 'pqh930121', 'wangbo999', 'hanlinxue2', 'tx956594178', 'd804148911d', 'zk6666667', 'dsz123', 'ab903679313', 'atao919599', 'ww8078', 'leon1988', 'yy2258', 'wangx666888', 'yeling9292', 'qaz117906', 'wjy130224', 'wzj2024', 'wl19921026', 'zz120154721', 'malubing15', 'clh123456', 'ace2834', 'qq148683618', 'gotta1213', 'aa9980818', 'xoxo24', 'zz813538959', 'asieasy1', 'xxl20178888', 'ql295121', 'cjdyj888', 'aa9638', 'hhnn567', 'ccpp775825', 'lhm385299', 'ng041122', 'leer816', 'lin2002', 'hhzz1226', 'tyj98022', 'cc89', 'xf513rmmmm', 'ye567898', 'single1989', 'lcl268862', 'jwy12345', 'longke1118', 'cdx98765', 'vip518', 'aa150431324', 'qq7230486', 'tp198987', 'hwh12345', 'wangsheng32', 'gaoyi8', 'kk282366468', 'aa643324407', 'yy2627018', 'wangzai520', 'bb421080862', 'xlm997210', 'nana0308', 'we780690', 'oyb2000', 'wuyanzu698', 'ted2024', 'wyf888888', 'ljw2024101', 'a199500b', 'qq0590', 'tang111631', 'yyl12283154', 'qq602105974', 'ccx200011', 'luowei1224', 'wxfdc666', 'vip088', 'xing1217', 'zhi345817', 'abc6661006', 'hb9528528', 'wjp666', 'aogu1818', 'cb77915784', 'zzz351', 'dtm1999', 'hb14789632', 'hxh136', 'sunyuqin69', 'wen691030', 'gcj8122', 'liyun01', 'lee6800', 'qq156308066', 'tt377520', 'zbbd6788', 'lizhengyan0', 'dd411478', 'nian889900', 'hsl88', 'sm1826821', 'gx2024', 'sgth888', 'jankin0513', 'xiaogu0919', 'angle530hh', 'wxc404747', 'zhou5260', 'lll1818', 'wei0523', 'csiyuan888', 'zw2345', 'qin123321', 'yy429761534', 'mm147258', 'curry433', 'xingyun115', 'bb160705122', 'wanghe1868', 'suoha24k', 'hehui820888', 'zjm520131', 'xu151051', 'liujie58', 'baoxihui11', 'qw28888', 'wengjie1234', 'lmm5201', 'xy003628', 'jjgw6633', 'bwu911', 'foxconn123', 'lfc2025', 'jp34792', 'luobote88', 'aa937342709', 'fjgh2525', 'zf19890521', 'hb2352832', 'kj76', 'crazy2006', 'aiyi3879', 'xxx188654', 'hyq2213', 'yy9101314', 'zhb98700', 'dl0218', 'guang1zi', 'lgp990206', 'skisse1988', 'bosspass365', 'lzh2009', 'xht568527', 'wylb995', 'ab199800b', 'aa975643114', 'qq910748823', 'wanghangf0', 'xxw857', 'chen123550', 'zhou135790', 'aa55555', 'moyu12', 'an527838008', 'xyk17476', 'lxr56789', 'sym123', 'ww899', 'sjc950630', 'zytamv001', 'ly1213677', 'qxz5188', 'pyyj123', 'zth75858', 'kk88888888', 'ys2024', 'zxd5500', 'qq17491903', 'swj12255', 'aak1730', 'wjh5913801', 'qq981205225', 'rainkoo001', 'yy105378538', 'zlh19980418', 'jonny0911', 'czm7758258', 'bgd362', 'gqa1111', 'jfzjc00000', 'lcx2025', 'liu6311299', 'zwlphbh117', 'cao880526', 'aq11', 'abc20211219', 'guoxu77', 'qzz970824', 'yy123321', 'cry999614', 'qaz10', 'guide8', 'wanming12', 'hou1122hou', 'zc19456561', 'lidiao2022', 'xufacai888', 'godsaveme23', 'zha1983', 'wujing111', 'zc0301309', 'kjeabye1', 'mreus123', 'hsc31060361', 'ye969489', 'liyuanfeng8', 'zzy8578576', 'xz843900', 'ccbb411', 'aa657994864', 'zs0927', 'dgdgdg654', 'zhcff521', 'he38567', 'aa847939188', 'wyx112610', 'mg951215', 'yy519549626', 'kimi4634', 'lp262531375', 'cy999999', 'lianlin111', 'fenghao77', 'sk840822', 'yangzi1990', 'qq271153977', 'su135136', 'xyfc66888', 'rr0420', 'qq221133', 'aajiang666', 'szc931127', 'wxf920410', 'lzxb0621', 'zjj477520', 'kaixuan304', 'pengke140', 'killbank1r', 'yyuuyu123', 'qq876270120', 'cxb3210', 'wzh199010', 'qq373212797', 'dhe68377', 'xiao152796', 'ysq873001', 'ling2001', 'luobote132', 'yxq778899', 'sgc960807', 'xinkuan888', 'zy20191201', 'hao79485449', 'hcdzsw8888', 'pbg888999', 'zxc160312', 'calmdown10', 'aa87961671', 'luther68', 'manming0926', 'cheng2024', 'hb1318', 'hyhy6868788', 'tndj5280', 'yangtao110', 'wu17388w', 'yuan2020', 'eyg124', 'jw1991', 'zybxs88', 'pj0115', 'yxp62', 'yao913', 'cui580231', 'asdf395621', 'gdrufeng456', 'yuiseix123', 'xu64543455', 'wl147258', 'yang12166', 'aa180310791', 'bin41237', 'asn88888888', 'aa171080043', 'bolejia1233', 'tyz826899', 'wp110110', 'zgm510283', 'wzq88888', 'wqc1996', 'cxj123123', 'xia34296246', 'qq154805349', 'huohuo520', 'ljj20240603', 'zy30689924', 'cr0620', 'kk125392858', 'hr315086', 'aa972841643', 'wzh225233', 'huangzj888', 'gavin0721', 'lmlm9902', 'hxl5201314', 'kk2011', 'fwy1188', 'l1u6666', 'zjb921106', 'lixiang1640', 'bosco2006', 'tranze250', 'lwh820705', 'lpy910831', 'label861', 'ylh1123', 'zheng13298', 'aa957799576', 'zs634479667', 'vov2233', 'cz23456', 'zwr1997030', 'niubi897', 'abc19987', 'chen109168', 'gg19970214', 'yy941818', 'ztt863148', 'zsj6666', 'zzzzk789', 'chenchen99', 'haibaofff88', 'jibo961210', 'ssss110091', 'lxhly0529', 'y5z2m6', 'dong1968', 'tbbs2024', 'lyylyy2', 'zl362196', 'hb8800', 'zoo0909', 'lele0422', 'ye7788ye', 'whj77777777', 'qwerwzw6465', 'baoniu66666', 'huixue100w', 'hewen222', 'xiao8', 'qu489636', 'aa64350102a', 'zw5211314', 'kaka0909', 'laoniu12345', 'uiz0532', 'zhuba5188', 'haoyun6668', 'fujiong88', 'zhouyi6900', 'aa189702484', 'lx20252025', 'cai1369', 'pp135662483', 'lzl0617', 'cjr1688', 'luodegui111', 'sally666666', 'wangbiao668', 'zw450333752', 'ss628628', 'qq589425', 'hbmengmeng', 'andaxian927', 'hbmw2025', 'di0929', 'hejing888', 'shave19', 'ayu520', 'trac2025', 'fujun1226m', 'ql2522409', 'xiaobao123', 'xymaybe28', 'lm318119', 'jiafeipao88', 'ming2025', 'jia860223', 'qaz123qaz', 'zd123kk', 'xu888888', 'hang1117', 'ai19933', 'feng0114', 'xxxsss520', 'amg417', 'pxl1990', 'yjs1021', 'aa619393233', 'an44360766', 'lnh2002', 'gmdzac666', 'yy9654', 'liuq365', 'y666y', 'zzy1208', 'chb317324', 'wang1210', 'wu1010', 'abcisme123', 'kai5535876', 'ranbov587', 'gc2258', 'hu93120888', 'feifei1983', 'hhh147', 'ljm7255', 'wa190423636', 'lxg188188', 'a153931176a', 'wenjing1', 'astroboy408', 'zq199705', 'wz888999', 'luo5431926', 'liuwen587', 'bb532395770', 'zyq307', 'a1876622255', 'zq19880929', 'mn196862412', 'wuhao351', 'nhl520', 'debgly8', 'drsazy12345', 'zhao2280902', 'tgg6016081', 'ywzshiwo0', 'amfc1994', 'cbg465', 'sdvyop', 'fanghaof77', 'facai678', 'yjg7615060', 'gaogu1234', 'hy18926682', 'zjx19941234', 'csc0127', 'me940609', 'li251680768', 'zhu53132016', 'jihong', 'wulin2yun', 'yan5201314', 'lllaaa2', 'mm1009', 'lww89', 'haobe358607', 'longman1978', 'yu121108', 'ww1128', 'tanguoqing1', 'herojiang03', 'hh67058', 'lwy61588', 'xiangtianx2', 'sisi212', 'longtian588', 'xiong121311', 'changzong25', 'li365333849', 'cll150402', 'lthn66', 'yxq1999', 'hbty999999', 'zmm3329178', 'cx03146688', 'chenli5455', 'zzxzzx0610', 'xinsheng58', 'qw125684450', 'roychen03', 'yzf698888', 'web1123', 'halolye123', 'xiezhiwei11', 'cxxc29102', 'guo65101', 'xue12333', 'guguohua88', 'pake1108', 'lzcswd99', 'simoncc22', 'nazzica110', 'gg18818', 'witness23', 'ppjj1314520', 'shou6688', 'xx96000', 'hphhcm666', 'lms2zly', 'bb435200', 'yym111', 'xx960816', 'cwbjerry77', 'lidan8888', 'lr980300', 'lpf888c', 'xx7720842', 'aa236327546', 'hb19920826', 'mm767659873', 'zf331990959', 'gj285285', 'yy402237', 'xuyin1986', 'fudoudian1', 'aaaaab55', 'hai1743', 'zjiy520', 'hb65144230', 'arminiu5', 'zhh0077', 'xsk92913524', 'faye1999', 'qq936478438', 'zj88557862', 'winner57', 'lin87222394', 'wang899899', 'ty496800', 'ymyg555333', 'qq491583850', 'kingofllk88', 'ljw225588', 'away123', 'facail123', 'lfl3458', 'zjh12398', 'gg392420398', 'y1365636y', 'wyh20001227', 'cw352555192', 'll770703', 'ab373484310', 'cba13579', 'cxt200058', 'yzy1993', 'llf59188', 'yzl1563980', 'ww1266', 'zyy671711', 'fei17688', 'longli376', 'dc351021', 'pzw19870201', 'tao7788', 'lhb55555555', 'qwery123456', 'jl20250228', 'tb7885', 'yecao11', 'yutaowori0', 'css00777', 'dye2503', 'johncmg823', 'jy116315aa', 'wujnu999', 'kiruhan1', 'gx0300', 'ienric1908', 'aa100307', 'ds62202', 'ahe1989', 'zc9998', 'zqx19930301', 'lq19890711', 'if175924', 'guan123', 'xiao121733', 'w12346789h', 'andyshe6858', 'liangzhao08', 'yaosen13', 'love8686', 'wgh8888', 'hd888888', 'lin823221', 'tainiule168', 'qq294677397', 'tam123', 'junyan5588', 'zwnjs1296', 'wzy991225', 'sky1234s', 'iood01', 'wuyi740', 'jian3325030', 'zf0717', 'opium0323', 'wlds520', 'yuying525', 'xingxing556', 'a1990tt', 'y6z6q6', 'ctq666', 'marooon820', 'yxf19940224', 'lm123456x', 'sh199202', 'he881122', 'hv9306', 'zsf77534012', 'huizhou123', 'yy422958254', 'fang77', 'zrc4399', 'ayx9913', 'zzh890415', 'ye976267949', 'lifan1995', 'robertpan97', 'dalaore1', 'daban1020', 'luck2456', 'baoge8888', 'ddyy0704', 'nihaoya2222', 'zzb199383', 'zhao1314', 'z19900124q', 'wusi89', 'wind9991', 'yf6813', 'cyy7788', 'qq870374098', 'liu18599', 'xiaotuzi008', 'wjf7172', 'cc5141', 'zc153544512', 'wa125789', 'xjkxjk123', 'aa69398', 'redwing666', 'dn62596', 'lt321321', 'zyg2025', 'lj970902', 'aa450036', 'cj69840', 'imlizhao88', 'wf323778898', 'yss133', 'wangsha369', 'zy5206wy', 'qqzhijie123', 'abcd7991623', 'caorl777', 'cs11789', 'ouba3366', 'qq11050386', 'jinlin12345', 'xxrz12', 'zgw7777', 'zyxshitc123', 'hbwll159', 'p13579gh', 'gdhs172', 'demo190086', 'aaa718', 'fengjy888', 'han999999', 'zhao8610', 'sunyusu0713', 'wyygmx999', 'lizhen2025', 'czy368', 'zs17321', 'css0704', 'zwj009', 'hcc25478', 'dh2338078', 'li888888l', 'rayshao168', 'tan19980927', 'wqq110', 'crazyn2023', 'qq326976452', 'liulvlv123', 'kelvin8898', 'sax666', 'zr20160216', 'xx855888', 'hb338', 'wei4017000', 'az9190', 'jssyxk0828', 'qinglong110', 'aa4165', 'huya236014', 'tld123', 'ysh666999', 'wr66666666', 'xcping99', 'dyq88520', 'aq490784885', 'young666', 'whr1234', 'hm199799', 'czj880217', 'ccc344344', 'ay191263503', 'qq512819131', 'feizaimi94', 'gu156688', 'heleiko123', 'nn0115', 'cd199631', 'rara21', 'zp198731', 'cy53571111', 'tietie147', 'zhuan3498', 'zz9198', 'tb172471237', 'jaiho91', 'tq880119', 'yun134679', 'huanxi8686', 'qq7236345', 's2009s', 'wang1246141', 'haobo0754', 'ydbm007', 'zhaojumin23', 'jjq18204', 'wzw1588788b', 'aaa053000', 'ren7855', 'aa605226320', 'zkk645635', 'blood1984', 'wang888666', 'xxx14725888', 'wsnd11', 'jj202089', 'lin7511148', 'chen688795', 'yq147666', 'zxt123456', 'xszyw5', 'zza19941209', 'jia456852', 'ob236386', 'lfh10100010', 'qq707575203', 'unogg647', 'aa451020467', 'xiaolt6951', 'qq777888', 'yj198710', 'qw1763537', 'wan9908', 'zw373811', 'trader888', 'asd56788', 'qq981225', 'li152162878', 'frj1997', 'zengzm0505', 'lina0218', 'lqj666688', 'xulingb19', 'fph11223344', 'aa2057416zz', 'liu123911', 'zoudawa5210', 'alele530', 'sun10210', 'ky877233558', 'bobo369', 'zxhcl11', 'ma770402', 'wuyue10978', 'yangfan588', 'tiantian197', 'woaiwj58', 'aiyu198610', 'hxy1506354', 'stephy3b', 'ww33109612', 'wyf528080', 'zc1575076', 'mf369', 'wm1323721', 'mujjdaxia11', 'qq158164', 'zh8888zh', 'aj7778899', 'kx9714', 'ax520520', 'yq5758', 'jb410882', 'aa122955938', 'jokic55', 'cyu997', 'da7633', 'tlc852', 'czx159258', 'zx1214', 'cyx99321', 'wangyenb666', 'hb199190', 'szh100', 'qq422745886', 'xb010329', 'lidm3407735', 'whg545', 'ange0105', 'sjdh121', 'guan5269', 'max888888', 'qawd1258', 'akui6555', 'wzsxy678', 'abtr199951', 'xiaohuabc5', 'kk193158607', 'chao8888', 'xjf999', 'chen4137199', 'bkssllyx1', 'an443607663', 'xiangzi0851', 'zj1888', 'bjergsen13', 'yxyjy0330', 'czf890530', 'baishu123', 'lxw0710', 'panwei123a1', 'tao0421', 'aj196682', 'dbnba366988', 'sjzgwd11', 'ww3713278')
         """
         # WHERE u1_mi.name IN ('qq7236345', 's2009s', 'wang1246141')
         if self.site_id is not None:
-            query += f" AND u1_mi.site_id = {self.site_id}"
+            query += f" WHERE u1_mi.site_id = {self.site_id}"
+        return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
+
+    def _2_first_deposit(self) -> pd.DataFrame:
+        """查询会员首存信息"""
+        query = f"""
+        SELECT
+            member_id AS '会员ID',
+            order_amount AS '首存金额',
+            confirm_at AS '首存确认时间'
+        FROM (
+            SELECT
+                member_id,
+                order_amount,
+                confirm_at,
+                ROW_NUMBER() OVER (PARTITION BY member_id ORDER BY confirm_at ASC) AS rn
+            FROM {self.finance_1000}.finance_pay_records
+            WHERE is_first_deposit = 1
+        ) t
+        WHERE rn = 1
+       """
+        return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
+
+    def _3_last_bet_date(self) -> pd.DataFrame:
+        """查询会员最后投注日期信息"""
+        query = f"""
+        SELECT 
+            member_id AS '会员ID',
+            MAX(CASE WHEN valid_bet_amount > 0 THEN statics_date ELSE NULL END) AS '最后投注日期'
+        FROM {self.bigdata}.member_daily_statics
+        GROUP BY member_id
+       """
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
     def _6_member_stats_period(self, group_by_level: str = None) -> pd.DataFrame:
@@ -156,7 +204,15 @@ class DatabaseQuery:
         """
         select_columns = """
             member_id AS '会员ID',
-            COALESCE(SUM(bets), 0) AS '有效投注金额'
+            COALESCE(SUM(deposit_count), 0) AS '存款笔数',
+            COALESCE(SUM(deposit), 0) AS '存款',
+            COALESCE(SUM(draw_count), 0) AS '取款笔数',
+            COALESCE(SUM(draw), 0) AS '取款',
+            COALESCE(SUM(bets), 0) AS '有效投注金额',
+            COALESCE(-SUM(profit), 0) AS '会员输赢',
+            COALESCE(-SUM(profit), 0)/COALESCE(SUM(all_bets), 0) AS '会员盈利率',
+            COALESCE(SUM(promo), 0) AS '红利',
+            COALESCE(SUM(rebate), 0) AS '返水'
         """
         group_by_columns = "member_id"
 
@@ -179,6 +235,301 @@ class DatabaseQuery:
 
         return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
 
+    def _7_member_stats_history(self) -> pd.DataFrame:
+        """查询会员历史累计统计信息"""
+        query = f"""
+       SELECT
+           member_id AS '会员ID',
+           COUNT(DISTINCT CASE WHEN deposit_count > 0 THEN statics_date ELSE NULL END) AS '存款天数',
+           COALESCE(SUM(deposit_count), 0) AS '历史存款笔数',
+           COALESCE(SUM(deposit), 0) AS '历史存款',
+           COALESCE(SUM(draw_count), 0) AS '历史取款笔数',
+           COALESCE(SUM(draw), 0) AS '历史取款',
+           COALESCE(SUM(bets), 0) AS '历史有效投注金额',
+           COALESCE(-SUM(profit), 0) AS '历史会员输赢',
+           COALESCE(SUM(promo), 0) AS '历史红利',
+           COALESCE(SUM(rebate), 0) AS '历史返水'
+       FROM {self.bigdata}.member_daily_statics
+       """
+        if self.site_id is not None:
+            query += f" WHERE site_id = {self.site_id}"
+        query += f" GROUP BY member_id"
+        return pd.concat(pd.read_sql(query, self.engine, chunksize=5000), ignore_index=True)
+
+    def mongo_betting_stats(self, group_by_level: str = None) -> pd.DataFrame:
+        """
+        查询 MongoDB 投注统计数据。
+        group_by_level:
+            - None: 无日期汇总
+            - 'day': 按天汇总
+            - 'month': 按月汇总
+        """
+        collections = [col for col in self.db.list_collection_names() if col.startswith(self.mongo_collection_prefix)]
+
+        # 确定日期格式和输出列名
+        date_format = None
+        date_field_name = None
+        if group_by_level == 'day':
+            date_format = "%Y-%m-%d"
+            date_field_name = "日期"
+        elif group_by_level == 'month':
+            date_format = "%Y-%m"
+            date_field_name = "月份"
+
+        # 根据 group_by_level 构建 _id 字段
+        group_id = {
+            "member_id": "$member_id",
+            "game_type": "$game_type"
+        }
+        if date_field_name:
+            group_id[date_field_name] = {"$dateToString": {"format": date_format, "date": {"$toDate": "$settle_time"}}}
+
+        # 构建 project 阶段
+        project_stage = {
+            "_id": 0,
+            "会员ID": "$_id.member_id",
+            "game_type": "$_id.game_type",
+            "betting_count": 1,
+            "valid_bet": 1,
+            "net_amount": 1
+        }
+        if date_field_name:
+            project_stage[date_field_name] = f"$_id.{date_field_name}"
+
+        pipeline = [
+            {"$match": {
+                "flag": 1,
+                "settle_time": {"$gte": self.start_time, "$lte": self.end_time}
+            }},
+            {"$sort": {"settle_time": 1}},
+            {"$group": {
+                "_id": group_id,
+                "betting_count": {"$sum": 1},
+                "valid_bet": {"$sum": "$valid_bet_amount"},
+                "net_amount": {"$sum": "$net_amount"}
+            }},
+            {"$project": project_stage}
+        ]
+
+        if self.site_id is not None:
+            pipeline[0]["$match"]["site_id"] = self.site_id
+
+        # 移除 None 值
+        pipeline = [{k: v for k, v in stage.items() if v is not None} for stage in pipeline]
+
+        df = self._process_mongo_collections(collections, pipeline)
+
+        # 定义初始列
+        initial_columns = []
+        if date_field_name:
+            initial_columns.append(date_field_name)
+        initial_columns.extend(['会员ID', '投注次数', '会员投注喜好'])
+
+        if df.empty:
+            return pd.DataFrame(columns=initial_columns)
+
+        df = df.astype({'会员ID': 'category', 'game_type': 'int8', 'betting_count': 'int32',
+                        'valid_bet': 'float32', 'net_amount': 'float32'})
+        if date_field_name:
+            df[date_field_name] = df[date_field_name].astype('string')
+
+        # 聚合会员统计
+        group_cols = ['会员ID']
+        if date_field_name:
+            group_cols.insert(0, date_field_name)
+
+        member_stats = df.groupby(group_cols, observed=True).agg({
+            'betting_count': 'sum',
+            'valid_bet': 'sum',
+            'net_amount': 'sum'
+        }).reset_index().rename(columns={
+            'betting_count': '投注次数'
+        })
+
+        # 游戏类型映射
+        game_types = {
+            1: ('体育有效投注', '体育会员输赢'),
+            2: ('电竞有效投注', '电竞会员输赢'),
+            3: ('真人有效投注', '真人会员输赢'),
+            4: ('彩票有效投注', '彩票会员输赢'),
+            5: ('棋牌有效投注', '棋牌会员输赢'),
+            6: ('电子有效投注', '电子会员输赢'),
+            7: ('捕鱼有效投注', '捕鱼会员输赢')
+        }
+
+        # 有效投注和输赢透视表
+        pivot_index = group_cols
+        valid_pivot = df.pivot_table(index=pivot_index, columns='game_type', values='valid_bet',
+                                     aggfunc='sum', fill_value=0, observed=False).reset_index()
+        valid_pivot.columns = pivot_index + [game_types.get(col, (str(col),))[0] for col in
+                                             valid_pivot.columns[len(pivot_index):]]
+        net_pivot = df.pivot_table(index=pivot_index, columns='game_type', values='net_amount',
+                                   aggfunc='sum', fill_value=0, observed=False).reset_index()
+        net_pivot.columns = pivot_index + [game_types.get(col, (str(col),))[1] for col in
+                                           net_pivot.columns[len(pivot_index):]]
+
+        # 计算会员投注喜好
+        game_valid_cols = [col for col in valid_pivot.columns if col.endswith('有效投注')]
+        if game_valid_cols:
+            valid_pivot['max_valid_bet_value'] = valid_pivot[game_valid_cols].max(axis=1)
+            valid_pivot['会员投注喜好'] = valid_pivot[game_valid_cols].idxmax(axis=1)
+            valid_pivot['会员投注喜好'] = valid_pivot['会员投注喜好'].str.replace('有效投注', '', regex=False)
+            valid_pivot['会员投注喜好'] = valid_pivot.apply(
+                lambda row: row['会员投注喜好'] if row['max_valid_bet_value'] > 0 else '无', axis=1
+            )
+            valid_pivot = valid_pivot.drop(columns=['max_valid_bet_value'])
+        else:
+            valid_pivot['会员投注喜好'] = '无'
+
+        # 合并结果
+        result = member_stats
+        result = result.merge(valid_pivot[pivot_index + ['会员投注喜好']], on=pivot_index, how='left')
+
+        for game_type in sorted(game_types.keys()):
+            valid_col = game_types[game_type][0]
+            net_col = game_types[game_type][1]
+            if valid_col in valid_pivot.columns:
+                result = result.merge(valid_pivot[pivot_index + [valid_col]], on=pivot_index, how='outer')
+            if net_col in net_pivot.columns:
+                result = result.merge(net_pivot[pivot_index + [net_col]], on=pivot_index, how='outer')
+
+        final_columns_base = []
+        if date_field_name:
+            final_columns_base.append(date_field_name)
+        final_columns_base.extend(['会员ID', '投注次数'])
+
+        internal_cols_to_exclude = ['valid_bet', 'net_amount']
+        final_columns = final_columns_base + ['会员投注喜好'] + \
+                        [col for col in result.columns if
+                         col not in (final_columns_base + ['会员投注喜好'] + internal_cols_to_exclude)]
+
+        result = result[result['valid_bet'] > 0]
+        result = result.reindex(columns=final_columns)
+        return result
+
+    def mongo_betting_details(self) -> pd.DataFrame:
+        """查询 MongoDB 投注详细记录，替换游戏详情中的特殊字符，仅保留结算日期"""
+        columns = [
+            '站点ID', '会员ID', '结算日期', '会员账号', '场馆', '游戏', '赛事ID', '注单号', '赔率',
+            '投注额', '有效投注', '会员输赢', '是否提前结算', '投注时间', '开始时间',
+            '结算时间', '游戏详情', '游戏完整详情', '联赛', '球队', '玩法'
+        ]
+        collections = [
+            col for col in self.db.list_collection_names()
+            if col.startswith(self.mongo_collection_prefix) and col.endswith(self.venue)
+        ]
+        if not collections:
+            return pd.DataFrame(columns=columns)
+
+        pipeline = [
+            {"$match": {
+                "flag": self.flag_value,
+                "settle_time": {"$gte": self.start_time, "$lte": self.end_time}
+            }},
+            {"$sort": {"bet_time": 1}},
+            {"$project": {
+                "_id": 0,
+                "站点ID": "$site_id",
+                "会员ID": "$member_id",
+                "结算日期": "$settle_time",
+                "会员账号": "$member_name",
+                "场馆": "$venue_name",
+                "游戏": "$game_name",
+                "赛事ID": "$match_id",
+                "注单号": "$id",
+                "赔率": {"$cond": [{"$eq": ["$odds_type", "EURO"]}, "$odds", {"$add": ["$odds", 1]}]},
+                "投注额": "$bet_amount",
+                "有效投注": "$valid_bet_amount",
+                "会员输赢": "$net_amount",
+                "是否提前结算": "$early_settle_flag",
+                "投注时间": "$bet_time",
+                "开始时间": "$start_time",
+                "结算时间": "$settle_time",
+                "游戏详情": "$play_info",
+                "游戏完整详情": "$game_play_info",
+            }}
+        ]
+        if self.site_id is not None:
+            pipeline[0]["$match"]["site_id"] = self.site_id
+        df = self._process_mongo_collections(collections, pipeline)
+        if df.empty:
+            return pd.DataFrame(columns=columns)
+
+        # 替换游戏详情中的特殊字符
+        df['游戏详情'] = df['游戏详情'].astype(str).str.replace('&nbsp;', ' ')
+        df['游戏完整详情'] = df['游戏完整详情'].astype(str).str.replace('&nbsp;', ' ')
+
+        # 解析联赛、球队、玩法
+        def parse_details(row):
+            details = str(row['游戏完整详情' if row['场馆'] == 'LHDJ' else '游戏详情']).split('\n')
+            league = ''
+            team = ''
+            play = ''
+
+            if 'TY' in row['场馆']:
+                if len(details) > 1:
+                    league = details[1]
+                if len(details) > 2:
+                    team = details[2]
+                if len(details) > 3:
+                    play = details[3]
+            elif 'DJ' in row['场馆']:
+                if row['场馆'] == 'LHDJ':
+                    if len(details) > 0:
+                        league = details[0]
+                    if len(details) > 2:
+                        team = details[2]
+                    if len(details) > 4:
+                        play = details[4]
+                else:  # Other DJ venues
+                    if len(details) > 1:
+                        league = details[1]
+                    if len(details) > 2:
+                        team = details[2]
+                    if len(details) > 3:
+                        play = details[3]
+
+            return pd.Series({'联赛': league, '球队': team, '玩法': play})
+
+        df = pd.concat([df, df.apply(parse_details, axis=1)], axis=1)
+
+        # ----------------------------------------------------------------------------------------------------
+        # 用户请求：联赛批量模糊筛选功能
+        # 通过在 DatabaseQuery 初始化时设置 enable_league_filter=True 来启用此功能
+        if self.enable_league_filter:
+            # 定义目标联赛
+            # = """ """ 给我这种按照下一行做区分的方式
+            league_names_str = """
+英格兰超级联赛
+西班牙甲级联赛
+法国甲级联赛
+意大利甲级联赛
+德国甲级联赛
+            """
+            target_leagues = [league.strip() for league in league_names_str.strip().split('\n') if league.strip()]
+
+            # 筛选数据：联赛包含目标列表中的任意一个
+            df = df[
+                df['联赛'].str.contains('|'.join(re.escape(l) for l in target_leagues), na=False, regex=True)
+            ]
+        # ----------------------------------------------------------------------------------------------------
+
+        # 仅保留结算日期（无时间）
+        df['结算日期'] = pd.to_datetime(df['结算日期']).dt.date
+
+        # 类型优化
+        df = df.astype({
+            '站点ID': 'string', '会员ID': 'category', '结算日期': 'object', '会员账号': 'string', '场馆': 'string',
+            '游戏': 'string', '赛事ID': 'string', '注单号': 'string', '赔率': 'float32',
+            '投注额': 'float32', '有效投注': 'float32', '会员输赢': 'float32', '是否提前结算': 'string',
+            '投注时间': 'datetime64[ns]', '开始时间': 'datetime64[ns]', '结算时间': 'datetime64[ns]',
+            '游戏详情': 'string', '游戏完整详情': 'string', '联赛': 'string',
+            '球队': 'string', '玩法': 'string'
+        })
+
+        # 确保字段顺序
+        return df[columns]
+
 
 def save_to_excel(df: pd.DataFrame, filename: str):
     """保存 DataFrame 到 Excel 文件"""
@@ -190,14 +541,38 @@ def save_to_excel(df: pd.DataFrame, filename: str):
         worksheet.autofilter(0, 0, 0, len(df.columns) - 1)
 
 
+def send_to_telegram(file_path: str, bot_token: str, chat_id: str) -> bool:
+    """发送 Excel 文件到 Telegram 群"""
+    url = f"https://api.telegram.org/bot{bot_token}/sendDocument"
+    try:
+        with open(file_path, 'rb') as file:
+            files = {'document': file}
+            data = {'chat_id': chat_id, 'caption': f'数据输出: {os.path.basename(file_path)}'}
+            response = requests.post(url, data=data, files=files)
+            if response.status_code == 200:
+                print(f"Excel file sent to Telegram successfully: {file_path}")
+                return True
+            else:
+                print(f"Failed to send Excel to Telegram: {response.text}")
+                return False
+    except Exception as e:
+        print(f"Error sending Excel to Telegram: {e}")
+        return False
+
+
 def work(db_query: DatabaseQuery) -> pd.DataFrame:
     """执行查询并合并结果"""
     # 推广架构 db_query._0_promotion()
     # 会员信息 .merge(db_query._1_member_basic_info(), on='会员ID', how='inner')
+    # 首存 .merge(db_query._2_first_deposit(), on='会员ID', how='left')
+    # 最后投注 .merge(db_query._3_last_bet_date(), on='会员ID', how='left')
     # 会员数据（时间段） .merge(db_query._6_member_stats_period(group_by_level='day'/'month'/None), on='会员ID', how='inner')
-    result_df = (db_query._0_promotion()
-                 .merge(db_query._1_member_basic_info(), on='会员ID', how='inner')
-                 .merge(db_query._6_member_stats_period(group_by_level='month'), on='会员ID', how='left')
+    # 会员数据（历史） .merge(db_query._7_member_stats_history(), on='会员ID', how='inner')
+    # 游戏 .merge(db_query.mongo_betting_stats(group_by_level='day'/'month'/None), on=['会员ID', '日期']或['会员ID', '月份']或'会员ID', how='inner')
+    # 注单 .merge(db_query.mongo_betting_details(), on=['会员ID', '日期'], how='inner')
+    result_df = (db_query._1_member_basic_info()
+                 .merge(db_query._2_first_deposit(), on='会员ID', how='left')
+                 .merge(db_query._3_last_bet_date(), on='会员ID', how='left')
                  )
     return result_df
 
@@ -213,8 +588,11 @@ def main():
         mongo_host='18.178.159.230',
         mongo_port=27217,
         mongo_user='biddata',
-        mongo_password='uvb5SOSmLH8sCoSU'
+        mongo_password='uvb5SOSmLH8sCoSU',
+        enable_league_filter=False # 在这里设置 True 启用联赛筛选，设置 False 禁用
     )
+    TELEGRAM_BOT_TOKEN = '7750313084:AAGci5ANeeyEacKJUESQuDHYyy8tLdl9m7Q'
+    CHAT_ID = '7523061850'
     try:
         result = work(db_query)
         if db_query.start_date == db_query.end_date:
