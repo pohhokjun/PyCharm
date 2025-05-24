@@ -34,7 +34,8 @@ class DatabaseQuery:
                  agent_1000: str = 'agent_1000', u1_1000: str = 'u1_1000',
                  bigdata: str = 'bigdata', control_1000: str = 'control_1000',
                  finance_1000: str = 'finance_1000',
-                 mongo_collection_prefix: str = 'pull_order_game_', venue: str = ''):
+                 mongo_collection_prefix: str = 'pull_order_game_', venue: str = '',
+                 enable_league_filter: bool = False):  # 新增参数：联赛筛选开关
         """初始化数据库连接参数"""
         # MySQL 连接
         connection_string = f"mysql+mysqlconnector://{user}:{password}@{host}:{port}/"
@@ -63,6 +64,9 @@ class DatabaseQuery:
         self.end_date = end_date
         self.start_time = f"{start_date} 00:00:00"
         self.end_time = f"{end_date} 23:59:59"
+
+        # 联赛筛选开关
+        self.enable_league_filter = enable_league_filter
 
     def _process_mongo_collections(self, collections: list, pipeline: list) -> pd.DataFrame:
         """使用多进程处理 MongoDB 的通用方法"""
@@ -488,23 +492,32 @@ class DatabaseQuery:
             return pd.Series({'联赛': league, '球队': team, '玩法': play})
 
         df = pd.concat([df, df.apply(parse_details, axis=1)], axis=1)
+
         # ----------------------------------------------------------------------------------------------------
-        # # 定义目标联赛
-        # target_leagues = [
-        #     "英格兰超级联赛", "西班牙甲级联赛", "法国甲级联赛", "德国甲级联赛", "意大利甲级联赛",
-        #     "西班牙甲组联赛", "意大利甲组联赛", "法国甲组联赛", "德国甲组联赛"
-        # ]
-        #
-        # # 筛选数据
-        # df = df[
-        #     # 游戏列包含 "足球"
-        #     df['游戏'].str.contains('足球', na=False) &
-        #     # 排除游戏详情
-        #     ~df['游戏详情'].str.contains('独家|虚拟|VR', na=False) &
-        #     # 联赛在目标联赛列表中
-        #     df['联赛'].str.contains('|'.join(re.escape(l) for l in target_leagues), na=False, regex=True)
-        #     ]
+        # 通过在 DatabaseQuery 初始化时设置 enable_league_filter=True 来启用此功能
+        if self.enable_league_filter:
+            # 定义目标联赛
+            league_names_str = """
+英格兰超级联赛
+西班牙甲级联赛
+法国甲级联赛
+意大利甲级联赛
+德国甲级联赛
+            """
+            target_leagues = [league.strip() for league in league_names_str.strip().split('\n') if league.strip()]
+            df = df[
+                df['联赛'].str.contains('|'.join(re.escape(l) for l in target_leagues), na=False, regex=True)
+            ]
+
+            ## 您可以在这里添加其他筛选条件，需要时取消注释
+            # df = df[
+            #     # 游戏列包含 "足球"
+            #     df['游戏'].str.contains('足球', na=False) &
+            #     # 排除游戏详情
+            #     ~df['游戏详情'].str.contains('独家|虚拟|VR', na=False)
+            # ]
         # ----------------------------------------------------------------------------------------------------
+
         # 仅保留结算日期（无时间）
         df['结算日期'] = pd.to_datetime(df['结算日期']).dt.date
 
@@ -579,7 +592,8 @@ def main():
         mongo_host='18.178.159.230',
         mongo_port=27217,
         mongo_user='biddata',
-        mongo_password='uvb5SOSmLH8sCoSU'
+        mongo_password='uvb5SOSmLH8sCoSU',
+        enable_league_filter=False   # 设置 True 启用联赛筛选，设置 False 禁用
     )
     TELEGRAM_BOT_TOKEN = '7750313084:AAGci5ANeeyEacKJUESQuDHYyy8tLdl9m7Q'
     CHAT_ID = '7523061850'
